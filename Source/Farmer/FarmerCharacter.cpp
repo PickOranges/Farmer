@@ -167,5 +167,7 @@ void AFarmerCharacter::RayCast()
 	FVector End = Start + Dir * 2000.f;
 	FHitResult HitResult;
 	bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Emerald,"Did ray cast and hit once.");
+	if (bHit) {
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *HitResult.GetActor()->GetName());
+	}
 }
