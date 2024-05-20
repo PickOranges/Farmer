@@ -60,7 +60,10 @@ class AFarmerCharacter : public ACharacter, public IInterfaceActivate, public II
 
 	// Custom Action Wheel Axis
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* IA_WheelAxis;
+	UInputAction* IA_WheelUp;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* IA_WheelDown;
 
 
 public:
@@ -81,8 +84,12 @@ protected:
 	// CB for for pressing Q
 	void PressQ(const FInputActionValue& Value);
 
-	void OnWheelAxis(const FInputActionValue& Value);
+	// CB for Mouse WheelUp
+	void OnWheelUp(const FInputActionValue& Value);
 
+	// CB for Mouse WheelDown
+	void OnWheelDown(const FInputActionValue& Value);
+	
 
 	void RayCast(bool& bHit, FHitResult& HitResult);
 	void Activate() override;

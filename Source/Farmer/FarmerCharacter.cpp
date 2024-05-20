@@ -101,7 +101,8 @@ void AFarmerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 		// Bind Custom Input Actions
 		EnhancedInputComponent->BindAction(IA_EAction, ETriggerEvent::Triggered, this, &AFarmerCharacter::PressE);
 		EnhancedInputComponent->BindAction(IA_QAction, ETriggerEvent::Triggered, this, &AFarmerCharacter::PressQ);
-		EnhancedInputComponent->BindAction(IA_WheelAxis, ETriggerEvent::Triggered, this, &AFarmerCharacter::OnWheelAxis);
+		EnhancedInputComponent->BindAction(IA_WheelUp, ETriggerEvent::Triggered, this, &AFarmerCharacter::OnWheelUp);
+		EnhancedInputComponent->BindAction(IA_WheelDown, ETriggerEvent::Triggered, this, &AFarmerCharacter::OnWheelDown);
 	}
 	else
 	{
@@ -169,12 +170,14 @@ void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 	}
 }
 
-void AFarmerCharacter::OnWheelAxis(const FInputActionValue& Value)
+void AFarmerCharacter::OnWheelUp(const FInputActionValue& Value)
 {
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,"Mouse Wheel Axis up(/down.");
-	Seeds += Value.Get<float>();
-	int32 seeds = static_cast<int32>(Seeds);
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, FString::Printf(TEXT("Now the #Seeds is: %d"),seeds));
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,"Mouse wheel up.");
+}
+
+void AFarmerCharacter::OnWheelDown(const FInputActionValue& Value)
+{
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, "Mouse wheel Down.");
 }
 
 void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)
