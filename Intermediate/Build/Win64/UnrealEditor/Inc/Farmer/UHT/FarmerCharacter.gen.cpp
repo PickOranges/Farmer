@@ -74,6 +74,10 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_IA_WheelAxis_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_IA_WheelAxis;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Seeds_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_Seeds;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
@@ -227,6 +231,13 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_WheelAxis = { "IA_WheelAxis", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, IA_WheelAxis), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_WheelAxis_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_WheelAxis_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_Seeds_MetaData[] = {
+		{ "Category", "FarmerCharacter" },
+		{ "ModuleRelativePath", "FarmerCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_Seeds = { "Seeds", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, Seeds), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_Seeds_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_Seeds_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFarmerCharacter_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_CameraBoom,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_FollowCamera,
@@ -238,6 +249,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_EAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_QAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_WheelAxis,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_Seeds,
 	};
 		const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AFarmerCharacter_Statics::InterfaceParams[] = {
 			{ Z_Construct_UClass_UInterfaceActivate_NoRegister, (int32)VTABLE_OFFSET(AFarmerCharacter, IInterfaceActivate), false },  // 511138240
@@ -282,9 +294,9 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 965193929U) },
+		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 215390509U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_3097005372(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_3905027608(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
