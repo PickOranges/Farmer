@@ -157,7 +157,7 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Keyboard input: Q.");
-
+	RayCast();
 }
 
 void AFarmerCharacter::RayCast()
