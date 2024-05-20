@@ -172,12 +172,16 @@ void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 
 void AFarmerCharacter::OnWheelUp(const FInputActionValue& Value)
 {
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,"Mouse wheel up.");
+	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,"Mouse wheel up.");
+	Seeds += (int32)Value.Get<float>();
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,FString::FromInt(Seeds));
 }
 
 void AFarmerCharacter::OnWheelDown(const FInputActionValue& Value)
 {
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, "Mouse wheel Down.");
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, "Mouse wheel Down.");
+	Seeds += (int32)Value.Get<float>();
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, FString::FromInt(Seeds));
 }
 
 void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)

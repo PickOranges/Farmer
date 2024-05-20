@@ -109,6 +109,6 @@ public:
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	float Seeds;
+	int32 Seeds;
 };
 
