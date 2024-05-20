@@ -74,11 +74,5 @@
     <ClInclude Include="..\..\Source\Farmer\Soil.h">
       <Filter>Source\Farmer</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\Farmer\SoilText.cpp">
-      <Filter>Source\Farmer</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\Farmer\SoilText.h">
-      <Filter>Source\Farmer</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

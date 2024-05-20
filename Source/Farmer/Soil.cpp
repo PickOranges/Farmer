@@ -16,7 +16,7 @@ ASoil::ASoil()
 
 	static ConstructorHelpers::FClassFinder<UUserWidget> soilWidgetClass(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/ThirdPerson/Blueprints/UMG_SoilText.UMG_SoilText_C'"));
 	soilTextWidget->SetWidgetClass(soilWidgetClass.Class);
-	soilTextWidget->SetRelativeLocation(FVector{0,0,100});
+	soilTextWidget->SetRelativeLocation(FVector{0,0,10});
 	soilTextWidget->SetWidgetSpace(EWidgetSpace::Screen);
 	soilTextWidget->SetDrawSize(FVector2D{400,20});
 
