@@ -69,8 +69,8 @@ void AFarmerCharacter::BeginPlay()
 		}
 	}
 
-	Activate();
-	PlantSeed();
+	//Activate();
+	//PlantSeed();
 }
 
 void AFarmerCharacter::Activate()
@@ -167,7 +167,9 @@ void AFarmerCharacter::RayCast()
 	FVector End = Start + Dir * 2000.f;
 	FHitResult HitResult;
 	bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
+
 	if (bHit) {
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *HitResult.GetActor()->GetName());
+		Activate();
 	}
 }
