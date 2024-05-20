@@ -151,25 +151,31 @@ void AFarmerCharacter::Look(const FInputActionValue& Value)
 void AFarmerCharacter::PressE(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue,"Keyboard input: E.");
-	RayCast();
+	bool isHit;
+	FHitResult Result;
+	RayCast(isHit, Result);
+	if (isHit) {
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *Result.GetActor()->GetName());
+		Activate();
+	}
 }
 
 void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Keyboard input: Q.");
-	RayCast();
+	bool isHit;
+	FHitResult Result;
+	RayCast(isHit, Result);
+	if (isHit) {
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *Result.GetActor()->GetName());
+		PlantSeed();
+	}
 }
 
-void AFarmerCharacter::RayCast()
+void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)
 {
 	FVector Start = FollowCamera->GetComponentLocation();
 	FVector Dir = FollowCamera->GetForwardVector();
 	FVector End = Start + Dir * 2000.f;
-	FHitResult HitResult;
-	bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
-
-	if (bHit) {
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *HitResult.GetActor()->GetName());
-		Activate();
-	}
+	bHit = GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
 }

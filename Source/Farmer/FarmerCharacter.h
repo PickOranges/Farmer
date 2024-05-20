@@ -76,7 +76,7 @@ protected:
 	// CB for for pressing Q
 	void PressQ(const FInputActionValue& Value);
 
-	void RayCast();
+	void RayCast(bool& bHit, FHitResult& HitResult);
 
 protected:
 	// APawn interface
