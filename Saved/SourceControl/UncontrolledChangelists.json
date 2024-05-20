@@ -5,7 +5,21 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
-				"C:/Users/cheng/source/repos/UE5/Farmer/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset"
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/IMC_Custom.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/Actions/IA_EAction.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/Actions/IA_QAction.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/Actions/IA_WheelDown.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/Actions/IA_WheelUp.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/Actions/IA_WheelAxis.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/IA_QAction.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/IA_EAction.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/IA_WheelUp.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/IA_WheelDown.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/IA_Custom_E.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/IA_Custom_Q.uasset",
+				"C:/Users/cheng/source/repos/UE5/Farmer/Content/ThirdPerson/Input/IA_CustomE.uasset"
 			]
 		}
 	]

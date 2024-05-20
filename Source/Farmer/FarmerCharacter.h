@@ -58,6 +58,11 @@ class AFarmerCharacter : public ACharacter, public IInterfaceActivate, public II
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* IA_QAction;
 
+	// Custom Action Wheel Axis
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* IA_WheelAxis;
+
+
 public:
 	AFarmerCharacter();
 	
@@ -76,7 +81,12 @@ protected:
 	// CB for for pressing Q
 	void PressQ(const FInputActionValue& Value);
 
+	void OnWheelAxis(const FInputActionValue& Value);
+
+
 	void RayCast(bool& bHit, FHitResult& HitResult);
+	void Activate() override;
+	void PlantSeed() override;
 
 protected:
 	// APawn interface
@@ -91,8 +101,5 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
-public:
-	void Activate() override;
-	void PlantSeed() override;
 };
 

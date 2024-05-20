@@ -68,9 +68,6 @@ void AFarmerCharacter::BeginPlay()
 			Subsystem->AddMappingContext(IMC_Custom, 0);
 		}
 	}
-
-	//Activate();
-	//PlantSeed();
 }
 
 void AFarmerCharacter::Activate()
@@ -104,7 +101,7 @@ void AFarmerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 		// Bind Custom Input Actions
 		EnhancedInputComponent->BindAction(IA_EAction, ETriggerEvent::Triggered, this, &AFarmerCharacter::PressE);
 		EnhancedInputComponent->BindAction(IA_QAction, ETriggerEvent::Triggered, this, &AFarmerCharacter::PressQ);
-
+		EnhancedInputComponent->BindAction(IA_WheelAxis, ETriggerEvent::Triggered, this, &AFarmerCharacter::OnWheelAxis);
 	}
 	else
 	{
@@ -170,6 +167,11 @@ void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *Result.GetActor()->GetName());
 		PlantSeed();
 	}
+}
+
+void AFarmerCharacter::OnWheelAxis(const FInputActionValue& Value)
+{
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,"Mouse Wheel Axis up(/down.");
 }
 
 void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)
