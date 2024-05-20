@@ -34,6 +34,9 @@ class AFarmerCharacter : public ACharacter, public IInterfaceActivate, public II
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputMappingContext* DefaultMappingContext;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputMappingContext* IMC_Custom;
+
 	/** Jump Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* JumpAction;
@@ -46,6 +49,15 @@ class AFarmerCharacter : public ACharacter, public IInterfaceActivate, public II
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
 
+
+	// Custom Action E
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* IA_EAction;
+
+	// Custom Action Q
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* IA_QAction;
+
 public:
 	AFarmerCharacter();
 	
@@ -57,7 +69,14 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
-			
+
+	// CB for for pressing E
+	void PressE(const FInputActionValue& Value);
+	
+	// CB for for pressing Q
+	void PressQ(const FInputActionValue& Value);
+
+	void RayCast();
 
 protected:
 	// APawn interface

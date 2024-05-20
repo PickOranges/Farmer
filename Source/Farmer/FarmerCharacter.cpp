@@ -65,6 +65,7 @@ void AFarmerCharacter::BeginPlay()
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
+			Subsystem->AddMappingContext(IMC_Custom, 0);
 		}
 	}
 
@@ -99,6 +100,11 @@ void AFarmerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AFarmerCharacter::Look);
+
+		// Bind Custom Input Actions
+		EnhancedInputComponent->BindAction(IA_EAction, ETriggerEvent::Triggered, this, &AFarmerCharacter::PressE);
+		EnhancedInputComponent->BindAction(IA_QAction, ETriggerEvent::Triggered, this, &AFarmerCharacter::PressQ);
+
 	}
 	else
 	{
@@ -140,4 +146,26 @@ void AFarmerCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void AFarmerCharacter::PressE(const FInputActionValue& Value)
+{
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue,"Keyboard input: E.");
+	RayCast();
+}
+
+void AFarmerCharacter::PressQ(const FInputActionValue& Value)
+{
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Keyboard input: Q.");
+
+}
+
+void AFarmerCharacter::RayCast()
+{
+	FVector Start = FollowCamera->GetComponentLocation();
+	FVector Dir = FollowCamera->GetForwardVector();
+	FVector End = Start + Dir * 2000.f;
+	FHitResult HitResult;
+	bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Emerald,"Did ray cast and hit once.");
 }
