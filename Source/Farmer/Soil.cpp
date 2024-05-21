@@ -22,7 +22,7 @@ ASoil::ASoil()
 	soilMesh->SetStaticMesh(tempMesh.Object);
 	soilMesh->SetWorldScale3D(FVector{5,5,5});
 
-	text3D->SetText(FText::FromString("#Seeds"));
+	text3D->SetText(FText::FromString(""));
 	text3D->SetRelativeLocation(FVector(40.0f, 0.0f, 40.f));
 	text3D->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
 	text3D->SetRelativeScale3D(FVector{0.3,0.3,0.3});
@@ -34,13 +34,25 @@ void ASoil::BeginPlay()
 	Super::BeginPlay();
 }
 
+void ASoil::Activate()
+{
+}
+
+// Called every frame
+void ASoil::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	PlantSeed();
+}
+
+
 void ASoil::PlantSeed()
 {
 	if (bIsPlanted) {
-
+		return;
 	}
 	else {
-		AFarmerCharacter* myCharacter = Cast<AFarmerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(),0));
+		AFarmerCharacter* myCharacter = Cast<AFarmerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 		if (myCharacter) {
 			//GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"Got character.");
 			switch (myCharacter->Seeds)
@@ -52,10 +64,10 @@ void ASoil::PlantSeed()
 				if (plantMesh) {
 					plantMesh->ReleaseResources();
 				}
-				UStaticMesh* tempMesh=LoadObject<UStaticMesh>(nullptr,TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_normal_02.SM_potato_normal_02'"));
+				UStaticMesh* tempMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_small.SM_potato_normal_02'"));
 				if (tempMesh) {
 					plantMesh->SetStaticMesh(tempMesh);
-					plantMesh->SetRelativeScale3D(FVector{ 0.5,0.5,0.5 });
+					plantMesh->SetRelativeScale3D(FVector{ 4,4,4 });
 				}
 			}
 			break;
@@ -67,7 +79,7 @@ void ASoil::PlantSeed()
 				UStaticMesh* tempMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_eggplant_normal.SM_eggplant_normal'"));
 				if (tempMesh) {
 					plantMesh->SetStaticMesh(tempMesh);
-					plantMesh->SetRelativeScale3D(FVector{0.3,0.3,0.3});
+					plantMesh->SetRelativeScale3D(FVector{ 0.3,0.3,0.3 });
 				}
 			}
 			break;
@@ -90,15 +102,3 @@ void ASoil::PlantSeed()
 		}
 	}
 }
-
-void ASoil::Activate()
-{
-}
-
-// Called every frame
-void ASoil::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-	PlantSeed();
-}
-

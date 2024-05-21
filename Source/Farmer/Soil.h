@@ -27,6 +27,10 @@ protected:
 	void PlantSeed() override;
 	void Activate() override;
 
+	void PlantEggplant(AFarmerCharacter* player);
+	void PlantCarrot(AFarmerCharacter* player);
+	void PlantPotato(AFarmerCharacter* player);
+	void CountDown(int32 growTime, UText3DComponent* display);
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -42,5 +46,5 @@ public:
 
 private:
 	bool bIsPlanted;
-
+	float GrowTime;
 };
