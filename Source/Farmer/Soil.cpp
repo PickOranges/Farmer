@@ -67,7 +67,7 @@ void ASoil::PlantSeed()
 				UStaticMesh* tempMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_eggplant_normal.SM_eggplant_normal'"));
 				if (tempMesh) {
 					plantMesh->SetStaticMesh(tempMesh);
-					plantMesh->SetRelativeScale3D(FVector{0.2,0.2,0.2});
+					plantMesh->SetRelativeScale3D(FVector{0.3,0.3,0.3});
 				}
 			}
 			break;
