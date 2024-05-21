@@ -3,6 +3,7 @@
 
 #include "Soil.h"
 #include "Kismet/GameplayStatics.h"
+#include "TimerManager.h"
 
 // Sets default values
 ASoil::ASoil()
@@ -26,6 +27,17 @@ ASoil::ASoil()
 	text3D->SetRelativeLocation(FVector(0.0f, 0.0f, 40.f));
 	text3D->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
 	text3D->SetRelativeScale3D(FVector{0.3,0.3,0.3});
+
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh1(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_small.SM_potato_small'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh2(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_medium.SM_potato_medium'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh3(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_normal_01.SM_potato_normal_02'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh4(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_normal_01.SM_potato_normal_01'"));
+
+	if (PotatoMesh1.Succeeded()) potatoMeshes.Emplace(PotatoMesh1.Object);
+	if (PotatoMesh2.Succeeded()) potatoMeshes.Emplace(PotatoMesh2.Object);
+	if (PotatoMesh3.Succeeded()) potatoMeshes.Emplace(PotatoMesh3.Object);
+	if (PotatoMesh4.Succeeded()) potatoMeshes.Emplace(PotatoMesh4.Object);
+
 }
 
 // Called when the game starts or when spawned
@@ -38,12 +50,12 @@ void ASoil::Activate()
 {
 }
 
+
 // Called every frame
 void ASoil::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
-
 
 void ASoil::PlantSeed()
 {
@@ -63,9 +75,9 @@ void ASoil::PlantSeed()
 				UStaticMesh* tempMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_small.SM_potato_small'"));
 				if (tempMesh) {
 					plantMesh->SetStaticMesh(tempMesh);
-					plantMesh->SetRelativeScale3D(FVector{ 2,2,2 });
 					plantMesh->SetRelativeLocation(FVector{ 0,0,10 });
 				}
+				GrowPotato();
 			}
 			break;
 			case 1:
@@ -76,7 +88,7 @@ void ASoil::PlantSeed()
 				UStaticMesh* tempMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_eggplant_normal.SM_eggplant_normal'"));
 				if (tempMesh) {
 					plantMesh->SetStaticMesh(tempMesh);
-					plantMesh->SetRelativeScale3D(FVector{ 0.3,0.3,0.3 });
+					plantMesh->SetRelativeScale3D(FVector{ 0.5,0.5,0.5 });
 				}
 			}
 			break;
@@ -99,5 +111,22 @@ void ASoil::PlantSeed()
 	}
 	else {
 		
+	}
+}
+
+void ASoil::GrowPotato()
+{
+	GetWorld()->GetTimerManager().SetTimer(MeshChangeTimerHandle, this, &ASoil::ChangePotatoMesh, 5.0f, true);
+}
+
+void ASoil::ChangePotatoMesh()
+{
+	if (potatoMeshes.Num() > 0 && plantMesh) {
+		potatoIdx = (potatoIdx+1) % potatoMeshes.Num();		
+		plantMesh->SetStaticMesh(potatoMeshes[potatoIdx]);
+		plantMesh->SetRelativeScale3D(FVector{0.7,0.7,0.7});
+	}
+	if (potatoIdx == potatoMeshes.Num()-1) {
+		GetWorld()->GetTimerManager().ClearTimer(MeshChangeTimerHandle);
 	}
 }

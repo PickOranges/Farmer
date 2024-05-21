@@ -151,7 +151,7 @@ void AFarmerCharacter::Look(const FInputActionValue& Value)
 
 void AFarmerCharacter::PressE(const FInputActionValue& Value)
 {
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue,"Keyboard input: E.");
+	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue,"Keyboard input: E.");
 	bool isHit;
 	FHitResult Result;
 	RayCast(isHit, Result);
@@ -167,7 +167,7 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 
 void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 {
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Keyboard input: Q.");
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Keyboard input: Q.");
 	bool isHit;
 	FHitResult Result;
 	RayCast(isHit, Result);

@@ -24,10 +24,6 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	void PlantEggplant(AFarmerCharacter* player);
-	void PlantCarrot(AFarmerCharacter* player);
-	void PlantPotato(AFarmerCharacter* player);
-	void CountDown(int32 growTime, UText3DComponent* display);
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -42,11 +38,21 @@ public:
 	class UText3DComponent* text3D;
 
 private:
-	float GrowTime;
-	int32 stage;
+	FTimerHandle MeshChangeTimerHandle;
 
 public:
 	bool bIsPlanted;
 	void PlantSeed() override;
 	void Activate() override;
+
+	// TODO: put into separated classes
+	void GrowPotato();
+	void GrowEggplant(float deltaTime);
+	void GrowCarrot(float deltaTime);
+
+	// CB for Timer & Change plants meshes
+	void ChangePotatoMesh();
+
+	TArray<UStaticMesh*> potatoMeshes;
+	int32 potatoIdx=0;
 };
