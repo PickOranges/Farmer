@@ -42,55 +42,20 @@ void ASoil::Activate()
 void ASoil::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	PlantSeed();
-	GrowTime += DeltaTime;
-	int32 tmp = GrowTime;
-	if ((int32)tmp == 1 || tmp == 2 || tmp == 3 || tmp==4) ++cnt;
-	if (GrowTime > 5) {
-		GrowTime = 0;
-		cnt = 0;
-	}
 }
 
 
 void ASoil::PlantSeed()
 {
-	if (bIsPlanted) {
-		//switch ((int32)GrowTime)
-		//{
-		//default:
-		//	break;
-		//case 1:
-		//{
-
-		//}
-		//	break;
-		//case 2:
-		//{
-
-		//}
-		//	break;
-		//case 3:
-		//{
-		//	}
-		//	break;
-		//}
-		
-		text3D->SetText(FText::FromString(FString::FromInt((int32)(5 - GrowTime))));
-	}
-	else {
+	if (!bIsPlanted) {
 		AFarmerCharacter* myCharacter = Cast<AFarmerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 		if (myCharacter) {
 			switch (myCharacter->Seeds)
 			{
 			default:
 				break;
-			case 0: 
-			{
-				bIsPlanted = false;
-			}
-				break;
-			case 1:
+			break;
+			case 0:
 			{
 				if (plantMesh) {
 					plantMesh->ReleaseResources();
@@ -98,13 +63,12 @@ void ASoil::PlantSeed()
 				UStaticMesh* tempMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_small.SM_potato_small'"));
 				if (tempMesh) {
 					plantMesh->SetStaticMesh(tempMesh);
-					plantMesh->SetRelativeScale3D(FVector{2,2,2});
-					plantMesh->SetRelativeLocation(FVector{0,0,10});
+					plantMesh->SetRelativeScale3D(FVector{ 2,2,2 });
+					plantMesh->SetRelativeLocation(FVector{ 0,0,10 });
 				}
-				bIsPlanted = true;
 			}
 			break;
-			case 2:
+			case 1:
 			{
 				if (plantMesh) {
 					plantMesh->ReleaseResources();
@@ -114,10 +78,9 @@ void ASoil::PlantSeed()
 					plantMesh->SetStaticMesh(tempMesh);
 					plantMesh->SetRelativeScale3D(FVector{ 0.3,0.3,0.3 });
 				}
-				bIsPlanted = true;
 			}
 			break;
-			case 3:
+			case 2:
 			{
 				if (plantMesh) {
 					plantMesh->ReleaseResources();
@@ -127,10 +90,14 @@ void ASoil::PlantSeed()
 					plantMesh->SetStaticMesh(tempMesh);
 					plantMesh->SetRelativeScale3D(FVector{ 0.7,0.7,0.7 });
 				}
-				bIsPlanted = true;
 			}
 			break;
 			}
 		}
+		
+		bIsPlanted = true;
+	}
+	else {
+		
 	}
 }

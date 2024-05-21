@@ -156,11 +156,10 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 	FHitResult Result;
 	RayCast(isHit, Result);
 	if (isHit) {
-		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *Result.GetActor()->GetName());
-		//Activate();
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil) {
-			currentSoil->bIsPlanted = false;
+			currentSoil->plantMesh->SetStaticMesh(nullptr);
+			currentSoil->bIsPlanted = false; 
 			currentSoil->text3D->SetText(FText::FromString(FString("")));
 		}
 	}
@@ -173,8 +172,6 @@ void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 	FHitResult Result;
 	RayCast(isHit, Result);
 	if (isHit) {
-		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *Result.GetActor()->GetName());
-		//PlantSeed();
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil) {
 			currentSoil->PlantSeed();
@@ -185,14 +182,14 @@ void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 void AFarmerCharacter::OnWheelUp(const FInputActionValue& Value)
 {
 	Seeds += (int32)Value.Get<float>();
-	Seeds = FMath::Clamp(Seeds, 0, 4);
+	Seeds = FMath::Clamp(Seeds, 0, 2);
 	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,FString::FromInt(Seeds));
 }
 
 void AFarmerCharacter::OnWheelDown(const FInputActionValue& Value)
 {
 	Seeds += (int32)Value.Get<float>();
-	Seeds = FMath::Clamp(Seeds, 0, 4);
+	Seeds = FMath::Clamp(Seeds, 0, 2);
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, FString::FromInt(Seeds));
 }
 

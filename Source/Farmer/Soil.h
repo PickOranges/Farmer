@@ -43,7 +43,7 @@ public:
 
 private:
 	float GrowTime;
-	int32 cnt;
+	int32 stage;
 
 public:
 	bool bIsPlanted;
