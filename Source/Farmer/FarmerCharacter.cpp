@@ -159,6 +159,10 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil) {
 			currentSoil->plantMesh->SetStaticMesh(nullptr);
+			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle1);
+			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle2);
+			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle3);
+
 			currentSoil->bIsPlanted = false; 
 			currentSoil->text3D->SetText(FText::FromString(FString("")));
 		}

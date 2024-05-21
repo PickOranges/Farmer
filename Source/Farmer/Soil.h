@@ -35,12 +35,11 @@ public:
 	UStaticMeshComponent* plantMesh;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	class UText3DComponent* text3D;
-
-private:
-	FTimerHandle MeshChangeTimerHandle1, MeshChangeTimerHandle2, MeshChangeTimerHandle3;
+	class UText3DComponent* text3D;	
 
 public:
+	FTimerHandle MeshChangeTimerHandle1, MeshChangeTimerHandle2, MeshChangeTimerHandle3;
+
 	bool bIsPlanted;
 	void PlantSeed() override;
 	void Activate() override;

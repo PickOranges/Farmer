@@ -104,7 +104,7 @@ void ASoil::PlantSeed()
 				}
 				if (eggplantMeshes.Num() > 0) {
 					plantMesh->SetStaticMesh(eggplantMeshes[0]);
-					//plantMesh->SetRelativeScale3D(FVector{ 0.5,0.5,0.5 });
+					plantMesh->SetRelativeScale3D(FVector{ 1,1,1 });
 					plantMesh->SetRelativeLocation(FVector{0.0,0.0,7});
 				}
 				GrowEggplant();
@@ -119,8 +119,8 @@ void ASoil::PlantSeed()
 				}
 				if (carrotMeshes.Num()>0) {
 					plantMesh->SetStaticMesh(carrotMeshes[0]);
+					plantMesh->SetRelativeScale3D(FVector{ 1,1,1 });
 					plantMesh->SetRelativeLocation(FVector{ 0.0,0.0,7 });
-					//plantMesh->SetRelativeScale3D(FVector{ 0.5,0.5,0.5 });
 				}
 				GrowCarrot();
 			}
@@ -179,7 +179,7 @@ void ASoil::ChangeCarrotMesh()
 	if (carrotMeshes.Num() > 0 && plantMesh) {
 		carrotIdx = (carrotIdx+1) % carrotMeshes.Num();
 		plantMesh->SetStaticMesh(carrotMeshes[carrotIdx]);
-		//plantMesh->SetRelativeScale3D(FVector{ 0.7,0.7,0.7 });
+		plantMesh->SetRelativeScale3D(FVector{ 1,1,1 });
 		plantMesh->SetRelativeLocation(FVector{ 0.0,0.0,4 });
 	}
 	if (carrotIdx == carrotMeshes.Num() - 1) {
