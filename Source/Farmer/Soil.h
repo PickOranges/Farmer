@@ -47,4 +47,5 @@ public:
 private:
 	bool bIsPlanted;
 	float GrowTime;
+	int32 cnt;
 };

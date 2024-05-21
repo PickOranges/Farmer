@@ -23,7 +23,7 @@ ASoil::ASoil()
 	soilMesh->SetWorldScale3D(FVector{5,5,5});
 
 	text3D->SetText(FText::FromString(""));
-	text3D->SetRelativeLocation(FVector(40.0f, 0.0f, 40.f));
+	text3D->SetRelativeLocation(FVector(0.0f, 0.0f, 40.f));
 	text3D->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
 	text3D->SetRelativeScale3D(FVector{0.3,0.3,0.3});
 }
@@ -43,23 +43,52 @@ void ASoil::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	PlantSeed();
+	GrowTime += DeltaTime;
+	int32 tmp = GrowTime;
+	if ((int32)tmp == 1 || tmp == 2 || tmp == 3 || tmp==4) ++cnt;
+	if (GrowTime > 5) {
+		GrowTime = 0;
+		cnt = 0;
+	}
 }
 
 
 void ASoil::PlantSeed()
 {
 	if (bIsPlanted) {
-		return;
+		//switch ((int32)GrowTime)
+		//{
+		//default:
+		//	break;
+		//case 1:
+		//{
+
+		//}
+		//	break;
+		//case 2:
+		//{
+
+		//}
+		//	break;
+		//case 3:
+		//{
+		//	}
+		//	break;
+		//}
+		
+		text3D->SetText(FText::FromString(FString::FromInt((int32)(5 - GrowTime))));
 	}
 	else {
 		AFarmerCharacter* myCharacter = Cast<AFarmerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 		if (myCharacter) {
-			//GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"Got character.");
 			switch (myCharacter->Seeds)
 			{
 			default:
 				break;
-			case 0:
+			case 0: 
+			{
+				bIsPlanted = false;
+			}
 				break;
 			case 1:
 			{
@@ -72,6 +101,7 @@ void ASoil::PlantSeed()
 					plantMesh->SetRelativeScale3D(FVector{2,2,2});
 					plantMesh->SetRelativeLocation(FVector{0,0,10});
 				}
+				bIsPlanted = true;
 			}
 			break;
 			case 2:
@@ -84,6 +114,7 @@ void ASoil::PlantSeed()
 					plantMesh->SetStaticMesh(tempMesh);
 					plantMesh->SetRelativeScale3D(FVector{ 0.3,0.3,0.3 });
 				}
+				bIsPlanted = true;
 			}
 			break;
 			case 3:
@@ -96,12 +127,10 @@ void ASoil::PlantSeed()
 					plantMesh->SetStaticMesh(tempMesh);
 					plantMesh->SetRelativeScale3D(FVector{ 0.7,0.7,0.7 });
 				}
+				bIsPlanted = true;
 			}
 			break;
 			}
-		}
-		else {
-
 		}
 	}
 }
