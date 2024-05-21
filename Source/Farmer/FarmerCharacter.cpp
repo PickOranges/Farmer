@@ -10,6 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Soil.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -67,6 +68,8 @@ void AFarmerCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 			Subsystem->AddMappingContext(IMC_Custom, 0);
 		}
+
+		//PlayerController->bShowMouseCursor = true;
 	}
 }
 
@@ -153,8 +156,13 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 	FHitResult Result;
 	RayCast(isHit, Result);
 	if (isHit) {
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *Result.GetActor()->GetName());
-		Activate();
+		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *Result.GetActor()->GetName());
+		//Activate();
+		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
+		if (currentSoil) {
+			currentSoil->bIsPlanted = false;
+			currentSoil->text3D->SetText(FText::FromString(FString("")));
+		}
 	}
 }
 
@@ -165,8 +173,12 @@ void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 	FHitResult Result;
 	RayCast(isHit, Result);
 	if (isHit) {
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *Result.GetActor()->GetName());
-		PlantSeed();
+		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Emerald, *Result.GetActor()->GetName());
+		//PlantSeed();
+		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
+		if (currentSoil) {
+			currentSoil->PlantSeed();
+		}
 	}
 }
 

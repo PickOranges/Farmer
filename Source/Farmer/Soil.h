@@ -24,9 +24,6 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	void PlantSeed() override;
-	void Activate() override;
-
 	void PlantEggplant(AFarmerCharacter* player);
 	void PlantCarrot(AFarmerCharacter* player);
 	void PlantPotato(AFarmerCharacter* player);
@@ -45,7 +42,11 @@ public:
 	class UText3DComponent* text3D;
 
 private:
-	bool bIsPlanted;
 	float GrowTime;
 	int32 cnt;
+
+public:
+	bool bIsPlanted;
+	void PlantSeed() override;
+	void Activate() override;
 };
