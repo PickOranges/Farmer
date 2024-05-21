@@ -35,6 +35,9 @@ public:
 	UStaticMeshComponent* soilMesh;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	UStaticMeshComponent* plantMesh;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	class UText3DComponent* text3D;
 
 private:
