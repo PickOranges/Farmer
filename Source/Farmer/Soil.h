@@ -5,11 +5,14 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
-#include "Components/WidgetComponent.h"
+#include "InterfaceActivate.h"
+#include "InterfacePlantSeed.h"
+#include "Text3DComponent.h"
+#include "FarmerCharacter.h"
 #include "Soil.generated.h"
 
 UCLASS()
-class FARMER_API ASoil : public AActor
+class FARMER_API ASoil : public AActor, public IInterfaceActivate, public IInterfacePlantSeed
 {
 	GENERATED_BODY()
 	
@@ -21,6 +24,9 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	void PlantSeed() override;
+	void Activate() override;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -28,6 +34,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMeshComponent* soilMesh;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	UWidgetComponent* soilTextWidget;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	class UText3DComponent* text3D;
+
+private:
+	bool bIsPlanted;
+
 };
