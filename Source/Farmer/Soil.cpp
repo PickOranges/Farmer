@@ -60,18 +60,21 @@ void ASoil::PlantSeed()
 			default:
 				break;
 			case 0:
+				break;
+			case 1:
 			{
 				if (plantMesh) {
 					plantMesh->ReleaseResources();
 				}
-				UStaticMesh* tempMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_small.SM_potato_normal_02'"));
+				UStaticMesh* tempMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_small.SM_potato_small'"));
 				if (tempMesh) {
 					plantMesh->SetStaticMesh(tempMesh);
-					plantMesh->SetRelativeScale3D(FVector{ 4,4,4 });
+					plantMesh->SetRelativeScale3D(FVector{2,2,2});
+					plantMesh->SetRelativeLocation(FVector{0,0,10});
 				}
 			}
 			break;
-			case 1:
+			case 2:
 			{
 				if (plantMesh) {
 					plantMesh->ReleaseResources();
@@ -83,7 +86,7 @@ void ASoil::PlantSeed()
 				}
 			}
 			break;
-			case 2:
+			case 3:
 			{
 				if (plantMesh) {
 					plantMesh->ReleaseResources();
