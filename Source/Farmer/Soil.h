@@ -38,7 +38,7 @@ public:
 	class UText3DComponent* text3D;
 
 private:
-	FTimerHandle MeshChangeTimerHandle;
+	FTimerHandle MeshChangeTimerHandle1, MeshChangeTimerHandle2, MeshChangeTimerHandle3;
 
 public:
 	bool bIsPlanted;
@@ -47,12 +47,14 @@ public:
 
 	// TODO: put into separated classes
 	void GrowPotato();
-	void GrowEggplant(float deltaTime);
-	void GrowCarrot(float deltaTime);
+	void GrowEggplant();
+	void GrowCarrot();
 
 	// CB for Timer & Change plants meshes
 	void ChangePotatoMesh();
+	void ChangeEggplantMesh();
+	void ChangeCarrotMesh();
 
-	TArray<UStaticMesh*> potatoMeshes;
-	int32 potatoIdx=0;
+	TArray<UStaticMesh*> potatoMeshes, eggplantMeshes, carrotMeshes;
+	int32 potatoIdx{}, eggplantIdx{}, carrotIdx{};
 };
