@@ -69,6 +69,14 @@ void ASoil::Activate()
 void ASoil::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	if (MeshChangeTimerHandle1.IsValid()) {
+		remainTime = GetWorld()->GetTimerManager().GetTimerRemaining(MeshChangeTimerHandle1);
+		text3D->SetText(FText::FromString(FString::FromInt((int32)remainTime)));
+	}
+	else {
+		text3D->SetText(FText::FromString(FString("")));
+	}
+	
 }
 
 void ASoil::PlantSeed()
@@ -83,23 +91,11 @@ void ASoil::PlantSeed()
 			break;
 			case 0:
 			{
-				//if (plantMesh) {				
-				//	plantMesh->SetStaticMesh(nullptr);
-				//}
-				if (potatoMeshes.Num()>0) {
-					plantMesh->SetStaticMesh(potatoMeshes[0]);
-					plantMesh->SetRelativeScale3D(FVector{0.7,0.7,0.7});
-					plantMesh->SetRelativeLocation(FVector{ 0,0,7 });
-				}
 				GrowPotato();
 			}
 			break;
 			case 1:
 			{
-				//if (plantMesh) {
-				//	plantMesh->SetStaticMesh(nullptr);
-
-				//}
 				if (eggplantMeshes.Num() > 0) {
 					plantMesh->SetStaticMesh(eggplantMeshes[0]);
 					plantMesh->SetRelativeScale3D(FVector{ 1,1,1 });
@@ -110,10 +106,6 @@ void ASoil::PlantSeed()
 			break;
 			case 2:
 			{
-				//if (plantMesh) {
-				//	plantMesh->SetStaticMesh(nullptr);
-
-				//}
 				if (carrotMeshes.Num()>0) {
 					plantMesh->SetStaticMesh(carrotMeshes[0]);
 					plantMesh->SetRelativeScale3D(FVector{ 1,1,1 });
@@ -134,7 +126,12 @@ void ASoil::PlantSeed()
 
 void ASoil::GrowPotato()
 {
-	GetWorld()->GetTimerManager().SetTimer(MeshChangeTimerHandle1, this, &ASoil::ChangePotatoMesh, 3.0f, true);
+	if (potatoMeshes.Num() > 0) {
+		plantMesh->SetStaticMesh(potatoMeshes[0]);
+		plantMesh->SetRelativeScale3D(FVector{ 0.7,0.7,0.7 });
+		plantMesh->SetRelativeLocation(FVector{ 0,0,12 });
+	}
+	GetWorld()->GetTimerManager().SetTimer(MeshChangeTimerHandle1, this, &ASoil::ChangePotatoMesh, 5.0f, true);
 }
 
 void ASoil::GrowEggplant()
@@ -153,9 +150,11 @@ void ASoil::ChangePotatoMesh()
 		potatoIdx = (potatoIdx+1) % potatoMeshes.Num();		
 		plantMesh->SetStaticMesh(potatoMeshes[potatoIdx]);
 		plantMesh->SetRelativeScale3D(FVector{0.7,0.7,0.7});
+		plantMesh->SetRelativeLocation(FVector{ 0,0,12 });
 	}
 	if (potatoIdx == potatoMeshes.Num()-1) {
 		GetWorld()->GetTimerManager().ClearTimer(MeshChangeTimerHandle1);
+		potatoIdx = 0;
 	}
 }
 

@@ -56,4 +56,6 @@ public:
 
 	TArray<UStaticMesh*> potatoMeshes, eggplantMeshes, carrotMeshes;
 	int32 potatoIdx{}, eggplantIdx{}, carrotIdx{};
+
+	int32 remainTime{};
 };
