@@ -131,7 +131,7 @@ void ASoil::GrowPotato()
 		plantMesh->SetRelativeScale3D(FVector{ 0.7,0.7,0.7 });
 		plantMesh->SetRelativeLocation(FVector{ 0,0,12 });
 	}
-	GetWorld()->GetTimerManager().SetTimer(MeshChangeTimerHandle1, this, &ASoil::ChangePotatoMesh, 5.0f, true);
+	GetWorld()->GetTimerManager().SetTimer(MeshChangeTimerHandle1, this, &ASoil::ChangePotatoMesh, 6.0f, true);
 }
 
 void ASoil::GrowEggplant()
