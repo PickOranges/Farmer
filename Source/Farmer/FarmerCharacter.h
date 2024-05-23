@@ -110,5 +110,8 @@ public:
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	int32 Seeds;
+
+	UPROPERTY()
+	class UCropSeedsUserWidget* SeedsInventory;
 };
 

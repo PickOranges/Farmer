@@ -10,6 +10,8 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Blueprint/UserWidget.h"
+#include "CropSeedsUserWidget.h"
 #include "Soil.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -67,6 +69,12 @@ void AFarmerCharacter::BeginPlay()
 		{
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 			Subsystem->AddMappingContext(IMC_Custom, 0);
+		}
+
+		// Seeds Inventory
+		SeedsInventory = CreateWidget<UCropSeedsUserWidget>(PlayerController, UCropSeedsUserWidget::StaticClass());
+		if (SeedsInventory) {
+			SeedsInventory->AddToViewport();
 		}
 	}
 }
@@ -185,6 +193,11 @@ void AFarmerCharacter::OnWheelUp(const FInputActionValue& Value)
 {
 	Seeds += (int32)Value.Get<float>();
 	Seeds = FMath::Clamp(Seeds, 0, 2);
+
+	if (SeedsInventory) {
+		SeedsInventory->SelectButton(Seeds);
+	}
+
 	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,FString::FromInt(Seeds));
 }
 
@@ -192,6 +205,11 @@ void AFarmerCharacter::OnWheelDown(const FInputActionValue& Value)
 {
 	Seeds += (int32)Value.Get<float>();
 	Seeds = FMath::Clamp(Seeds, 0, 2);
+
+	if (SeedsInventory) {
+		SeedsInventory->SelectButton(Seeds);
+	}
+
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, FString::FromInt(Seeds));
 }
 
