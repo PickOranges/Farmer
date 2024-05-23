@@ -74,5 +74,23 @@
     <ClInclude Include="..\..\Source\Farmer\Soil.h">
       <Filter>Source\Farmer</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Farmer\SoilText.cpp">
+      <Filter>Source\Farmer</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Farmer\SoilText.h">
+      <Filter>Source\Farmer</Filter>
+    </ClInclude>
+    <Filter Include="Source\Farmer\Private">
+      <UniqueIdentifier>{E15ABACE-21E2-3D8A-B6E1-4D81B63964F0}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Farmer\Private\CropSeedsUserWidget.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\Farmer\Public">
+      <UniqueIdentifier>{BF3F2CD8-54FE-349B-A9E4-CC6221129BE3}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\Farmer\Public\CropSeedsUserWidget.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
