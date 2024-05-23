@@ -68,8 +68,6 @@ void AFarmerCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 			Subsystem->AddMappingContext(IMC_Custom, 0);
 		}
-
-		//PlayerController->bShowMouseCursor = true;
 	}
 }
 
