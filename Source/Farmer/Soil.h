@@ -58,4 +58,6 @@ public:
 	int32 potatoIdx{}, eggplantIdx{}, carrotIdx{};
 
 	int32 remainTime{};
+
+	int32 currentPlant{-1};
 };

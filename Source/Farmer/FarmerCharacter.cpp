@@ -169,15 +169,14 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle2);
 			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle3);
 
-			currentSoil->bIsPlanted = false; 
-			currentSoil->text3D->SetText(FText::FromString(FString("")));
 
 			// Change Seeds/Crops Amount
-			if (!bIsPressed) bIsPressed = true;
-			else {
-				bIsPressed = false;
-				++SeedsAmount[Seeds];
-				++CropsEarned[Seeds];  // TODO: read it from Excel.
+			if (currentSoil->bIsPlanted) {
+				++SeedsAmount[currentSoil->currentPlant];
+				++CropsEarned[currentSoil->currentPlant];
+
+				currentSoil->bIsPlanted = false;
+				currentSoil->text3D->SetText(FText::FromString(FString("")));
 			}
 		}
 	}
@@ -192,8 +191,10 @@ void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 	if (isHit) {
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil && SeedsAmount[Seeds]>0) {
-			currentSoil->PlantSeed();
-			--SeedsAmount[Seeds];
+			if(!currentSoil->bIsPlanted){
+				currentSoil->PlantSeed();
+				--SeedsAmount[Seeds];
+			}
 		}
 	}
 }

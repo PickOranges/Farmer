@@ -28,6 +28,7 @@ ASoil::ASoil()
 	text3D->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
 	text3D->SetRelativeScale3D(FVector{0.3,0.3,0.3});
 
+	// TODO: Move all of the meshes into character class.
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh1(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_small.SM_potato_small'"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh2(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_medium.SM_potato_medium'"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh3(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_normal_01.SM_potato_normal_01'"));
@@ -99,16 +100,19 @@ void ASoil::PlantSeed()
 			case 0:
 			{
 				GrowPotato();
+				currentPlant = myCharacter->Seeds;
 			}
 			break;
 			case 1:
 			{
 				GrowEggplant();
+				currentPlant = myCharacter->Seeds;
 			}
 			break;
 			case 2:
 			{
 				GrowCarrot();
+				currentPlant = myCharacter->Seeds;
 			}
 			break;
 			}

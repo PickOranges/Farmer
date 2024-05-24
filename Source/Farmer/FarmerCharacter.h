@@ -121,11 +121,9 @@ public:
 
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	TArray<int32> SeedsAmount{3,4,5};
+	TArray<int32> SeedsAmount{1,2,5};
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<int32> CropsEarned{0,0,0};
-
-	bool bIsPressed{false};
 };
 
