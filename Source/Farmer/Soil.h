@@ -54,7 +54,7 @@ public:
 	void ChangeEggplantMesh();
 	void ChangeCarrotMesh();
 
-	TArray<UStaticMesh*> potatoMeshes, eggplantMeshes, carrotMeshes;
+	TArray<UStaticMesh*> potatoMeshes, eggplantMeshes, carrotMeshes, EarnedMeshes;
 	int32 potatoIdx{}, eggplantIdx{}, carrotIdx{};
 
 	int32 remainTime{};

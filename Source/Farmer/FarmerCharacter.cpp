@@ -10,6 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Components/CapsuleComponent.h"
 #include "Soil.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -53,6 +54,8 @@ AFarmerCharacter::AFarmerCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+
+	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &AFarmerCharacter::OnBeginOverlap);
 }
 
 void AFarmerCharacter::BeginPlay()
@@ -225,4 +228,14 @@ void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)
 	FVector Dir = FollowCamera->GetForwardVector();
 	FVector End = Start + Dir * 2000.f;
 	bHit = GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
+}
+
+void AFarmerCharacter::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (OtherActor && OtherActor != this) {
+		if (ASoil* temp = Cast<ASoil>(OtherActor)) {
+			if (!temp->bIsPlanted) return;
+			temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->currentPlant]);
+		}
+	}
 }

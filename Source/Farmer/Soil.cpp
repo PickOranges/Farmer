@@ -28,7 +28,8 @@ ASoil::ASoil()
 	text3D->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
 	text3D->SetRelativeScale3D(FVector{0.3,0.3,0.3});
 
-	// TODO: Move all of the meshes into character class.
+	// TODO 1: Move all of the meshes into character class.
+	// TODO 2: Make a Template Class for all plants/crops.
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh1(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_small.SM_potato_small'"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh2(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_medium.SM_potato_medium'"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh3(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_normal_01.SM_potato_normal_01'"));
@@ -53,6 +54,13 @@ ASoil::ASoil()
 	if (carrotMesh2.Succeeded()) carrotMeshes.Emplace(carrotMesh2.Object);
 	if (carrotMesh3.Succeeded()) carrotMeshes.Emplace(carrotMesh3.Object);
 
+
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> EarnedPotato(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_01.SM_potato_01'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> EarnedEggplant(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_eggplant_02.SM_eggplant_02'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> EarnedCarrot(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_carrot_normal_02.SM_carrot_normal_02'"));
+	if (EarnedPotato.Succeeded()) EarnedMeshes.Emplace(EarnedPotato.Object);
+	if (EarnedEggplant.Succeeded()) EarnedMeshes.Emplace(EarnedEggplant.Object);
+	if (EarnedCarrot.Succeeded()) EarnedMeshes.Emplace(EarnedCarrot.Object);
 }
 
 // Called when the game starts or when spawned
