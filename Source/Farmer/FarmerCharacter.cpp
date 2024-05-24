@@ -171,6 +171,14 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 
 			currentSoil->bIsPlanted = false; 
 			currentSoil->text3D->SetText(FText::FromString(FString("")));
+
+			// Change Seeds/Crops Amount
+			if (!bIsPressed) bIsPressed = true;
+			else {
+				bIsPressed = false;
+				++SeedsAmount[Seeds];
+				++CropsEarned[Seeds];  // TODO: read it from Excel.
+			}
 		}
 	}
 }
@@ -183,8 +191,9 @@ void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 	RayCast(isHit, Result);
 	if (isHit) {
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
-		if (currentSoil) {
+		if (currentSoil && SeedsAmount[Seeds]>0) {
 			currentSoil->PlantSeed();
+			--SeedsAmount[Seeds];
 		}
 	}
 }
@@ -193,24 +202,20 @@ void AFarmerCharacter::OnWheelUp(const FInputActionValue& Value)
 {
 	Seeds += (int32)Value.Get<float>();
 	Seeds = FMath::Clamp(Seeds, 0, 2);
-
 	if (SeedsInventory) {
 		SeedsInventory->SelectButton(Seeds);
 	}
-
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,FString::FromInt(Seeds));
+	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,FString::FromInt(Seeds));
 }
 
 void AFarmerCharacter::OnWheelDown(const FInputActionValue& Value)
 {
 	Seeds += (int32)Value.Get<float>();
 	Seeds = FMath::Clamp(Seeds, 0, 2);
-
 	if (SeedsInventory) {
 		SeedsInventory->SelectButton(Seeds);
 	}
-
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, FString::FromInt(Seeds));
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, FString::FromInt(Seeds));
 }
 
 void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)

@@ -118,5 +118,14 @@ public:
 
 	UPROPERTY()
 	UCropSeedsUserWidget* SeedsInventory;
+
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TArray<int32> SeedsAmount{3,3,3};
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<int32> CropsEarned{0,0,0};
+
+	bool bIsPressed{false};
 };
 
