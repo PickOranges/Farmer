@@ -56,8 +56,8 @@ ASoil::ASoil()
 
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> EarnedPotato(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_01.SM_potato_01'"));
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> EarnedEggplant(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_eggplant_02.SM_eggplant_02'"));
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> EarnedCarrot(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_carrot_normal_02.SM_carrot_normal_02'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> EarnedEggplant(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_eggplant_01.SM_eggplant_01'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> EarnedCarrot(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_carrot_01.SM_carrot_01'"));
 	if (EarnedPotato.Succeeded()) EarnedMeshes.Emplace(EarnedPotato.Object);
 	if (EarnedEggplant.Succeeded()) EarnedMeshes.Emplace(EarnedEggplant.Object);
 	if (EarnedCarrot.Succeeded()) EarnedMeshes.Emplace(EarnedCarrot.Object);

@@ -55,7 +55,7 @@ AFarmerCharacter::AFarmerCharacter()
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 
-	BoundingBox->CreateDefaultSubobject<UBoxComponent>(TEXT("BoundingBox"));
+	BoundingBox=CreateDefaultSubobject<UBoxComponent>(TEXT("BB"));
 	BoundingBox->SetupAttachment(RootComponent);
 	BoundingBox->SetBoxExtent(FVector{50.f,50,50});
 	BoundingBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
@@ -239,12 +239,16 @@ void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)
 
 void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Begin Overlapping with: %s"), *OtherActor->GetName()));
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Begin Overlapping with: %s"), *OtherActor->GetName()));
 	
 	if (OtherActor && OtherActor != this) {
 		if (ASoil* temp = Cast<ASoil>(OtherActor)) {
 			if (!temp->bIsPlanted) return;
+			FText tx = temp->text3D->GetText();
+			if (!tx.IsEmpty()) return;
 			temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->currentPlant]);
+			if (temp->currentPlant == 1)  // Eggplant
+				temp->plantMesh->SetRelativeLocation(FVector{0,0,45});
 		}
 	}
 }
