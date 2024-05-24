@@ -39,13 +39,19 @@ bool UCropSeedsUserWidget::Initialize()
 	return true;
 }
 
-//void UCropSeedsUserWidget::NativeConstruct()
-//{
-//	Super::NativeConstruct();
-//
-//	for (UButton* bt : Buttons) {
-//		if (bt) {
-//			bt->OnClicked.AddDynamic(this, &UCropSeedsUserWidget::ButtonClickCB);
-//		}
-//	}
-//}
+void UCropSeedsUserWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	//for (UButton* bt : Buttons) {
+	//	if (bt) {
+	//		bt->OnClicked.AddDynamic(this, &UCropSeedsUserWidget::ButtonClickCB);
+	//	}
+	//}
+	Buttons[0]->SetVisibility(ESlateVisibility::Visible);
+	for (int32 i = 1; i < Buttons.Num(); ++i) {
+		if (Buttons[i]) {
+			Buttons[i]->SetVisibility(ESlateVisibility::Hidden);
+		}
+	}
+}

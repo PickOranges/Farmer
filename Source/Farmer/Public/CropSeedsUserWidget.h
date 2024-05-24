@@ -30,5 +30,5 @@ public:
 
 	bool Initialize() override;
 
-	//void NativeConstruct() override;
+	void NativeConstruct() override;
 };
