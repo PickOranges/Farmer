@@ -248,7 +248,7 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 			if (!tx.IsEmpty()) return;
 			temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->currentPlant]);
 			if (temp->currentPlant == 1)  // Eggplant
-				temp->plantMesh->SetRelativeLocation(FVector{0,0,45});
+				temp->plantMesh->SetRelativeLocation(FVector{0,0,25});
 		}
 	}
 }
