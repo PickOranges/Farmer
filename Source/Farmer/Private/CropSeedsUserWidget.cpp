@@ -19,3 +19,30 @@ int32 UCropSeedsUserWidget::GetButtonCount() const
 {
 	return Buttons.Num();
 }
+
+void UCropSeedsUserWidget::ButtonClickCB()
+{
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"The button is clicked.");
+}
+
+bool UCropSeedsUserWidget::Initialize()
+{
+	if (!Super::Initialize()) {
+		return false;
+	}
+	if (Buttons.Num() <= 0) {
+		return false;
+	}
+	return true;
+}
+
+void UCropSeedsUserWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	for (UButton* bt : Buttons) {
+		if (bt) {
+			bt->OnClicked.AddDynamic(this, &UCropSeedsUserWidget::ButtonClickCB);
+		}
+	}
+}

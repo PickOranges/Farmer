@@ -16,9 +16,19 @@ class FARMER_API UCropSeedsUserWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
 	TArray<UButton*> Buttons;
 
+	UFUNCTION()
 	void SelectButton(int32 idx);
+
+	UFUNCTION()
 	int32 GetButtonCount() const;
+
+	UFUNCTION()
+	void ButtonClickCB();
+
+	bool Initialize() override;
+
+	void NativeConstruct() override;
 };
