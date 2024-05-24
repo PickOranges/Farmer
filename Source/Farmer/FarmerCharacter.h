@@ -7,6 +7,8 @@
 #include "Logging/LogMacros.h"
 #include "InterfaceActivate.h"
 #include "InterfacePlantSeed.h"
+#include "Blueprint/UserWidget.h"
+#include "CropSeedsUserWidget.h"
 #include "FarmerCharacter.generated.h"
 
 class USpringArmComponent;
@@ -112,6 +114,9 @@ public:
 	int32 Seeds;
 
 	UPROPERTY()
-	class UCropSeedsUserWidget* SeedsInventory;
+	UClass* SeedsInventoryClass;
+
+	UPROPERTY()
+	UCropSeedsUserWidget* SeedsInventory;
 };
 

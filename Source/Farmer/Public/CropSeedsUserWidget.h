@@ -26,9 +26,9 @@ public:
 	int32 GetButtonCount() const;
 
 	UFUNCTION()
-	void ButtonClickCB();
+	//void ButtonClickCB();
 
 	bool Initialize() override;
 
-	void NativeConstruct() override;
+	//void NativeConstruct() override;
 };

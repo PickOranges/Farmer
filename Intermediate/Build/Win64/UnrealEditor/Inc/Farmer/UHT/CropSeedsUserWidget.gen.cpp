@@ -15,11 +15,11 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 	UMG_API UClass* Z_Construct_UClass_UUserWidget();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
-	DEFINE_FUNCTION(UCropSeedsUserWidget::execButtonClickCB)
+	DEFINE_FUNCTION(UCropSeedsUserWidget::execInitialize)
 	{
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		P_THIS->ButtonClickCB();
+		*(bool*)Z_Param__Result=P_THIS->Initialize();
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(UCropSeedsUserWidget::execGetButtonCount)
@@ -41,33 +41,11 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 	{
 		UClass* Class = UCropSeedsUserWidget::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
-			{ "ButtonClickCB", &UCropSeedsUserWidget::execButtonClickCB },
 			{ "GetButtonCount", &UCropSeedsUserWidget::execGetButtonCount },
+			{ "Initialize", &UCropSeedsUserWidget::execInitialize },
 			{ "SelectButton", &UCropSeedsUserWidget::execSelectButton },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
-	}
-	struct Z_Construct_UFunction_UCropSeedsUserWidget_ButtonClickCB_Statics
-	{
-#if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
-#endif
-		static const UECodeGen_Private::FFunctionParams FuncParams;
-	};
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UCropSeedsUserWidget_ButtonClickCB_Statics::Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/CropSeedsUserWidget.h" },
-	};
-#endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UCropSeedsUserWidget_ButtonClickCB_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCropSeedsUserWidget, nullptr, "ButtonClickCB", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UCropSeedsUserWidget_ButtonClickCB_Statics::Function_MetaDataParams), Z_Construct_UFunction_UCropSeedsUserWidget_ButtonClickCB_Statics::Function_MetaDataParams) };
-	UFunction* Z_Construct_UFunction_UCropSeedsUserWidget_ButtonClickCB()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UCropSeedsUserWidget_ButtonClickCB_Statics::FuncParams);
-		}
-		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_UCropSeedsUserWidget_GetButtonCount_Statics
 	{
@@ -100,6 +78,51 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UCropSeedsUserWidget_GetButtonCount_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics
+	{
+		struct CropSeedsUserWidget_eventInitialize_Parms
+		{
+			bool ReturnValue;
+		};
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((CropSeedsUserWidget_eventInitialize_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(CropSeedsUserWidget_eventInitialize_Parms), &Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//void ButtonClickCB();\n" },
+#endif
+		{ "ModuleRelativePath", "Public/CropSeedsUserWidget.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "void ButtonClickCB();" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCropSeedsUserWidget, nullptr, "Initialize", nullptr, nullptr, Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::PropPointers), sizeof(Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::CropSeedsUserWidget_eventInitialize_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::Function_MetaDataParams), Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::CropSeedsUserWidget_eventInitialize_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_UCropSeedsUserWidget_Initialize()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UCropSeedsUserWidget_Initialize_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -164,8 +187,8 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UCropSeedsUserWidget_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_UCropSeedsUserWidget_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_UCropSeedsUserWidget_ButtonClickCB, "ButtonClickCB" }, // 30037306
 		{ &Z_Construct_UFunction_UCropSeedsUserWidget_GetButtonCount, "GetButtonCount" }, // 1565260244
+		{ &Z_Construct_UFunction_UCropSeedsUserWidget_Initialize, "Initialize" }, // 2857724135
 		{ &Z_Construct_UFunction_UCropSeedsUserWidget_SelectButton, "SelectButton" }, // 1804931224
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UCropSeedsUserWidget_Statics::FuncInfo) < 2048);
@@ -231,9 +254,9 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UCropSeedsUserWidget, UCropSeedsUserWidget::StaticClass, TEXT("UCropSeedsUserWidget"), &Z_Registration_Info_UClass_UCropSeedsUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCropSeedsUserWidget), 324953545U) },
+		{ Z_Construct_UClass_UCropSeedsUserWidget, UCropSeedsUserWidget::StaticClass, TEXT("UCropSeedsUserWidget"), &Z_Registration_Info_UClass_UCropSeedsUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCropSeedsUserWidget), 424736834U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_1057834993(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_994547651(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

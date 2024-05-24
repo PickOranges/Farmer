@@ -8,9 +8,12 @@ void UCropSeedsUserWidget::SelectButton(int32 seed)
 	if (Buttons.Num() > seed) {
 		Buttons[seed]->SetIsEnabled(false);
 		Buttons[seed]->SetVisibility(ESlateVisibility::Visible);
-		for (UButton* bt : Buttons) {
-			bt->SetIsEnabled(true);
-			bt->SetVisibility(ESlateVisibility::Hidden);
+
+		for (int32 i = 0; i < Buttons.Num(); ++i) {
+			if (i == seed) continue;
+			Buttons[i]->SetIsEnabled(true);
+			Buttons[i]->SetVisibility(ESlateVisibility::Hidden);
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, FString::Printf(TEXT("%s"), *Buttons[i]->GetName()));
 		}
 	}
 }
@@ -20,10 +23,10 @@ int32 UCropSeedsUserWidget::GetButtonCount() const
 	return Buttons.Num();
 }
 
-void UCropSeedsUserWidget::ButtonClickCB()
-{
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"The button is clicked.");
-}
+//void UCropSeedsUserWidget::ButtonClickCB()
+//{
+//	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"The button is clicked.");
+//}
 
 bool UCropSeedsUserWidget::Initialize()
 {
@@ -36,13 +39,13 @@ bool UCropSeedsUserWidget::Initialize()
 	return true;
 }
 
-void UCropSeedsUserWidget::NativeConstruct()
-{
-	Super::NativeConstruct();
-
-	for (UButton* bt : Buttons) {
-		if (bt) {
-			bt->OnClicked.AddDynamic(this, &UCropSeedsUserWidget::ButtonClickCB);
-		}
-	}
-}
+//void UCropSeedsUserWidget::NativeConstruct()
+//{
+//	Super::NativeConstruct();
+//
+//	for (UButton* bt : Buttons) {
+//		if (bt) {
+//			bt->OnClicked.AddDynamic(this, &UCropSeedsUserWidget::ButtonClickCB);
+//		}
+//	}
+//}

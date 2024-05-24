@@ -10,8 +10,6 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
-#include "Blueprint/UserWidget.h"
-#include "CropSeedsUserWidget.h"
 #include "Soil.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -70,12 +68,14 @@ void AFarmerCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 			Subsystem->AddMappingContext(IMC_Custom, 0);
 		}
+	}
 
-		// Seeds Inventory
-		SeedsInventory = CreateWidget<UCropSeedsUserWidget>(PlayerController, UCropSeedsUserWidget::StaticClass());
-		if (SeedsInventory) {
-			SeedsInventory->AddToViewport();
-		}
+	// Seeds Inventory
+	SeedsInventoryClass= LoadClass<UCropSeedsUserWidget>(nullptr, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/UI/UMG_CropsUI.UMG_CropsUI_C'"));
+	SeedsInventory = CreateWidget<UCropSeedsUserWidget>(GetWorld(), SeedsInventoryClass);
+	if (SeedsInventory) {
+		SeedsInventory->AddToViewport();
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Successfully added SeedsInventory to Viewport!");
 	}
 }
 
