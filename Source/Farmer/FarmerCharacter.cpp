@@ -75,7 +75,7 @@ void AFarmerCharacter::BeginPlay()
 	SeedsInventory = CreateWidget<UCropSeedsUserWidget>(GetWorld(), SeedsInventoryClass);
 	if (SeedsInventory) {
 		SeedsInventory->AddToViewport();
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Successfully added SeedsInventory to Viewport!");
+		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Successfully added SeedsInventory to Viewport!");
 	}
 }
 

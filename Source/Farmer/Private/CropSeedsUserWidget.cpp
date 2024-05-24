@@ -8,12 +8,12 @@ void UCropSeedsUserWidget::SelectButton(int32 seed)
 	if (Buttons.Num() > seed) {
 		Buttons[seed]->SetIsEnabled(false);
 		Buttons[seed]->SetVisibility(ESlateVisibility::Visible);
+		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, FString::Printf(TEXT("%s"), *Buttons[seed]->GetName()));
 
 		for (int32 i = 0; i < Buttons.Num(); ++i) {
 			if (i == seed) continue;
 			Buttons[i]->SetIsEnabled(true);
 			Buttons[i]->SetVisibility(ESlateVisibility::Hidden);
-			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, FString::Printf(TEXT("%s"), *Buttons[i]->GetName()));
 		}
 	}
 }
