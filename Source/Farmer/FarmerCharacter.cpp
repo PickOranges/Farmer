@@ -55,7 +55,14 @@ AFarmerCharacter::AFarmerCharacter()
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 
-	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &AFarmerCharacter::OnBeginOverlap);
+	BoundingBox->CreateDefaultSubobject<UBoxComponent>(TEXT("BoundingBox"));
+	BoundingBox->SetupAttachment(RootComponent);
+	BoundingBox->SetBoxExtent(FVector{50.f,50,50});
+	BoundingBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	BoundingBox->SetCollisionObjectType(ECollisionChannel::ECC_WorldDynamic);
+	BoundingBox->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Overlap);
+	BoundingBox->SetGenerateOverlapEvents(true);
+	BoundingBox->OnComponentBeginOverlap.AddDynamic(this, &AFarmerCharacter::OnBeginOverlapCB);
 }
 
 void AFarmerCharacter::BeginPlay()
@@ -230,8 +237,10 @@ void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)
 	bHit = GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
 }
 
-void AFarmerCharacter::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Begin Overlapping with: %s"), *OtherActor->GetName()));
+	
 	if (OtherActor && OtherActor != this) {
 		if (ASoil* temp = Cast<ASoil>(OtherActor)) {
 			if (!temp->bIsPlanted) return;
