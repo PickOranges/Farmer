@@ -26,9 +26,9 @@ void ASAICharacter::Tick(float DeltaTime)
 }
 
 // Called to bind functionality to input
-void ASAICharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-}
+//void ASAICharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+//{
+//	Super::SetupPlayerInputComponent(PlayerInputComponent);
+//
+//}
 
