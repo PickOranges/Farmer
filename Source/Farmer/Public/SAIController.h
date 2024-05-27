@@ -9,9 +9,17 @@
 /**
  * 
  */
+
+class UBehaviorTree;
+
 UCLASS()
 class FARMER_API ASAIController : public AAIController
 {
 	GENERATED_BODY()
 	
+protected:
+	void BeginPlay() override;
+
+	UPROPERTY(EditDefaultsOnly, Category = "AI")
+	UBehaviorTree* BehaviorTree;
 };
