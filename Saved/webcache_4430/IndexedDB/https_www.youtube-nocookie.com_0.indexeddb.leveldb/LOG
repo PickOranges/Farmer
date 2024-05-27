@@ -1,0 +1,6 @@
+2024/05/27-11:54:43.152 4f04 Creating DB C:/Users/cheng/source/repos/UE5/Farmer/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb since it was missing.
+2024/05/27-11:54:43.161 4f04 Reusing MANIFEST C:/Users/cheng/source/repos/UE5/Farmer/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/05/27-11:58:16.879 29b0 Level-0 table #5: started
+2024/05/27-11:58:16.886 29b0 Level-0 table #5: 1167 bytes OK
+2024/05/27-11:58:16.887 29b0 Delete type=0 #3
+2024/05/27-11:58:16.888 29b0 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
