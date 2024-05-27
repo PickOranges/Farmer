@@ -12,5 +12,6 @@ void ASAIController::BeginPlay()
 	APawn* tempPlayer = UGameplayStatics::GetPlayerPawn(this,0);
 	if (tempPlayer) {
 		GetBlackboardComponent()->SetValueAsVector("MoveToLocation",tempPlayer->GetActorLocation());
+		GetBlackboardComponent()->SetValueAsObject("TargetActor", tempPlayer);
 	}
 }

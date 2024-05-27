@@ -2,6 +2,7 @@
 
 
 #include "SAICharacter.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ASAICharacter::ASAICharacter()
@@ -15,14 +16,14 @@ ASAICharacter::ASAICharacter()
 void ASAICharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	SetFaceDirection();
 }
 
 // Called every frame
 void ASAICharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	SetFaceDirection();
 }
 
 // Called to bind functionality to input
@@ -32,3 +33,15 @@ void ASAICharacter::Tick(float DeltaTime)
 //
 //}
 
+
+void ASAICharacter::SetFaceDirection()
+{
+	APawn* temp = UGameplayStatics::GetPlayerPawn(this, 0);
+	if (temp) {
+		FVector Start = this->GetActorLocation();
+		FVector End = temp->GetActorLocation();
+		FRotator Dir = (End - Start).Rotation();
+		Dir.Yaw = FRotator::ClampAxis(Dir.Yaw);
+		this->FaceRotation(Dir, .0f);
+	}
+}
