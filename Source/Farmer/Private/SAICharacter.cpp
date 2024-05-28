@@ -16,7 +16,6 @@ ASAICharacter::ASAICharacter()
 void ASAICharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	SetFaceDirection();
 }
 
 // Called to bind functionality to input
@@ -43,6 +42,5 @@ void ASAICharacter::SetFaceDirection()
 void ASAICharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	//SetFaceDirection();
-
+	SetFaceDirection();
 }
