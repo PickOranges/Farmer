@@ -23,9 +23,4 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	//// Called to bind functionality to input
-	//virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "NPC_Fox")
-	//float DistToPlayer=1000.f;
 };
