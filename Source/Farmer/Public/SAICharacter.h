@@ -26,6 +26,6 @@ public:
 
 	//// Called to bind functionality to input
 	//virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "NPC_Fox")
-	float DistToPlayer{0};
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "NPC_Fox")
+	//float DistToPlayer=1000.f;
 };

@@ -45,8 +45,9 @@ void ASAICharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	//SetFaceDirection();
 
-	ACharacter* player = UGameplayStatics::GetPlayerCharacter(GetWorld(),0);
-	DistToPlayer = FVector::Dist(player->GetActorLocation(), GetActorLocation());
-
-	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, FString::Printf(TEXT("%.5f"), DistToPlayer));
+	//ACharacter* player = UGameplayStatics::GetPlayerCharacter(GetWorld(),0);
+	//if (player) {
+	//	//DistToPlayer = FVector::Dist(player->GetActorLocation(), GetActorLocation());
+	//	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, FString::Printf(TEXT("%.5f"), DistToPlayer));
+	//}
 }
