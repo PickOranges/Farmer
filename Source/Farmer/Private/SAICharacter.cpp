@@ -19,20 +19,12 @@ void ASAICharacter::BeginPlay()
 	SetFaceDirection();
 }
 
-// Called every frame
-void ASAICharacter::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-	SetFaceDirection();
-}
-
 // Called to bind functionality to input
 //void ASAICharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 //{
 //	Super::SetupPlayerInputComponent(PlayerInputComponent);
 //
 //}
-
 
 void ASAICharacter::SetFaceDirection()
 {
@@ -44,4 +36,15 @@ void ASAICharacter::SetFaceDirection()
 		Dir.Yaw = FRotator::ClampAxis(Dir.Yaw);
 		this->FaceRotation(Dir, .0f);
 	}
+}
+
+
+// Called every frame
+void ASAICharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	//SetFaceDirection();
+
+	ACharacter* player = UGameplayStatics::GetPlayerCharacter(GetWorld(),0);
+	DistToPlayer = FVector::Dist(player->GetActorLocation(), GetActorLocation());
 }
