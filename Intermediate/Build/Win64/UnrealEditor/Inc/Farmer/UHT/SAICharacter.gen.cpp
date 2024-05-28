@@ -50,7 +50,7 @@ void EmptyLinkFunctionForGeneratedCodeSAICharacter() {}
 #endif
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASAICharacter_Statics::NewProp_DistToPlayer_MetaData[] = {
-		{ "Category", "SAICharacter" },
+		{ "Category", "NPC_Fox" },
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "//// Called to bind functionality to input\n//virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;\n" },
 #endif
@@ -102,9 +102,9 @@ void EmptyLinkFunctionForGeneratedCodeSAICharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_SAICharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ASAICharacter, ASAICharacter::StaticClass, TEXT("ASAICharacter"), &Z_Registration_Info_UClass_ASAICharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASAICharacter), 1510757671U) },
+		{ Z_Construct_UClass_ASAICharacter, ASAICharacter::StaticClass, TEXT("ASAICharacter"), &Z_Registration_Info_UClass_ASAICharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASAICharacter), 3178044779U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_SAICharacter_h_4077872558(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_SAICharacter_h_3882947040(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_SAICharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_SAICharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
