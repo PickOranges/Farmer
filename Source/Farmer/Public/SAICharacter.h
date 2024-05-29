@@ -23,4 +23,14 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Anim")
+	class UNPCFoxAnimInstance* AnimInst;
+
+	UFUNCTION(BlueprintCallable, Category = "Anim")
+	void SelectRandomState();
+
+	UFUNCTION(BlueprintCallable, Category = "Anim")
+	void OnAnimationFinished();
 };

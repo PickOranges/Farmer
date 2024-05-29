@@ -86,6 +86,12 @@
     <ClCompile Include="..\..\Source\Farmer\Private\CropSeedsUserWidget.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\FoxAnimNotify.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\NPCFoxAnimInstance.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\SAICharacter.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
@@ -96,6 +102,12 @@
       <UniqueIdentifier>{BF3F2CD8-54FE-349B-A9E4-CC6221129BE3}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\Farmer\Public\CropSeedsUserWidget.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\FoxAnimNotify.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\NPCFoxAnimInstance.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\SAICharacter.h">

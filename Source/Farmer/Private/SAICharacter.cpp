@@ -3,6 +3,8 @@
 
 #include "SAICharacter.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "NPCFoxAnimInstance.h"
 
 // Sets default values
 ASAICharacter::ASAICharacter()
@@ -16,14 +18,12 @@ ASAICharacter::ASAICharacter()
 void ASAICharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	//AnimInst = Cast<UNPCFoxAnimInstance>(GetMesh()->GetAnimInstance());
+	//if (AnimInst) {
+	//	SelectRandomState();
+	//}
 }
 
-// Called to bind functionality to input
-//void ASAICharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-//{
-//	Super::SetupPlayerInputComponent(PlayerInputComponent);
-//
-//}
 
 void ASAICharacter::SetFaceDirection()
 {
@@ -42,5 +42,18 @@ void ASAICharacter::SetFaceDirection()
 void ASAICharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	SetFaceDirection();
+	//SetFaceDirection();
+}
+
+void ASAICharacter::SelectRandomState()
+{
+	EStatesRandom RandomPicked = static_cast<EStatesRandom>(UKismetMathLibrary::RandomIntegerInRange(0,6));
+	if (AnimInst) {
+		AnimInst->SetCurrentState(RandomPicked);
+	}
+}
+
+void ASAICharacter::OnAnimationFinished()
+{
+	SelectRandomState();
 }
