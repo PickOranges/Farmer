@@ -33,3 +33,13 @@ void USBTService_CheckRange::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* 
 		}
 	}
 }
+
+
+/*
+issues:
+
+1. idle animation too simple.
+2. idle -> wandering or sleep or other more complex animation
+3. unatrual actions when the angle between fox face direction and next navigation segment direction is greater than some angle.
+	To solve this, add more different animations from different angles, like F/L/R.
+*/
