@@ -7,6 +7,7 @@
 void ASAIController::BeginPlay()
 {
 	Super::BeginPlay();
+
 	RunBehaviorTree(BehaviorTree);
 
 	APawn* tempPlayer = UGameplayStatics::GetPlayerPawn(this,0);

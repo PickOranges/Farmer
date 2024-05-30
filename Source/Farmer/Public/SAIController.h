@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "TimerManager.h"
 #include "SAIController.generated.h"
 
 /**
@@ -19,6 +20,7 @@ class FARMER_API ASAIController : public AAIController
 	
 protected:
 	void BeginPlay() override;
+	
 
 	UPROPERTY(EditDefaultsOnly, Category = "AI")
 	UBehaviorTree* BehaviorTree;
