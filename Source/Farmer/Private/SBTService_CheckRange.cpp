@@ -20,7 +20,13 @@ void USBTService_CheckRange::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* 
 					float Dist = FVector::Distance(TargetActor->GetActorLocation(), MyNPC->GetActorLocation());
 
 					bool bWithinRange = Dist < 500.f;
-					BB->SetValueAsBool(RangeKey.SelectedKeyName, bWithinRange);
+
+					bool bHasLOS = false; // Check if NPC sees the player
+					if (bWithinRange) {
+						bHasLOS = MyController->LineOfSightTo(TargetActor);
+					}
+
+					BB->SetValueAsBool(RangeKey.SelectedKeyName, (bWithinRange && bHasLOS));
 				}
 			}
 		}

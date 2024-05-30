@@ -101,6 +101,9 @@
     <ClCompile Include="..\..\Source\Farmer\Private\SBTService_CheckRange.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\SBT_FoxInRangeTaskNode.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\Farmer\Public">
       <UniqueIdentifier>{BF3F2CD8-54FE-349B-A9E4-CC6221129BE3}</UniqueIdentifier>
     </Filter>
@@ -120,6 +123,9 @@
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\SBTService_CheckRange.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\SBT_FoxInRangeTaskNode.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
   </ItemGroup>

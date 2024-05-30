@@ -42,7 +42,7 @@ void ASAICharacter::SetFaceDirection()
 void ASAICharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	SetFaceDirection();
+	//SetFaceDirection();
 }
 
 void ASAICharacter::SelectRandomState()
