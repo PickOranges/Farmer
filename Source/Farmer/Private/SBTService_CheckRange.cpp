@@ -26,7 +26,8 @@ void USBTService_CheckRange::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* 
 						bHasLOS = MyController->LineOfSightTo(TargetActor);
 					}
 
-					BB->SetValueAsBool(RangeKey.SelectedKeyName, (bWithinRange && bHasLOS));
+					//BB->SetValueAsBool(RangeKey.SelectedKeyName, (bWithinRange && bHasLOS));
+					BB->SetValueAsBool(RangeKey.SelectedKeyName, bWithinRange);
 				}
 			}
 		}
