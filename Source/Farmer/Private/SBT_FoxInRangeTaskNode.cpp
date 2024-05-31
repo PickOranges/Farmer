@@ -29,6 +29,11 @@ EBTNodeResult::Type USBT_FoxInRangeTaskNode::ExecuteTask(UBehaviorTreeComponent&
 
 	FVector EndLocation;
 	EndLocation = GetRandomLocationWithinRange(TargetActor->GetActorLocation(), WanderRange);
-	MyController->MoveToLocation(EndLocation);
+	//MyController->MoveToLocation(EndLocation);
+
+	UBlackboardComponent* BB = OwnerComp.GetBlackboardComponent();
+	if (BB == nullptr) return EBTNodeResult::Failed;
+	BB->SetValueAsVector("MoveToLocation", EndLocation);
+
 	return EBTNodeResult::Succeeded;
 }

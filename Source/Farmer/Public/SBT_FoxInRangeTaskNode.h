@@ -19,6 +19,6 @@ protected:
 	void OnGameplayTaskActivated(UGameplayTask& Task) override;
 
 private:
-	float WanderRange=350.f;
+	float WanderRange=500.f;
 	FVector GetRandomLocationWithinRange(const FVector& Origin, float Range);
 };
