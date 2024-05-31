@@ -15,6 +15,11 @@ void USBT_FoxInRangeTaskNode::OnGameplayTaskActivated(UGameplayTask& Task)
 FVector USBT_FoxInRangeTaskNode::GetRandomLocationWithinRange(const FVector& Origin, float Range)
 {
 	FVector Goal = Origin + FVector(FMath::RandPointInCircle(WanderRange), 0.0f);
+	while (/*Goal == TargetActor->GetActorLocation()*/ FVector::Distance(Goal,TargetActor->GetActorLocation())<=75.f) {
+		NPC->GetCharacterMovement()->MaxWalkSpeed = 0.f;
+		Goal = Origin + FVector(FMath::RandPointInCircle(WanderRange), 0.0f);
+	}
+	NPC->GetCharacterMovement()->MaxWalkSpeed = 100.f;
 	return Goal;
 }
 
@@ -23,10 +28,12 @@ EBTNodeResult::Type USBT_FoxInRangeTaskNode::ExecuteTask(UBehaviorTreeComponent&
 	AAIController* MyController = OwnerComp.GetAIOwner();
 	if (MyController == nullptr) return EBTNodeResult::Failed;
 
-	ACharacter* NPC = MyController->GetCharacter();
+	//ACharacter* NPC = MyController->GetCharacter();
+	NPC = MyController->GetCharacter();
 	if (NPC == nullptr) return EBTNodeResult::Failed;
 
-	AActor* TargetActor = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValueAsObject("TargetActor"));
+	//AActor* TargetActor = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValueAsObject("TargetActor"));
+	TargetActor = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValueAsObject("TargetActor"));
 	if (TargetActor == nullptr) return EBTNodeResult::Failed;
 
 	FVector EndLocation;
@@ -36,7 +43,6 @@ EBTNodeResult::Type USBT_FoxInRangeTaskNode::ExecuteTask(UBehaviorTreeComponent&
 	if (BB == nullptr) return EBTNodeResult::Failed;
 	BB->SetValueAsVector("MoveToLocation", EndLocation);
 
-	NPC->GetCharacterMovement()->MaxWalkSpeed = 100.f;
 
 	return EBTNodeResult::Succeeded;
 }

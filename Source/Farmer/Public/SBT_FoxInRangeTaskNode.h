@@ -21,4 +21,7 @@ protected:
 private:
 	float WanderRange=500.f;
 	FVector GetRandomLocationWithinRange(const FVector& Origin, float Range);
+
+	AActor* TargetActor;
+	ACharacter* NPC;
 };
