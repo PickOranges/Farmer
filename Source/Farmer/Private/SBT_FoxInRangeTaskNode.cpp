@@ -23,7 +23,7 @@ FVector USBT_FoxInRangeTaskNode::GetRandomLocationWithinRange(const FVector& Ori
 	// Match the NPC speed with animation speed in state machine, to avoid sliding or relative slower play rate.
 	if (FVector::Distance(NPC->GetActorLocation(), TargetActor->GetActorLocation()) <= 500) {
 		NPC->GetCharacterMovement()->MaxWalkSpeed = 100.f; // walk towards player
-	}
+	} // TODO: need some blending between two speeds!
 	else { // run towards player
 		NPC->GetCharacterMovement()->MaxWalkSpeed = 550.f;
 	}
