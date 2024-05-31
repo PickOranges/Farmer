@@ -19,7 +19,16 @@ FVector USBT_FoxInRangeTaskNode::GetRandomLocationWithinRange(const FVector& Ori
 		NPC->GetCharacterMovement()->MaxWalkSpeed = 0.f;
 		Goal = Origin + FVector(FMath::RandPointInCircle(WanderRange), 0.0f);
 	}
-	NPC->GetCharacterMovement()->MaxWalkSpeed = 100.f;
+
+	// Match the NPC speed with animation speed in state machine, to avoid sliding or relative slower play rate.
+	if (FVector::Distance(NPC->GetActorLocation(), TargetActor->GetActorLocation()) <= 500) {
+		NPC->GetCharacterMovement()->MaxWalkSpeed = 100.f; // walk towards player
+	}
+	else { // run towards player
+		NPC->GetCharacterMovement()->MaxWalkSpeed = 550.f;
+	}
+
+	
 	return Goal;
 }
 
