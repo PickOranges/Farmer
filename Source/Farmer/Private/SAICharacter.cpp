@@ -5,6 +5,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "NPCFoxAnimInstance.h"
+#include "Perception/PawnSensingComponent.h"
+#include "BehaviorTree/BlackboardComponent.h"
 
 // Sets default values
 ASAICharacter::ASAICharacter()
@@ -12,6 +14,7 @@ ASAICharacter::ASAICharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	PawnSensingComp = CreateDefaultSubobject<UPawnSensingComponent>("PawnSensingComp");
 }
 
 // Called when the game starts or when spawned
@@ -22,8 +25,30 @@ void ASAICharacter::BeginPlay()
 	//if (AnimInst) {
 	//	SelectRandomState();
 	//}
+
+	PawnSensingComp->OnSeePawn.AddDynamic(this, &ASAICharacter::OnPawnSeen);
+	MyController = Cast<AAIController>(GetController());
 }
 
+// Called every frame
+void ASAICharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	//SetFaceDirection();
+}
+
+void ASAICharacter::SelectRandomState()
+{
+	EStatesRandom RandomPicked = static_cast<EStatesRandom>(UKismetMathLibrary::RandomIntegerInRange(0, 6));
+	if (AnimInst) {
+		AnimInst->SetCurrentState(RandomPicked);
+	}
+}
+
+void ASAICharacter::OnAnimationFinished()
+{
+	SelectRandomState();
+}
 
 void ASAICharacter::SetFaceDirection()
 {
@@ -38,22 +63,13 @@ void ASAICharacter::SetFaceDirection()
 }
 
 
-// Called every frame
-void ASAICharacter::Tick(float DeltaTime)
+void ASAICharacter::OnPawnSeen(APawn* Pawn)
 {
-	Super::Tick(DeltaTime);
-	//SetFaceDirection();
-}
+	if (MyController) {
+		UBlackboardComponent* BBC = MyController->GetBlackboardComponent();
+		BBC->SetValueAsObject("TargetActor", Pawn);
 
-void ASAICharacter::SelectRandomState()
-{
-	EStatesRandom RandomPicked = static_cast<EStatesRandom>(UKismetMathLibrary::RandomIntegerInRange(0,6));
-	if (AnimInst) {
-		AnimInst->SetCurrentState(RandomPicked);
+		DrawDebugString(GetWorld(),GetActorLocation(),"Player Spotted",nullptr,FColor::Orange,4.f,true);
 	}
 }
 
-void ASAICharacter::OnAnimationFinished()
-{
-	SelectRandomState();
-}
