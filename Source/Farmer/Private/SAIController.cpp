@@ -8,7 +8,10 @@ void ASAIController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	RunBehaviorTree(BehaviorTree);
+	if (ensureMsgf(BehaviorTree, TEXT("BT is nullptr!"))) {
+		RunBehaviorTree(BehaviorTree);
+	}
+
 
 	APawn* tempPlayer = UGameplayStatics::GetPlayerPawn(this,0);
 	if (tempPlayer) {
