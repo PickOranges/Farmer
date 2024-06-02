@@ -87,6 +87,7 @@ void AFarmerCharacter::BeginPlay()
 		SeedsInventory->AddToViewport();
 		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Successfully added SeedsInventory to Viewport!");
 	}
+
 }
 
 void AFarmerCharacter::Activate()
@@ -252,3 +253,8 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 		}
 	}
 }
+
+//void AFarmerCharacter::TriggerFeed()
+//{
+//	FeedDelegate.Execute();
+//}

@@ -7,6 +7,7 @@
 #include "NPCFoxAnimInstance.h"
 #include "Perception/PawnSensingComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
+#include "Farmer/FarmerCharacter.h"
 
 // Sets default values
 ASAICharacter::ASAICharacter()
@@ -28,6 +29,12 @@ void ASAICharacter::BeginPlay()
 
 	PawnSensingComp->OnSeePawn.AddDynamic(this, &ASAICharacter::OnPawnSeen);
 	MyController = Cast<AAIController>(GetController());
+
+	//AFarmerCharacter* MyPlayer = Cast<AFarmerCharacter>(GetWorld()->GetFirstPlayerController());
+	//if (MyPlayer) {
+	//	MyPlayer->FeedDelegate.BindUObject(this, &ASAICharacter::FeedCallback);
+	//}
+	
 }
 
 // Called every frame
@@ -62,7 +69,6 @@ void ASAICharacter::SetFaceDirection()
 	}
 }
 
-
 void ASAICharacter::OnPawnSeen(APawn* Pawn)
 {
 	if (MyController) {
@@ -72,4 +78,9 @@ void ASAICharacter::OnPawnSeen(APawn* Pawn)
 		DrawDebugString(GetWorld(),GetActorLocation(),"Player Spotted",nullptr,FColor::Orange,4.f,true);
 	}
 }
+
+//void ASAICharacter::FeedCallback()
+//{
+//	GEngine->AddOnScreenDebugMessage(-1,INFINITY, FColor::Orange, FString("Fox is eating..."));
+//}
 

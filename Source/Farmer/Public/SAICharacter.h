@@ -9,6 +9,8 @@
 
 class UPawnSensingComponent;
 
+
+
 UCLASS()
 class FARMER_API ASAICharacter : public ACharacter
 {
@@ -44,5 +46,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Anim")
 	void OnAnimationFinished();
+
+	//void FeedCallback();
 
 };
