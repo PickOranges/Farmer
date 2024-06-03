@@ -59,7 +59,7 @@ AFarmerCharacter::AFarmerCharacter()
 
 	BoundingBox=CreateDefaultSubobject<UBoxComponent>(TEXT("BB"));
 	BoundingBox->SetupAttachment(RootComponent);
-	BoundingBox->SetBoxExtent(FVector{25.f,25,25});
+	BoundingBox->SetBoxExtent(FVector{50.f,50,50});
 	BoundingBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	BoundingBox->SetCollisionObjectType(ECollisionChannel::ECC_WorldDynamic);
 	BoundingBox->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Overlap);
@@ -101,15 +101,15 @@ void AFarmerCharacter::BeginPlay()
 
 
 	// Auto Game Save Loading Test
-	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot"), 0))
+	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot1"), 0))
 	{
-		USaveGame* LoadGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot"), 0);
+		USaveGame* LoadGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot1"), 0);
 		UMySaveGame* MySaveGame = Cast<UMySaveGame>(LoadGameInstance);
 		if (MySaveGame)
 		{
 			int length = MySaveGame->EarnedCrops.Num();
 			if (CropsEarned.Num() != length) {
-				GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,"Record are invalid, thus won't load.");
+				GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,"Record is invalid, thus won't load.");
 				return;
 			} 
 			for (int32 i = 0; i < length; ++i) {
@@ -205,41 +205,40 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 	if (isHit) {
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil) {
-			if(!currentSoil->bIsPlanted) return;
+			if(!currentSoil->bIsPlanted && currentSoil->text3D->GetText().IsEmpty()) return;
+			if (!currentSoil->bIsPlanted && !currentSoil->text3D->GetText().IsEmpty()) return;
+
+			currentSoil->bIsPlanted = false;
+			currentSoil->plantMesh->SetStaticMesh(nullptr);
+
+			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle1);
+			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle2);
+			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle3);
+
 			if (!currentSoil->text3D->GetText().IsEmpty()) {
-				currentSoil->bIsPlanted = false;
 				currentSoil->text3D->SetText(FText::FromString(FString("")));
-				currentSoil->plantMesh->SetStaticMesh(nullptr);
-
-				GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle1);
-				GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle2);
-				GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle3);
-
 				return;
 			}
-			
 
 			// Change Seeds/Crops Amount
 			else {
 				++SeedsAmount[currentSoil->currentPlant];
 				++CropsEarned[currentSoil->currentPlant];
+				return;
+			}
+		}
 
-				currentSoil->bIsPlanted = false;
-				//currentSoil->text3D->SetText(FText::FromString(FString("")));
-
-				// Auto Game Save Test
-				if (MySaveGameInstance) {
-					if (MySaveGameInstance->EarnedCrops.Num() == 0) {
-						GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"Empty array, thus create a new array.");
-						for (int32 i = 0; i < CropsEarned.Num(); ++i) {
-							MySaveGameInstance->EarnedCrops.Add(CropsEarned[i]);
-						}
-						return;
-					}
-					MySaveGameInstance->EarnedCrops[currentSoil->currentPlant] = CropsEarned[currentSoil->currentPlant];
-					UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+		//// Auto Game Save Test
+		if (MySaveGameInstance) {
+			if (MySaveGameInstance->EarnedCrops.Num() == 0) {
+				GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Empty array, thus create a new array.");
+				for (int32 i = 0; i < CropsEarned.Num(); ++i) {
+					MySaveGameInstance->EarnedCrops.Add(CropsEarned[i]);
 				}
 			}
+
+			else for (int32 i = 0; i < CropsEarned.Num(); ++i) MySaveGameInstance->EarnedCrops[i] = CropsEarned[i];
+			UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
 		}
 	}
 }
@@ -285,7 +284,7 @@ void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)
 {
 	FVector Start = FollowCamera->GetComponentLocation();
 	FVector Dir = FollowCamera->GetForwardVector();
-	FVector End = Start + Dir * 1000.f;
+	FVector End = Start + Dir * 2000.f;
 	bHit = GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
 }
 
@@ -298,17 +297,12 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 		if (ASoil* temp = Cast<ASoil>(OtherActor)) {
 			FText tx = temp->text3D->GetText();
 
-			if (!temp->bIsPlanted && tx.IsEmpty()) return; // 1. nothing planted
-			if (temp->bIsPlanted && !tx.IsEmpty()) return;  // 2. planted but unmature.
-			if (!temp->bIsPlanted && !tx.IsEmpty()) {
-				temp->text3D->SetText(FText::FromString(FString("")));  // 3. invalid status, considered as slow update, thus update manually.
-				return;
+			// Crop is mature
+			if(temp->bIsPlanted && tx.IsEmpty()){
+				temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->currentPlant]);
+				if (temp->currentPlant == 1)  // Eggplant
+					temp->plantMesh->SetRelativeLocation(FVector{ 0,0,25 });
 			}
-				
-			// 4. normal case: planted and mature.
-			temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->currentPlant]);
-			if (temp->currentPlant == 1)  // Eggplant
-				temp->plantMesh->SetRelativeLocation(FVector{0,0,25});
 		}
 	}
 }
