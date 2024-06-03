@@ -172,6 +172,8 @@ void ASoil::ChangePotatoMesh()
 		plantMesh->SetRelativeLocation(FVector{ 0,0,12 });
 	}
 	if (potatoIdx == potatoMeshes.Num()-1) {
+		text3D->SetText(FText::FromString(FString("")));
+
 		GetWorld()->GetTimerManager().ClearTimer(MeshChangeTimerHandle1);
 		potatoIdx = 0;
 	}
@@ -185,6 +187,8 @@ void ASoil::ChangeEggplantMesh()
 		plantMesh->SetRelativeScale3D(FVector{ 0.4,0.4,0.4 });
 	}
 	if (eggplantIdx == eggplantMeshes.Num() - 1) {
+		text3D->SetText(FText::FromString(FString("")));
+
 		GetWorld()->GetTimerManager().ClearTimer(MeshChangeTimerHandle2);
 		eggplantIdx = 0;
 	}
@@ -199,6 +203,8 @@ void ASoil::ChangeCarrotMesh()
 		plantMesh->SetRelativeLocation(FVector{ 0.0,0.0,12 });
 	}
 	if (carrotIdx == carrotMeshes.Num() - 1) {
+		text3D->SetText(FText::FromString(FString("")));
+
 		GetWorld()->GetTimerManager().ClearTimer(MeshChangeTimerHandle3);
 		carrotIdx = 0;
 	}

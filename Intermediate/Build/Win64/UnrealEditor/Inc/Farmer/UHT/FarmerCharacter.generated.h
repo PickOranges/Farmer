@@ -9,9 +9,6 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-class AActor;
-class UPrimitiveComponent;
-struct FHitResult;
 #ifdef FARMER_FarmerCharacter_generated_h
 #error "FarmerCharacter.generated.h already included, missing '#pragma once' in FarmerCharacter.h"
 #endif
@@ -20,11 +17,7 @@ struct FHitResult;
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_34_SPARSE_DATA
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_34_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_34_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_34_RPC_WRAPPERS_NO_PURE_DECLS \
- \
-	DECLARE_FUNCTION(execOnBeginOverlapCB);
-
-
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_34_RPC_WRAPPERS_NO_PURE_DECLS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_34_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_34_INCLASS_NO_PURE_DECLS \
 private: \
