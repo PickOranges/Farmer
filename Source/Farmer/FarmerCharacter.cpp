@@ -101,9 +101,9 @@ void AFarmerCharacter::BeginPlay()
 
 
 	// Auto Game Save Loading Test
-	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot0"), 0))
+	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot"), 0))
 	{
-		USaveGame* LoadGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot0"), 0);
+		USaveGame* LoadGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot"), 0);
 		UMySaveGame* MySaveGame = Cast<UMySaveGame>(LoadGameInstance);
 		if (MySaveGame)
 		{
