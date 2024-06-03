@@ -64,7 +64,7 @@ AFarmerCharacter::AFarmerCharacter()
 	BoundingBox->SetCollisionObjectType(ECollisionChannel::ECC_WorldDynamic);
 	BoundingBox->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Overlap);
 	BoundingBox->SetGenerateOverlapEvents(true);
-	//BoundingBox->OnComponentBeginOverlap.AddDynamic(this, &AFarmerCharacter::OnBeginOverlapCB);
+	BoundingBox->OnComponentBeginOverlap.AddDynamic(this, &AFarmerCharacter::OnBeginOverlapCB);
 }
 
 void AFarmerCharacter::BeginPlay()
@@ -211,7 +211,6 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle2);
 			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle3);
 
-
 			// Change Seeds/Crops Amount
 			if (currentSoil->bIsPlanted && currentSoil->text3D->GetText().IsEmpty()) {
 				++SeedsAmount[currentSoil->currentPlant];
@@ -229,14 +228,9 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 						}
 						return;
 					}
-					//for (int32 i = 0; i < CropsEarned.Num(); ++i) {
-					//	MySaveGameInstance->EarnedCrops[i] = CropsEarned[i];
-					//}
-				
+
 					
 					MySaveGameInstance->EarnedCrops[currentSoil->currentPlant] = CropsEarned[currentSoil->currentPlant];
-
-
 					UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 				}
 			}
@@ -289,25 +283,31 @@ void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)
 	bHit = GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
 }
 
-//void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-//{
-//	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Begin Overlapping with: %s"), *OtherActor->GetName()));
-//	
-//	// placed a matured crop on the soil
-//	if (OtherActor && OtherActor != this) {
-//		if (ASoil* temp = Cast<ASoil>(OtherActor)) {
-//			if (!temp->bIsPlanted) return;	// Case 1: This soil doesn't grow anything yet.
-//
-//			FText tx = temp->text3D->GetText();  // Case 2: The plant is still growing, thus unmature.
-//			if (!tx.IsEmpty()) return;
-//
-//
-//			temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->currentPlant]);
-//			if (temp->currentPlant == 1)  // Eggplant
-//				temp->plantMesh->SetRelativeLocation(FVector{0,0,25});
-//		}
-//	}
-//}
+void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Begin Overlapping with: %s"), *OtherActor->GetName()));
+	
+	// placed a matured crop on the soil
+	if (OtherActor) {
+		if (ASoil* temp = Cast<ASoil>(OtherActor)) {
+			FText tx = temp->text3D->GetText();
+
+			if (!temp->bIsPlanted && tx.IsEmpty()) return; // 1. nothing planted
+			if (temp->bIsPlanted && !tx.IsEmpty()) return;  // 2. planted but unmature.
+
+			// ??? TODO: What should I do? Is really necessary to deal with this case?
+			if (!temp->bIsPlanted && !tx.IsEmpty()) {
+				temp->text3D->SetText(FText::FromString(FString("")));  // 3. invalid status, considered as slow update, thus update manually.
+				return;
+			}
+				
+			// 4. normal case
+			temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->currentPlant]);
+			if (temp->currentPlant == 1)  // Eggplant
+				temp->plantMesh->SetRelativeLocation(FVector{0,0,25});
+		}
+	}
+}
 
 //void AFarmerCharacter::TriggerFeed()
 //{
