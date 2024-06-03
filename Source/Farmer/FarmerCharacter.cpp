@@ -101,9 +101,9 @@ void AFarmerCharacter::BeginPlay()
 
 
 	// Auto Game Save Loading Test
-	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot"), 0))
+	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot0"), 0))
 	{
-		USaveGame* LoadGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot"), 0);
+		USaveGame* LoadGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot0"), 0);
 		UMySaveGame* MySaveGame = Cast<UMySaveGame>(LoadGameInstance);
 		if (MySaveGame)
 		{
@@ -287,11 +287,15 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 {
 	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Begin Overlapping with: %s"), *OtherActor->GetName()));
 	
+	// placed a matured crop on the soil
 	if (OtherActor && OtherActor != this) {
 		if (ASoil* temp = Cast<ASoil>(OtherActor)) {
-			if (!temp->bIsPlanted) return;
-			FText tx = temp->text3D->GetText();
+			if (!temp->bIsPlanted) return;	// Case 1: This soil doesn't grow anything yet.
+
+			FText tx = temp->text3D->GetText();  // Case 2: The plant is still growing, thus unmature.
 			if (!tx.IsEmpty()) return;
+
+
 			temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->currentPlant]);
 			if (temp->currentPlant == 1)  // Eggplant
 				temp->plantMesh->SetRelativeLocation(FVector{0,0,25});
