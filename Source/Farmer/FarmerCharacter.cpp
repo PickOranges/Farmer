@@ -277,9 +277,11 @@ void AFarmerCharacter::OnWheelDown(const FInputActionValue& Value)
 
 void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)
 {
-	FVector Start = FollowCamera->GetComponentLocation();
+	//FVector Start = FollowCamera->GetComponentLocation();
+	//FVector Dir = FollowCamera->GetForwardVector();
+	FVector Start = GetActorLocation();
 	FVector Dir = FollowCamera->GetForwardVector();
-	FVector End = Start + Dir * 2000.f;
+	FVector End = Start + Dir * 50.f;
 	bHit = GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
 }
 
@@ -294,14 +296,12 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 
 			if (!temp->bIsPlanted && tx.IsEmpty()) return; // 1. nothing planted
 			if (temp->bIsPlanted && !tx.IsEmpty()) return;  // 2. planted but unmature.
-
-			// ??? TODO: What should I do? Is really necessary to deal with this case?
 			if (!temp->bIsPlanted && !tx.IsEmpty()) {
 				temp->text3D->SetText(FText::FromString(FString("")));  // 3. invalid status, considered as slow update, thus update manually.
 				return;
 			}
 				
-			// 4. normal case
+			// 4. normal case: planted and mature.
 			temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->currentPlant]);
 			if (temp->currentPlant == 1)  // Eggplant
 				temp->plantMesh->SetRelativeLocation(FVector{0,0,25});
