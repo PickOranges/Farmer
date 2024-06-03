@@ -59,7 +59,7 @@ AFarmerCharacter::AFarmerCharacter()
 
 	BoundingBox=CreateDefaultSubobject<UBoxComponent>(TEXT("BB"));
 	BoundingBox->SetupAttachment(RootComponent);
-	BoundingBox->SetBoxExtent(FVector{50.f,50,50});
+	BoundingBox->SetBoxExtent(FVector{25.f,25,25});
 	BoundingBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	BoundingBox->SetCollisionObjectType(ECollisionChannel::ECC_WorldDynamic);
 	BoundingBox->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Overlap);
@@ -205,6 +205,8 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 	if (isHit) {
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil) {
+			if (!(currentSoil->bIsPlanted)) return;
+
 			currentSoil->plantMesh->SetStaticMesh(nullptr);
 
 			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle1);
@@ -228,8 +230,6 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 						}
 						return;
 					}
-
-					
 					MySaveGameInstance->EarnedCrops[currentSoil->currentPlant] = CropsEarned[currentSoil->currentPlant];
 					UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 				}
