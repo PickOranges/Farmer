@@ -205,21 +205,27 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 	if (isHit) {
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil) {
-			if (!(currentSoil->bIsPlanted)) return;
+			if(!currentSoil->bIsPlanted) return;
+			if (!currentSoil->text3D->GetText().IsEmpty()) {
+				currentSoil->bIsPlanted = false;
+				currentSoil->text3D->SetText(FText::FromString(FString("")));
+				currentSoil->plantMesh->SetStaticMesh(nullptr);
 
-			currentSoil->plantMesh->SetStaticMesh(nullptr);
+				GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle1);
+				GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle2);
+				GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle3);
 
-			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle1);
-			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle2);
-			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle3);
+				return;
+			}
+			
 
 			// Change Seeds/Crops Amount
-			if (currentSoil->bIsPlanted && currentSoil->text3D->GetText().IsEmpty()) {
+			else {
 				++SeedsAmount[currentSoil->currentPlant];
 				++CropsEarned[currentSoil->currentPlant];
 
 				currentSoil->bIsPlanted = false;
-				currentSoil->text3D->SetText(FText::FromString(FString("")));
+				//currentSoil->text3D->SetText(FText::FromString(FString("")));
 
 				// Auto Game Save Test
 				if (MySaveGameInstance) {
@@ -277,11 +283,9 @@ void AFarmerCharacter::OnWheelDown(const FInputActionValue& Value)
 
 void AFarmerCharacter::RayCast(bool& bHit, FHitResult& HitResult)
 {
-	//FVector Start = FollowCamera->GetComponentLocation();
-	//FVector Dir = FollowCamera->GetForwardVector();
-	FVector Start = GetActorLocation();
+	FVector Start = FollowCamera->GetComponentLocation();
 	FVector Dir = FollowCamera->GetForwardVector();
-	FVector End = Start + Dir * 50.f;
+	FVector End = Start + Dir * 1000.f;
 	bHit = GetWorld()->LineTraceSingleByChannel(HitResult,Start,End,ECC_Visibility);
 }
 
