@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_USaveGame_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 	ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
@@ -26,6 +27,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	FARMER_API UClass* Z_Construct_UClass_UCropSeedsUserWidget_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_UInterfaceActivate_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_UInterfacePlantSeed_NoRegister();
+	FARMER_API UClass* Z_Construct_UClass_UMySaveGame_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
 	DEFINE_FUNCTION(AFarmerCharacter::execOnBeginOverlapCB)
@@ -214,6 +216,14 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_BoundingBox_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_BoundingBox;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_SaveGameInstance_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_SaveGameInstance;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_MySaveGameInstance_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_MySaveGameInstance;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
@@ -429,6 +439,26 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_BoundingBox = { "BoundingBox", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, BoundingBox), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_BoundingBox_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_BoundingBox_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SaveGameInstance_MetaData[] = {
+		{ "Category", "FarmerCharacter" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Auto Game Save Test\n" },
+#endif
+		{ "ModuleRelativePath", "FarmerCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Auto Game Save Test" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SaveGameInstance = { "SaveGameInstance", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, SaveGameInstance), Z_Construct_UClass_USaveGame_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SaveGameInstance_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SaveGameInstance_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_MySaveGameInstance_MetaData[] = {
+		{ "Category", "FarmerCharacter" },
+		{ "ModuleRelativePath", "FarmerCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_MySaveGameInstance = { "MySaveGameInstance", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, MySaveGameInstance), Z_Construct_UClass_UMySaveGame_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_MySaveGameInstance_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_MySaveGameInstance_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFarmerCharacter_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_CameraBoom,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_FollowCamera,
@@ -449,6 +479,8 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_CropsEarned_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_CropsEarned,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_BoundingBox,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SaveGameInstance,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_MySaveGameInstance,
 	};
 		const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AFarmerCharacter_Statics::InterfaceParams[] = {
 			{ Z_Construct_UClass_UInterfaceActivate_NoRegister, (int32)VTABLE_OFFSET(AFarmerCharacter, IInterfaceActivate), false },  // 511138240
@@ -493,9 +525,9 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 2370145111U) },
+		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 993896187U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_4013279697(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_1586877243(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

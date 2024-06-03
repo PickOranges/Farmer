@@ -170,6 +170,11 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\MySaveGame.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\NPCFoxAnimInstance.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -197,6 +202,7 @@
     </ClCompile>
     <ClInclude Include="..\..\Source\Farmer\Public\CropSeedsUserWidget.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\FoxAnimNotify.h"/>
+    <ClInclude Include="..\..\Source\Farmer\Public\MySaveGame.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\NPCFoxAnimInstance.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\SAICharacter.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\SAIController.h"/>

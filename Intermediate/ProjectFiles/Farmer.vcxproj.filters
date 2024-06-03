@@ -89,6 +89,9 @@
     <ClCompile Include="..\..\Source\Farmer\Private\FoxAnimNotify.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\MySaveGame.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\NPCFoxAnimInstance.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
@@ -111,6 +114,9 @@
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\FoxAnimNotify.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\MySaveGame.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\NPCFoxAnimInstance.h">

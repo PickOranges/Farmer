@@ -11,6 +11,7 @@
 #include "CropSeedsUserWidget.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
+
 #include "FarmerCharacter.generated.h"
 
 class USpringArmComponent;
@@ -18,6 +19,9 @@ class UCameraComponent;
 class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
+
+class USaveGame;
+class UMySaveGame;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
@@ -139,9 +143,12 @@ public:
 	void OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 
+public:
+	// Auto Game Save Test
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	USaveGame* SaveGameInstance;
 
-	//MyFeedDelegate FeedDelegate;
-
-	//void TriggerFeed();
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UMySaveGame* MySaveGameInstance;
 };
 

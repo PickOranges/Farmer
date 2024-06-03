@@ -3,6 +3,8 @@
 #include "FarmerGameMode.h"
 #include "FarmerCharacter.h"
 #include "UObject/ConstructorHelpers.h"
+#include "Kismet/GameplayStatics.h"
+#include "MySaveGame.h"
 
 AFarmerGameMode::AFarmerGameMode()
 {

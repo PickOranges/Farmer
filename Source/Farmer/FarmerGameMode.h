@@ -6,6 +6,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "FarmerGameMode.generated.h"
 
+class UMySaveGame;
+
 UCLASS(minimalapi)
 class AFarmerGameMode : public AGameModeBase
 {
