@@ -113,6 +113,8 @@ protected:
 	// To add mapping context
 	virtual void BeginPlay();
 
+	void EndPlay(const EEndPlayReason::Type Reason) override;
+
 
 public:
 	/** Returns CameraBoom subobject **/

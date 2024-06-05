@@ -15,6 +15,12 @@ class FARMER_API UMySaveGame : public USaveGame
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
 	TArray<int32> EarnedCrops;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
+	FVector PlayerLocation{};
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
+	FRotator PlayerRotation{};
 };

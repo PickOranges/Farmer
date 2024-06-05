@@ -92,7 +92,20 @@ void AFarmerCharacter::BeginPlay()
 
 
 	LoadGameIfExist();
-	CreateSaveGameInstance();
+	if (!MySaveGameInstance) {
+		CreateSaveGameInstance();
+	}
+}
+
+void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
+{
+	Super::EndPlay(Reason);
+
+	if (MySaveGameInstance) {
+		MySaveGameInstance->PlayerLocation = this->GetActorLocation();
+		MySaveGameInstance->PlayerRotation = this->GetActorRotation();
+	}
+	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
 }
 
 void AFarmerCharacter::Activate()
@@ -305,19 +318,25 @@ void AFarmerCharacter::LoadGameIfExist()
 	//Loading Test
 	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot1"), 0))
 	{
-		USaveGame* LoadGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot1"), 0);
-		UMySaveGame* MySaveGame = Cast<UMySaveGame>(LoadGameInstance);
-		if (MySaveGame)
+		SaveGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot1"), 0);
+		MySaveGameInstance = Cast<UMySaveGame>(SaveGameInstance);
+		if (MySaveGameInstance)
 		{
-			int length = MySaveGame->EarnedCrops.Num();
+			int length = MySaveGameInstance->EarnedCrops.Num();
 			if (CropsEarned.Num() != length) {
 				GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, "Record is invalid, thus won't load.");
 				return;
 			}
 			for (int32 i = 0; i < length; ++i) {
-				CropsEarned[i] = MySaveGame->EarnedCrops[i];
+				CropsEarned[i] = MySaveGameInstance->EarnedCrops[i];
 			}
+			
+			if (MySaveGameInstance->PlayerLocation == FVector::ZeroVector) return;
+			this->SetActorLocationAndRotation(MySaveGameInstance->PlayerLocation, MySaveGameInstance->PlayerRotation);
 		}
+	}
+	else {
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, "No old saved slots exists.");
 	}
 }
 
