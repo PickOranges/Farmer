@@ -150,5 +150,10 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UMySaveGame* MySaveGameInstance;
+
+protected:
+	void CreateSaveGameInstance();
+	void LoadGameIfExist();
+	void AutoSave(int32& index);
 };
 

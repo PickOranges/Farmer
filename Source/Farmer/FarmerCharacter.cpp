@@ -91,33 +91,8 @@ void AFarmerCharacter::BeginPlay()
 	}
 
 
-
-	// Auto Game Save Test
-	// Details of Saving in PressE()
-	SaveGameInstance = UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass());
-	if (SaveGameInstance) {
-		MySaveGameInstance = Cast<UMySaveGame>(SaveGameInstance);
-	}
-
-
-	// Auto Game Save Loading Test
-	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot1"), 0))
-	{
-		USaveGame* LoadGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot1"), 0);
-		UMySaveGame* MySaveGame = Cast<UMySaveGame>(LoadGameInstance);
-		if (MySaveGame)
-		{
-			int length = MySaveGame->EarnedCrops.Num();
-			if (CropsEarned.Num() != length) {
-				GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,"Record is invalid, thus won't load.");
-				return;
-			} 
-			for (int32 i = 0; i < length; ++i) {
-				CropsEarned[i] = MySaveGame->EarnedCrops[i];
-			}
-		}
-	}
-
+	LoadGameIfExist();
+	CreateSaveGameInstance();
 }
 
 void AFarmerCharacter::Activate()
@@ -224,22 +199,12 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			else {
 				++SeedsAmount[currentSoil->currentPlant];
 				++CropsEarned[currentSoil->currentPlant];
-				return;
+
+				AutoSave(currentSoil->currentPlant);
 			}
 		}
 
-		//// Auto Game Save Test
-		if (MySaveGameInstance) {
-			if (MySaveGameInstance->EarnedCrops.Num() == 0) {
-				GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Empty array, thus create a new array.");
-				for (int32 i = 0; i < CropsEarned.Num(); ++i) {
-					MySaveGameInstance->EarnedCrops.Add(CropsEarned[i]);
-				}
-			}
 
-			else for (int32 i = 0; i < CropsEarned.Num(); ++i) MySaveGameInstance->EarnedCrops[i] = CropsEarned[i];
-			UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
-		}
 	}
 }
 
@@ -311,3 +276,58 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 //{
 //	FeedDelegate.Execute();
 //}
+
+
+void AFarmerCharacter::CreateSaveGameInstance()
+{
+	// Auto Game Save Test
+	// Details of Saving in PressE()
+	SaveGameInstance = UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass());
+	if (SaveGameInstance) {
+		MySaveGameInstance = Cast<UMySaveGame>(SaveGameInstance);
+	}
+
+	if (MySaveGameInstance) {
+		// create & init for auto saving
+		if (MySaveGameInstance->EarnedCrops.Num() == 0) {
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Empty array, thus create a new array.");
+			for (int32 i = 0; i < CropsEarned.Num(); ++i) {
+				MySaveGameInstance->EarnedCrops.Add(CropsEarned[i]);
+			}
+		}
+	}
+
+	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
+}
+
+void AFarmerCharacter::LoadGameIfExist()
+{
+	//Loading Test
+	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot1"), 0))
+	{
+		USaveGame* LoadGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot1"), 0);
+		UMySaveGame* MySaveGame = Cast<UMySaveGame>(LoadGameInstance);
+		if (MySaveGame)
+		{
+			int length = MySaveGame->EarnedCrops.Num();
+			if (CropsEarned.Num() != length) {
+				GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, "Record is invalid, thus won't load.");
+				return;
+			}
+			for (int32 i = 0; i < length; ++i) {
+				CropsEarned[i] = MySaveGame->EarnedCrops[i];
+			}
+		}
+	}
+}
+
+void AFarmerCharacter::AutoSave(int32& index)
+{						
+	if (MySaveGameInstance) {
+		/*int32& idx = currentSoil->currentPlant;*/
+		MySaveGameInstance->EarnedCrops[index] = CropsEarned[index];
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Auto saving successfully.");
+	}
+	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
+}
+
