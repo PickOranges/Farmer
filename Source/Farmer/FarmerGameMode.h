@@ -15,6 +15,9 @@ class AFarmerGameMode : public AGameModeBase
 
 public:
 	AFarmerGameMode();
+
+	void SaveGame();
+	void LoadGame();
 };
 
 
