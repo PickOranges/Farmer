@@ -95,6 +95,9 @@
     <ClCompile Include="..\..\Source\Farmer\Private\NPCFoxAnimInstance.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\Plant.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\SAICharacter.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
@@ -120,6 +123,9 @@
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\NPCFoxAnimInstance.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\Plant.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\SAICharacter.h">
