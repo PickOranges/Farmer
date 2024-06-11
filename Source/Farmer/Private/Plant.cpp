@@ -54,6 +54,18 @@ void APlant::GrowPlant()
 
 void APlant::ChangeGrowMesh()
 {
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Yellow,"Successfully set the TimerHandle inside GrowPlant()");
+	if (GrowMeshes.Num() > 0 && PlantMesh) {
+		GrowStage = (GrowStage + 1) % GrowMeshes.Num();
+		PlantMesh->SetStaticMesh(GrowMeshes[GrowStage]);
+		PlantMesh->SetRelativeScale3D(FVector{ 0.7,0.7,0.7 });
+		PlantMesh->SetRelativeLocation(FVector{ 0,0,12 });
+	}
+	if (GrowStage == GrowMeshes.Num() - 1) {
+		Text3D->SetText(FText::FromString(FString("")));
+
+		GetWorld()->GetTimerManager().ClearTimer(PlantGrowTimerHandle);
+		GrowStage = 0;
+	}
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Successfully set the TimerHandle inside GrowPlant()");
 }
 
