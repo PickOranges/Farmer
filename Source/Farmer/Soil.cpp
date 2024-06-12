@@ -62,9 +62,9 @@ ASoil::ASoil()
 	if (EarnedEggplant.Succeeded()) EarnedMeshes.Emplace(EarnedEggplant.Object);
 	if (EarnedCarrot.Succeeded()) EarnedMeshes.Emplace(EarnedCarrot.Object);
 
-	MeshMap.Emplace("Potato", PotatoMeshes);
-	MeshMap.Emplace("Eggplant", EggplantMeshes);
-	MeshMap.Emplace("Carrot", CarrotMeshes);
+	MeshMap.Emplace(EPlants::Potato, PotatoMeshes);
+	MeshMap.Emplace(EPlants::Eggplant, EggplantMeshes);
+	MeshMap.Emplace(EPlants::Carrot, CarrotMeshes);
 }
 
 void ASoil::BeginPlay()
@@ -95,27 +95,7 @@ void ASoil::PlantSeed()
 	if (!bIsPlanted) {
 		AFarmerCharacter* myCharacter = Cast<AFarmerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 		if (myCharacter) {
-			switch (myCharacter->Seeds)
-			{
-			default:
-				break;
-			break;
-			case 0:
-			{
-				GrowCrop(MeshMap["Potato"], FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
-			}
-			break;
-			case 1:
-			{
-				GrowCrop(MeshMap["Eggplant"], FVector(0.7, 0.7, 0.7), FVector(0, 0, 10));
-			}
-			break;
-			case 2:
-			{
-				GrowCrop(MeshMap["Carrot"], FVector::OneVector, FVector(0, 0, 12));
-			}
-			break;
-			}
+			GrowCrop(MeshMap[static_cast<EPlants>(myCharacter->Seeds)], FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
 		}
 		
 		bIsPlanted = true;

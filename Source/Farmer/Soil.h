@@ -11,6 +11,14 @@
 #include "FarmerCharacter.h"
 #include "Soil.generated.h"
 
+UENUM(BlueprintType)
+enum class EPlants : uint8 {
+	Potato UMETA(DisplayName = "Potato"),
+	Eggplant UMETA(DisplayName = "Eggplant"),
+	Carrot UMETA(DisplayName = "Carrot"),
+};
+
+
 UCLASS()
 class FARMER_API ASoil : public AActor, public IInterfaceActivate, public IInterfacePlantSeed
 {
@@ -41,7 +49,7 @@ public:
 
 public:
 	TArray<UStaticMesh*> PotatoMeshes, EggplantMeshes, CarrotMeshes, EarnedMeshes;
-	TMap<FName, TArray<UStaticMesh*>> MeshMap;
+	TMap<EPlants, TArray<UStaticMesh*>> MeshMap;
 	FTimerHandle MeshChangeTimerHandle;
 	int32 RemainTime{};
 	int32 GrowStage{};

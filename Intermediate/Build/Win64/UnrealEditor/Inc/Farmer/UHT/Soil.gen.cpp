@@ -17,9 +17,68 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 	FARMER_API UClass* Z_Construct_UClass_ASoil_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_UInterfaceActivate_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_UInterfacePlantSeed_NoRegister();
+	FARMER_API UEnum* Z_Construct_UEnum_Farmer_EPlants();
 	TEXT3D_API UClass* Z_Construct_UClass_UText3DComponent_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
+	static FEnumRegistrationInfo Z_Registration_Info_UEnum_EPlants;
+	static UEnum* EPlants_StaticEnum()
+	{
+		if (!Z_Registration_Info_UEnum_EPlants.OuterSingleton)
+		{
+			Z_Registration_Info_UEnum_EPlants.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_Farmer_EPlants, (UObject*)Z_Construct_UPackage__Script_Farmer(), TEXT("EPlants"));
+		}
+		return Z_Registration_Info_UEnum_EPlants.OuterSingleton;
+	}
+	template<> FARMER_API UEnum* StaticEnum<EPlants>()
+	{
+		return EPlants_StaticEnum();
+	}
+	struct Z_Construct_UEnum_Farmer_EPlants_Statics
+	{
+		static const UECodeGen_Private::FEnumeratorParam Enumerators[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FEnumParams EnumParams;
+	};
+	const UECodeGen_Private::FEnumeratorParam Z_Construct_UEnum_Farmer_EPlants_Statics::Enumerators[] = {
+		{ "EPlants::Potato", (int64)EPlants::Potato },
+		{ "EPlants::Eggplant", (int64)EPlants::Eggplant },
+		{ "EPlants::Carrot", (int64)EPlants::Carrot },
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UEnum_Farmer_EPlants_Statics::Enum_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "Carrot.DisplayName", "Carrot" },
+		{ "Carrot.Name", "EPlants::Carrot" },
+		{ "Eggplant.DisplayName", "Eggplant" },
+		{ "Eggplant.Name", "EPlants::Eggplant" },
+		{ "ModuleRelativePath", "Soil.h" },
+		{ "Potato.DisplayName", "Potato" },
+		{ "Potato.Name", "EPlants::Potato" },
+	};
+#endif
+	const UECodeGen_Private::FEnumParams Z_Construct_UEnum_Farmer_EPlants_Statics::EnumParams = {
+		(UObject*(*)())Z_Construct_UPackage__Script_Farmer,
+		nullptr,
+		"EPlants",
+		"EPlants",
+		Z_Construct_UEnum_Farmer_EPlants_Statics::Enumerators,
+		RF_Public|RF_Transient|RF_MarkAsNative,
+		UE_ARRAY_COUNT(Z_Construct_UEnum_Farmer_EPlants_Statics::Enumerators),
+		EEnumFlags::None,
+		(uint8)UEnum::ECppForm::EnumClass,
+		METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UEnum_Farmer_EPlants_Statics::Enum_MetaDataParams), Z_Construct_UEnum_Farmer_EPlants_Statics::Enum_MetaDataParams)
+	};
+	UEnum* Z_Construct_UEnum_Farmer_EPlants()
+	{
+		if (!Z_Registration_Info_UEnum_EPlants.InnerSingleton)
+		{
+			UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_EPlants.InnerSingleton, Z_Construct_UEnum_Farmer_EPlants_Statics::EnumParams);
+		}
+		return Z_Registration_Info_UEnum_EPlants.InnerSingleton;
+	}
 	DEFINE_FUNCTION(ASoil::execChangeMesh)
 	{
 		P_GET_TARRAY_REF(UStaticMesh*,Z_Param_Out_Meshes);
@@ -253,13 +312,17 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 	ASoil::~ASoil() {}
 	struct Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics
 	{
+		static const FEnumRegisterCompiledInInfo EnumInfo[];
 		static const FClassRegisterCompiledInInfo ClassInfo[];
+	};
+	const FEnumRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::EnumInfo[] = {
+		{ EPlants_StaticEnum, TEXT("EPlants"), &Z_Registration_Info_UEnum_EPlants, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3204520817U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo[] = {
 		{ Z_Construct_UClass_ASoil, ASoil::StaticClass, TEXT("ASoil"), &Z_Registration_Info_UClass_ASoil, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASoil), 4083371241U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_4097609140(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_2759817316(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo),
 		nullptr, 0,
-		nullptr, 0);
+		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::EnumInfo));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

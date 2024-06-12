@@ -15,17 +15,17 @@ class UStaticMesh;
 #endif
 #define FARMER_Soil_generated_h
 
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_SPARSE_DATA
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_SPARSE_DATA_PROPERTY_ACCESSORS
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_SPARSE_DATA
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_SPARSE_DATA_PROPERTY_ACCESSORS
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execChangeMesh); \
 	DECLARE_FUNCTION(execGrowCrop);
 
 
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_ACCESSORS
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_INCLASS_NO_PURE_DECLS \
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_ACCESSORS
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesASoil(); \
 	friend struct Z_Construct_UClass_ASoil_Statics; \
@@ -35,7 +35,7 @@ public: \
 	virtual UObject* _getUObject() const override { return const_cast<ASoil*>(this); }
 
 
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_ENHANCED_CONSTRUCTORS \
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API ASoil(ASoil&&); \
@@ -47,17 +47,17 @@ public: \
 	NO_API virtual ~ASoil();
 
 
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_14_PROLOG
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_GENERATED_BODY \
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_22_PROLOG
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_SPARSE_DATA \
-	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_SPARSE_DATA_PROPERTY_ACCESSORS \
-	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS \
-	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_ACCESSORS \
-	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_INCLASS_NO_PURE_DECLS \
-	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_ENHANCED_CONSTRUCTORS \
+	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_SPARSE_DATA \
+	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_SPARSE_DATA_PROPERTY_ACCESSORS \
+	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS \
+	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_ACCESSORS \
+	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_INCLASS_NO_PURE_DECLS \
+	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -67,5 +67,14 @@ template<> FARMER_API UClass* StaticClass<class ASoil>();
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h
 
+
+#define FOREACH_ENUM_EPLANTS(op) \
+	op(EPlants::Potato) \
+	op(EPlants::Eggplant) \
+	op(EPlants::Carrot) 
+
+enum class EPlants : uint8;
+template<> struct TIsUEnumClass<EPlants> { enum { Value = true }; };
+template<> FARMER_API UEnum* StaticEnum<EPlants>();
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
