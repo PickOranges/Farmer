@@ -8,9 +8,16 @@
 
 
 USTRUCT(BlueprintType)
-struct FPlantData
+struct FSoilData
 {
     GENERATED_BODY()
+
+	// Soil SCM info
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+	FTransform SoilTF;
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+	FString SoilMeshPath;
+
 
 	// Plant SCM info
 	UPROPERTY(VisibleAnywhere, Category = "SoilData")
@@ -23,18 +30,20 @@ struct FPlantData
 	UPROPERTY(VisibleAnywhere, Category = "SoilData")
 	int32 CurrentPlant{ -1 };
 
+
 	// Text3D info
 	UPROPERTY(VisibleAnywhere, Category = "SoilData")
-	FString Text3DContent;
+	FText Text3DContent;
 	UPROPERTY(VisibleAnywhere, Category = "SoilData")
 	FTransform Text3DTF;
-	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+
 
 	// Timer info
-	int32 RemainTime{};
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+	float RemainTime{};
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
 	float TimeDuration{ 6.0 };
 };
-
 
 
 
@@ -44,6 +53,7 @@ class FARMER_API UMySaveGame : public USaveGame
 	GENERATED_BODY()
 	
 public:
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
 	TArray<int32> EarnedCrops;
 
@@ -52,4 +62,6 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
 	FRotator PlayerRotation{};
+
+	TArray<FSoilData> SoilAndPlants;
 };
