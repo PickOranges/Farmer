@@ -199,9 +199,10 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			currentSoil->bIsPlanted = false;
 			currentSoil->plantMesh->SetStaticMesh(nullptr);
 
-			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle1);
-			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle2);
-			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle3);
+			//GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle1);
+			//GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle2);
+			//GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle3);
+			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle);
 
 			if (!currentSoil->text3D->GetText().IsEmpty()) {
 				currentSoil->text3D->SetText(FText::FromString(FString("")));

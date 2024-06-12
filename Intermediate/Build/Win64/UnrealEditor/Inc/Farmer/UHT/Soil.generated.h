@@ -9,6 +9,8 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UStaticMesh;
+struct FTimerHandle;
 #ifdef FARMER_Soil_generated_h
 #error "Soil.generated.h already included, missing '#pragma once' in Soil.h"
 #endif
@@ -17,7 +19,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_SPARSE_DATA
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_RPC_WRAPPERS_NO_PURE_DECLS
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execChangeMesh);
+
+
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_17_INCLASS_NO_PURE_DECLS \
 private: \

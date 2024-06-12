@@ -40,19 +40,24 @@ public:
 public:
 	FTimerHandle MeshChangeTimerHandle1, MeshChangeTimerHandle2, MeshChangeTimerHandle3;
 
+	FTimerHandle MeshChangeTimerHandle;
+
 	bool bIsPlanted;
 	void PlantSeed() override;
 	void Activate() override;
 
-	// TODO: put into separated classes
-	void GrowPotato();
-	void GrowEggplant();
-	void GrowCarrot();
 
 	// CB for Timer & Change plants meshes
 	void ChangePotatoMesh();
 	void ChangeEggplantMesh();
 	void ChangeCarrotMesh();
+
+	// test
+	
+	void GrowCrop(TArray<UStaticMesh*>& Meshes, FTimerHandle& TimerHandle, int32& MeshIdx, FVector Scale, FVector Location);
+
+	UFUNCTION(BlueprintCallable)
+	void ChangeMesh(TArray<UStaticMesh*>& Meshes, FTimerHandle& Handle, int32& MeshIdx, FVector Scale, FVector Location);
 
 	TArray<UStaticMesh*> potatoMeshes, eggplantMeshes, carrotMeshes, EarnedMeshes;
 	int32 potatoIdx{}, eggplantIdx{}, carrotIdx{};
@@ -60,4 +65,5 @@ public:
 	int32 remainTime{};
 
 	int32 currentPlant{-1};
+
 };
