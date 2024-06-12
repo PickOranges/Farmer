@@ -96,10 +96,9 @@ void ASoil::PlantSeed()
 		AFarmerCharacter* myCharacter = Cast<AFarmerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 		if (myCharacter) {
 			GrowCrop(MeshMap[static_cast<EPlants>(myCharacter->Seeds)], FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
-		}
-		
-		bIsPlanted = true;
-		CurrentPlant = myCharacter->Seeds;
+			CurrentPlant = myCharacter->Seeds;
+			bIsPlanted = true;
+		}		
 	}
 }
 
