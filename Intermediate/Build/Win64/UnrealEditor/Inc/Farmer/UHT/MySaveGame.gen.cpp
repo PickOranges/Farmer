@@ -72,7 +72,7 @@ template<> FARMER_API UScriptStruct* StaticStruct<FSoilData>()
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_RemainTime_MetaData[];
 #endif
-		static const UECodeGen_Private::FIntPropertyParams NewProp_RemainTime;
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_RemainTime;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_TimeDuration_MetaData[];
 #endif
@@ -176,7 +176,7 @@ template<> FARMER_API UScriptStruct* StaticStruct<FSoilData>()
 #endif
 	};
 #endif
-	const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_RemainTime = { "RemainTime", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSoilData, RemainTime), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_RemainTime_MetaData), Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_RemainTime_MetaData) };
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_RemainTime = { "RemainTime", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSoilData, RemainTime), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_RemainTime_MetaData), Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_RemainTime_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_TimeDuration_MetaData[] = {
 		{ "Category", "SoilData" },
@@ -328,12 +328,12 @@ template<> FARMER_API UScriptStruct* StaticStruct<FSoilData>()
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FStructRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ScriptStructInfo[] = {
-		{ FSoilData::StaticStruct, Z_Construct_UScriptStruct_FSoilData_Statics::NewStructOps, TEXT("SoilData"), &Z_Registration_Info_UScriptStruct_SoilData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FSoilData), 3337929799U) },
+		{ FSoilData::StaticStruct, Z_Construct_UScriptStruct_FSoilData_Statics::NewStructOps, TEXT("SoilData"), &Z_Registration_Info_UScriptStruct_SoilData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FSoilData), 4018423390U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ClassInfo[] = {
 		{ Z_Construct_UClass_UMySaveGame, UMySaveGame::StaticClass, TEXT("UMySaveGame"), &Z_Registration_Info_UClass_UMySaveGame, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMySaveGame), 1534673461U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_274323617(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_4044289615(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ClassInfo),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ScriptStructInfo),
 		nullptr, 0);
