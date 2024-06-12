@@ -38,32 +38,26 @@ public:
 	class UText3DComponent* text3D;	
 
 public:
-	FTimerHandle MeshChangeTimerHandle1, MeshChangeTimerHandle2, MeshChangeTimerHandle3;
-
-	FTimerHandle MeshChangeTimerHandle;
-
-	bool bIsPlanted;
-	void PlantSeed() override;
+	// TODO: clear them later
+	void PlantSeed() override;  
 	void Activate() override;
 
-
-	// CB for Timer & Change plants meshes
-	void ChangePotatoMesh();
-	void ChangeEggplantMesh();
-	void ChangeCarrotMesh();
-
-	// test
-	
-	void GrowCrop(TArray<UStaticMesh*>& Meshes, FTimerHandle& TimerHandle, int32& MeshIdx, FVector Scale, FVector Location);
+public:
+	TArray<UStaticMesh*> potatoMeshes, eggplantMeshes, carrotMeshes, EarnedMeshes;
+	FTimerHandle MeshChangeTimerHandle;
+	bool bIsPlanted;
 
 	UFUNCTION(BlueprintCallable)
-	void ChangeMesh(TArray<UStaticMesh*>& Meshes, FTimerHandle& Handle, int32& MeshIdx, FVector Scale, FVector Location);
+	void GrowCrop(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Location);
 
-	TArray<UStaticMesh*> potatoMeshes, eggplantMeshes, carrotMeshes, EarnedMeshes;
-	int32 potatoIdx{}, eggplantIdx{}, carrotIdx{};
+	UFUNCTION(BlueprintCallable)
+	void ChangeMesh(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Location);
 
-	int32 remainTime{};
+
+	int32 RemainTime{};
 
 	int32 currentPlant{-1};
+
+	int32 GrowStage{};
 
 };

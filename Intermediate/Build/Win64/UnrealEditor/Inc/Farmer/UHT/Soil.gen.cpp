@@ -6,7 +6,6 @@
 
 #include "UObject/GeneratedCppIncludes.h"
 #include "Farmer/Soil.h"
-#include "../../Source/Runtime/Engine/Classes/Engine/TimerHandle.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeSoil() {}
 // Cross Module References
@@ -14,7 +13,6 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMesh_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
-	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 	FARMER_API UClass* Z_Construct_UClass_ASoil();
 	FARMER_API UClass* Z_Construct_UClass_ASoil_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_UInterfaceActivate_NoRegister();
@@ -25,13 +23,21 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 	DEFINE_FUNCTION(ASoil::execChangeMesh)
 	{
 		P_GET_TARRAY_REF(UStaticMesh*,Z_Param_Out_Meshes);
-		P_GET_STRUCT_REF(FTimerHandle,Z_Param_Out_Handle);
-		P_GET_PROPERTY_REF(FIntProperty,Z_Param_Out_MeshIdx);
 		P_GET_STRUCT(FVector,Z_Param_Scale);
 		P_GET_STRUCT(FVector,Z_Param_Location);
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		P_THIS->ChangeMesh(Z_Param_Out_Meshes,Z_Param_Out_Handle,Z_Param_Out_MeshIdx,Z_Param_Scale,Z_Param_Location);
+		P_THIS->ChangeMesh(Z_Param_Out_Meshes,Z_Param_Scale,Z_Param_Location);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ASoil::execGrowCrop)
+	{
+		P_GET_TARRAY_REF(UStaticMesh*,Z_Param_Out_Meshes);
+		P_GET_STRUCT(FVector,Z_Param_Scale);
+		P_GET_STRUCT(FVector,Z_Param_Location);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->GrowCrop(Z_Param_Out_Meshes,Z_Param_Scale,Z_Param_Location);
 		P_NATIVE_END;
 	}
 	void ASoil::StaticRegisterNativesASoil()
@@ -39,6 +45,7 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		UClass* Class = ASoil::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
 			{ "ChangeMesh", &ASoil::execChangeMesh },
+			{ "GrowCrop", &ASoil::execGrowCrop },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -47,15 +54,11 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		struct Soil_eventChangeMesh_Parms
 		{
 			TArray<UStaticMesh*> Meshes;
-			FTimerHandle Handle;
-			int32 MeshIdx;
 			FVector Scale;
 			FVector Location;
 		};
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Meshes_Inner;
 		static const UECodeGen_Private::FArrayPropertyParams NewProp_Meshes;
-		static const UECodeGen_Private::FStructPropertyParams NewProp_Handle;
-		static const UECodeGen_Private::FIntPropertyParams NewProp_MeshIdx;
 		static const UECodeGen_Private::FStructPropertyParams NewProp_Scale;
 		static const UECodeGen_Private::FStructPropertyParams NewProp_Location;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
@@ -66,15 +69,11 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 	};
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_Meshes_Inner = { "Meshes", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(0, nullptr) };
 	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_Meshes = { "Meshes", nullptr, (EPropertyFlags)0x0010000000000180, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Soil_eventChangeMesh_Parms, Meshes), EArrayPropertyFlags::None, METADATA_PARAMS(0, nullptr) };
-	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_Handle = { "Handle", nullptr, (EPropertyFlags)0x0010000000000180, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Soil_eventChangeMesh_Parms, Handle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(0, nullptr) }; // 3999327403
-	const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_MeshIdx = { "MeshIdx", nullptr, (EPropertyFlags)0x0010000000000180, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Soil_eventChangeMesh_Parms, MeshIdx), METADATA_PARAMS(0, nullptr) };
 	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_Scale = { "Scale", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Soil_eventChangeMesh_Parms, Scale), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
 	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_Location = { "Location", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Soil_eventChangeMesh_Parms, Location), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ASoil_ChangeMesh_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_Meshes_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_Meshes,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_Handle,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_MeshIdx,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_Scale,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASoil_ChangeMesh_Statics::NewProp_Location,
 	};
@@ -92,6 +91,51 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ASoil_ChangeMesh_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ASoil_GrowCrop_Statics
+	{
+		struct Soil_eventGrowCrop_Parms
+		{
+			TArray<UStaticMesh*> Meshes;
+			FVector Scale;
+			FVector Location;
+		};
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_Meshes_Inner;
+		static const UECodeGen_Private::FArrayPropertyParams NewProp_Meshes;
+		static const UECodeGen_Private::FStructPropertyParams NewProp_Scale;
+		static const UECodeGen_Private::FStructPropertyParams NewProp_Location;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ASoil_GrowCrop_Statics::NewProp_Meshes_Inner = { "Meshes", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_ASoil_GrowCrop_Statics::NewProp_Meshes = { "Meshes", nullptr, (EPropertyFlags)0x0010000000000180, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Soil_eventGrowCrop_Parms, Meshes), EArrayPropertyFlags::None, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ASoil_GrowCrop_Statics::NewProp_Scale = { "Scale", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Soil_eventGrowCrop_Parms, Scale), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ASoil_GrowCrop_Statics::NewProp_Location = { "Location", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Soil_eventGrowCrop_Parms, Location), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ASoil_GrowCrop_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASoil_GrowCrop_Statics::NewProp_Meshes_Inner,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASoil_GrowCrop_Statics::NewProp_Meshes,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASoil_GrowCrop_Statics::NewProp_Scale,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ASoil_GrowCrop_Statics::NewProp_Location,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ASoil_GrowCrop_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Soil.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ASoil_GrowCrop_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ASoil, nullptr, "GrowCrop", nullptr, nullptr, Z_Construct_UFunction_ASoil_GrowCrop_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ASoil_GrowCrop_Statics::PropPointers), sizeof(Z_Construct_UFunction_ASoil_GrowCrop_Statics::Soil_eventGrowCrop_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04C20401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ASoil_GrowCrop_Statics::Function_MetaDataParams), Z_Construct_UFunction_ASoil_GrowCrop_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ASoil_GrowCrop_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_ASoil_GrowCrop_Statics::Soil_eventGrowCrop_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ASoil_GrowCrop()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ASoil_GrowCrop_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -130,7 +174,8 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ASoil_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_ASoil_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_ASoil_ChangeMesh, "ChangeMesh" }, // 1449076190
+		{ &Z_Construct_UFunction_ASoil_ChangeMesh, "ChangeMesh" }, // 1891223476
+		{ &Z_Construct_UFunction_ASoil_GrowCrop, "GrowCrop" }, // 591632250
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ASoil_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -211,9 +256,9 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ASoil, ASoil::StaticClass, TEXT("ASoil"), &Z_Registration_Info_UClass_ASoil, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASoil), 96741359U) },
+		{ Z_Construct_UClass_ASoil, ASoil::StaticClass, TEXT("ASoil"), &Z_Registration_Info_UClass_ASoil, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASoil), 4083371241U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_3420572199(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_4097609140(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

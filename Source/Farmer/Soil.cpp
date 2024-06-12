@@ -78,21 +78,11 @@ void ASoil::Activate()
 void ASoil::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	//if (MeshChangeTimerHandle1.IsValid()) {
-	//	remainTime = GetWorld()->GetTimerManager().GetTimerRemaining(MeshChangeTimerHandle1);
-	//	text3D->SetText(FText::FromString(FString::FromInt((int32)remainTime)));
-	//}
-	//else if (MeshChangeTimerHandle2.IsValid()) {
-	//	remainTime = GetWorld()->GetTimerManager().GetTimerRemaining(MeshChangeTimerHandle2);
-	//	text3D->SetText(FText::FromString(FString::FromInt((int32)remainTime)));
-	//}
-	//else if (MeshChangeTimerHandle3.IsValid()) {
-	//	remainTime = GetWorld()->GetTimerManager().GetTimerRemaining(MeshChangeTimerHandle3);
-	//	text3D->SetText(FText::FromString(FString::FromInt((int32)remainTime)));
-	//}
+
+
 	if (MeshChangeTimerHandle.IsValid()) {
-		remainTime = GetWorld()->GetTimerManager().GetTimerRemaining(MeshChangeTimerHandle);
-		text3D->SetText(FText::FromString(FString::FromInt((int32)remainTime)));
+		RemainTime = GetWorld()->GetTimerManager().GetTimerRemaining(MeshChangeTimerHandle);
+		text3D->SetText(FText::FromString(FString::FromInt((int32)RemainTime)));
 	}
 	else {
 		text3D->SetText(FText::FromString(FString("")));
@@ -111,23 +101,19 @@ void ASoil::PlantSeed()
 			break;
 			case 0:
 			{
-				GrowCrop(potatoMeshes, MeshChangeTimerHandle,potatoIdx,FVector(0.7,0.7,0.7),FVector(0,0,12));
+				GrowCrop(potatoMeshes, FVector(0.7,0.7,0.7), FVector(0,0,12));
 				currentPlant = myCharacter->Seeds;
 			}
 			break;
 			case 1:
 			{
-				//GrowEggplant();
-				GrowCrop(eggplantMeshes, MeshChangeTimerHandle, eggplantIdx, FVector(0.7, 0.7, 0.7), FVector(0, 0, 10));
-
+				GrowCrop(eggplantMeshes, FVector(0.7, 0.7, 0.7), FVector(0,0,10));
 				currentPlant = myCharacter->Seeds;
 			}
 			break;
 			case 2:
 			{
-				//GrowCarrot();
-				GrowCrop(carrotMeshes, MeshChangeTimerHandle, carrotIdx, FVector::OneVector, FVector(0, 0, 12));
-
+				GrowCrop(carrotMeshes, FVector::OneVector, FVector(0,0,12));
 				currentPlant = myCharacter->Seeds;
 			}
 			break;
@@ -136,65 +122,9 @@ void ASoil::PlantSeed()
 		
 		bIsPlanted = true;
 	}
-	else {
-		
-	}
 }
 
-
-
-
-void ASoil::ChangePotatoMesh()
-{
-	if (potatoMeshes.Num() > 0 && plantMesh) {
-		potatoIdx = (potatoIdx+1) % potatoMeshes.Num();		
-		plantMesh->SetStaticMesh(potatoMeshes[potatoIdx]);
-		plantMesh->SetRelativeScale3D(FVector{0.7,0.7,0.7});
-		plantMesh->SetRelativeLocation(FVector{ 0,0,12 });
-	}
-	if (potatoIdx == potatoMeshes.Num()-1) {
-		text3D->SetText(FText::FromString(FString("")));
-
-		GetWorld()->GetTimerManager().ClearTimer(MeshChangeTimerHandle1);
-		potatoIdx = 0;
-	}
-}
-
-void ASoil::ChangeEggplantMesh()
-{
-	if (eggplantMeshes.Num() > 0 && plantMesh) {
-		eggplantIdx = (eggplantIdx+1) % eggplantMeshes.Num();
-		plantMesh->SetStaticMesh(eggplantMeshes[eggplantIdx]);
-		plantMesh->SetRelativeScale3D(FVector{ 0.4,0.4,0.4 });
-	}
-	if (eggplantIdx == eggplantMeshes.Num() - 1) {
-		text3D->SetText(FText::FromString(FString("")));
-
-		GetWorld()->GetTimerManager().ClearTimer(MeshChangeTimerHandle2);
-		eggplantIdx = 0;
-	}
-}
-
-void ASoil::ChangeCarrotMesh()
-{
-	if (carrotMeshes.Num() > 0 && plantMesh) {
-		carrotIdx = (carrotIdx+1) % carrotMeshes.Num();
-		plantMesh->SetStaticMesh(carrotMeshes[carrotIdx]);
-		plantMesh->SetRelativeScale3D(FVector{ 1,1,1 });
-		plantMesh->SetRelativeLocation(FVector{ 0.0,0.0,12 });
-	}
-	if (carrotIdx == carrotMeshes.Num() - 1) {
-		text3D->SetText(FText::FromString(FString("")));
-
-		GetWorld()->GetTimerManager().ClearTimer(MeshChangeTimerHandle3);
-		carrotIdx = 0;
-	}
-}
-
-
-
-
-void ASoil::GrowCrop(TArray<UStaticMesh*>& Meshes, FTimerHandle& TimerHandle, int32& MeshIdx, FVector Scale, FVector Location)
+void ASoil::GrowCrop(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Location)
 {
 	if (Meshes.Num() > 0) {
 		plantMesh->SetStaticMesh(Meshes[0]);
@@ -203,23 +133,23 @@ void ASoil::GrowCrop(TArray<UStaticMesh*>& Meshes, FTimerHandle& TimerHandle, in
 	}
 
 	FTimerDelegate TimerDelegate;
-	TimerDelegate.BindUFunction(this, FName("ChangeMesh"), Meshes, TimerHandle, MeshIdx, Scale, Location);
+	TimerDelegate.BindUFunction(this, FName("ChangeMesh"), Meshes, Scale, Location);
 	
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 6.0f, true);
+	GetWorld()->GetTimerManager().SetTimer(MeshChangeTimerHandle, TimerDelegate, 6.0f, true);
 }
 
-void ASoil::ChangeMesh(TArray<UStaticMesh*>& Meshes, FTimerHandle& Handle, int32& MeshIdx, FVector Scale, FVector Location)
+void ASoil::ChangeMesh(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Location)
 {
 	if (Meshes.Num() > 0 && plantMesh) {
-		MeshIdx = (MeshIdx + 1) % Meshes.Num();
-		plantMesh->SetStaticMesh(Meshes[MeshIdx]);
+		GrowStage = (GrowStage + 1) % Meshes.Num();
+		plantMesh->SetStaticMesh(Meshes[GrowStage]);
 		plantMesh->SetRelativeScale3D(Scale);
 		plantMesh->SetRelativeLocation(Location);
 	}
-	if (MeshIdx == Meshes.Num() - 1) {
+	if (GrowStage == Meshes.Num() - 1) {
 		text3D->SetText(FText::FromString(FString("")));
 
-		GetWorld()->GetTimerManager().ClearTimer(Handle);
-		MeshIdx = 0;
+		GetWorld()->GetTimerManager().ClearTimer(MeshChangeTimerHandle);
+		GrowStage = 0;
 	}
 }

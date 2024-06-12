@@ -21,69 +21,69 @@ AFarmerGameMode::AFarmerGameMode()
 	}
 }
 
-void AFarmerGameMode::SaveGame()
-{
-    UMySaveGame* SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass()));
-    if (!SaveGameInstance) return;
-
-    // Iterate over all actors in the world
-    for (TActorIterator<AActor> ActorItr(GetWorld()); ActorItr; ++ActorItr)
-    {
-        AActor* Actor = *ActorItr;
-
-        // Only save actors that you are interested in
-        if (Actor && Actor->IsA(AActor::StaticClass()))
-        {
-            FActorSaveData ActorData;
-            ActorData.ActorName = Actor->GetName();
-            ActorData.ActorLocation = Actor->GetActorLocation();
-            ActorData.ActorRotation = Actor->GetActorRotation();
-
-            // Save attached meshes
-            TArray<UStaticMeshComponent*> MeshComponents;
-            Actor->GetComponents<UStaticMeshComponent>(MeshComponents);
-            for (UStaticMeshComponent* MeshComponent : MeshComponents)
-            {
-                FMeshSaveData MeshData;
-                MeshData.MeshName = MeshComponent->GetName();
-                MeshData.MeshLocation = MeshComponent->GetRelativeLocation();
-                MeshData.MeshRotation = MeshComponent->GetRelativeRotation();
-                ActorData.AttachedMeshes.Add(MeshData);
-            }
-
-            
-
-            // Save timer information (example: saving remaining time)
-            // TODO: add other timer information, i.e. index of plant mesh array.
-            ASoil* CurrentSoil = Cast<ASoil>(Actor);
-            if (!CurrentSoil) return;  // This is NOT a soil class, thus no need to save plant mesh timer.
-            // TODO: optimize soil class!!! More plants could lead to more timerhandle!!!
-            FTimerHandle TimerHandle = CurrentSoil->MeshChangeTimerHandle1;  
-            float TimerRemaining = 0.0f;
-            if (GetWorldTimerManager().IsTimerActive(TimerHandle))
-            {
-                TimerRemaining = GetWorldTimerManager().GetTimerRemaining(TimerHandle);
-            }            
-            else if(GetWorldTimerManager().IsTimerActive(CurrentSoil->MeshChangeTimerHandle2)) {
-                TimerRemaining = GetWorldTimerManager().GetTimerRemaining(CurrentSoil->MeshChangeTimerHandle2);
-            }
-            else if(GetWorldTimerManager().IsTimerActive(CurrentSoil->MeshChangeTimerHandle3)){
-                TimerRemaining = GetWorldTimerManager().GetTimerRemaining(CurrentSoil->MeshChangeTimerHandle3);
-            }
-            else {
-                return;
-            }
-
-            ActorData.TimerRemaining = TimerRemaining;
-
-
-            // Add additional data to save here
-            SaveGameInstance->SavedActors.Add(ActorData);
-        }
-    }
-
-    UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("PlayerSaveSlot"), 0);
-}
+//void AFarmerGameMode::SaveGame()
+//{
+//    UMySaveGame* SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass()));
+//    if (!SaveGameInstance) return;
+//
+//    // Iterate over all actors in the world
+//    for (TActorIterator<AActor> ActorItr(GetWorld()); ActorItr; ++ActorItr)
+//    {
+//        AActor* Actor = *ActorItr;
+//
+//        // Only save actors that you are interested in
+//        if (Actor && Actor->IsA(AActor::StaticClass()))
+//        {
+//            FActorSaveData ActorData;
+//            ActorData.ActorName = Actor->GetName();
+//            ActorData.ActorLocation = Actor->GetActorLocation();
+//            ActorData.ActorRotation = Actor->GetActorRotation();
+//
+//            // Save attached meshes
+//            TArray<UStaticMeshComponent*> MeshComponents;
+//            Actor->GetComponents<UStaticMeshComponent>(MeshComponents);
+//            for (UStaticMeshComponent* MeshComponent : MeshComponents)
+//            {
+//                FMeshSaveData MeshData;
+//                MeshData.MeshName = MeshComponent->GetName();
+//                MeshData.MeshLocation = MeshComponent->GetRelativeLocation();
+//                MeshData.MeshRotation = MeshComponent->GetRelativeRotation();
+//                ActorData.AttachedMeshes.Add(MeshData);
+//            }
+//
+//            
+//
+//            // Save timer information (example: saving remaining time)
+//            // TODO: add other timer information, i.e. index of plant mesh array.
+//            ASoil* CurrentSoil = Cast<ASoil>(Actor);
+//            if (!CurrentSoil) return;  // This is NOT a soil class, thus no need to save plant mesh timer.
+//            // TODO: optimize soil class!!! More plants could lead to more timerhandle!!!
+//            FTimerHandle TimerHandle = CurrentSoil->MeshChangeTimerHandle1;  
+//            float TimerRemaining = 0.0f;
+//            if (GetWorldTimerManager().IsTimerActive(TimerHandle))
+//            {
+//                TimerRemaining = GetWorldTimerManager().GetTimerRemaining(TimerHandle);
+//            }            
+//            else if(GetWorldTimerManager().IsTimerActive(CurrentSoil->MeshChangeTimerHandle2)) {
+//                TimerRemaining = GetWorldTimerManager().GetTimerRemaining(CurrentSoil->MeshChangeTimerHandle2);
+//            }
+//            else if(GetWorldTimerManager().IsTimerActive(CurrentSoil->MeshChangeTimerHandle3)){
+//                TimerRemaining = GetWorldTimerManager().GetTimerRemaining(CurrentSoil->MeshChangeTimerHandle3);
+//            }
+//            else {
+//                return;
+//            }
+//
+//            ActorData.TimerRemaining = TimerRemaining;
+//
+//
+//            // Add additional data to save here
+//            SaveGameInstance->SavedActors.Add(ActorData);
+//        }
+//    }
+//
+//    UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+//}
 
 //void AFarmerGameMode::LoadGame()
 //{
