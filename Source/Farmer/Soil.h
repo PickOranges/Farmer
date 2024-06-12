@@ -17,15 +17,12 @@ class FARMER_API ASoil : public AActor, public IInterfaceActivate, public IInter
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	ASoil();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -44,6 +41,7 @@ public:
 
 public:
 	TArray<UStaticMesh*> PotatoMeshes, EggplantMeshes, CarrotMeshes, EarnedMeshes;
+	TMap<FName, TArray<UStaticMesh*>> MeshMap;
 	FTimerHandle MeshChangeTimerHandle;
 	int32 RemainTime{};
 	int32 GrowStage{};
@@ -55,8 +53,4 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ChangeMesh(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Location);
-
-
-
-
 };

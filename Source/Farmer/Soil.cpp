@@ -5,7 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
 
-// Sets default values
+
 ASoil::ASoil()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -61,9 +61,12 @@ ASoil::ASoil()
 	if (EarnedPotato.Succeeded()) EarnedMeshes.Emplace(EarnedPotato.Object);
 	if (EarnedEggplant.Succeeded()) EarnedMeshes.Emplace(EarnedEggplant.Object);
 	if (EarnedCarrot.Succeeded()) EarnedMeshes.Emplace(EarnedCarrot.Object);
+
+	MeshMap.Emplace("Potato", PotatoMeshes);
+	MeshMap.Emplace("Eggplant", EggplantMeshes);
+	MeshMap.Emplace("Carrot", CarrotMeshes);
 }
 
-// Called when the game starts or when spawned
 void ASoil::BeginPlay()
 {
 	Super::BeginPlay();
@@ -73,8 +76,6 @@ void ASoil::Activate()
 {
 }
 
-
-// Called every frame
 void ASoil::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -101,17 +102,17 @@ void ASoil::PlantSeed()
 			break;
 			case 0:
 			{
-				GrowCrop(PotatoMeshes, FVector(0.7,0.7,0.7), FVector(0,0,12));
+				GrowCrop(MeshMap["Potato"], FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
 			}
 			break;
 			case 1:
 			{
-				GrowCrop(EggplantMeshes, FVector(0.7, 0.7, 0.7), FVector(0,0,10));
+				GrowCrop(MeshMap["Eggplant"], FVector(0.7, 0.7, 0.7), FVector(0, 0, 10));
 			}
 			break;
 			case 2:
 			{
-				GrowCrop(CarrotMeshes, FVector::OneVector, FVector(0,0,12));
+				GrowCrop(MeshMap["Carrot"], FVector::OneVector, FVector(0, 0, 12));
 			}
 			break;
 			}
