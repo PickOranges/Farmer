@@ -34,25 +34,25 @@ ASoil::ASoil()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh2(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_medium.SM_potato_medium'"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> PotatoMesh3(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_normal_01.SM_potato_normal_01'"));
 
-	if (PotatoMesh1.Succeeded()) potatoMeshes.Emplace(PotatoMesh1.Object);
-	if (PotatoMesh2.Succeeded()) potatoMeshes.Emplace(PotatoMesh2.Object);
-	if (PotatoMesh3.Succeeded()) potatoMeshes.Emplace(PotatoMesh3.Object);
+	if (PotatoMesh1.Succeeded()) PotatoMeshes.Emplace(PotatoMesh1.Object);
+	if (PotatoMesh2.Succeeded()) PotatoMeshes.Emplace(PotatoMesh2.Object);
+	if (PotatoMesh3.Succeeded()) PotatoMeshes.Emplace(PotatoMesh3.Object);
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> eggplantMesh1(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_eggplant_small.SM_eggplant_small'"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> eggplantMesh2(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_eggplant_medium.SM_eggplant_medium'"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> eggplantMesh3(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_eggplant_normal.SM_eggplant_normal'"));
 
-	if (eggplantMesh1.Succeeded()) eggplantMeshes.Emplace(eggplantMesh1.Object);
-	if (eggplantMesh2.Succeeded()) eggplantMeshes.Emplace(eggplantMesh2.Object);
-	if (eggplantMesh3.Succeeded()) eggplantMeshes.Emplace(eggplantMesh3.Object);
+	if (eggplantMesh1.Succeeded()) EggplantMeshes.Emplace(eggplantMesh1.Object);
+	if (eggplantMesh2.Succeeded()) EggplantMeshes.Emplace(eggplantMesh2.Object);
+	if (eggplantMesh3.Succeeded()) EggplantMeshes.Emplace(eggplantMesh3.Object);
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> carrotMesh1(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_carrot_small.SM_carrot_small'"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> carrotMesh2(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_carrot_medium.SM_carrot_medium'"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> carrotMesh3(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_carrot_normal_01.SM_carrot_normal_01'"));
 
-	if (carrotMesh1.Succeeded()) carrotMeshes.Emplace(carrotMesh1.Object);
-	if (carrotMesh2.Succeeded()) carrotMeshes.Emplace(carrotMesh2.Object);
-	if (carrotMesh3.Succeeded()) carrotMeshes.Emplace(carrotMesh3.Object);
+	if (carrotMesh1.Succeeded()) CarrotMeshes.Emplace(carrotMesh1.Object);
+	if (carrotMesh2.Succeeded()) CarrotMeshes.Emplace(carrotMesh2.Object);
+	if (carrotMesh3.Succeeded()) CarrotMeshes.Emplace(carrotMesh3.Object);
 
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> EarnedPotato(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_potato_01.SM_potato_01'"));
@@ -101,26 +101,24 @@ void ASoil::PlantSeed()
 			break;
 			case 0:
 			{
-				GrowCrop(potatoMeshes, FVector(0.7,0.7,0.7), FVector(0,0,12));
-				currentPlant = myCharacter->Seeds;
+				GrowCrop(PotatoMeshes, FVector(0.7,0.7,0.7), FVector(0,0,12));
 			}
 			break;
 			case 1:
 			{
-				GrowCrop(eggplantMeshes, FVector(0.7, 0.7, 0.7), FVector(0,0,10));
-				currentPlant = myCharacter->Seeds;
+				GrowCrop(EggplantMeshes, FVector(0.7, 0.7, 0.7), FVector(0,0,10));
 			}
 			break;
 			case 2:
 			{
-				GrowCrop(carrotMeshes, FVector::OneVector, FVector(0,0,12));
-				currentPlant = myCharacter->Seeds;
+				GrowCrop(CarrotMeshes, FVector::OneVector, FVector(0,0,12));
 			}
 			break;
 			}
 		}
 		
 		bIsPlanted = true;
+		CurrentPlant = myCharacter->Seeds;
 	}
 }
 

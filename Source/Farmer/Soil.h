@@ -43,8 +43,11 @@ public:
 	void Activate() override;
 
 public:
-	TArray<UStaticMesh*> potatoMeshes, eggplantMeshes, carrotMeshes, EarnedMeshes;
+	TArray<UStaticMesh*> PotatoMeshes, EggplantMeshes, CarrotMeshes, EarnedMeshes;
 	FTimerHandle MeshChangeTimerHandle;
+	int32 RemainTime{};
+	int32 GrowStage{};
+	int32 CurrentPlant{ -1 };
 	bool bIsPlanted;
 
 	UFUNCTION(BlueprintCallable)
@@ -54,10 +57,6 @@ public:
 	void ChangeMesh(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Location);
 
 
-	int32 RemainTime{};
 
-	int32 currentPlant{-1};
-
-	int32 GrowStage{};
 
 };

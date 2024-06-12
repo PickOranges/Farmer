@@ -211,10 +211,10 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 
 			// Change Seeds/Crops Amount
 			else {
-				++SeedsAmount[currentSoil->currentPlant];
-				++CropsEarned[currentSoil->currentPlant];
+				++SeedsAmount[currentSoil->CurrentPlant];
+				++CropsEarned[currentSoil->CurrentPlant];
 
-				AutoSave(currentSoil->currentPlant);
+				AutoSave(currentSoil->CurrentPlant);
 			}
 		}
 
@@ -278,8 +278,8 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 
 			// Crop is mature
 			if(temp->bIsPlanted && tx.IsEmpty()){
-				temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->currentPlant]);
-				if (temp->currentPlant == 1)  // Eggplant
+				temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->CurrentPlant]);
+				if (temp->CurrentPlant == 1)  // Eggplant
 					temp->plantMesh->SetRelativeLocation(FVector{ 0,0,25 });
 			}
 		}
