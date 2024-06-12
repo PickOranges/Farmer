@@ -8,12 +8,31 @@
 
 
 USTRUCT(BlueprintType)
-struct FSoilData
+struct FPlantData
 {
     GENERATED_BODY()
 
-    UPROPERTY()
-    FString MeshName;
+	// Plant SCM info
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+	FTransform PlantTF;
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+	FString PlantMeshPath;
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+	int32 GrowStage{};
+
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+	int32 CurrentPlant{ -1 };
+
+	// Text3D info
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+	FString Text3DContent;
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+	FTransform Text3DTF;
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+
+	// Timer info
+	int32 RemainTime{};
+	float TimeDuration{ 6.0 };
 };
 
 

@@ -51,7 +51,7 @@ public:
 	TArray<UStaticMesh*> PotatoMeshes, EggplantMeshes, CarrotMeshes, EarnedMeshes;
 	TMap<EPlants, TArray<UStaticMesh*>> MeshMap;
 	FTimerHandle MeshChangeTimerHandle;
-	int32 RemainTime{};
+	float RemainTime{};
 	int32 GrowStage{};
 	int32 CurrentPlant{ -1 };
 	bool bIsPlanted;

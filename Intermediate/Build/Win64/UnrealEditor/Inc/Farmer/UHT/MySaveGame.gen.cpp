@@ -10,79 +10,171 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeMySaveGame() {}
 // Cross Module References
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FRotator();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FTransform();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_USaveGame();
 	FARMER_API UClass* Z_Construct_UClass_UMySaveGame();
 	FARMER_API UClass* Z_Construct_UClass_UMySaveGame_NoRegister();
-	FARMER_API UScriptStruct* Z_Construct_UScriptStruct_FSoilData();
+	FARMER_API UScriptStruct* Z_Construct_UScriptStruct_FPlantData();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
-	static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_SoilData;
-class UScriptStruct* FSoilData::StaticStruct()
+	static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_PlantData;
+class UScriptStruct* FPlantData::StaticStruct()
 {
-	if (!Z_Registration_Info_UScriptStruct_SoilData.OuterSingleton)
+	if (!Z_Registration_Info_UScriptStruct_PlantData.OuterSingleton)
 	{
-		Z_Registration_Info_UScriptStruct_SoilData.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FSoilData, (UObject*)Z_Construct_UPackage__Script_Farmer(), TEXT("SoilData"));
+		Z_Registration_Info_UScriptStruct_PlantData.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FPlantData, (UObject*)Z_Construct_UPackage__Script_Farmer(), TEXT("PlantData"));
 	}
-	return Z_Registration_Info_UScriptStruct_SoilData.OuterSingleton;
+	return Z_Registration_Info_UScriptStruct_PlantData.OuterSingleton;
 }
-template<> FARMER_API UScriptStruct* StaticStruct<FSoilData>()
+template<> FARMER_API UScriptStruct* StaticStruct<FPlantData>()
 {
-	return FSoilData::StaticStruct();
+	return FPlantData::StaticStruct();
 }
-	struct Z_Construct_UScriptStruct_FSoilData_Statics
+	struct Z_Construct_UScriptStruct_FPlantData_Statics
 	{
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[];
 #endif
 		static void* NewStructOps();
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_MeshName_MetaData[];
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_PlantTF_MetaData[];
 #endif
-		static const UECodeGen_Private::FStrPropertyParams NewProp_MeshName;
+		static const UECodeGen_Private::FStructPropertyParams NewProp_PlantTF;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_PlantMeshPath_MetaData[];
+#endif
+		static const UECodeGen_Private::FStrPropertyParams NewProp_PlantMeshPath;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_GrowStage_MetaData[];
+#endif
+		static const UECodeGen_Private::FIntPropertyParams NewProp_GrowStage;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CurrentPlant_MetaData[];
+#endif
+		static const UECodeGen_Private::FIntPropertyParams NewProp_CurrentPlant;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Text3DContent_MetaData[];
+#endif
+		static const UECodeGen_Private::FStrPropertyParams NewProp_Text3DContent;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Text3DTF_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_Text3DTF;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RemainTime_MetaData[];
+#endif
+		static const UECodeGen_Private::FIntPropertyParams NewProp_RemainTime;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UECodeGen_Private::FStructParams ReturnStructParams;
 	};
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSoilData_Statics::Struct_MetaDataParams[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FPlantData_Statics::Struct_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
 		{ "ModuleRelativePath", "Public/MySaveGame.h" },
 	};
 #endif
-	void* Z_Construct_UScriptStruct_FSoilData_Statics::NewStructOps()
+	void* Z_Construct_UScriptStruct_FPlantData_Statics::NewStructOps()
 	{
-		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FSoilData>();
+		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FPlantData>();
 	}
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_MeshName_MetaData[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_PlantTF_MetaData[] = {
+		{ "Category", "SoilData" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Plant SCM info\n" },
+#endif
+		{ "ModuleRelativePath", "Public/MySaveGame.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Plant SCM info" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_PlantTF = { "PlantTF", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlantData, PlantTF), Z_Construct_UScriptStruct_FTransform, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_PlantTF_MetaData), Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_PlantTF_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_PlantMeshPath_MetaData[] = {
+		{ "Category", "SoilData" },
 		{ "ModuleRelativePath", "Public/MySaveGame.h" },
 	};
 #endif
-	const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_MeshName = { "MeshName", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSoilData, MeshName), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_MeshName_MetaData), Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_MeshName_MetaData) };
-	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FSoilData_Statics::PropPointers[] = {
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSoilData_Statics::NewProp_MeshName,
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_PlantMeshPath = { "PlantMeshPath", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlantData, PlantMeshPath), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_PlantMeshPath_MetaData), Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_PlantMeshPath_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_GrowStage_MetaData[] = {
+		{ "Category", "SoilData" },
+		{ "ModuleRelativePath", "Public/MySaveGame.h" },
 	};
-	const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FSoilData_Statics::ReturnStructParams = {
+#endif
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_GrowStage = { "GrowStage", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlantData, GrowStage), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_GrowStage_MetaData), Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_GrowStage_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_CurrentPlant_MetaData[] = {
+		{ "Category", "SoilData" },
+		{ "ModuleRelativePath", "Public/MySaveGame.h" },
+	};
+#endif
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_CurrentPlant = { "CurrentPlant", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlantData, CurrentPlant), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_CurrentPlant_MetaData), Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_CurrentPlant_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_Text3DContent_MetaData[] = {
+		{ "Category", "SoilData" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Text3D info\n" },
+#endif
+		{ "ModuleRelativePath", "Public/MySaveGame.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Text3D info" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_Text3DContent = { "Text3DContent", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlantData, Text3DContent), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_Text3DContent_MetaData), Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_Text3DContent_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_Text3DTF_MetaData[] = {
+		{ "Category", "SoilData" },
+		{ "ModuleRelativePath", "Public/MySaveGame.h" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_Text3DTF = { "Text3DTF", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlantData, Text3DTF), Z_Construct_UScriptStruct_FTransform, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_Text3DTF_MetaData), Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_Text3DTF_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_RemainTime_MetaData[] = {
+		{ "Category", "SoilData" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Timer info\n" },
+#endif
+		{ "ModuleRelativePath", "Public/MySaveGame.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Timer info" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_RemainTime = { "RemainTime", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlantData, RemainTime), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_RemainTime_MetaData), Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_RemainTime_MetaData) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FPlantData_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_PlantTF,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_PlantMeshPath,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_GrowStage,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_CurrentPlant,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_Text3DContent,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_Text3DTF,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlantData_Statics::NewProp_RemainTime,
+	};
+	const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FPlantData_Statics::ReturnStructParams = {
 		(UObject* (*)())Z_Construct_UPackage__Script_Farmer,
 		nullptr,
 		&NewStructOps,
-		"SoilData",
-		Z_Construct_UScriptStruct_FSoilData_Statics::PropPointers,
-		UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSoilData_Statics::PropPointers),
-		sizeof(FSoilData),
-		alignof(FSoilData),
+		"PlantData",
+		Z_Construct_UScriptStruct_FPlantData_Statics::PropPointers,
+		UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlantData_Statics::PropPointers),
+		sizeof(FPlantData),
+		alignof(FPlantData),
 		RF_Public|RF_Transient|RF_MarkAsNative,
 		EStructFlags(0x00000001),
-		METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSoilData_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FSoilData_Statics::Struct_MetaDataParams)
+		METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlantData_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FPlantData_Statics::Struct_MetaDataParams)
 	};
-	static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSoilData_Statics::PropPointers) < 2048);
-	UScriptStruct* Z_Construct_UScriptStruct_FSoilData()
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlantData_Statics::PropPointers) < 2048);
+	UScriptStruct* Z_Construct_UScriptStruct_FPlantData()
 	{
-		if (!Z_Registration_Info_UScriptStruct_SoilData.InnerSingleton)
+		if (!Z_Registration_Info_UScriptStruct_PlantData.InnerSingleton)
 		{
-			UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_SoilData.InnerSingleton, Z_Construct_UScriptStruct_FSoilData_Statics::ReturnStructParams);
+			UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_PlantData.InnerSingleton, Z_Construct_UScriptStruct_FPlantData_Statics::ReturnStructParams);
 		}
-		return Z_Registration_Info_UScriptStruct_SoilData.InnerSingleton;
+		return Z_Registration_Info_UScriptStruct_PlantData.InnerSingleton;
 	}
 	void UMySaveGame::StaticRegisterNativesUMySaveGame()
 	{
@@ -194,12 +286,12 @@ template<> FARMER_API UScriptStruct* StaticStruct<FSoilData>()
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FStructRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ScriptStructInfo[] = {
-		{ FSoilData::StaticStruct, Z_Construct_UScriptStruct_FSoilData_Statics::NewStructOps, TEXT("SoilData"), &Z_Registration_Info_UScriptStruct_SoilData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FSoilData), 821367827U) },
+		{ FPlantData::StaticStruct, Z_Construct_UScriptStruct_FPlantData_Statics::NewStructOps, TEXT("PlantData"), &Z_Registration_Info_UScriptStruct_PlantData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FPlantData), 763043783U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ClassInfo[] = {
 		{ Z_Construct_UClass_UMySaveGame, UMySaveGame::StaticClass, TEXT("UMySaveGame"), &Z_Registration_Info_UClass_UMySaveGame, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMySaveGame), 1534673461U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_2991547952(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_2780452310(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ClassInfo),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_MySaveGame_h_Statics::ScriptStructInfo),
 		nullptr, 0);
