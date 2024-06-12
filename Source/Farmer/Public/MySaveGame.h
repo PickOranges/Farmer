@@ -8,45 +8,14 @@
 
 
 USTRUCT(BlueprintType)
-struct FMeshSaveData
+struct FSoilData
 {
     GENERATED_BODY()
 
     UPROPERTY()
     FString MeshName;
-
-    UPROPERTY()
-    FVector MeshLocation;
-
-    UPROPERTY()
-    FRotator MeshRotation;
-
-    // TODO: Add other mesh-related data 
 };
 
-
-USTRUCT(BlueprintType)
-struct FActorSaveData
-{
-    GENERATED_BODY()
-
-    UPROPERTY()
-    FString ActorName;
-
-    UPROPERTY()
-    FVector ActorLocation;
-
-    UPROPERTY()
-    FRotator ActorRotation;
-
-    UPROPERTY()
-    TArray<FMeshSaveData> AttachedMeshes;
-
-    UPROPERTY()
-    float TimerRemaining;
-
-    // TODO: Add other variables 
-};
 
 
 
@@ -64,7 +33,4 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
 	FRotator PlayerRotation{};
-
-    UPROPERTY()
-    TArray<FActorSaveData> SavedActors;
 };

@@ -34,13 +34,13 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UStaticMeshComponent* soilMesh;
+	UStaticMeshComponent* SoilMesh;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	UStaticMeshComponent* plantMesh;
+	UStaticMeshComponent* PlantMesh;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	class UText3DComponent* text3D;	
+	class UText3DComponent* Text3D;	
 
 public:
 	// TODO: clear them later

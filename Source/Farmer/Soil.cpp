@@ -11,22 +11,22 @@ ASoil::ASoil()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	soilMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SoilMesh"));
-	plantMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PlantMesh"));
-	text3D = CreateDefaultSubobject<UText3DComponent>(TEXT("SoilText"));
-	RootComponent = soilMesh;
-	text3D->SetupAttachment(soilMesh);
-	plantMesh->SetupAttachment(soilMesh);
-	plantMesh->SetRelativeLocation(FVector{0,0,5.5});
+	SoilMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SoilMesh"));
+	PlantMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PlantMesh"));
+	Text3D = CreateDefaultSubobject<UText3DComponent>(TEXT("SoilText"));
+	RootComponent = SoilMesh;
+	Text3D->SetupAttachment(SoilMesh);
+	PlantMesh->SetupAttachment(SoilMesh);
+	PlantMesh->SetRelativeLocation(FVector{0,0,5.5});
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> tempMesh(TEXT("/Script/Engine.StaticMesh'/Game/Growing_Plants/Meshes/SM_crate_02.SM_crate_02'"));
-	soilMesh->SetStaticMesh(tempMesh.Object);
-	soilMesh->SetWorldScale3D(FVector{5,5,5});
+	SoilMesh->SetStaticMesh(tempMesh.Object);
+	SoilMesh->SetWorldScale3D(FVector{5,5,5});
 
-	text3D->SetText(FText::FromString(""));
-	text3D->SetRelativeLocation(FVector(0.0f, 0.0f, 40.f));
-	text3D->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
-	text3D->SetRelativeScale3D(FVector{0.3,0.3,0.3});
+	Text3D->SetText(FText::FromString(""));
+	Text3D->SetRelativeLocation(FVector(0.0f, 0.0f, 40.f));
+	Text3D->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
+	Text3D->SetRelativeScale3D(FVector{0.3,0.3,0.3});
 
 	// TODO 1: Move all of the meshes into character class.
 	// TODO 2: Make a Template Class for all plants/crops.
@@ -83,10 +83,10 @@ void ASoil::Tick(float DeltaTime)
 
 	if (MeshChangeTimerHandle.IsValid()) {
 		RemainTime = GetWorld()->GetTimerManager().GetTimerRemaining(MeshChangeTimerHandle);
-		text3D->SetText(FText::FromString(FString::FromInt((int32)RemainTime)));
+		Text3D->SetText(FText::FromString(FString::FromInt((int32)RemainTime)));
 	}
 	else {
-		text3D->SetText(FText::FromString(FString("")));
+		Text3D->SetText(FText::FromString(FString("")));
 	}
 }
 
@@ -105,9 +105,9 @@ void ASoil::PlantSeed()
 void ASoil::GrowCrop(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Location)
 {
 	if (Meshes.Num() > 0) {
-		plantMesh->SetStaticMesh(Meshes[0]);
-		plantMesh->SetRelativeScale3D(FVector{ 0.7,0.7,0.7 });
-		plantMesh->SetRelativeLocation(FVector{ 0,0,12 });
+		PlantMesh->SetStaticMesh(Meshes[0]);
+		PlantMesh->SetRelativeScale3D(FVector{ 0.7,0.7,0.7 });
+		PlantMesh->SetRelativeLocation(FVector{ 0,0,12 });
 	}
 
 	FTimerDelegate TimerDelegate;
@@ -118,14 +118,14 @@ void ASoil::GrowCrop(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Locati
 
 void ASoil::ChangeMesh(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Location)
 {
-	if (Meshes.Num() > 0 && plantMesh) {
+	if (Meshes.Num() > 0 && PlantMesh) {
 		GrowStage = (GrowStage + 1) % Meshes.Num();
-		plantMesh->SetStaticMesh(Meshes[GrowStage]);
-		plantMesh->SetRelativeScale3D(Scale);
-		plantMesh->SetRelativeLocation(Location);
+		PlantMesh->SetStaticMesh(Meshes[GrowStage]);
+		PlantMesh->SetRelativeScale3D(Scale);
+		PlantMesh->SetRelativeLocation(Location);
 	}
 	if (GrowStage == Meshes.Num() - 1) {
-		text3D->SetText(FText::FromString(FString("")));
+		Text3D->SetText(FText::FromString(FString("")));
 
 		GetWorld()->GetTimerManager().ClearTimer(MeshChangeTimerHandle);
 		GrowStage = 0;

@@ -193,19 +193,19 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 	if (isHit) {
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil) {
-			if(!currentSoil->bIsPlanted && currentSoil->text3D->GetText().IsEmpty()) return;
-			if (!currentSoil->bIsPlanted && !currentSoil->text3D->GetText().IsEmpty()) return;
+			if(!currentSoil->bIsPlanted && currentSoil->Text3D->GetText().IsEmpty()) return;
+			if (!currentSoil->bIsPlanted && !currentSoil->Text3D->GetText().IsEmpty()) return;
 
 			currentSoil->bIsPlanted = false;
-			currentSoil->plantMesh->SetStaticMesh(nullptr);
+			currentSoil->PlantMesh->SetStaticMesh(nullptr);
 
 			//GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle1);
 			//GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle2);
 			//GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle3);
 			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle);
 
-			if (!currentSoil->text3D->GetText().IsEmpty()) {
-				currentSoil->text3D->SetText(FText::FromString(FString("")));
+			if (!currentSoil->Text3D->GetText().IsEmpty()) {
+				currentSoil->Text3D->SetText(FText::FromString(FString("")));
 				return;
 			}
 
@@ -217,8 +217,6 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 				AutoSave(currentSoil->CurrentPlant);
 			}
 		}
-
-
 	}
 }
 
@@ -274,13 +272,13 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 	// placed a matured crop on the soil
 	if (OtherActor) {
 		if (ASoil* temp = Cast<ASoil>(OtherActor)) {
-			FText tx = temp->text3D->GetText();
+			FText tx = temp->Text3D->GetText();
 
 			// Crop is mature
 			if(temp->bIsPlanted && tx.IsEmpty()){
-				temp->plantMesh->SetStaticMesh(temp->EarnedMeshes[temp->CurrentPlant]);
+				temp->PlantMesh->SetStaticMesh(temp->EarnedMeshes[temp->CurrentPlant]);
 				if (temp->CurrentPlant == 1)  // Eggplant
-					temp->plantMesh->SetRelativeLocation(FVector{ 0,0,25 });
+					temp->PlantMesh->SetRelativeLocation(FVector{ 0,0,25 });
 			}
 		}
 	}
