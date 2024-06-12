@@ -18,6 +18,8 @@ public:
 
 	void SaveGame();
 	void LoadGame();
+
+	UMySaveGame* SaveGameInstance;
 };
 
 

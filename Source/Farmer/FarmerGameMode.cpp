@@ -18,71 +18,13 @@ AFarmerGameMode::AFarmerGameMode()
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
+
+    // Test Save Soil
+    SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass()));
 }
-
-/*
-void AMyActor::SaveActorData()
-{
-    UMySaveGame* SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass()));
-    if (!SaveGameInstance) return;
-
-    for (TActorIterator<AActor> It(GetWorld()); It; ++It)
-    {
-        AActor* Actor = *It;
-        FActorSaveData ActorData;
-        ActorData.ActorLocation = Actor->GetActorLocation();
-        ActorData.ActorRotation = Actor->GetActorRotation();
-
-        if (AMySpecificActor* SpecificActor = Cast<AMySpecificActor>(Actor))
-        {
-            SaveSpecificActorData(SpecificActor, ActorData);
-        }
-        else if (AMyOtherActor* OtherActor = Cast<AMyOtherActor>(Actor))
-        {
-            SaveOtherActorData(OtherActor, ActorData);
-        }
-
-        SaveGameInstance->SavedActors.Add(ActorData);
-    }
-
-    UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("MySaveSlot"), 0);
-}
-
-void AMyActor::SaveSpecificActorData(AMySpecificActor* Actor, FActorSaveData& ActorData)
-{
-    ActorData.MeshLocation = Actor->MyStaticMeshComponent->GetRelativeLocation();
-    ActorData.MeshRotation = Actor->MyStaticMeshComponent->GetRelativeRotation();
-    if (Actor->MyStaticMeshComponent->GetStaticMesh())
-    {
-        ActorData.StaticMeshPath = Actor->MyStaticMeshComponent->GetStaticMesh()->GetPathName();
-    }
-    ActorData.MyArray = Actor->MyArray;
-    ActorData.MyMap = Actor->MyMap;
-    ActorData.TimerValue = Actor->MyTimer;
-
-    // Save remaining time of the timer
-    if (Actor->GetWorld()->GetTimerManager().IsTimerActive(Actor->MyTimerHandle))
-    {
-        ActorData.TimerRemainingTime = Actor->GetWorld()->GetTimerManager().GetTimerRemaining(Actor->MyTimerHandle);
-    }
-    else
-    {
-        ActorData.TimerRemainingTime = 0.0f;
-    }
-}
-
-void AMyActor::SaveOtherActorData(AMyOtherActor* Actor, FActorSaveData& ActorData)
-{
-    ActorData.Text3DString = Actor->MyText3DComponent->GetText().ToString();
-    ActorData.Text3DLocation = Actor->MyText3DComponent->GetRelativeLocation();
-    ActorData.Text3DRotation = Actor->MyText3DComponent->GetRelativeRotation();
-    ActorData.Text3DColor = Actor->MyText3DComponent->GetTextMaterial()->GetVectorParameterValue(FName("BaseColor"));
-}
-*/
 
 void AFarmerGameMode::SaveGame()
 {
-    UMySaveGame* SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass()));
     if (!SaveGameInstance) return;
 
     for (TActorIterator<AActor> It(GetWorld()); It; ++It)
@@ -112,5 +54,34 @@ void AFarmerGameMode::SaveGame()
 
 void AFarmerGameMode::LoadGame()
 {
+    UMySaveGame* LoadGameInstance = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("MySaveSlot"), 0));
+    if (!LoadGameInstance) return;
 
+    for (const FSoilData& ActorData : LoadGameInstance->SoilAndPlants)
+    {
+        // Soil SCM
+        ASoil* CurrentActor = GetWorld()->SpawnActor<ASoil>(ASoil::StaticClass());
+        CurrentActor->SoilMesh->SetRelativeTransform(ActorData.SoilTF);
+        if (ActorData.SoilMeshPath.IsEmpty()) continue;
+        UStaticMesh* SoilSM = LoadObject<UStaticMesh>(nullptr, *ActorData.SoilMeshPath);
+        CurrentActor->SoilMesh->SetStaticMesh(SoilSM);
+
+        // Plant SCM
+        CurrentActor->PlantMesh->SetRelativeTransform(ActorData.PlantTF);
+        if (!ActorData.PlantMeshPath.IsEmpty()) {
+            UStaticMesh* PlantSM = LoadObject<UStaticMesh>(nullptr, *ActorData.PlantMeshPath);
+            CurrentActor->PlantMesh->SetStaticMesh(PlantSM);
+        }
+        CurrentActor->GrowStage = ActorData.GrowStage;
+        CurrentActor->CurrentPlant = ActorData.CurrentPlant;
+
+        CurrentActor->Text3D->SetText(ActorData.Text3DContent);
+        CurrentActor->Text3D->SetRelativeTransform(ActorData.Text3DTF);
+
+        CurrentActor->RemainTime = ActorData.RemainTime;
+        if (ActorData.RemainTime > 0.0f)
+        {
+            //GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, CurrentActor, &CurrentActor::, ActorData.TimerRemainingTime, false);
+        }
+    }
 }
