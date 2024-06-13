@@ -388,6 +388,8 @@ void AFarmerCharacter::SaveGame()
 			continue;
 		}
 
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"Start Saving This ASoil Actor's Data......");
+
 		FSoilData ActorData;
 		ActorData.SoilTF = CurrentSoil->GetActorTransform();
 		ActorData.SoilMeshPath = CurrentSoil->SoilMesh->GetPathName();
