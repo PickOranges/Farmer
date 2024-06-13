@@ -15,6 +15,11 @@
 #include "MySaveGame.h"
 #include "Kismet/GameplayStatics.h"
 
+
+//#include "GameFramework/Actor.h"
+#include "EngineUtils.h"
+
+
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 //////////////////////////////////////////////////////////////////////////
@@ -105,7 +110,10 @@ void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 		MySaveGameInstance->PlayerLocation = this->GetActorLocation();
 		MySaveGameInstance->PlayerRotation = this->GetActorRotation();
 	}
-	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
+	//UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
+
+	// 06.13
+	SaveGame();
 }
 
 void AFarmerCharacter::Activate()
@@ -199,9 +207,6 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			currentSoil->bIsPlanted = false;
 			currentSoil->PlantMesh->SetStaticMesh(nullptr);
 
-			//GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle1);
-			//GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle2);
-			//GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle3);
 			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle);
 
 			if (!currentSoil->Text3D->GetText().IsEmpty()) {
@@ -319,6 +324,14 @@ void AFarmerCharacter::LoadGameIfExist()
 	{
 		SaveGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot1"), 0);
 		MySaveGameInstance = Cast<UMySaveGame>(SaveGameInstance);
+
+
+
+		// 06.13
+		LoadGame();
+
+
+
 		if (MySaveGameInstance)
 		{
 			int length = MySaveGameInstance->EarnedCrops.Num();
@@ -337,6 +350,7 @@ void AFarmerCharacter::LoadGameIfExist()
 	else {
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, "No old saved slots exists.");
 	}
+
 }
 
 void AFarmerCharacter::AutoSave(int32& index)
@@ -347,5 +361,100 @@ void AFarmerCharacter::AutoSave(int32& index)
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Auto saving successfully.");
 	}
 	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
+}
+
+
+///////////////////////////////////////////////////////////////////////////
+// test
+void AFarmerCharacter::SaveGame()
+{
+	if (!MySaveGameInstance) return;
+
+	for (TActorIterator<AActor> It(GetWorld()); It; ++It)
+	{
+		AActor* Actor = *It;
+		FSoilData ActorData;
+		ASoil* CurrentSoil = Cast<ASoil>(Actor);
+		if (!CurrentSoil) continue;
+
+		ActorData.SoilTF = CurrentSoil->GetActorTransform();
+		ActorData.SoilMeshPath = CurrentSoil->SoilMesh->GetPathName();
+
+		ActorData.PlantTF = CurrentSoil->PlantMesh->GetRelativeTransform();
+		ActorData.PlantMeshPath = CurrentSoil->PlantMesh->GetPathName();
+		ActorData.GrowStage = CurrentSoil->GrowStage;
+		ActorData.CurrentPlant = CurrentSoil->CurrentPlant;
+
+		ActorData.Text3DContent = CurrentSoil->Text3D->GetText();
+		ActorData.Text3DTF = CurrentSoil->Text3D->GetRelativeTransform();
+
+		ActorData.RemainTime = CurrentSoil->RemainTime;
+
+		// Append into TArray
+		MySaveGameInstance->SoilAndPlants.Add(ActorData);
+	}
+
+	UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
+}
+
+
+void AFarmerCharacter::LoadGame()
+{
+	//UMySaveGame* LoadGameInstance = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot1"), 0));
+	//if (!LoadGameInstance || LoadGameInstance->SoilAndPlants.IsEmpty()) return;
+	if (!MySaveGameInstance) {
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "MySaveGameInstance.");
+		return;
+	} 
+	if(MySaveGameInstance->SoilAndPlants.IsEmpty()) {
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"TArray<FSoilData> is empty.");
+		return;
+	}
+
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "LoadGame(): Entered for-loop");
+	for (const FSoilData& ActorData : MySaveGameInstance->SoilAndPlants)
+	{
+		// Soil SCM
+		ASoil* CurrentActor = GetWorld()->SpawnActor<ASoil>(ASoil::StaticClass());
+		CurrentActor->SoilMesh->SetRelativeTransform(ActorData.SoilTF);
+		if (ActorData.SoilMeshPath.IsEmpty()) continue;
+		UStaticMesh* SoilSM = LoadObject<UStaticMesh>(nullptr, *ActorData.SoilMeshPath);
+		CurrentActor->SoilMesh->SetStaticMesh(SoilSM);
+
+
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Loaded Soil Mesh");
+		// Plant SCM
+		CurrentActor->PlantMesh->SetRelativeTransform(ActorData.PlantTF);
+		if (!ActorData.PlantMeshPath.IsEmpty()) {
+			UStaticMesh* PlantSM = LoadObject<UStaticMesh>(nullptr, *ActorData.PlantMeshPath);
+			CurrentActor->PlantMesh->SetStaticMesh(PlantSM);
+		}
+		CurrentActor->GrowStage = ActorData.GrowStage;
+		CurrentActor->CurrentPlant = ActorData.CurrentPlant;
+
+		CurrentActor->Text3D->SetText(ActorData.Text3DContent);
+		CurrentActor->Text3D->SetRelativeTransform(ActorData.Text3DTF);
+
+
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Loaded Plant Mesh");
+
+
+		CurrentActor->RemainTime = ActorData.RemainTime;
+		if (ActorData.RemainTime > 0.0f)
+		{
+			FTimerDelegate TimerDelegate;
+			TimerDelegate.BindUFunction(this, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], CurrentActor->GetActorTransform().GetScale3D(), CurrentActor->GetActorTransform().GetLocation());
+
+			GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, 6.0f, true);
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Recovered the Timer");
+
+		}
+
+
+		// Setup Attachment
+		CurrentActor->SoilMesh->SetupAttachment(RootComponent);
+		CurrentActor->PlantMesh->SetupAttachment(CurrentActor->SoilMesh);
+		CurrentActor->Text3D->SetupAttachment(CurrentActor->PlantMesh);
+	}
 }
 

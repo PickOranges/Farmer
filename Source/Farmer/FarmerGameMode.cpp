@@ -11,6 +11,21 @@
 #include "EngineUtils.h"
 #include "Soil.h"
 
+void AFarmerGameMode::BeginPlay()
+{
+    Super::BeginPlay();
+
+    //LoadGame();
+    //GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "FarmerGameMode::BeginPlay()...");
+}
+
+void AFarmerGameMode::EndPlay(EEndPlayReason::Type Reason)
+{
+    Super::EndPlay(Reason);
+
+    //SaveGame();
+}
+
 AFarmerGameMode::AFarmerGameMode()
 {
 	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter"));
@@ -50,13 +65,16 @@ void AFarmerGameMode::SaveGame()
         // Append into TArray
         SaveGameInstance->SoilAndPlants.Emplace(ActorData);
     }
+    
+    UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
 }
 
 void AFarmerGameMode::LoadGame()
 {
-    UMySaveGame* LoadGameInstance = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("MySaveSlot"), 0));
-    if (!LoadGameInstance) return;
-
+    UMySaveGame* LoadGameInstance = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot1"), 0));
+    if (!LoadGameInstance || LoadGameInstance->SoilAndPlants.IsEmpty()) return;
+    
+    GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"LoadGame(): Entered for-loop");
     for (const FSoilData& ActorData : LoadGameInstance->SoilAndPlants)
     {
         // Soil SCM
@@ -66,6 +84,7 @@ void AFarmerGameMode::LoadGame()
         UStaticMesh* SoilSM = LoadObject<UStaticMesh>(nullptr, *ActorData.SoilMeshPath);
         CurrentActor->SoilMesh->SetStaticMesh(SoilSM);
 
+        GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"Loaded Soil Mesh");
         // Plant SCM
         CurrentActor->PlantMesh->SetRelativeTransform(ActorData.PlantTF);
         if (!ActorData.PlantMeshPath.IsEmpty()) {
@@ -78,10 +97,19 @@ void AFarmerGameMode::LoadGame()
         CurrentActor->Text3D->SetText(ActorData.Text3DContent);
         CurrentActor->Text3D->SetRelativeTransform(ActorData.Text3DTF);
 
+       
+        GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Loaded Plant Mesh");
+
+
         CurrentActor->RemainTime = ActorData.RemainTime;
         if (ActorData.RemainTime > 0.0f)
         {
-            //GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, CurrentActor, &CurrentActor::, ActorData.TimerRemainingTime, false);
+            FTimerDelegate TimerDelegate;
+            TimerDelegate.BindUFunction(this, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], CurrentActor->GetActorTransform().GetScale3D(), CurrentActor->GetActorTransform().GetLocation());
+
+            GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, 6.0f, true);
+            GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Recovered the Timer");
+
         }
     }
 }

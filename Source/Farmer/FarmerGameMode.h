@@ -13,6 +13,9 @@ class AFarmerGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
+	void BeginPlay() override;
+	void EndPlay(EEndPlayReason::Type Reason) override;
+
 public:
 	AFarmerGameMode();
 
@@ -21,6 +24,3 @@ public:
 
 	UMySaveGame* SaveGameInstance;
 };
-
-
-

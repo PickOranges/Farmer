@@ -157,5 +157,10 @@ protected:
 	void CreateSaveGameInstance();
 	void LoadGameIfExist();
 	void AutoSave(int32& index);
+
+
+	// test
+	void SaveGame();
+	void LoadGame();
 };
 
