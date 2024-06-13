@@ -411,6 +411,7 @@ void AFarmerCharacter::SaveGame()
 	}
 
 	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0);
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,MySaveGameInstance->teststring);
 }
 
 
