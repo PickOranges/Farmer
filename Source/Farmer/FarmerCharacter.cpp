@@ -359,6 +359,9 @@ void AFarmerCharacter::AutoSave(int32& index)
 		/*int32& idx = currentSoil->currentPlant;*/
 		MySaveGameInstance->EarnedCrops[index] = CropsEarned[index];
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Auto saving successfully.");
+
+
+		SaveGame();
 	}
 	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0);
 }
@@ -370,11 +373,20 @@ void AFarmerCharacter::SaveGame()
 {
 	if (!MySaveGameInstance) return;
 
-	for (TActorIterator<AActor> It(GetWorld()); It; ++It)
+	TArray<AActor*> SoilActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), SoilActors);
+
+	for (AActor* Actor : SoilActors)
 	{
-		//AActor* Actor = *It;
-		ASoil* CurrentSoil = Cast<ASoil>(*It);
-		if (!CurrentSoil) continue;
+		if (!Actor) {
+			GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"Actor iterator is empty.");
+		}
+
+		ASoil* CurrentSoil = Cast<ASoil>(Actor);
+		if (!CurrentSoil) {
+			GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"CurrentSoil is nullptr.");
+			continue;
+		}
 
 		FSoilData ActorData;
 		ActorData.SoilTF = CurrentSoil->GetActorTransform();
