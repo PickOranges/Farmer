@@ -64,4 +64,6 @@ public:
 	FRotator PlayerRotation{};
 
 	TArray<FSoilData> SoilAndPlants;
+
+	FString teststring;
 };

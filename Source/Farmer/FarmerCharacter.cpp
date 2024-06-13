@@ -109,11 +109,13 @@ void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 	if (MySaveGameInstance) {
 		MySaveGameInstance->PlayerLocation = this->GetActorLocation();
 		MySaveGameInstance->PlayerRotation = this->GetActorRotation();
-	}
-	//UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
 
-	// 06.13
-	SaveGame();
+
+		// 06.13
+		SaveGame();
+	}
+	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0);
+
 }
 
 void AFarmerCharacter::Activate()
@@ -314,23 +316,16 @@ void AFarmerCharacter::CreateSaveGameInstance()
 		}
 	}
 
-	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
+	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0);
 }
 
 void AFarmerCharacter::LoadGameIfExist()
 {
 	//Loading Test
-	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot1"), 0))
+	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot00"), 0))
 	{
-		SaveGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot1"), 0);
+		SaveGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot00"), 0);
 		MySaveGameInstance = Cast<UMySaveGame>(SaveGameInstance);
-
-
-
-		// 06.13
-		LoadGame();
-
-
 
 		if (MySaveGameInstance)
 		{
@@ -345,6 +340,11 @@ void AFarmerCharacter::LoadGameIfExist()
 			
 			if (MySaveGameInstance->PlayerLocation == FVector::ZeroVector) return;
 			this->SetActorLocationAndRotation(MySaveGameInstance->PlayerLocation, MySaveGameInstance->PlayerRotation);
+
+
+
+			// 06.13
+			LoadGame();
 		}
 	}
 	else {
@@ -360,7 +360,7 @@ void AFarmerCharacter::AutoSave(int32& index)
 		MySaveGameInstance->EarnedCrops[index] = CropsEarned[index];
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Auto saving successfully.");
 	}
-	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
+	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0);
 }
 
 
@@ -372,11 +372,11 @@ void AFarmerCharacter::SaveGame()
 
 	for (TActorIterator<AActor> It(GetWorld()); It; ++It)
 	{
-		AActor* Actor = *It;
-		FSoilData ActorData;
-		ASoil* CurrentSoil = Cast<ASoil>(Actor);
+		//AActor* Actor = *It;
+		ASoil* CurrentSoil = Cast<ASoil>(*It);
 		if (!CurrentSoil) continue;
 
+		FSoilData ActorData;
 		ActorData.SoilTF = CurrentSoil->GetActorTransform();
 		ActorData.SoilMeshPath = CurrentSoil->SoilMesh->GetPathName();
 
@@ -392,20 +392,27 @@ void AFarmerCharacter::SaveGame()
 
 		// Append into TArray
 		MySaveGameInstance->SoilAndPlants.Add(ActorData);
+
+		MySaveGameInstance->teststring = "hhhhhhhhhhh";
 	}
 
-	UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("PlayerSaveSlot1"), 0);
+	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0);
 }
 
 
 void AFarmerCharacter::LoadGame()
 {
-	//UMySaveGame* LoadGameInstance = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot1"), 0));
+	//UMySaveGame* LoadGameInstance = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot0"), 0));
 	//if (!LoadGameInstance || LoadGameInstance->SoilAndPlants.IsEmpty()) return;
+	MySaveGameInstance= Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot00"), 0));
+
 	if (!MySaveGameInstance) {
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "MySaveGameInstance.");
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "MySaveGameInstance is empty.");
 		return;
 	} 
+
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,MySaveGameInstance->teststring);
+
 	if(MySaveGameInstance->SoilAndPlants.IsEmpty()) {
 		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"TArray<FSoilData> is empty.");
 		return;
