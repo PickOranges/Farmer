@@ -522,6 +522,7 @@ void AFarmerCharacter::SaveGame()
 	TArray<AActor*> Soils;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), Soils);
 	FColor pink{ 255,182,193 };
+	MySaveGameInstance->SoilAndPlants.Empty();
 
 	for (AActor* it : Soils) {
 		if (!it) {
@@ -535,33 +536,26 @@ void AFarmerCharacter::SaveGame()
 			continue; 
 		}	
 		
+		FSoilData sp;
+		sp.SoilTF = cs->SoilMesh->GetRelativeTransform();
+		sp.SoilMeshPath = cs->SoilMesh->GetStaticMesh()->GetPathName();
 
-		TArray<UStaticMeshComponent*> Components;
-		cs->GetComponents<UStaticMeshComponent>(Components);
-		if (Components.IsEmpty()) {
-			GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"TArray<UStaticMeshComponent*> is empty!");
-			continue;
-		}
-		//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,FString::Printf(TEXT("The #Components: %d"),Components.Num()));
+		sp.PlantTF = cs->PlantMesh->GetRelativeTransform();
+		sp.PlantMeshPath = cs->PlantMesh->GetStaticMesh()->GetPathName();
+		sp.GrowStage = cs->GrowStage;
+		sp.CurrentPlant = cs->CurrentPlant;
 
-		for (UStaticMeshComponent* cit : Components) {
-			UStaticMesh* mesh = cit->GetStaticMesh();
-			FSoftObjectPath SoftObjectPath(cit->GetStaticMesh());
-			//MySaveGameInstance->TESTPATH = SoftObjectPath.ToString();
-			if (!mesh) {
-				GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"Components Iterator's StaticMesh is empty, continue...");
-				continue;
-			}
-			
-		}
+		sp.Text3DContent = cs->Text3D->GetText();
+		sp.Text3DTF = cs->Text3D->GetRelativeTransform();
+		sp.RemainTime = cs->RemainTime;
+
+		MySaveGameInstance->SoilAndPlants.Emplace(sp);
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,sp.PlantMeshPath);
 	}
 
-
-	// double check
+	// Save
 	if (UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0)) {
-		for (int32 i = 0; i < MySaveGameInstance->SoilAndPlants.Num(); ++i) {
-			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, MySaveGameInstance->SoilAndPlants[i].PlantMeshPath);
-		}
+
 	}
 	else {
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "Failed!");
@@ -574,7 +568,6 @@ void AFarmerCharacter::LoadGame()
 	UMySaveGame* LoadGameInstance = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot00"), 0));
 	FColor blue{ 173,216,230 };
 	
-
 	for (const FSoilData& Info : LoadGameInstance->SoilAndPlants)
 	{
 		//GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,"Entered for loop now, congratulations!");
