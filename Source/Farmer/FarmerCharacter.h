@@ -158,7 +158,6 @@ protected:
 	void AutoSave(int32& index);
 
 
-	// test
 	void SaveGame();
 	void LoadGame();
 };

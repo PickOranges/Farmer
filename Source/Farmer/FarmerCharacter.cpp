@@ -15,7 +15,6 @@
 #include "Kismet/GameplayStatics.h"
 
 
-//#include "GameFramework/Actor.h"
 #include "EngineUtils.h"
 
 
@@ -553,23 +552,20 @@ void AFarmerCharacter::SaveGame()
 				GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"Components Iterator's StaticMesh is empty, continue...");
 				continue;
 			}
-			FPlant cp;
-			cp.MeshPath = mesh->GetPathName();
-			MySaveGameInstance->Plants.Emplace(cp);
+			
 		}
 	}
 
 
-	FColor blue{ 173,216,230 };
+	// double check
 	if (UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0)) {
-		for (int32 i = 0; i < MySaveGameInstance->Plants.Num(); ++i) {
-			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, MySaveGameInstance->Plants[i].MeshPath);
+		for (int32 i = 0; i < MySaveGameInstance->SoilAndPlants.Num(); ++i) {
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, MySaveGameInstance->SoilAndPlants[i].PlantMeshPath);
 		}
 	}
 	else {
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "Failed!");
 	}
-	
 }
 
 void AFarmerCharacter::LoadGame()
@@ -579,7 +575,7 @@ void AFarmerCharacter::LoadGame()
 	FColor blue{ 173,216,230 };
 	
 
-	for (const FPlant& Info : LoadGameInstance->Plants)
+	for (const FSoilData& Info : LoadGameInstance->SoilAndPlants)
 	{
 		//GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,"Entered for loop now, congratulations!");
 		//UStaticMeshComponent* NewMeshComponent = NewObject<UStaticMeshComponent>(this);
@@ -596,7 +592,7 @@ void AFarmerCharacter::LoadGame()
 		//	}
 		//}
 
-		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,Info.MeshPath);
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,Info.PlantMeshPath);
 	}
 }
 

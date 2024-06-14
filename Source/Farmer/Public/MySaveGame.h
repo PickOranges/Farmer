@@ -75,10 +75,10 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
 	FRotator PlayerRotation{};
 
-	//TArray<FSoilData> SoilAndPlants;
-	//FString teststring;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
-	TArray<FPlant> Plants;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
+	//TArray<FPlant> Plants;
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
 	//FString TESTPATH;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
+	TArray<FSoilData> SoilAndPlants;
 };
