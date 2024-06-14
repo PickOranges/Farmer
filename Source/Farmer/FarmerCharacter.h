@@ -162,6 +162,6 @@ protected:
 	void SaveGame();
 	void LoadGame();
 
-	TArray<FPlant> tmp;
+	//TArray<FPlant> tmp;
 };
 

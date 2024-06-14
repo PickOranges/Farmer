@@ -78,5 +78,6 @@ public:
 	//TArray<FSoilData> SoilAndPlants;
 	//FString teststring;
 
-	TArray<FPlant> Plants;
+	//TArray<FPlant> Plants;
+	FString TESTPATH;
 };
