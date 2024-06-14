@@ -543,28 +543,28 @@ void AFarmerCharacter::SaveGame()
 			GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"TArray<UStaticMeshComponent*> is empty!");
 			continue;
 		}
-		GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,FString::Printf(TEXT("The #Components: %d"),Components.Num()));
+		//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,FString::Printf(TEXT("The #Components: %d"),Components.Num()));
 
 		for (UStaticMeshComponent* cit : Components) {
 			UStaticMesh* mesh = cit->GetStaticMesh();
+			FSoftObjectPath SoftObjectPath(cit->GetStaticMesh());
+			//MySaveGameInstance->TESTPATH = SoftObjectPath.ToString();
 			if (!mesh) {
 				GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"Components Iterator's StaticMesh is empty, continue...");
 				continue;
 			}
-
-			//FPlant plant;
-			//plant.MeshPath = mesh->GetPathName();
-			//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,plant.MeshPath);
-			//tmp.Add(plant);
-			//MySaveGameInstance->Plants = tmp;
-			MySaveGameInstance->TESTPATH = mesh->GetPathName();
+			FPlant cp;
+			cp.MeshPath = mesh->GetPathName();
+			MySaveGameInstance->Plants.Emplace(cp);
 		}
 	}
 
 
-
+	FColor blue{ 173,216,230 };
 	if (UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0)) {
-		GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"Saved successfully!");
+		for (int32 i = 0; i < MySaveGameInstance->Plants.Num(); ++i) {
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, MySaveGameInstance->Plants[i].MeshPath);
+		}
 	}
 	else {
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "Failed!");
@@ -577,26 +577,27 @@ void AFarmerCharacter::LoadGame()
 	if (!MySaveGameInstance) return;
 	UMySaveGame* LoadGameInstance = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot00"), 0));
 	FColor blue{ 173,216,230 };
+	
 
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,LoadGameInstance->TESTPATH);
+	for (const FPlant& Info : LoadGameInstance->Plants)
+	{
+		//GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,"Entered for loop now, congratulations!");
+		//UStaticMeshComponent* NewMeshComponent = NewObject<UStaticMeshComponent>(this);
+		//if (NewMeshComponent)
+		//{
+		//	FSoftObjectPath SoftObjectPath(Info.MeshPath);
+		//	GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,Info.MeshPath);
+		//	UStaticMesh* LoadedMesh = Cast<UStaticMesh>(SoftObjectPath.TryLoad());
+		//	if (LoadedMesh)
+		//	{
+		//		NewMeshComponent->SetStaticMesh(LoadedMesh);
+		//		NewMeshComponent->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+		//		NewMeshComponent->RegisterComponent();
+		//	}
+		//}
 
-	//for (const FPlant& Info : LoadGameInstance->Plants)
-	//{
-	//	GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,"Entered for loop now, congratulations!");
-	//	UStaticMeshComponent* NewMeshComponent = NewObject<UStaticMeshComponent>(this);
-	//	if (NewMeshComponent)
-	//	{
-	//		FSoftObjectPath SoftObjectPath(Info.MeshPath);
-	//		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,Info.MeshPath);
-	//		UStaticMesh* LoadedMesh = Cast<UStaticMesh>(SoftObjectPath.TryLoad());
-	//		if (LoadedMesh)
-	//		{
-	//			NewMeshComponent->SetStaticMesh(LoadedMesh);
-	//			NewMeshComponent->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
-	//			NewMeshComponent->RegisterComponent();
-	//		}
-	//	}
-	//}
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,Info.MeshPath);
+	}
 }
 
 

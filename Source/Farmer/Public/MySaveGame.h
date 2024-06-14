@@ -77,7 +77,8 @@ public:
 
 	//TArray<FSoilData> SoilAndPlants;
 	//FString teststring;
-
-	//TArray<FPlant> Plants;
-	FString TESTPATH;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
+	TArray<FPlant> Plants;
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
+	//FString TESTPATH;
 };
