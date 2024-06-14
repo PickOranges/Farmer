@@ -584,10 +584,12 @@ void AFarmerCharacter::SaveGame()
 void AFarmerCharacter::LoadGame()
 {
 	if (!MySaveGameInstance) return;
+	UMySaveGame* LoadGameInstance = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot00"), 0));
 	FColor blue{ 173,216,230 };
 
+	
 
-	for (const FPlant& Info : MySaveGameInstance->Plants)
+	for (const FPlant& Info : LoadGameInstance->Plants)
 	{
 		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,"Entered for loop now, congratulations!");
 		UStaticMeshComponent* NewMeshComponent = NewObject<UStaticMeshComponent>(this);
