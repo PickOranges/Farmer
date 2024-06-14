@@ -45,10 +45,15 @@ struct FSoilData
 	float TimeDuration{ 6.0 };
 };
 
-struct FPlant {
+USTRUCT(BlueprintType)
+struct FPlant 
+{
 	GENERATED_BODY()
 
+	UPROPERTY()
 	FTransform PlantTF;
+
+	UPROPERTY()
 	FString MeshPath;
 };
 

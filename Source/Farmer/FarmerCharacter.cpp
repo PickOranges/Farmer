@@ -12,7 +12,6 @@
 #include "InputActionValue.h"
 #include "Components/CapsuleComponent.h"
 #include "Soil.h"
-#include "MySaveGame.h"
 #include "Kismet/GameplayStatics.h"
 
 
@@ -113,7 +112,7 @@ void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 
 
 		// 06.13
-		//SaveGame();
+		SaveGame();
 	}
 	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0);
 
@@ -316,7 +315,7 @@ void AFarmerCharacter::CreateSaveGameInstance()
 			}
 		}
 	}
-
+	SaveGame();
 	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0);
 }
 
@@ -362,14 +361,9 @@ void AFarmerCharacter::AutoSave(int32& index)
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Auto saving successfully.");
 
 
-		//SaveGame();
+		SaveGame();
 	}
 	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0);
-}
-
-void AFarmerCharacter::SaveGame()
-{
-
 }
 
 
@@ -524,4 +518,93 @@ void AFarmerCharacter::SaveGame()
 //		CurrentActor->Text3D->SetupAttachment(CurrentActor->PlantMesh);
 //	}
 //}
+
+void AFarmerCharacter::SaveGame()
+{
+	TArray<AActor*> Soils;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), Soils);
+	FColor pink{ 255,182,193 };
+
+	for (AActor* it : Soils) {
+		if (!it) {
+			GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"AActor is empty!");
+			continue;
+		}
+
+		ASoil* cs = Cast<ASoil>(it);
+		if (!cs) { 
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "ASoil is empty!");
+			continue; 
+		}	
+		
+		//UStaticMeshComponent* MeshComponent = cs->FindComponentByClass<UStaticMeshComponent>();
+		//if (MeshComponent && MeshComponent->GetStaticMesh()) {
+		//	FPlant PlantData;
+		//	PlantData.PlantTF = cs->PlantMesh->GetRelativeTransform();
+		//	PlantData.MeshPath = cs->PlantMesh->GetStaticMesh()->GetPathName();
+
+		//	MySaveGameInstance->Plants.Add(PlantData);
+		//	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, PlantData.MeshPath);
+		//}
+
+		TArray<UStaticMeshComponent*> Components;
+		cs->GetComponents<UStaticMeshComponent>(Components);
+		if (Components.IsEmpty()) {
+			GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"TArray<UStaticMeshComponent*> is empty!");
+			continue;
+		}
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,FString::Printf(TEXT("The #Components: %d"),Components.Num()));
+
+		for (UStaticMeshComponent* cit : Components) {
+			UStaticMesh* mesh = cit->GetStaticMesh();
+			if (!mesh) {
+				GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"Components Iterator's StaticMesh is empty, continue...");
+				continue;
+			}
+
+			FPlant plant;
+			plant.MeshPath = mesh->GetPathName();
+			GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,plant.MeshPath);
+			tmp.Add(plant);
+			MySaveGameInstance->Plants = tmp;
+		}
+	}
+
+
+
+	if (UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot00"), 0)) {
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"Saved successfully!");
+	}
+	else {
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "Failed!");
+	}
+	
+}
+
+void AFarmerCharacter::LoadGame()
+{
+	if (!MySaveGameInstance) return;
+	FColor blue{ 173,216,230 };
+
+
+	for (const FPlant& Info : MySaveGameInstance->Plants)
+	{
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,"Entered for loop now, congratulations!");
+		UStaticMeshComponent* NewMeshComponent = NewObject<UStaticMeshComponent>(this);
+		if (NewMeshComponent)
+		{
+			FSoftObjectPath SoftObjectPath(Info.MeshPath);
+			GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,Info.MeshPath);
+			UStaticMesh* LoadedMesh = Cast<UStaticMesh>(SoftObjectPath.TryLoad());
+			if (LoadedMesh)
+			{
+				NewMeshComponent->SetStaticMesh(LoadedMesh);
+				NewMeshComponent->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+				NewMeshComponent->RegisterComponent();
+			}
+		}
+	}
+}
+
+
 

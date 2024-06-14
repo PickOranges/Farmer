@@ -11,7 +11,7 @@
 #include "CropSeedsUserWidget.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
-
+#include "MySaveGame.h"
 #include "FarmerCharacter.generated.h"
 
 class USpringArmComponent;
@@ -20,8 +20,7 @@ class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
 
-class USaveGame;
-class UMySaveGame;
+
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
@@ -162,5 +161,7 @@ protected:
 	// test
 	void SaveGame();
 	void LoadGame();
+
+	TArray<FPlant> tmp;
 };
 
