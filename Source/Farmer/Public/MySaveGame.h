@@ -45,6 +45,13 @@ struct FSoilData
 	float TimeDuration{ 6.0 };
 };
 
+struct FPlant {
+	GENERATED_BODY()
+
+	FTransform PlantTF;
+	FString MeshPath;
+};
+
 
 
 UCLASS()
@@ -63,7 +70,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, SaveGame, Category = "SaveGame")
 	FRotator PlayerRotation{};
 
-	TArray<FSoilData> SoilAndPlants;
+	//TArray<FSoilData> SoilAndPlants;
+	//FString teststring;
 
-	FString teststring;
+	TArray<FPlant> Plants;
 };
