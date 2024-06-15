@@ -103,14 +103,13 @@ void AFarmerCharacter::BeginPlay()
 
 void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 {
-	//Super::EndPlay(Reason);
+	Super::EndPlay(Reason);
 
 	if (MySaveGameInstance) {
-		// 06.13
-		SaveGame();
-
 		MySaveGameInstance->PlayerLocation = this->GetActorLocation();
 		MySaveGameInstance->PlayerRotation = this->GetActorRotation();
+		// 06.13
+		SaveGame();
 	}
 	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 
@@ -309,7 +308,7 @@ void AFarmerCharacter::CreateSaveGameInstance() noexcept
 		if (MySaveGameInstance->EarnedCrops.Num() == 0) {
 			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[CreateSaveGameInstance] Empty array, thus create a new array.");
 
-			MySaveGameInstance->PlayerLocation = FVector(1000, 1000, 5000);
+			MySaveGameInstance->PlayerLocation = FVector(1000, 1000, 100);
 
 			for (int32 i = 0; i < CropsEarned.Num(); ++i) {
 				MySaveGameInstance->EarnedCrops.Add(CropsEarned[i]);
@@ -334,7 +333,7 @@ void AFarmerCharacter::LoadGameIfExist() noexcept
 			if (MySaveGameInstance->PlayerLocation != FVector::ZeroVector) {
 				this->SetActorLocationAndRotation(MySaveGameInstance->PlayerLocation, MySaveGameInstance->PlayerRotation);
 			}
-			else this->SetActorLocation(FVector{ 500,500,100 });
+			else this->SetActorLocation(FVector{ 1000,1000,200 });
 
 			int length = MySaveGameInstance->EarnedCrops.Num();
 			if (CropsEarned.Num() != length) {
@@ -377,7 +376,7 @@ void AFarmerCharacter::SaveGame() noexcept
 	FColor pink{ 255,182,193 };
 
 
-	//MySaveGameInstance->PlayerLocation = FVector(300, 700, 1000);
+	MySaveGameInstance->PlayerLocation = FVector(300, 700, 100);
 	
 
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils before Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
