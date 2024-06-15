@@ -296,7 +296,7 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 //}
 
 
-void AFarmerCharacter::CreateSaveGameInstance()
+void AFarmerCharacter::CreateSaveGameInstance() noexcept
 {
 	// Auto Game Save Test
 	// Details of Saving in PressE()
@@ -318,7 +318,7 @@ void AFarmerCharacter::CreateSaveGameInstance()
 	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 }
 
-void AFarmerCharacter::LoadGameIfExist()
+void AFarmerCharacter::LoadGameIfExist() noexcept
 {
 	//Loading Test
 	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot"), 0))
@@ -327,7 +327,7 @@ void AFarmerCharacter::LoadGameIfExist()
 		MySaveGameInstance = Cast<UMySaveGame>(SaveGameInstance);
 
 		this->SetActorLocation(FVector{0,0,1000});
-		this->SetActorRotation(FRotator{0,0,90});
+		
 
 		if (MySaveGameInstance)
 		{
@@ -354,7 +354,7 @@ void AFarmerCharacter::LoadGameIfExist()
 
 }
 
-void AFarmerCharacter::AutoSave(int32& index)
+void AFarmerCharacter::AutoSave(int32& index) noexcept
 {						
 	if (MySaveGameInstance) {
 		/*int32& idx = currentSoil->currentPlant;*/
@@ -369,15 +369,15 @@ void AFarmerCharacter::AutoSave(int32& index)
 
 
 
-void AFarmerCharacter::SaveGame()
+void AFarmerCharacter::SaveGame() noexcept
 {
 	TArray<AActor*> Soils;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), Soils);
 	FColor pink{ 255,182,193 };
 
 
-	MySaveGameInstance->PlayerLocation = FVector{ 0,0,1000 };
-	MySaveGameInstance->PlayerRotation = FRotator{ 0,0,90 };
+	//MySaveGameInstance->PlayerLocation = FVector(100, 100, 1000);
+	
 
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils before Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
 	MySaveGameInstance->SoilAndPlants.Empty();
@@ -421,7 +421,7 @@ void AFarmerCharacter::SaveGame()
 	}
 }
 
-void AFarmerCharacter::LoadGame()
+void AFarmerCharacter::LoadGame() noexcept
 {
 	if (!MySaveGameInstance || MySaveGameInstance->SoilAndPlants.IsEmpty()) return;
 	FColor blue{ 173,216,230 };
@@ -462,6 +462,7 @@ void AFarmerCharacter::LoadGame()
 
 
 		// Setup Attachment
+		// TODO: use another function: see screenshot
 		RootComponent = CurrentActor->SoilMesh;
 		CurrentActor->PlantMesh->SetupAttachment(RootComponent);
 		CurrentActor->Text3D->SetupAttachment(CurrentActor->PlantMesh);

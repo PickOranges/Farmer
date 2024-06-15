@@ -153,12 +153,12 @@ public:
 	UMySaveGame* MySaveGameInstance;
 
 protected:
-	void CreateSaveGameInstance();
-	void LoadGameIfExist();
-	void AutoSave(int32& index);
+	void CreateSaveGameInstance() noexcept;
+	void LoadGameIfExist() noexcept;
+	void AutoSave(int32& index) noexcept;
 
 
-	void SaveGame();
-	void LoadGame();
+	void SaveGame() noexcept;
+	void LoadGame() noexcept;
 };
 
