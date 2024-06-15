@@ -308,7 +308,7 @@ void AFarmerCharacter::CreateSaveGameInstance() noexcept
 	if (MySaveGameInstance) {
 		// create & init for auto saving
 		if (MySaveGameInstance->EarnedCrops.Num() == 0) {
-			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Empty array, thus create a new array.");
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[CreateSaveGameInstance] Empty array, thus create a new array.");
 			for (int32 i = 0; i < CropsEarned.Num(); ++i) {
 				MySaveGameInstance->EarnedCrops.Add(CropsEarned[i]);
 			}
@@ -326,7 +326,7 @@ void AFarmerCharacter::LoadGameIfExist() noexcept
 		SaveGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot"), 0);
 		MySaveGameInstance = Cast<UMySaveGame>(SaveGameInstance);
 
-		this->SetActorLocation(FVector{0,0,1000});
+		this->SetActorLocation(FVector{100,500,1000});
 		
 
 		if (MySaveGameInstance)
@@ -359,7 +359,7 @@ void AFarmerCharacter::AutoSave(int32& index) noexcept
 	if (MySaveGameInstance) {
 		/*int32& idx = currentSoil->currentPlant;*/
 		MySaveGameInstance->EarnedCrops[index] = CropsEarned[index];
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Auto saving successfully.");
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[AutoSave] Auto saving successfully.");
 
 
 		SaveGame();
@@ -376,23 +376,24 @@ void AFarmerCharacter::SaveGame() noexcept
 	FColor pink{ 255,182,193 };
 
 
-	//MySaveGameInstance->PlayerLocation = FVector(100, 100, 1000);
+	MySaveGameInstance->PlayerLocation = FVector(100, 100, 1000);
 	
 
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils before Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
-	MySaveGameInstance->SoilAndPlants.Empty();
+	//MySaveGameInstance->SoilAndPlants.Empty();
+	MySaveGameInstance->SoilAndPlants.Reset();
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils after Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 
 	for (AActor* it : Soils) {
 		if (!it) {
-			GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"AActor is empty!");
+			GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"[SaveGame] AActor is empty!");
 			continue;
 		}
 
 		ASoil* cs = Cast<ASoil>(it);
 		if (!cs) { 
-			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "ASoil is empty!");
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "[SaveGame] ASoil is empty!");
 			continue; 
 		}	
 		
