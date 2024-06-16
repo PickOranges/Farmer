@@ -472,7 +472,7 @@ void AFarmerCharacter::LoadGame() noexcept
 
 			// Recover Timer
 			FTimerDelegate TimerDelegate;
-			TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], /*cs.PlantTF.GetScale3D(), cs.PlantTF.GetLocation()*/FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
+			TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
 			GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, CurrentActor->RemainTime, true);
 			//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[LoadGame] Recovered the Timer");
 		}
