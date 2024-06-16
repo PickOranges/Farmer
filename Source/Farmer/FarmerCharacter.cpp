@@ -290,7 +290,6 @@ void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 		// 06.13
 		SaveGame();
 	}
-	//UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 }
 
 
