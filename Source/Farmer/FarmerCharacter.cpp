@@ -100,7 +100,7 @@ void AFarmerCharacter::BeginPlay()
 
 	LoadGameIfExist();
 	if (!MySaveGameInstance) {
-		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"[BeginPlay] MySaveGameInstance is empty, thus create a new one.");
+		//GEngine->AddOnScreenDebugMessage(-1,INFINITY,lemon,"[BeginPlay] MySaveGameInstance is empty, thus create a new one.");
 		CreateSaveGameInstance();
 	}
 }
