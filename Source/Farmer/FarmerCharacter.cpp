@@ -270,14 +270,14 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 			FText tx = temp->Text3D->GetText();
 
 			// Crop is mature
-			if(temp->bIsPlanted && tx.IsEmpty() /*&& temp->GrowStage==0*/){
+			if(temp->bIsPlanted && tx.IsEmpty()){
 				temp->PlantMesh->SetStaticMesh(temp->EarnedMeshes[temp->CurrentPlant]);
 				if (temp->CurrentPlant == 1)  // Eggplant
 				{
 					temp->PlantMesh->SetRelativeLocation(FVector{ 0,0,25 });
 				}
 
-				SaveGame();
+				//SaveGame();
 			}
 		}
 	}
