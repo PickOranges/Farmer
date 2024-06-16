@@ -19,6 +19,9 @@ struct FSoilData
 	FString SoilMeshPath;
 	UPROPERTY(VisibleAnywhere, Category = "SoilData")
 	bool bIsPlanted;
+	UPROPERTY(VisibleAnywhere, Category = "SoilData")
+	bool bIsFruit;
+
 
 	// Plant SCM info
 	UPROPERTY(VisibleAnywhere, Category = "SoilData")

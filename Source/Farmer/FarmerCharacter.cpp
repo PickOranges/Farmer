@@ -272,6 +272,7 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 			// Crop is mature
 			if(temp->bIsPlanted && tx.IsEmpty()){
 				temp->PlantMesh->SetStaticMesh(temp->EarnedMeshes[temp->CurrentPlant]);
+				temp->bIsFruit = true;
 				if (temp->CurrentPlant == 1)  // Eggplant
 				{
 					temp->PlantMesh->SetRelativeLocation(FVector{ 0,0,25 });
@@ -408,6 +409,7 @@ void AFarmerCharacter::SaveGame() noexcept
 		sp.GrowStage = cs->GrowStage;
 		sp.CurrentPlant = cs->CurrentPlant;
 		sp.bIsPlanted = cs->bIsPlanted;
+		sp.bIsFruit = cs->bIsFruit;
 
 		sp.Text3DContent = cs->Text3D->GetText();
 		sp.Text3DTF = cs->Text3D->GetRelativeTransform();
@@ -459,6 +461,7 @@ void AFarmerCharacter::LoadGame() noexcept
 		CurrentActor->GrowStage = cs.GrowStage;
 		CurrentActor->CurrentPlant = cs.CurrentPlant;
 		CurrentActor->bIsPlanted = cs.bIsPlanted;
+		CurrentActor->bIsFruit = cs.bIsFruit;
 
 
 
@@ -466,15 +469,20 @@ void AFarmerCharacter::LoadGame() noexcept
 		CurrentActor->RemainTime = cs.RemainTime;
 		if (CurrentActor->RemainTime>=0.0f)
 		{
-			// Text3D
-			CurrentActor->Text3D->SetRelativeTransform(cs.Text3DTF);
-			CurrentActor->Text3D->SetText(cs.Text3DContent);
+			if (!CurrentActor->bIsFruit) {
+				// Text3D
+				CurrentActor->Text3D->SetRelativeTransform(cs.Text3DTF);
+				CurrentActor->Text3D->SetText(cs.Text3DContent);
 
-			// Recover Timer
-			FTimerDelegate TimerDelegate;
-			TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
-			GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, CurrentActor->RemainTime, true);
-			//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[LoadGame] Recovered the Timer");
+				// Recover Timer
+				FTimerDelegate TimerDelegate;
+				TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
+				GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, CurrentActor->RemainTime, true);
+				//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[LoadGame] Recovered the Timer");
+			}
+			else {
+				CurrentActor->PlantMesh->SetStaticMesh(CurrentActor->EarnedMeshes[CurrentActor->CurrentPlant]);
+			}
 		}
 
 

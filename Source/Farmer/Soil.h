@@ -55,6 +55,7 @@ public:
 	int32 GrowStage{};
 	int32 CurrentPlant{ -1 };
 	bool bIsPlanted;
+	bool bIsFruit;
 
 	UFUNCTION(BlueprintCallable)
 	void GrowCrop(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Location);
