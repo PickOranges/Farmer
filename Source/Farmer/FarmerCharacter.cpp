@@ -330,7 +330,7 @@ void AFarmerCharacter::LoadGameIfExist() noexcept
 
 		if (MySaveGameInstance)
 		{
-			if (MySaveGameInstance->PlayerLocation != FVector::ZeroVector) {
+			if (MySaveGameInstance->PlayerLocation.Z!=0) {
 				this->SetActorLocationAndRotation(MySaveGameInstance->PlayerLocation, MySaveGameInstance->PlayerRotation);
 			}
 			else this->SetActorLocation(FVector{ 1000,1000,200 });
@@ -374,9 +374,20 @@ void AFarmerCharacter::SaveGame() noexcept
 	TArray<AActor*> Soils;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), Soils);
 	FColor pink{ 255,182,193 };
+	FColor violet{ 198,181,237 };
+	FColor apricot{ 248,184,120 };
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,apricot,FString::Printf(TEXT("[SaveGame] Loaction: (%f,%f,%f)"), this->GetActorLocation().X, this->GetActorLocation().Y, this->GetActorLocation().Z));
+	ACharacter* player = UGameplayStatics::GetPlayerCharacter(GetWorld(),0);
+	if (player) {
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, violet, FString::Printf(TEXT("[SaveGame] Loaction: (%f,%f,%f)"), player->GetActorLocation().X, player->GetActorLocation().Y, player->GetActorLocation().Z));
+	}
+
 
 
 	MySaveGameInstance->PlayerLocation = FVector(300, 700, 100);
+	MySaveGameInstance->PlayerLocation = this->GetActorLocation();
+	MySaveGameInstance->PlayerRotation = this->GetActorRotation();
+	
 	
 
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils before Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
