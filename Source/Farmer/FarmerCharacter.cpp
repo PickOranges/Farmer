@@ -379,7 +379,7 @@ void AFarmerCharacter::SaveGame() noexcept
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), Soils);
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] World #Soils: %d"), Soils.Num()));
 	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils BEFORE: %d"), MySaveGameInstance->SoilAndPlants.Num()));
-	//MySaveGameInstance->SoilAndPlants.Empty(0);
+	MySaveGameInstance->SoilAndPlants.Empty(0);
 	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 	
