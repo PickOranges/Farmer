@@ -400,6 +400,7 @@ void AFarmerCharacter::SaveGame() noexcept
 		sp.PlantMeshPath = cs->PlantMesh->GetStaticMesh()->GetPathName();
 		sp.GrowStage = cs->GrowStage;
 		sp.CurrentPlant = cs->CurrentPlant;
+		sp.bIsPlanted = cs->bIsPlanted;
 
 		sp.Text3DContent = cs->Text3D->GetText();
 		sp.Text3DTF = cs->Text3D->GetRelativeTransform();
@@ -445,7 +446,7 @@ void AFarmerCharacter::LoadGame() noexcept
 		CurrentActor->PlantMesh->SetStaticMesh(PlantSM);
 		CurrentActor->GrowStage = cs.GrowStage;
 		CurrentActor->CurrentPlant = cs.CurrentPlant;
-		CurrentActor->bIsPlanted = true;
+		CurrentActor->bIsPlanted = cs.bIsPlanted;
 
 
 
