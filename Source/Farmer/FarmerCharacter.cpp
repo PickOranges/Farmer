@@ -348,7 +348,7 @@ void AFarmerCharacter::LoadGameIfExist() noexcept
 			this->SetActorLocationAndRotation(MySaveGameInstance->PlayerLocation, MySaveGameInstance->PlayerRotation);
 			int length = MySaveGameInstance->EarnedCrops.Num();
 			if (CropsEarned.Num() != length) {
-				//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[LoadGameIfExist]: Slot is invalid, thus won't load.");
+				GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[LoadGameIfExist]: Slot is invalid, thus won't load.");
 				return;
 			}
 			for (int32 i = 0; i < length; ++i) {
@@ -360,7 +360,7 @@ void AFarmerCharacter::LoadGameIfExist() noexcept
 		}
 	}
 	else {
-		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[LoadGameIfExist]: No old saved slots exists.");
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[LoadGameIfExist]: No old saved slots exists.");
 	}
 
 }
@@ -382,10 +382,10 @@ void AFarmerCharacter::SaveGame() noexcept
 {
 	TArray<AActor*> Soils;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), Soils);
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] World #Soils: %d"), Soils.Num()));
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils BEFORE: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] World #Soils: %d"), Soils.Num()));
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils BEFORE: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 	MySaveGameInstance->SoilAndPlants.Empty(0);
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 	
 	for (AActor* it : Soils) {
@@ -481,13 +481,12 @@ void AFarmerCharacter::LoadGame() noexcept
 				// Recover Timer
 				FTimerDelegate TimerDelegate;
 				TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
-				GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, CurrentActor->RemainTime, true);
+				//GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, CurrentActor->RemainTime, true);
+				GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, 6.0f, true, CurrentActor->RemainTime);
 				//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[LoadGame] Recovered the Timer");
 			}
 			else {
-				if (CurrentActor->bIsPlanted) {
-					CurrentActor->PlantMesh->SetStaticMesh(CurrentActor->EarnedMeshes[CurrentActor->CurrentPlant]);
-				}
+				CurrentActor->PlantMesh->SetStaticMesh(CurrentActor->EarnedMeshes[CurrentActor->CurrentPlant]);
 			}
 		}
 
