@@ -436,11 +436,10 @@ void AFarmerCharacter::LoadGame() noexcept
 
 
 		// Plant SCM
+		if (cs.PlantMeshPath.IsEmpty()) continue;
 		CurrentActor->PlantMesh->SetRelativeTransform(cs.PlantTF);
-		if (!cs.PlantMeshPath.IsEmpty()) {
-			UStaticMesh* PlantSM = LoadObject<UStaticMesh>(nullptr, *cs.PlantMeshPath);
-			CurrentActor->PlantMesh->SetStaticMesh(PlantSM);
-		}
+		UStaticMesh* PlantSM = LoadObject<UStaticMesh>(nullptr, *cs.PlantMeshPath);
+		CurrentActor->PlantMesh->SetStaticMesh(PlantSM);
 		CurrentActor->GrowStage = cs.GrowStage;
 		CurrentActor->CurrentPlant = cs.CurrentPlant;
 
