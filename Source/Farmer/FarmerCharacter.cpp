@@ -359,7 +359,7 @@ void AFarmerCharacter::AutoSave(int32& index) noexcept
 	if (MySaveGameInstance) {
 		MySaveGameInstance->EarnedCrops[index] = CropsEarned[index];
 		UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[AutoSave] Auto saving successfully.");
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "[AutoSave] Saved UI Data successfully.");
 
 		SaveGame();
 	}
@@ -371,12 +371,12 @@ void AFarmerCharacter::SaveGame() noexcept
 {
 	TArray<AActor*> Soils;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), Soils);
-
-
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, apricot, FString::Printf(TEXT("[SaveGame] World #Soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, apricot, FString::Printf(TEXT("[SaveGame] Slot #Soils BEFORE: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 	MySaveGameInstance->SoilAndPlants.Empty(0);
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, apricot, FString::Printf(TEXT("[SaveGame] #soils after Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, apricot, FString::Printf(TEXT("[SaveGame] Slot #Soils AFTER: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
-
+	// TODO: Create new TArray and replace the old.
 	for (AActor* it : Soils) {
 		if (!it) {
 			GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"[SaveGame] AActor is empty!");
