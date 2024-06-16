@@ -22,7 +22,7 @@ DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 FColor pink{ 255,182,193 };
 FColor blue{ 173,216,230 };
 FColor violet{ 198,181,237 };
-FColor apricot{ 248,184,120 };
+FColor apricot{ 254,255,153 };
 
 //////////////////////////////////////////////////////////////////////////
 // AFarmerCharacter
