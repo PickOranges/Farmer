@@ -375,7 +375,7 @@ void AFarmerCharacter::SaveGame() noexcept
 
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils before Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
 	MySaveGameInstance->SoilAndPlants.Empty(0);
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils after Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, apricot, FString::Printf(TEXT("[SaveGame] #soils after Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 
 	for (AActor* it : Soils) {
@@ -406,7 +406,7 @@ void AFarmerCharacter::SaveGame() noexcept
 		MySaveGameInstance->SoilAndPlants.Add(sp);		
 		// Save
 		if (UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0)) {
-			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] saved #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 		}
 		else {
 			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "Failed!");
@@ -418,20 +418,20 @@ void AFarmerCharacter::SaveGame() noexcept
 void AFarmerCharacter::LoadGame() noexcept
 {
 	if (!MySaveGameInstance || MySaveGameInstance->SoilAndPlants.IsEmpty()) return;
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] loaded #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 	
 	for (const FSoilData& cs : MySaveGameInstance->SoilAndPlants)
 	{
 		// Create ASoil Instance & load Soil SCM
-		ASoil* CurrentActor = GetWorld()->SpawnActor<ASoil>(ASoil::StaticClass());
 		if (cs.SoilMeshPath.IsEmpty()) continue;
+		ASoil* CurrentActor = GetWorld()->SpawnActor<ASoil>(ASoil::StaticClass());
+
 		CurrentActor->SoilMesh->SetRelativeTransform(cs.SoilTF);
 		UStaticMesh* SoilSM = LoadObject<UStaticMesh>(nullptr, *cs.SoilMeshPath);
 		CurrentActor->SoilMesh->SetStaticMesh(SoilSM);		
 
 		// Plant SCM
-		//CurrentActor->PlantMesh->SetupAttachment(CurrentActor->SoilMesh);
 		CurrentActor->PlantMesh->SetRelativeTransform(cs.PlantTF);
 		if (!cs.PlantMeshPath.IsEmpty()) {
 			UStaticMesh* PlantSM = LoadObject<UStaticMesh>(nullptr, *cs.PlantMeshPath);
@@ -453,14 +453,7 @@ void AFarmerCharacter::LoadGame() noexcept
 		//	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Recovered the Timer");
 		//}
 
-
-		// Setup Attachment
-		// TODO: use another function: see screenshot
-		//RootComponent = CurrentActor->SoilMesh;
-		//CurrentActor->PlantMesh->SetupAttachment(RootComponent);
-		//CurrentActor->Text3D->SetupAttachment(CurrentActor->PlantMesh);
-
-		//GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,cs.PlantMeshPath);
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,cs.PlantMeshPath);
 	}
 }
 
