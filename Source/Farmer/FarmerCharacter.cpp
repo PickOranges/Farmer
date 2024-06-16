@@ -276,6 +276,8 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 				{
 					temp->PlantMesh->SetRelativeLocation(FVector{ 0,0,25 });
 				}
+
+				SaveGame();
 			}
 		}
 	}
@@ -291,9 +293,8 @@ void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 	if (MySaveGameInstance) {
 		MySaveGameInstance->PlayerLocation = this->GetActorLocation();
 		MySaveGameInstance->PlayerRotation = this->GetActorRotation();
-		UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+		//UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 
-		// 06.13
 		SaveGame();
 	}
 }
@@ -379,9 +380,9 @@ void AFarmerCharacter::SaveGame() noexcept
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] World #Soils: %d"), Soils.Num()));
 	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils BEFORE: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 	MySaveGameInstance->SoilAndPlants.Empty(0);
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
-	// TODO: Create new TArray and replace the old.
+	
 	for (AActor* it : Soils) {
 		if (!it) {
 			GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"[SaveGame] AActor is empty!");
@@ -415,6 +416,7 @@ void AFarmerCharacter::SaveGame() noexcept
 		// Save
 		if (UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0)) {
 			//GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] saved #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] Path: %s"), *sp.PlantMeshPath));
 			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] GrowStage: %d"), sp.GrowStage));
 			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] CurrentPlant: %d"), sp.CurrentPlant));
 			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] bIsPlanted: %d"), sp.bIsPlanted));
@@ -430,7 +432,7 @@ void AFarmerCharacter::SaveGame() noexcept
 void AFarmerCharacter::LoadGame() noexcept
 {
 	if (!MySaveGameInstance || MySaveGameInstance->SoilAndPlants.IsEmpty()) return;
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] loaded #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] loaded #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 	
 	for (const FSoilData& cs : MySaveGameInstance->SoilAndPlants)
@@ -473,7 +475,7 @@ void AFarmerCharacter::LoadGame() noexcept
 		CurrentActor->Text3D->SetRelativeTransform(cs.Text3DTF);
 		CurrentActor->Text3D->SetText(cs.Text3DContent);
 
-		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,FString::Printf(TEXT("[LoadGame] %s"), *cs.PlantMeshPath));
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,FString::Printf(TEXT("[LoadGame] Path: %s"), *cs.PlantMeshPath));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] GrowStage: %d"), cs.GrowStage));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] CurrentPlant: %d"), cs.CurrentPlant));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] bIsPlanted: %d"), cs.bIsPlanted));
