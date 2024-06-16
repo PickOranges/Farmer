@@ -463,7 +463,13 @@ void AFarmerCharacter::LoadGame() noexcept
 
 		// Timer 
 		CurrentActor->RemainTime = cs.RemainTime;
-		if (cs.RemainTime > 0.0f)
+		if (cs.RemainTime == 0.0f && cs.GrowStage == 0) {
+			//FTimerDelegate TimerDelegate;
+			//TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->EarnedMeshes[cs.CurrentPlant], FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
+			//GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, cs.RemainTime, true);
+			CurrentActor->PlantMesh->SetStaticMesh(CurrentActor->EarnedMeshes[cs.CurrentPlant]);
+		}
+		else if (cs.RemainTime > 0.0f)
 		{
 			FTimerDelegate TimerDelegate;
 			TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], /*cs.PlantTF.GetScale3D(), cs.PlantTF.GetLocation()*/FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
