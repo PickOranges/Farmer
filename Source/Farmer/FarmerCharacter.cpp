@@ -270,7 +270,7 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 			FText tx = temp->Text3D->GetText();
 
 			// Crop is mature
-			if(temp->bIsPlanted && tx.IsEmpty()){
+			if(temp->bIsPlanted && tx.IsEmpty() && temp->GrowStage==0){
 				temp->PlantMesh->SetStaticMesh(temp->EarnedMeshes[temp->CurrentPlant]);
 				if (temp->CurrentPlant == 1)  // Eggplant
 					temp->PlantMesh->SetRelativeLocation(FVector{ 0,0,25 });
@@ -377,7 +377,7 @@ void AFarmerCharacter::SaveGame() noexcept
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] World #Soils: %d"), Soils.Num()));
 	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils BEFORE: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 	MySaveGameInstance->SoilAndPlants.Empty(0);
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils AFTER: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 	// TODO: Create new TArray and replace the old.
 	for (AActor* it : Soils) {
@@ -467,7 +467,7 @@ void AFarmerCharacter::LoadGame() noexcept
 		CurrentActor->Text3D->SetRelativeTransform(cs.Text3DTF);
 		CurrentActor->Text3D->SetText(cs.Text3DContent);
 
-		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,cs.PlantMeshPath);
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,FString::Printf(TEXT("[LoadGame] %s"), *cs.PlantMeshPath));
 	}
 }
 
