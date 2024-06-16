@@ -373,7 +373,6 @@ void AFarmerCharacter::SaveGame() noexcept
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), Soils);
 
 
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils before Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
 	MySaveGameInstance->SoilAndPlants.Empty(0);
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, apricot, FString::Printf(TEXT("[SaveGame] #soils after Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
@@ -390,6 +389,9 @@ void AFarmerCharacter::SaveGame() noexcept
 			continue; 
 		}	
 		
+		if (!cs->SoilMesh->GetStaticMesh()) continue;
+		if (!cs->PlantMesh->GetStaticMesh()) continue;
+
 		FSoilData sp;
 		sp.SoilTF = cs->SoilMesh->GetRelativeTransform();
 		sp.SoilMeshPath = cs->SoilMesh->GetStaticMesh()->GetPathName();
@@ -403,7 +405,7 @@ void AFarmerCharacter::SaveGame() noexcept
 		sp.Text3DTF = cs->Text3D->GetRelativeTransform();
 		sp.RemainTime = cs->RemainTime;
 
-		MySaveGameInstance->SoilAndPlants.Add(sp);		
+		MySaveGameInstance->SoilAndPlants.Emplace(sp);		
 		// Save
 		if (UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0)) {
 			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] saved #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
