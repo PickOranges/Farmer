@@ -380,8 +380,8 @@ void AFarmerCharacter::SaveGame() noexcept
 	
 
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils before Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
-	//MySaveGameInstance->SoilAndPlants.Empty();
-	MySaveGameInstance->SoilAndPlants.Reset();
+	MySaveGameInstance->SoilAndPlants.Empty();
+	//MySaveGameInstance->SoilAndPlants.Reset();
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils after Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 
@@ -410,7 +410,7 @@ void AFarmerCharacter::SaveGame() noexcept
 		sp.Text3DTF = cs->Text3D->GetRelativeTransform();
 		sp.RemainTime = cs->RemainTime;
 
-		MySaveGameInstance->SoilAndPlants.Emplace(sp);		
+		MySaveGameInstance->SoilAndPlants.Add(sp);		
 	}
 
 	// Save
