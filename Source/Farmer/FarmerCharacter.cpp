@@ -473,10 +473,10 @@ void AFarmerCharacter::LoadGame() noexcept
 		CurrentActor->Text3D->SetRelativeTransform(cs.Text3DTF);
 		CurrentActor->Text3D->SetText(cs.Text3DContent);
 
-		//GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,FString::Printf(TEXT("[LoadGame] %s"), *cs.PlantMeshPath));
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[SaveGame] GrowStage: %d"), cs.GrowStage));
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[SaveGame] CurrentPlant: %d"), cs.CurrentPlant));
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[SaveGame] bIsPlanted: %d"), cs.bIsPlanted));
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,FString::Printf(TEXT("[LoadGame] %s"), *cs.PlantMeshPath));
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] GrowStage: %d"), cs.GrowStage));
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] CurrentPlant: %d"), cs.CurrentPlant));
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] bIsPlanted: %d"), cs.bIsPlanted));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, "------------");
 	}
 }
