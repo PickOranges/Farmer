@@ -196,6 +196,7 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			if (!currentSoil->bIsPlanted) return;
 
 			currentSoil->bIsPlanted = false;
+			currentSoil->bIsFruit = false;
 			currentSoil->PlantMesh->SetStaticMesh(nullptr);
 
 			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle);
