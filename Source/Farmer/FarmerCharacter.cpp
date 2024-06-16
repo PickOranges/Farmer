@@ -19,6 +19,10 @@
 
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
+FColor pink{ 255,182,193 };
+FColor blue{ 173,216,230 };
+FColor violet{ 198,181,237 };
+FColor apricot{ 248,184,120 };
 
 //////////////////////////////////////////////////////////////////////////
 // AFarmerCharacter
@@ -321,7 +325,6 @@ void AFarmerCharacter::CreateSaveGameInstance() noexcept
 
 void AFarmerCharacter::LoadGameIfExist() noexcept
 {
-	//Loading Test
 	if (UGameplayStatics::DoesSaveGameExist(TEXT("PlayerSaveSlot"), 0))
 	{
 		SaveGameInstance = UGameplayStatics::LoadGameFromSlot(TEXT("PlayerSaveSlot"), 0);
@@ -330,11 +333,8 @@ void AFarmerCharacter::LoadGameIfExist() noexcept
 
 		if (MySaveGameInstance)
 		{
-			//if (MySaveGameInstance->PlayerLocation.Z!=0) {
+			// Load Player Pose & UI Data
 			this->SetActorLocationAndRotation(MySaveGameInstance->PlayerLocation, MySaveGameInstance->PlayerRotation);
-			//}
-			//else this->SetActorLocation(FVector{ 1000,1000,200 });
-
 			int length = MySaveGameInstance->EarnedCrops.Num();
 			if (CropsEarned.Num() != length) {
 				GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[LoadGameIfExist]: Slot is invalid, thus won't load.");
@@ -344,7 +344,7 @@ void AFarmerCharacter::LoadGameIfExist() noexcept
 				CropsEarned[i] = MySaveGameInstance->EarnedCrops[i];
 			}
 			
-			// 06.13
+			// Load Soil & Plant
 			LoadGame();
 		}
 	}
@@ -357,14 +357,12 @@ void AFarmerCharacter::LoadGameIfExist() noexcept
 void AFarmerCharacter::AutoSave(int32& index) noexcept
 {						
 	if (MySaveGameInstance) {
-		/*int32& idx = currentSoil->currentPlant;*/
 		MySaveGameInstance->EarnedCrops[index] = CropsEarned[index];
+		UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[AutoSave] Auto saving successfully.");
-
 
 		SaveGame();
 	}
-	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 }
 
 
@@ -373,26 +371,10 @@ void AFarmerCharacter::SaveGame() noexcept
 {
 	TArray<AActor*> Soils;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), Soils);
-	FColor pink{ 255,182,193 };
-	FColor violet{ 198,181,237 };
-	FColor apricot{ 248,184,120 };
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,apricot,FString::Printf(TEXT("[SaveGame] Loaction: (%f,%f,%f)"), this->GetActorLocation().X, this->GetActorLocation().Y, this->GetActorLocation().Z));
-	ACharacter* player = UGameplayStatics::GetPlayerCharacter(GetWorld(),0);
-	if (player) {
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, violet, FString::Printf(TEXT("[SaveGame] Loaction: (%f,%f,%f)"), player->GetActorLocation().X, player->GetActorLocation().Y, player->GetActorLocation().Z));
-	}
 
-
-
-	//MySaveGameInstance->PlayerLocation = FVector(300, 700, 100);
-	//MySaveGameInstance->PlayerLocation = this->GetActorLocation();
-	//MySaveGameInstance->PlayerRotation = this->GetActorRotation();
-	
-	
 
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils before Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
-	MySaveGameInstance->SoilAndPlants.Empty();
-	//MySaveGameInstance->SoilAndPlants.Reset();
+	MySaveGameInstance->SoilAndPlants.Empty(0);
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils after Empty(): %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 
@@ -422,21 +404,20 @@ void AFarmerCharacter::SaveGame() noexcept
 		sp.RemainTime = cs->RemainTime;
 
 		MySaveGameInstance->SoilAndPlants.Add(sp);		
+		// Save
+		if (UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0)) {
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+		}
+		else {
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "Failed!");
+		}
 	}
 
-	// Save
-	if (UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0)) {
-		GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,FString::Printf(TEXT("[SaveGame] #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
-	}
-	else {
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "Failed!");
-	}
 }
 
 void AFarmerCharacter::LoadGame() noexcept
 {
 	if (!MySaveGameInstance || MySaveGameInstance->SoilAndPlants.IsEmpty()) return;
-	FColor blue{ 173,216,230 };
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 	
