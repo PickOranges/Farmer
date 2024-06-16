@@ -463,11 +463,11 @@ void AFarmerCharacter::LoadGame() noexcept
 
 		// Timer 
 		CurrentActor->RemainTime = cs.RemainTime;
-		if (cs.RemainTime >= 0.0f)
+		if (CurrentActor->RemainTime>=0.0f)
 		{
 			FTimerDelegate TimerDelegate;
 			TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], /*cs.PlantTF.GetScale3D(), cs.PlantTF.GetLocation()*/FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
-			GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, cs.RemainTime, true);
+			GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, CurrentActor->RemainTime, true);
 			//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[LoadGame] Recovered the Timer");
 		}
 
@@ -475,10 +475,10 @@ void AFarmerCharacter::LoadGame() noexcept
 		CurrentActor->Text3D->SetRelativeTransform(cs.Text3DTF);
 		CurrentActor->Text3D->SetText(cs.Text3DContent);
 
-		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,FString::Printf(TEXT("[LoadGame] Path: %s"), *cs.PlantMeshPath));
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] GrowStage: %d"), cs.GrowStage));
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] CurrentPlant: %d"), cs.CurrentPlant));
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] bIsPlanted: %d"), cs.bIsPlanted));
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,FString::Printf(TEXT("[LoadGame] Path: %s"), *CurrentActor->PlantMesh->GetStaticMesh()->GetName()));
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] GrowStage: %d"), CurrentActor->GrowStage));
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] CurrentPlant: %d"), CurrentActor->CurrentPlant));
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] bIsPlanted: %d"), CurrentActor->bIsPlanted));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, "------------");
 	}
 }
