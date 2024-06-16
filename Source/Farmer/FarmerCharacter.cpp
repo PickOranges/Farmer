@@ -437,7 +437,9 @@ void AFarmerCharacter::LoadGame() noexcept
 
 		// Plant SCM
 		if (cs.PlantMeshPath.IsEmpty()) continue;
-		CurrentActor->PlantMesh->SetRelativeTransform(cs.PlantTF);
+		//CurrentActor->PlantMesh->SetRelativeTransform(cs.PlantTF);
+		CurrentActor->PlantMesh->SetRelativeTransform(FTransform());
+
 		UStaticMesh* PlantSM = LoadObject<UStaticMesh>(CurrentActor, *cs.PlantMeshPath);
 		CurrentActor->PlantMesh->SetStaticMesh(PlantSM);
 		CurrentActor->GrowStage = cs.GrowStage;
@@ -447,17 +449,17 @@ void AFarmerCharacter::LoadGame() noexcept
 
 		// Timer 
 		CurrentActor->RemainTime = cs.RemainTime;
-		if (cs.RemainTime > 0.0f)
+		if (cs.RemainTime >= 0.0f)
 		{
 			FTimerDelegate TimerDelegate;
 			TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], CurrentActor->GetActorTransform().GetScale3D(), CurrentActor->GetActorTransform().GetLocation());
-			GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, 6.0f, true);
+			GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, cs.RemainTime, true);
 			GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[LoadGame] Recovered the Timer");
 		}
 
 		// Text3D
-		CurrentActor->Text3D->SetText(cs.Text3DContent);
 		CurrentActor->Text3D->SetRelativeTransform(cs.Text3DTF);
+		CurrentActor->Text3D->SetText(cs.Text3DContent);
 
 		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,cs.PlantMeshPath);
 	}
