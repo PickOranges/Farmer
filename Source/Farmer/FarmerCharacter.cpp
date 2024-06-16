@@ -101,19 +101,6 @@ void AFarmerCharacter::BeginPlay()
 	}
 }
 
-void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
-{
-	Super::EndPlay(Reason);
-
-	if (MySaveGameInstance) {
-		MySaveGameInstance->PlayerLocation = this->GetActorLocation();
-		MySaveGameInstance->PlayerRotation = this->GetActorRotation();
-		// 06.13
-		SaveGame();
-	}
-	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
-
-}
 
 void AFarmerCharacter::Activate()
 {
@@ -288,10 +275,24 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 	}
 }
 
-//void AFarmerCharacter::TriggerFeed()
-//{
-//	FeedDelegate.Execute();
-//}
+
+
+
+void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
+{
+	Super::EndPlay(Reason);
+
+	if (MySaveGameInstance) {
+		MySaveGameInstance->PlayerLocation = this->GetActorLocation();
+		MySaveGameInstance->PlayerRotation = this->GetActorRotation();
+		UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+
+		// 06.13
+		SaveGame();
+	}
+	//UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+}
+
 
 
 void AFarmerCharacter::CreateSaveGameInstance() noexcept
@@ -308,14 +309,14 @@ void AFarmerCharacter::CreateSaveGameInstance() noexcept
 		if (MySaveGameInstance->EarnedCrops.Num() == 0) {
 			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[CreateSaveGameInstance] Empty array, thus create a new array.");
 
-			MySaveGameInstance->PlayerLocation = FVector(1000, 1000, 100);
+			//MySaveGameInstance->PlayerLocation = FVector(1000, 1000, 100);
 
 			for (int32 i = 0; i < CropsEarned.Num(); ++i) {
 				MySaveGameInstance->EarnedCrops.Add(CropsEarned[i]);
 			}
 		}
 	}
-	SaveGame();
+	//SaveGame();
 	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 }
 
@@ -330,10 +331,10 @@ void AFarmerCharacter::LoadGameIfExist() noexcept
 
 		if (MySaveGameInstance)
 		{
-			if (MySaveGameInstance->PlayerLocation.Z!=0) {
-				this->SetActorLocationAndRotation(MySaveGameInstance->PlayerLocation, MySaveGameInstance->PlayerRotation);
-			}
-			else this->SetActorLocation(FVector{ 1000,1000,200 });
+			//if (MySaveGameInstance->PlayerLocation.Z!=0) {
+			this->SetActorLocationAndRotation(MySaveGameInstance->PlayerLocation, MySaveGameInstance->PlayerRotation);
+			//}
+			//else this->SetActorLocation(FVector{ 1000,1000,200 });
 
 			int length = MySaveGameInstance->EarnedCrops.Num();
 			if (CropsEarned.Num() != length) {
@@ -384,9 +385,9 @@ void AFarmerCharacter::SaveGame() noexcept
 
 
 
-	MySaveGameInstance->PlayerLocation = FVector(300, 700, 100);
-	MySaveGameInstance->PlayerLocation = this->GetActorLocation();
-	MySaveGameInstance->PlayerRotation = this->GetActorRotation();
+	//MySaveGameInstance->PlayerLocation = FVector(300, 700, 100);
+	//MySaveGameInstance->PlayerLocation = this->GetActorLocation();
+	//MySaveGameInstance->PlayerRotation = this->GetActorRotation();
 	
 	
 
@@ -450,7 +451,7 @@ void AFarmerCharacter::LoadGame() noexcept
 		CurrentActor->SoilMesh->SetStaticMesh(SoilSM);		
 
 		// Plant SCM
-		CurrentActor->PlantMesh->SetupAttachment(CurrentActor->SoilMesh);
+		//CurrentActor->PlantMesh->SetupAttachment(CurrentActor->SoilMesh);
 		CurrentActor->PlantMesh->SetRelativeTransform(cs.PlantTF);
 		if (!cs.PlantMeshPath.IsEmpty()) {
 			UStaticMesh* PlantSM = LoadObject<UStaticMesh>(nullptr, *cs.PlantMeshPath);
@@ -475,9 +476,9 @@ void AFarmerCharacter::LoadGame() noexcept
 
 		// Setup Attachment
 		// TODO: use another function: see screenshot
-		RootComponent = CurrentActor->SoilMesh;
-		CurrentActor->PlantMesh->SetupAttachment(RootComponent);
-		CurrentActor->Text3D->SetupAttachment(CurrentActor->PlantMesh);
+		//RootComponent = CurrentActor->SoilMesh;
+		//CurrentActor->PlantMesh->SetupAttachment(RootComponent);
+		//CurrentActor->Text3D->SetupAttachment(CurrentActor->PlantMesh);
 
 		//GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,cs.PlantMeshPath);
 	}
