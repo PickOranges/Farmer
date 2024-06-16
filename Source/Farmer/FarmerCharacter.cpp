@@ -293,7 +293,7 @@ void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 	if (MySaveGameInstance) {
 		MySaveGameInstance->PlayerLocation = this->GetActorLocation();
 		MySaveGameInstance->PlayerRotation = this->GetActorRotation();
-		//UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+		UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 
 		SaveGame();
 	}
@@ -379,7 +379,7 @@ void AFarmerCharacter::SaveGame() noexcept
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), Soils);
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] World #Soils: %d"), Soils.Num()));
 	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils BEFORE: %d"), MySaveGameInstance->SoilAndPlants.Num()));
-	MySaveGameInstance->SoilAndPlants.Empty(0);
+	//MySaveGameInstance->SoilAndPlants.Empty(0);
 	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 	
