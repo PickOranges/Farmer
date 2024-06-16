@@ -465,15 +465,17 @@ void AFarmerCharacter::LoadGame() noexcept
 		CurrentActor->RemainTime = cs.RemainTime;
 		if (CurrentActor->RemainTime>=0.0f)
 		{
+			// Text3D
+			CurrentActor->Text3D->SetRelativeTransform(cs.Text3DTF);
+			CurrentActor->Text3D->SetText(cs.Text3DContent);
+
+			// Recover Timer
 			FTimerDelegate TimerDelegate;
 			TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], /*cs.PlantTF.GetScale3D(), cs.PlantTF.GetLocation()*/FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
 			GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, CurrentActor->RemainTime, true);
 			//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[LoadGame] Recovered the Timer");
 		}
 
-		// Text3D
-		CurrentActor->Text3D->SetRelativeTransform(cs.Text3DTF);
-		CurrentActor->Text3D->SetText(cs.Text3DContent);
 
 		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,FString::Printf(TEXT("[LoadGame] Path: %s"), *CurrentActor->PlantMesh->GetStaticMesh()->GetName()));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] GrowStage: %d"), CurrentActor->GrowStage));
