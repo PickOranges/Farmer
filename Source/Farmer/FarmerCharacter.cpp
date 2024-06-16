@@ -467,6 +467,7 @@ void AFarmerCharacter::LoadGame() noexcept
 
 		// Timer 
 		CurrentActor->RemainTime = cs.RemainTime;
+		if (!CurrentActor->bIsPlanted) return;
 		if (CurrentActor->RemainTime>=0.0f)
 		{
 			if (!CurrentActor->bIsFruit) {
@@ -481,12 +482,14 @@ void AFarmerCharacter::LoadGame() noexcept
 				//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[LoadGame] Recovered the Timer");
 			}
 			else {
-				CurrentActor->PlantMesh->SetStaticMesh(CurrentActor->EarnedMeshes[CurrentActor->CurrentPlant]);
+				if (CurrentActor->bIsPlanted) {
+					CurrentActor->PlantMesh->SetStaticMesh(CurrentActor->EarnedMeshes[CurrentActor->CurrentPlant]);
+				}
 			}
 		}
 
 
-		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,FString::Printf(TEXT("[LoadGame] Path: %s"), *cs.PlantMeshPath));
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] Path: %s"), *cs.PlantMeshPath));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] Path: %s"), *CurrentActor->PlantMesh->GetStaticMesh()->GetPathName()));
 
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] GrowStage: %d"), CurrentActor->GrowStage));
