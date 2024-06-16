@@ -191,21 +191,22 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 	if (isHit) {
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil) {
-			if(!currentSoil->bIsPlanted && currentSoil->Text3D->GetText().IsEmpty()) return;
-			if (!currentSoil->bIsPlanted && !currentSoil->Text3D->GetText().IsEmpty()) return;
+			//if(!currentSoil->bIsPlanted && currentSoil->Text3D->GetText().IsEmpty()) return;
+			//if (!currentSoil->bIsPlanted && !currentSoil->Text3D->GetText().IsEmpty()) return;
+			if (!currentSoil->bIsPlanted) return;
 
 			currentSoil->bIsPlanted = false;
 			currentSoil->PlantMesh->SetStaticMesh(nullptr);
 
 			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle);
 
-			if (!currentSoil->Text3D->GetText().IsEmpty()) {
+			if (!currentSoil->Text3D->GetText().IsEmpty()) {  // case 1: still not mature
 				currentSoil->Text3D->SetText(FText::FromString(FString("")));
 				return;
 			}
 
 			// Change Seeds/Crops Amount
-			else {
+			else {  // case 2: matured
 				++SeedsAmount[currentSoil->CurrentPlant];
 				++CropsEarned[currentSoil->CurrentPlant];
 
@@ -277,8 +278,6 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 				{
 					temp->PlantMesh->SetRelativeLocation(FVector{ 0,0,25 });
 				}
-
-				//SaveGame();
 			}
 		}
 	}
