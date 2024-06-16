@@ -466,7 +466,7 @@ void AFarmerCharacter::LoadGame() noexcept
 		if (cs.RemainTime > 0.0f)
 		{
 			FTimerDelegate TimerDelegate;
-			TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], cs.PlantTF.GetScale3D(), cs.PlantTF.GetLocation());
+			TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], /*cs.PlantTF.GetScale3D(), cs.PlantTF.GetLocation()*/FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
 			GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, cs.RemainTime, true);
 			//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[LoadGame] Recovered the Timer");
 		}
