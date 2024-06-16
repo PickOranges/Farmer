@@ -200,6 +200,8 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			currentSoil->PlantMesh->SetStaticMesh(nullptr);
 
 			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle);
+			UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+
 
 			if (!currentSoil->Text3D->GetText().IsEmpty()) {  // case 1: still not mature
 				currentSoil->Text3D->SetText(FText::FromString(FString("")));
@@ -294,9 +296,10 @@ void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 	if (MySaveGameInstance) {
 		MySaveGameInstance->PlayerLocation = this->GetActorLocation();
 		MySaveGameInstance->PlayerRotation = this->GetActorRotation();
-		//UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+		UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 
 		SaveGame();
+		UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 	}
 }
 
@@ -380,9 +383,9 @@ void AFarmerCharacter::SaveGame() noexcept
 	TArray<AActor*> Soils;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASoil::StaticClass(), Soils);
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] World #Soils: %d"), Soils.Num()));
-	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils BEFORE: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils BEFORE: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 	MySaveGameInstance->SoilAndPlants.Empty(0);
-	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, FString::Printf(TEXT("[SaveGame] Slot #Soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
 
 	
 	for (AActor* it : Soils) {
