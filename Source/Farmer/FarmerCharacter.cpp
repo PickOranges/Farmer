@@ -310,17 +310,20 @@ void AFarmerCharacter::CreateSaveGameInstance() noexcept
 	if (MySaveGameInstance) {
 		// create & init for auto saving
 		if (MySaveGameInstance->EarnedCrops.Num() == 0) {
-			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[CreateSaveGameInstance] Empty array, thus create a new array.");
+			//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[CreateSaveGameInstance] Empty array, thus create a new array.");
 
-			//MySaveGameInstance->PlayerLocation = FVector(1000, 1000, 100);
+			MySaveGameInstance->PlayerLocation = this->GetActorLocation();
+			MySaveGameInstance->PlayerRotation = this->GetActorRotation();
+			UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+
 
 			for (int32 i = 0; i < CropsEarned.Num(); ++i) {
 				MySaveGameInstance->EarnedCrops.Add(CropsEarned[i]);
 			}
+			UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 		}
 	}
-	//SaveGame();
-	UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+	SaveGame();
 }
 
 void AFarmerCharacter::LoadGameIfExist() noexcept
@@ -337,7 +340,7 @@ void AFarmerCharacter::LoadGameIfExist() noexcept
 			this->SetActorLocationAndRotation(MySaveGameInstance->PlayerLocation, MySaveGameInstance->PlayerRotation);
 			int length = MySaveGameInstance->EarnedCrops.Num();
 			if (CropsEarned.Num() != length) {
-				GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[LoadGameIfExist]: Slot is invalid, thus won't load.");
+				//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[LoadGameIfExist]: Slot is invalid, thus won't load.");
 				return;
 			}
 			for (int32 i = 0; i < length; ++i) {
@@ -349,7 +352,7 @@ void AFarmerCharacter::LoadGameIfExist() noexcept
 		}
 	}
 	else {
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[LoadGameIfExist]: No old saved slots exists.");
+		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[LoadGameIfExist]: No old saved slots exists.");
 	}
 
 }
