@@ -293,11 +293,12 @@ void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 	if (MySaveGameInstance) {
 		MySaveGameInstance->PlayerLocation = this->GetActorLocation();
 		MySaveGameInstance->PlayerRotation = this->GetActorRotation();
-		UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+		//UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 
 		SaveGame();
 	}
 }
+
 
 
 
@@ -442,7 +443,7 @@ void AFarmerCharacter::LoadGame() noexcept
 		ASoil* CurrentActor = GetWorld()->SpawnActor<ASoil>(ASoil::StaticClass());
 
 		CurrentActor->SoilMesh->SetRelativeTransform(cs.SoilTF);
-		UStaticMesh* SoilSM = LoadObject<UStaticMesh>(CurrentActor, *cs.SoilMeshPath);
+		UStaticMesh* SoilSM = LoadObject<UStaticMesh>(nullptr, *cs.SoilMeshPath);
 		CurrentActor->SoilMesh->SetStaticMesh(SoilSM);		
 
 
@@ -453,7 +454,7 @@ void AFarmerCharacter::LoadGame() noexcept
 			continue; 
 		}
 		CurrentActor->PlantMesh->SetRelativeTransform(cs.PlantTF);
-		UStaticMesh* PlantSM = LoadObject<UStaticMesh>(CurrentActor, *cs.PlantMeshPath);
+		UStaticMesh* PlantSM = LoadObject<UStaticMesh>(nullptr, *cs.PlantMeshPath);
 		CurrentActor->PlantMesh->SetStaticMesh(PlantSM);
 		CurrentActor->GrowStage = cs.GrowStage;
 		CurrentActor->CurrentPlant = cs.CurrentPlant;
@@ -477,7 +478,9 @@ void AFarmerCharacter::LoadGame() noexcept
 		}
 
 
-		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,FString::Printf(TEXT("[LoadGame] Path: %s"), *CurrentActor->PlantMesh->GetStaticMesh()->GetName()));
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,FString::Printf(TEXT("[LoadGame] Path: %s"), *cs.PlantMeshPath));
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] Path: %s"), *CurrentActor->PlantMesh->GetStaticMesh()->GetPathName()));
+
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] GrowStage: %d"), CurrentActor->GrowStage));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] CurrentPlant: %d"), CurrentActor->CurrentPlant));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] bIsPlanted: %d"), CurrentActor->bIsPlanted));
