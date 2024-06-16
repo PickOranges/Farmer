@@ -272,8 +272,8 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 			// Crop is mature
 			if(temp->bIsPlanted && tx.IsEmpty() && temp->GrowStage==0){
 				temp->PlantMesh->SetStaticMesh(temp->EarnedMeshes[temp->CurrentPlant]);
-				if (temp->CurrentPlant == 1)  // Eggplant
-					temp->PlantMesh->SetRelativeLocation(FVector{ 0,0,25 });
+				//if (temp->CurrentPlant == 1)  // Eggplant
+				//	temp->PlantMesh->SetRelativeLocation(FVector{ 0,0,25 });
 			}
 		}
 	}
@@ -455,7 +455,7 @@ void AFarmerCharacter::LoadGame() noexcept
 
 		// Timer 
 		CurrentActor->RemainTime = cs.RemainTime;
-		if (cs.RemainTime >= 0.0f)
+		if (cs.RemainTime > 0.0f)
 		{
 			FTimerDelegate TimerDelegate;
 			TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], cs.PlantTF.GetScale3D(), cs.PlantTF.GetLocation());
