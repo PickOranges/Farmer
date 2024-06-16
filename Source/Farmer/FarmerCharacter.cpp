@@ -270,9 +270,9 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 			FText tx = temp->Text3D->GetText();
 
 			// Crop is mature
-			if(temp->bIsPlanted && tx.IsEmpty() && temp->GrowStage==0){
+			if(temp->bIsPlanted && tx.IsEmpty() /*&& temp->GrowStage==0*/){
 				temp->PlantMesh->SetStaticMesh(temp->EarnedMeshes[temp->CurrentPlant]);
-				if (temp->CurrentPlant == 1 && temp->PlantMesh->GetStaticMesh()->GetName() == temp->EarnedMeshes[temp->CurrentPlant]->GetName())  // Eggplant
+				if (temp->CurrentPlant == 1)  // Eggplant
 				{
 					temp->PlantMesh->SetRelativeLocation(FVector{ 0,0,25 });
 				}
@@ -415,6 +415,10 @@ void AFarmerCharacter::SaveGame() noexcept
 		// Save
 		if (UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0)) {
 			//GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] saved #soils: %d"), MySaveGameInstance->SoilAndPlants.Num()));
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] saved #soils: %d"), sp.GrowStage));
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] saved #soils: %d"), sp.CurrentPlant));
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, FString::Printf(TEXT("[SaveGame] saved #soils: %d"), sp.bIsPlanted));
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "------------");
 		}
 		else {
 			GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "Failed!");
