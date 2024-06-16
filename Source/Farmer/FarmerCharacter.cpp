@@ -272,8 +272,10 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 			// Crop is mature
 			if(temp->bIsPlanted && tx.IsEmpty() && temp->GrowStage==0){
 				temp->PlantMesh->SetStaticMesh(temp->EarnedMeshes[temp->CurrentPlant]);
-				//if (temp->CurrentPlant == 1)  // Eggplant
-				//	temp->PlantMesh->SetRelativeLocation(FVector{ 0,0,25 });
+				if (temp->CurrentPlant == 1 && temp->PlantMesh->GetStaticMesh()->GetName() == temp->EarnedMeshes[temp->CurrentPlant]->GetName())  // Eggplant
+				{
+					temp->PlantMesh->SetRelativeLocation(FVector{ 0,0,25 });
+				}
 			}
 		}
 	}
