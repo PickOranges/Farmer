@@ -389,11 +389,7 @@ void AFarmerCharacter::SaveGame() noexcept
 		sp.PlantMeshPath = cs->PlantMesh->GetStaticMesh()->GetPathName();
 		sp.GrowStage = cs->GrowStage;
 		sp.CurrentPlant = cs->CurrentPlant;
-		if (cs->bIsPlanted) {
-			sp.bIsPlanted = true;
-		}
-		else sp.bIsPlanted = false;
-		//sp.bIsPlanted = cs->bIsPlanted;
+		sp.bIsPlanted = cs->bIsPlanted;
 		sp.bIsFruit = cs->bIsFruit;
 
 		sp.Text3DContent = cs->Text3D->GetText();
