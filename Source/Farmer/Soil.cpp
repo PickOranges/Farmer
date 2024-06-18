@@ -134,14 +134,14 @@ void ASoil::ChangeMesh(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Loca
 
 void ASoil::OnRemovePlant()
 {
-	this->bIsPlanted = false;
-	this->bIsFruit = false;
-	this->PlantMesh->SetStaticMesh(nullptr);
+	bIsPlanted = false;
+	bIsFruit = false;
+	PlantMesh->SetStaticMesh(nullptr);
 
-	GetWorld()->GetTimerManager().ClearTimer(this->MeshChangeTimerHandle);
+	GetWorld()->GetTimerManager().ClearTimer(MeshChangeTimerHandle);
 
-	if (!this->Text3D->GetText().IsEmpty()) {  // case 1: still not mature
-		this->Text3D->SetText(FText::FromString(FString("")));
+	if (!Text3D->GetText().IsEmpty()) {  // case 1: still not mature
+		Text3D->SetText(FText::FromString(FString("")));
 		return;
 	}
 }

@@ -458,7 +458,6 @@ void AFarmerCharacter::LoadGame() noexcept
 					CurrentActor->PlantMesh->SetStaticMesh(CurrentActor->EarnedMeshes[CurrentActor->CurrentPlant]);
 				}
 			}
-			//if (!CurrentActor->bIsFruit) {
 			else{
 				// Recover Timer
 				FTimerDelegate TimerDelegate;
@@ -467,9 +466,6 @@ void AFarmerCharacter::LoadGame() noexcept
 				GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, 6.0f, true, CurrentActor->RemainTime);
 				//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[LoadGame] Recovered the Timer");
 			}
-			/*else {
-				CurrentActor->PlantMesh->SetStaticMesh(CurrentActor->EarnedMeshes[CurrentActor->CurrentPlant]);
-			}*/
 		}
 
 
