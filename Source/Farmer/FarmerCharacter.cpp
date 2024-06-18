@@ -469,7 +469,7 @@ void AFarmerCharacter::LoadGame() noexcept
 		}
 
 
-		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] Path: %s"), *cs.PlantMeshPath));
+		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] Path: %s"), *cs.PlantMeshPath));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] Path: %s"), *CurrentActor->PlantMesh->GetStaticMesh()->GetPathName()));
 
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] GrowStage: %d"), CurrentActor->GrowStage));
