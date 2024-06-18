@@ -13,9 +13,8 @@
 #include "Components/CapsuleComponent.h"
 #include "Soil.h"
 #include "Kismet/GameplayStatics.h"
-
-
 #include "EngineUtils.h"
+#include "ResourceBase.h"
 
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -210,6 +209,11 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 				currentSoil->PlantSeed();
 				--SeedsAmount[Seeds];
 			}
+			return;
+		}
+		AResourceBase* CurrentResource = Cast<AResourceBase>(Result.GetActor());
+		if (CurrentResource) {
+			CurrentResource->OnInteraction();
 		}
 	}
 }

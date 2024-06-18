@@ -22,6 +22,8 @@ protected:
 public:	
 	// Called every frame
 	//virtual void Tick(float DeltaTime) override;
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
+	bool bIsInteractable = true;
+
 	virtual void OnInteraction();
 };

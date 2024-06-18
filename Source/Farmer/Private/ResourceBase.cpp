@@ -8,7 +8,9 @@ FColor blue2{ 173,216,230 };
 FColor violet2{ 198,181,237 };
 FColor lemon2{ 254,255,153 };
 
+
 void AResourceBase::OnInteraction()
 {
+	AInteractable::OnInteraction();
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon2, "[ResourceBase] OnInteraction()");
 }

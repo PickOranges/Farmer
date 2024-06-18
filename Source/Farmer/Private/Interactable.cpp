@@ -22,5 +22,6 @@ AInteractable::AInteractable()
 void AInteractable::OnInteraction()
 {
 	GEngine->AddOnScreenDebugMessage(-1,INFINITY, pink1,"[Interactable] OnInteraction()");
+	bIsInteractable = false;
 }
 
