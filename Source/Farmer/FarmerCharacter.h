@@ -153,12 +153,21 @@ public:
 	UMySaveGame* MySaveGameInstance;
 
 protected:
+	UFUNCTION()
 	void CreateSaveGameInstance() noexcept;
+	UFUNCTION()
 	void LoadGameIfExist() noexcept;
+	UFUNCTION()
 	void AutoSave(int32& index) noexcept;
 
-
+	UFUNCTION()
 	void SaveGame() noexcept;
+	UFUNCTION()
 	void LoadGame() noexcept;
+
+protected:
+	UFUNCTION()
+	void TriggerRemovePlant(ASoil* currentSoil);
+
 };
 

@@ -10,6 +10,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
+class ASoil;
 class UPrimitiveComponent;
 struct FHitResult;
 #ifdef FARMER_FarmerCharacter_generated_h
@@ -22,6 +23,12 @@ struct FHitResult;
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execTriggerRemovePlant); \
+	DECLARE_FUNCTION(execLoadGame); \
+	DECLARE_FUNCTION(execSaveGame); \
+	DECLARE_FUNCTION(execAutoSave); \
+	DECLARE_FUNCTION(execLoadGameIfExist); \
+	DECLARE_FUNCTION(execCreateSaveGameInstance); \
 	DECLARE_FUNCTION(execOnBeginOverlapCB);
 
 

@@ -79,6 +79,13 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		}
 		return Z_Registration_Info_UEnum_EPlants.InnerSingleton;
 	}
+	DEFINE_FUNCTION(ASoil::execOnRemovePlant)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->OnRemovePlant();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(ASoil::execChangeMesh)
 	{
 		P_GET_TARRAY_REF(UStaticMesh*,Z_Param_Out_Meshes);
@@ -105,6 +112,7 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		static const FNameNativePtrPair Funcs[] = {
 			{ "ChangeMesh", &ASoil::execChangeMesh },
 			{ "GrowCrop", &ASoil::execGrowCrop },
+			{ "OnRemovePlant", &ASoil::execOnRemovePlant },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -198,6 +206,28 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_ASoil_OnRemovePlant_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ASoil_OnRemovePlant_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Soil.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ASoil_OnRemovePlant_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ASoil, nullptr, "OnRemovePlant", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ASoil_OnRemovePlant_Statics::Function_MetaDataParams), Z_Construct_UFunction_ASoil_OnRemovePlant_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_ASoil_OnRemovePlant()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ASoil_OnRemovePlant_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(ASoil);
 	UClass* Z_Construct_UClass_ASoil_NoRegister()
 	{
@@ -235,6 +265,7 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 	const FClassFunctionLinkInfo Z_Construct_UClass_ASoil_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_ASoil_ChangeMesh, "ChangeMesh" }, // 1891223476
 		{ &Z_Construct_UFunction_ASoil_GrowCrop, "GrowCrop" }, // 591632250
+		{ &Z_Construct_UFunction_ASoil_OnRemovePlant, "OnRemovePlant" }, // 4264307946
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ASoil_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -319,9 +350,9 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		{ EPlants_StaticEnum, TEXT("EPlants"), &Z_Registration_Info_UEnum_EPlants, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3204520817U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ASoil, ASoil::StaticClass, TEXT("ASoil"), &Z_Registration_Info_UClass_ASoil, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASoil), 759407594U) },
+		{ Z_Construct_UClass_ASoil, ASoil::StaticClass, TEXT("ASoil"), &Z_Registration_Info_UClass_ASoil, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASoil), 837889875U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_2217145186(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_2249567516(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo),
 		nullptr, 0,
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::EnumInfo));

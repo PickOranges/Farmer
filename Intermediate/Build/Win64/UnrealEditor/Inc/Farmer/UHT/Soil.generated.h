@@ -20,6 +20,7 @@ class UStaticMesh;
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execOnRemovePlant); \
 	DECLARE_FUNCTION(execChangeMesh); \
 	DECLARE_FUNCTION(execGrowCrop);
 

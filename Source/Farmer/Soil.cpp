@@ -131,3 +131,17 @@ void ASoil::ChangeMesh(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Loca
 		GrowStage = 0;
 	}
 }
+
+void ASoil::OnRemovePlant()
+{
+	this->bIsPlanted = false;
+	this->bIsFruit = false;
+	this->PlantMesh->SetStaticMesh(nullptr);
+
+	GetWorld()->GetTimerManager().ClearTimer(this->MeshChangeTimerHandle);
+
+	if (!this->Text3D->GetText().IsEmpty()) {  // case 1: still not mature
+		this->Text3D->SetText(FText::FromString(FString("")));
+		return;
+	}
+}

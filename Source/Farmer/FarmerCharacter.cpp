@@ -182,7 +182,7 @@ void AFarmerCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
-void AFarmerCharacter::PressE(const FInputActionValue& Value)
+void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue,"Keyboard input: E.");
 	bool isHit;
@@ -191,35 +191,13 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 	if (isHit) {
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil) {
-			//if(!currentSoil->bIsPlanted && currentSoil->Text3D->GetText().IsEmpty()) return;
-			//if (!currentSoil->bIsPlanted && !currentSoil->Text3D->GetText().IsEmpty()) return;
-			if (!currentSoil->bIsPlanted) return;
-
-			currentSoil->bIsPlanted = false;
-			currentSoil->bIsFruit = false;
-			currentSoil->PlantMesh->SetStaticMesh(nullptr);
-
-			GetWorld()->GetTimerManager().ClearTimer(currentSoil->MeshChangeTimerHandle);
-			UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
-
-
-			if (!currentSoil->Text3D->GetText().IsEmpty()) {  // case 1: still not mature
-				currentSoil->Text3D->SetText(FText::FromString(FString("")));
-				return;
-			}
-
-			// Change Seeds/Crops Amount
-			else {  // case 2: matured
-				++SeedsAmount[currentSoil->CurrentPlant];
-				++CropsEarned[currentSoil->CurrentPlant];
-
-				AutoSave(currentSoil->CurrentPlant);
-			}
+			TriggerRemovePlant(currentSoil);
+			return;
 		}
 	}
 }
 
-void AFarmerCharacter::PressQ(const FInputActionValue& Value)
+void AFarmerCharacter::PressE(const FInputActionValue& Value)
 {
 	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Keyboard input: Q.");
 	bool isHit;
@@ -501,5 +479,21 @@ void AFarmerCharacter::LoadGame() noexcept
 	}
 }
 
+
+
+
+void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
+	if (!currentSoil) return;
+	if (!currentSoil->bIsPlanted) return;
+	currentSoil->OnRemovePlant();
+
+	//UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
+    // case 2: matured
+	if (currentSoil->Text3D->GetText().IsEmpty()) {
+		++SeedsAmount[currentSoil->CurrentPlant];
+		++CropsEarned[currentSoil->CurrentPlant];
+	}
+	AutoSave(currentSoil->CurrentPlant);
+}
 
 

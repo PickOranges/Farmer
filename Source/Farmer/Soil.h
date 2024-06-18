@@ -62,4 +62,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ChangeMesh(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Location);
+
+
+	UFUNCTION()
+	void OnRemovePlant();
 };
