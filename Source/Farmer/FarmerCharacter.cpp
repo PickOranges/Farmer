@@ -444,18 +444,22 @@ void AFarmerCharacter::LoadGame() noexcept
 		CurrentActor->bIsPlanted = cs.bIsPlanted;
 		CurrentActor->bIsFruit = cs.bIsFruit;
 
-
+		// Text3D
+		CurrentActor->Text3D->SetRelativeTransform(cs.Text3DTF);
+		CurrentActor->Text3D->SetText(cs.Text3DContent);
 
 		// Timer 
 		CurrentActor->RemainTime = cs.RemainTime;
 		if (!CurrentActor->bIsPlanted) return;
 		if (CurrentActor->RemainTime>=0.0f)
 		{
-			if (!CurrentActor->bIsFruit) {
-				// Text3D
-				CurrentActor->Text3D->SetRelativeTransform(cs.Text3DTF);
-				CurrentActor->Text3D->SetText(cs.Text3DContent);
-
+			if(CurrentActor->Text3D->GetText().IsEmpty()){
+				if (CurrentActor->bIsFruit) {
+					CurrentActor->PlantMesh->SetStaticMesh(CurrentActor->EarnedMeshes[CurrentActor->CurrentPlant]);
+				}
+			}
+			//if (!CurrentActor->bIsFruit) {
+			else{
 				// Recover Timer
 				FTimerDelegate TimerDelegate;
 				TimerDelegate.BindUFunction(CurrentActor, FName("ChangeMesh"), CurrentActor->MeshMap[static_cast<EPlants>(CurrentActor->CurrentPlant)], FVector(0.7, 0.7, 0.7), FVector(0, 0, 12));
@@ -463,9 +467,9 @@ void AFarmerCharacter::LoadGame() noexcept
 				GetWorld()->GetTimerManager().SetTimer(CurrentActor->MeshChangeTimerHandle, TimerDelegate, 6.0f, true, CurrentActor->RemainTime);
 				//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[LoadGame] Recovered the Timer");
 			}
-			else {
+			/*else {
 				CurrentActor->PlantMesh->SetStaticMesh(CurrentActor->EarnedMeshes[CurrentActor->CurrentPlant]);
-			}
+			}*/
 		}
 
 
