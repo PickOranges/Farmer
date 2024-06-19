@@ -50,6 +50,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
 	class UWidgetComponent* InteractionWidgetComponent; // Widget component for UI message
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "UI")
+	TSubclassOf<UUserWidget> InteractionWidgetClass;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
 	class UTexture2D* ButtonImage; // Image representing the 'E' key
 
@@ -62,4 +65,6 @@ public:
 	void SetupInteractionWidget();
 	void ShowInteractionWidget();
 	void HideInteractionWidget();
+private:
+	UUserWidget* UserWidget;
 };

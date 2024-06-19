@@ -10,6 +10,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 // Cross Module References
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
@@ -20,6 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 	FARMER_API UClass* Z_Construct_UClass_AInteractable_NoRegister();
 	UMG_API UClass* Z_Construct_UClass_UImage_NoRegister();
 	UMG_API UClass* Z_Construct_UClass_UTextBlock_NoRegister();
+	UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
 	UMG_API UClass* Z_Construct_UClass_UWidgetComponent_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
@@ -229,6 +231,10 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_InteractionWidgetComponent;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_InteractionWidgetClass_MetaData[];
+#endif
+		static const UECodeGen_Private::FClassPropertyParams NewProp_InteractionWidgetClass;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_ButtonImage_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_ButtonImage;
@@ -294,8 +300,8 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AInteractable_Statics::NewProp_InteractionWidgetComponent = { "InteractionWidgetComponent", nullptr, (EPropertyFlags)0x001000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AInteractable, InteractionWidgetComponent), Z_Construct_UClass_UWidgetComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AInteractable_Statics::NewProp_InteractionWidgetComponent_MetaData), Z_Construct_UClass_AInteractable_Statics::NewProp_InteractionWidgetComponent_MetaData) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AInteractable_Statics::NewProp_ButtonImage_MetaData[] = {
-		{ "Category", "Interactable" },
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AInteractable_Statics::NewProp_InteractionWidgetClass_MetaData[] = {
+		{ "Category", "UI" },
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "// Widget component for UI message\n" },
 #endif
@@ -303,6 +309,13 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 #if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Widget component for UI message" },
 #endif
+	};
+#endif
+	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AInteractable_Statics::NewProp_InteractionWidgetClass = { "InteractionWidgetClass", nullptr, (EPropertyFlags)0x0014000000010015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AInteractable, InteractionWidgetClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AInteractable_Statics::NewProp_InteractionWidgetClass_MetaData), Z_Construct_UClass_AInteractable_Statics::NewProp_InteractionWidgetClass_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AInteractable_Statics::NewProp_ButtonImage_MetaData[] = {
+		{ "Category", "Interactable" },
+		{ "ModuleRelativePath", "Public/Interactable.h" },
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AInteractable_Statics::NewProp_ButtonImage = { "ButtonImage", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AInteractable, ButtonImage), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AInteractable_Statics::NewProp_ButtonImage_MetaData), Z_Construct_UClass_AInteractable_Statics::NewProp_ButtonImage_MetaData) };
@@ -334,6 +347,7 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AInteractable_Statics::NewProp_bIsInteractable,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AInteractable_Statics::NewProp_CollisionBox,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AInteractable_Statics::NewProp_InteractionWidgetComponent,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AInteractable_Statics::NewProp_InteractionWidgetClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AInteractable_Statics::NewProp_ButtonImage,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AInteractable_Statics::NewProp_InteractionImage,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AInteractable_Statics::NewProp_InteractionText,
@@ -376,9 +390,9 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AInteractable, AInteractable::StaticClass, TEXT("AInteractable"), &Z_Registration_Info_UClass_AInteractable, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AInteractable), 1638917303U) },
+		{ Z_Construct_UClass_AInteractable, AInteractable::StaticClass, TEXT("AInteractable"), &Z_Registration_Info_UClass_AInteractable, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AInteractable), 2564159125U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_3833253629(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_2029795673(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
