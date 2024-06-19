@@ -31,6 +31,7 @@ void AInteractable::BeginPlay()
 		{
 			InteractionWidgetComponent->SetWidget(UserWidget);
 			SetupInteractionWidget();
+
 		}
 	}
 }
@@ -64,7 +65,7 @@ void AInteractable::SetupInteractionWidget()
 	InteractionImage->SetBrushFromTexture(ButtonImage);
 	InteractionText->SetText(FText::FromString(FString{"Press E to Interact."}));
 
-	HideInteractionWidget();
+	//HideInteractionWidget();
 }
 
 void AInteractable::ShowInteractionWidget()
