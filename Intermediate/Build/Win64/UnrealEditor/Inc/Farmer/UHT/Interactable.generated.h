@@ -9,6 +9,9 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class AActor;
+class UPrimitiveComponent;
+struct FHitResult;
 #ifdef FARMER_Interactable_generated_h
 #error "Interactable.generated.h already included, missing '#pragma once' in Interactable.h"
 #endif
@@ -17,7 +20,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_13_SPARSE_DATA
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_13_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_13_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
-#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_13_RPC_WRAPPERS_NO_PURE_DECLS
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execOnPlayerOverlapEnd); \
+	DECLARE_FUNCTION(execOnPlayerOverlapBegin);
+
+
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_13_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_13_INCLASS_NO_PURE_DECLS \
 private: \

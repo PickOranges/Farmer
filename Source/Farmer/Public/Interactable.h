@@ -36,4 +36,21 @@ public:
 	UBoxComponent* CollisionBox;
 
 	virtual void OnInteract();
+
+	UFUNCTION(Category = "Interactable")
+	void OnPlayerOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION(Category = "Interactable")
+	void OnPlayerOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+private:
+	UPROPERTY()
+	class UWidgetComponent* InteractionWidgetComponent; // Widget component for UI message
+
+	UPROPERTY()
+	class UTexture2D* ButtonImage; // Image representing the 'E' key
+
+	void SetupInteractionWidget();
+	void ShowInteractionWidget();
+	void HideInteractionWidget();
 };
