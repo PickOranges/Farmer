@@ -30,6 +30,7 @@ void AInteractable::BeginPlay()
 		if (UserWidget)
 		{
 			InteractionWidgetComponent->SetWidget(UserWidget);
+
 			SetupInteractionWidget();
 
 		}
