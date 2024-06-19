@@ -29,8 +29,6 @@ public: \
 
 
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_16_ENHANCED_CONSTRUCTORS \
-	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API AResourceBase(); \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AResourceBase(AResourceBase&&); \

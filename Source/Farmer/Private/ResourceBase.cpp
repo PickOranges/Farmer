@@ -9,8 +9,19 @@ FColor violet2{ 198,181,237 };
 FColor lemon2{ 254,255,153 };
 
 
-void AResourceBase::OnInteraction()
+AResourceBase::AResourceBase()
 {
-	AInteractable::OnInteraction();
+	//Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	//RootComponent = Root;
+
+	ResourceMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ResourceMesh"));
+	RootComponent = ResourceMesh;
+}
+
+
+
+void AResourceBase::OnInteract()
+{
+	AInteractable::OnInteract();
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon2, "[ResourceBase] OnInteraction()");
 }

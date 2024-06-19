@@ -9,6 +9,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeResourceBase() {}
 // Cross Module References
+	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_AInteractable();
 	FARMER_API UClass* Z_Construct_UClass_AResourceBase();
 	FARMER_API UClass* Z_Construct_UClass_AResourceBase_NoRegister();
@@ -28,6 +29,11 @@ void EmptyLinkFunctionForGeneratedCodeResourceBase() {}
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ResourceMesh_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_ResourceMesh;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
 	};
@@ -45,6 +51,23 @@ void EmptyLinkFunctionForGeneratedCodeResourceBase() {}
 		{ "ModuleRelativePath", "Public/ResourceBase.h" },
 	};
 #endif
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AResourceBase_Statics::NewProp_ResourceMesh_MetaData[] = {
+		{ "Category", "Resource" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \"Resource\")\n//USceneComponent* Root;\n" },
+#endif
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/ResourceBase.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \"Resource\")\nUSceneComponent* Root;" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AResourceBase_Statics::NewProp_ResourceMesh = { "ResourceMesh", nullptr, (EPropertyFlags)0x001000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AResourceBase, ResourceMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceBase_Statics::NewProp_ResourceMesh_MetaData), Z_Construct_UClass_AResourceBase_Statics::NewProp_ResourceMesh_MetaData) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AResourceBase_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AResourceBase_Statics::NewProp_ResourceMesh,
+	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AResourceBase_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AResourceBase>::IsAbstract,
 	};
@@ -54,15 +77,16 @@ void EmptyLinkFunctionForGeneratedCodeResourceBase() {}
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
 		nullptr,
-		nullptr,
+		Z_Construct_UClass_AResourceBase_Statics::PropPointers,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
 		0,
-		0,
+		UE_ARRAY_COUNT(Z_Construct_UClass_AResourceBase_Statics::PropPointers),
 		0,
 		0x009000A4u,
 		METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceBase_Statics::Class_MetaDataParams), Z_Construct_UClass_AResourceBase_Statics::Class_MetaDataParams)
 	};
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceBase_Statics::PropPointers) < 2048);
 	UClass* Z_Construct_UClass_AResourceBase()
 	{
 		if (!Z_Registration_Info_UClass_AResourceBase.OuterSingleton)
@@ -75,7 +99,6 @@ void EmptyLinkFunctionForGeneratedCodeResourceBase() {}
 	{
 		return AResourceBase::StaticClass();
 	}
-	AResourceBase::AResourceBase() {}
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AResourceBase);
 	AResourceBase::~AResourceBase() {}
 	struct Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_Statics
@@ -83,9 +106,9 @@ void EmptyLinkFunctionForGeneratedCodeResourceBase() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AResourceBase, AResourceBase::StaticClass, TEXT("AResourceBase"), &Z_Registration_Info_UClass_AResourceBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceBase), 2755766504U) },
+		{ Z_Construct_UClass_AResourceBase, AResourceBase::StaticClass, TEXT("AResourceBase"), &Z_Registration_Info_UClass_AResourceBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceBase), 2772011732U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_1918648941(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_3413892024(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

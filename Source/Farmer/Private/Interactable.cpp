@@ -19,7 +19,7 @@ AInteractable::AInteractable()
 
 
 
-void AInteractable::OnInteraction()
+void AInteractable::OnInteract()
 {
 	GEngine->AddOnScreenDebugMessage(-1,INFINITY, pink1,"[Interactable] OnInteraction()");
 	bIsInteractable = false;

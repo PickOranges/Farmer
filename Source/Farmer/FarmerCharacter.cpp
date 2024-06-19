@@ -213,7 +213,7 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 		}
 		AResourceBase* CurrentResource = Cast<AResourceBase>(Result.GetActor());
 		if (CurrentResource) {
-			CurrentResource->OnInteraction();
+			CurrentResource->OnInteract();
 		}
 	}
 }

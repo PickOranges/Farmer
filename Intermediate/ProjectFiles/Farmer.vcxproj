@@ -195,6 +195,11 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\ResourceTree.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\SAICharacter.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -222,6 +227,7 @@
     <ClInclude Include="..\..\Source\Farmer\Public\NPCFoxAnimInstance.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\Plant.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceBase.h"/>
+    <ClInclude Include="..\..\Source\Farmer\Public\ResourceTree.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\SAICharacter.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\SAIController.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\SBTService_CheckRange.h"/>

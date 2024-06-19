@@ -25,5 +25,5 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
 	bool bIsInteractable = true;
 
-	virtual void OnInteraction();
+	virtual void OnInteract();
 };
