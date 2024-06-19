@@ -20,6 +20,12 @@ protected:
 	//virtual void BeginPlay() override;
 
 public:	
+	FColor pink{ 255,182,193 };
+	FColor blue{ 173,216,230 };
+	FColor violet{ 198,181,237 };
+	FColor lemon{ 254,255,153 };
+
+public:
 	// Called every frame
 	//virtual void Tick(float DeltaTime) override;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
