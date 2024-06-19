@@ -4,6 +4,9 @@
 #include "Interactable.h"
 #include "Components/WidgetComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Components/Image.h"
+#include "Components/Button.h"
+#include "Components/TextBlock.h"
 
 
 // Sets default values
@@ -15,10 +18,22 @@ AInteractable::AInteractable()
 	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
 	CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapBegin);
 	CollisionBox->OnComponentEndOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapEnd);
-
-	SetupInteractionWidget();
 }
 
+
+void AInteractable::BeginPlay()
+{
+	Super::BeginPlay();
+	if (InteractionWidgetComponent)
+	{
+		UUserWidget* UserWidget = CreateWidget<UUserWidget>(GetWorld(), InteractionWidgetComponent->GetWidgetClass());
+		if (UserWidget)
+		{
+			InteractionWidgetComponent->SetWidget(UserWidget);
+			SetupInteractionWidget();
+		}
+	}
+}
 
 void AInteractable::OnInteract()
 {
@@ -43,10 +58,11 @@ void AInteractable::SetupInteractionWidget()
 	InteractionWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("InteractionWidgetComponent"));
 	InteractionWidgetComponent->SetupAttachment(RootComponent);
 	InteractionWidgetComponent->SetWidgetSpace(EWidgetSpace::Screen);
+	InteractionWidgetComponent->SetDrawSize(FVector2D(300, 100));
 
 	ButtonImage = LoadObject<UTexture2D>(nullptr, TEXT("/Script/Engine.Texture2D'/Game/E_Icon.E_Icon'"));
-	// TODO: link the image to WidgetComponent!!
-
+	InteractionImage->SetBrushFromTexture(ButtonImage);
+	InteractionText->SetText(FText::FromString(FString{"Press E to Interact."}));
 
 	HideInteractionWidget();
 }

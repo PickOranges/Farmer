@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/BoxComponent.h"
+#include "Blueprint/UserWidget.h"
 #include "Interactable.generated.h"
 
 UCLASS()
@@ -27,6 +28,8 @@ public:
 	FColor lemon{ 254,255,153 };
 
 public:
+	void BeginPlay() override;
+
 	// Called every frame
 	//virtual void Tick(float DeltaTime) override;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
@@ -49,6 +52,12 @@ private:
 
 	UPROPERTY()
 	class UTexture2D* ButtonImage; // Image representing the 'E' key
+
+	UPROPERTY(meta = (BindWidget))
+	class UImage* InteractionImage;
+
+	UPROPERTY(meta = (BindWidget))
+	class UTextBlock* InteractionText;
 
 	void SetupInteractionWidget();
 	void ShowInteractionWidget();
