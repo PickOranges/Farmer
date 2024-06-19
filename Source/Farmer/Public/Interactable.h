@@ -62,9 +62,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable", meta = (BindWidget))
 	class UTextBlock* InteractionText;
 
-	void SetupInteractionWidget();
-	void ShowInteractionWidget();
-	void HideInteractionWidget();
 private:
 	UUserWidget* UserWidget;
 };

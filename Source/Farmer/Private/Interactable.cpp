@@ -24,11 +24,7 @@ AInteractable::AInteractable()
 	InteractionWidgetComponent->SetWidgetSpace(EWidgetSpace::Screen);
 	InteractionWidgetComponent->SetDrawSize(FVector2D(300, 100));
 
-	ButtonImage = LoadObject<UTexture2D>(nullptr, TEXT("/Script/Engine.Texture2D'/Game/E_Icon.E_Icon'"));
-	InteractionImage->SetBrushFromTexture(ButtonImage);
-	InteractionText->SetText(FText::FromString(FString{ "Press E to Interact." }));
-
-	if (InteractionWidgetComponent) InteractionWidgetComponent->SetVisibility(false);
+	InteractionWidgetComponent->SetVisibility(false);
 }
 
 
@@ -41,6 +37,10 @@ void AInteractable::BeginPlay()
 		if (UserWidget)
 		{
 			InteractionWidgetComponent->SetWidget(UserWidget);
+
+			ButtonImage = LoadObject<UTexture2D>(nullptr, TEXT("/Script/Engine.Texture2D'/Game/E_Icon.E_Icon'"));
+			InteractionImage->SetBrushFromTexture(ButtonImage);
+			InteractionText->SetText(FText::FromString(FString{ "Press E to Interact." }));
 		}
 	}
 }
