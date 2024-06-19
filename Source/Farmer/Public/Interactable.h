@@ -46,7 +46,7 @@ public:
 	UFUNCTION(Category = "Interactable")
 	void OnPlayerOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
-private:
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
 	class UWidgetComponent* InteractionWidgetComponent; // Widget component for UI message
 
