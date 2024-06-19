@@ -54,14 +54,8 @@ void EmptyLinkFunctionForGeneratedCodeResourceBase() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AResourceBase_Statics::NewProp_ResourceMesh_MetaData[] = {
 		{ "Category", "Resource" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \"Resource\")\n//USceneComponent* Root;\n" },
-#endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/ResourceBase.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \"Resource\")\nUSceneComponent* Root;" },
-#endif
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AResourceBase_Statics::NewProp_ResourceMesh = { "ResourceMesh", nullptr, (EPropertyFlags)0x001000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AResourceBase, ResourceMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceBase_Statics::NewProp_ResourceMesh_MetaData), Z_Construct_UClass_AResourceBase_Statics::NewProp_ResourceMesh_MetaData) };
@@ -106,9 +100,9 @@ void EmptyLinkFunctionForGeneratedCodeResourceBase() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AResourceBase, AResourceBase::StaticClass, TEXT("AResourceBase"), &Z_Registration_Info_UClass_AResourceBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceBase), 2772011732U) },
+		{ Z_Construct_UClass_AResourceBase, AResourceBase::StaticClass, TEXT("AResourceBase"), &Z_Registration_Info_UClass_AResourceBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceBase), 1162935757U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_3413892024(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_4243424479(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceBase_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

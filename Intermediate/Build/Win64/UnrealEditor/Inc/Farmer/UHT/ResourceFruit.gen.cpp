@@ -83,9 +83,9 @@ void EmptyLinkFunctionForGeneratedCodeResourceFruit() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceFruit_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AResourceFruit, AResourceFruit::StaticClass, TEXT("AResourceFruit"), &Z_Registration_Info_UClass_AResourceFruit, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceFruit), 2164814321U) },
+		{ Z_Construct_UClass_AResourceFruit, AResourceFruit::StaticClass, TEXT("AResourceFruit"), &Z_Registration_Info_UClass_AResourceFruit, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceFruit), 947905773U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceFruit_h_1718343149(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceFruit_h_3382547900(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceFruit_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceFruit_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

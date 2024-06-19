@@ -11,7 +11,10 @@ AResourceBase::AResourceBase()
 	//RootComponent = Root;
 
 	ResourceMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ResourceMesh"));
+	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
+
 	RootComponent = ResourceMesh;
+	CollisionBox->SetupAttachment(RootComponent);
 }
 
 void AResourceBase::OnInteract()

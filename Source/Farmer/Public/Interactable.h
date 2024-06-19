@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Components/BoxComponent.h"
 #include "Interactable.generated.h"
 
 UCLASS()
@@ -30,6 +31,9 @@ public:
 	//virtual void Tick(float DeltaTime) override;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
 	bool bIsInteractable = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
+	UBoxComponent* CollisionBox;
 
 	virtual void OnInteract();
 };
