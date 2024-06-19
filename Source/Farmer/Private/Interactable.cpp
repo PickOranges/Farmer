@@ -28,11 +28,13 @@ void AInteractable::OnInteract()
 
 void AInteractable::OnPlayerOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	ShowInteractionWidget();
 	GEngine->AddOnScreenDebugMessage(-1,INFINITY,lemon,"[Interactable] OnPlayerOverlapBegin()");
 }
 
 void AInteractable::OnPlayerOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
+	HideInteractionWidget();
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[Interactable] OnPlayerOverlapEnd()");
 }
 
@@ -42,8 +44,11 @@ void AInteractable::SetupInteractionWidget()
 	InteractionWidgetComponent->SetupAttachment(RootComponent);
 	InteractionWidgetComponent->SetWidgetSpace(EWidgetSpace::Screen);
 
-	ButtonImage = LoadObject<UTexture2D>(nullptr, TEXT("/Game/UI/Button_E.Button_E"));
+	ButtonImage = LoadObject<UTexture2D>(nullptr, TEXT("/Script/Engine.Texture2D'/Game/E_Icon.E_Icon'"));
 	// TODO: link the image to WidgetComponent!!
+
+
+	HideInteractionWidget();
 }
 
 void AInteractable::ShowInteractionWidget()
