@@ -14,10 +14,15 @@ AResourceBase::AResourceBase()
 	RootComponent = ResourceMesh;
 }
 
-
-
 void AResourceBase::OnInteract()
 {
 	AInteractable::OnInteract();
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[ResourceBase] OnInteraction()");
+}
+
+void AResourceBase::DisappearAndRelease()
+{
+	SetActorHiddenInGame(true);
+	SetActorEnableCollision(false);
+	SetActorTickEnabled(false);
 }
