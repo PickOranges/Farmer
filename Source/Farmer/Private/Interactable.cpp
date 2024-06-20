@@ -2,10 +2,8 @@
 
 
 #include "Interactable.h"
-//#include "Components/WidgetComponent.h"
 #include "Kismet/GameplayStatics.h"
-//#include "Components/Image.h"
-//#include "Components/TextBlock.h"
+#include "Blueprint/UserWidget.h"
 
 
 // Sets default values
@@ -17,32 +15,18 @@ AInteractable::AInteractable()
 	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
 	CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapBegin);
 	CollisionBox->OnComponentEndOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapEnd);
-
-	//InteractionWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("InteractionWidgetComponent"));
-	//InteractionWidgetComponent->SetupAttachment(RootComponent);
-	//InteractionWidgetComponent->SetWidgetSpace(EWidgetSpace::Screen);
-	//InteractionWidgetComponent->SetDrawSize(FVector2D(300, 100));
-
-	//InteractionWidgetComponent->SetVisibility(false);
 }
 
 
 void AInteractable::BeginPlay()
 {
 	Super::BeginPlay();
-	//if (InteractionWidgetComponent)
-	//{
-	//	UserWidget = CreateWidget<UUserWidget>(GetWorld(), InteractionWidgetComponent->GetWidgetClass());
-	//	if (UserWidget)
-	//	{
-	//		InteractionWidgetComponent->SetWidget(UserWidget);
-
-	//		ButtonImage = LoadObject<UTexture2D>(nullptr, TEXT("/Script/Engine.Texture2D'/Game/E_Icon.E_Icon'"));
-	//		InteractionImage->SetBrushFromTexture(ButtonImage);
-	//		InteractionText->SetText(FText::FromString(FString{ "Press E to Interact." }));
-	//	}
-	//}
-}
+	UClass* WidgetClass = LoadClass<UUserWidget>(nullptr,TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/UI/UMG_InteractionE.UMG_InteractionE_C'"));
+	if (!WidgetClass) return;
+	InteractionWidget = CreateWidget<UUserWidget>(GetWorld(),WidgetClass);
+	InteractionWidget->AddToViewport();
+	InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
+}	
 
 void AInteractable::OnInteract()
 {
@@ -52,17 +36,13 @@ void AInteractable::OnInteract()
 
 void AInteractable::OnPlayerOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	//if (InteractionWidgetComponent) {
-	//	InteractionWidgetComponent->SetVisibility(true);
-	//}
+	InteractionWidget->SetVisibility(ESlateVisibility::Visible);
 	GEngine->AddOnScreenDebugMessage(-1,INFINITY,lemon,"[Interactable] OnPlayerOverlapBegin()");
 }
 
 void AInteractable::OnPlayerOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	//if (!InteractionWidgetComponent) {
-	//	InteractionWidgetComponent->SetVisibility(false);
-	//}
+	InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[Interactable] OnPlayerOverlapEnd()");
 }
 
