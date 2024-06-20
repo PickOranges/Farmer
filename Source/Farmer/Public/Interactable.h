@@ -47,21 +47,21 @@ public:
 	void OnPlayerOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
-	class UWidgetComponent* InteractionWidgetComponent; // Widget component for UI message
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
+	//class UWidgetComponent* InteractionWidgetComponent; // Widget component for UI message
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "UI")
-	TSubclassOf<UUserWidget> InteractionWidgetClass;
+	//UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "UI")
+	//TSubclassOf<UUserWidget> InteractionWidgetClass;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
-	class UTexture2D* ButtonImage; // Image representing the 'E' key
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
+	//class UTexture2D* ButtonImage; // Image representing the 'E' key
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable", meta = (BindWidget))
-	class UImage* InteractionImage;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable", meta = (BindWidget))
+	//class UImage* InteractionImage;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable", meta = (BindWidget))
-	class UTextBlock* InteractionText;
-
-private:
-	UUserWidget* UserWidget;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable", meta = (BindWidget))
+	//class UTextBlock* InteractionText;
+//
+//private:
+//	UUserWidget* UserWidget;
 };
