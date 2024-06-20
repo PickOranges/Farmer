@@ -22,6 +22,6 @@ public:
 	AResourceTree();
 	void OnInteract();
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceTree")
-	//UStaticMesh* WoodMesh;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceTree")
+	UStaticMesh* WoodMesh;
 };

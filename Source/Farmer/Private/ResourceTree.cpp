@@ -9,6 +9,9 @@ AResourceTree::AResourceTree()
 	Force.Y = 500.f;
 
 	Super::ResourceMesh->SetSimulatePhysics(false);
+
+	ConstructorHelpers::FObjectFinder<UStaticMesh> temp(TEXT("/Script/Engine.StaticMesh'/Game/StarterContent/Shapes/Shape_Torus.Shape_Torus'"));
+	if (temp.Object) WoodMesh = temp.Object;
 }
 
 void AResourceTree::OnInteract()
@@ -16,12 +19,14 @@ void AResourceTree::OnInteract()
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,Super::violet,"[ResourceTree] Tree is chopped down.");
 	if (bIsInteractable) {
 		Super::OnInteract();
-		Super::ResourceMesh->SetSimulatePhysics(true);
+		ResourceMesh->SetSimulatePhysics(true);
 		//Super::ResourceMesh->AddForce(Force);
 		InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
 
-		static ConstructorHelpers::FObjectFinder<UStaticMesh> WoodMesh(TEXT("/Script/Engine.StaticMesh'/Game/StarterContent/Shapes/Shape_Torus.Shape_Torus'"));
-		Super::ResourceMesh->SetStaticMesh(WoodMesh.Object);
+		//static ConstructorHelpers::FObjectFinder<UStaticMesh> WoodMesh(TEXT("/Script/Engine.StaticMesh'/Game/StarterContent/Shapes/Shape_Torus.Shape_Torus'"));
+		//if(WoodMesh.Object) Super::ResourceMesh->SetStaticMesh(WoodMesh.Object);
+		if (WoodMesh) ResourceMesh->SetStaticMesh(WoodMesh);
+		ResourceMesh->SetSimulatePhysics(false);
 	}
 	else {
 		DisappearAndRelease();
