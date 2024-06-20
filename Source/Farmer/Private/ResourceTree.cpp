@@ -24,33 +24,19 @@ void AResourceTree::OnInteract()
 	if (bIsInteractable) {
 		Super::OnInteract();
 		ResourceMesh->SetSimulatePhysics(true);
-	}
-	else{
-		ResourceMesh->SetSimulatePhysics(false);
-		//if (WoodClass)
-		//{
-		//	FActorSpawnParameters SpawnParams;
-		//	GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), FRotator::ZeroRotator, SpawnParams);
-		//
-		//	ResourceMesh->SetVisibility(false);
-		//	
-		//}
+		GetWorld()->GetTimerManager().SetTimer(TreeFallTimerHandle, this, &AResourceTree::OnTreeFallComplete, 4.0f, false);
 	}
 }
 
-void AResourceTree::OnPlayerOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void AResourceTree::OnTreeFallComplete()
 {
-	Super::OnPlayerOverlapBegin(OverlappedComp, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
-
-	if (!bIsInteractable) {
-		//DisappearAndRelease();
-		if (WoodClass)
-		{
-			FActorSpawnParameters SpawnParams;
-			GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), FRotator::ZeroRotator, SpawnParams);
-			ResourceMesh->SetVisibility(false);
-		}
-		WoodClass = nullptr;
-	}
+	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,TEXT("Tree has fallen completely."));
+	
+	if (WoodClass)
+	{
+		FActorSpawnParameters SpawnParams;
+		GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation()-FVector(-50,0,0), FRotator::ZeroRotator, SpawnParams);
+	}		
+	
+	DisappearAndRelease();
 }
-
