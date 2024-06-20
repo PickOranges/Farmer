@@ -22,9 +22,6 @@ public:
 	AResourceTree();
 	void OnInteract();
 
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceTree")
-	//UStaticMesh* WoodMesh;
 	UPROPERTY(EditAnywhere, Category = "ResourceTree/Wood")
 	TSubclassOf<AActor> WoodClass;
 

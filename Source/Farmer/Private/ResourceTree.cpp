@@ -23,6 +23,7 @@ void AResourceTree::OnInteract()
 	if (bIsInteractable) {
 		Super::OnInteract();
 		ResourceMesh->SetSimulatePhysics(true);
+		ResourceMesh->AddForce(1000.0f*GetActorForwardVector());
 		GetWorld()->GetTimerManager().SetTimer(TreeFallTimerHandle, this, &AResourceTree::OnTreeFallComplete, 4.0f, false);
 	}
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,Super::violet,"[ResourceTree] Tree is chopped down.");
@@ -33,7 +34,7 @@ void AResourceTree::OnTreeFallComplete()
 	if (WoodClass)
 	{
 		FActorSpawnParameters SpawnParams;
-		GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation()-FVector(-50,0,0), FRotator::ZeroRotator, SpawnParams);
+		GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation()-FVector(-50,0,-15), FRotator::ZeroRotator, SpawnParams);
 	}		
 	
 	DisappearAndRelease();
