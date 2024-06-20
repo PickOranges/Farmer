@@ -31,7 +31,7 @@ void AResourceTree::OnInteract()
 			ResourceMesh->SetVisibility(false);
 
 			FActorSpawnParameters SpawnParams;
-			GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), GetActorRotation(), SpawnParams);
+			GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), FRotator::ZeroRotator, SpawnParams);
 			DisappearAndRelease();
 		}
 	}
