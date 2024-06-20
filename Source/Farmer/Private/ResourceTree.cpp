@@ -3,15 +3,19 @@
 
 #include "ResourceTree.h"
 
+
 AResourceTree::AResourceTree()
 {
 	Force.X = 500.f;
 	Force.Y = 500.f;
+	ResourceMesh->SetSimulatePhysics(false);
 
-	Super::ResourceMesh->SetSimulatePhysics(false);
-
-	ConstructorHelpers::FObjectFinder<UStaticMesh> temp(TEXT("/Script/Engine.StaticMesh'/Game/StarterContent/Shapes/Shape_Torus.Shape_Torus'"));
-	if (temp.Object) WoodMesh = temp.Object;
+	static ConstructorHelpers::FClassFinder<AActor> WoodClassFinder(TEXT("/Script/Engine.Blueprint'/Game/BP_ResourceTreeWood.BP_ResourceTreeWood_C'"));
+	if (WoodClassFinder.Succeeded())
+	{
+		WoodClass = WoodClassFinder.Class;
+		
+	}
 }
 
 void AResourceTree::OnInteract()
@@ -21,12 +25,14 @@ void AResourceTree::OnInteract()
 		Super::OnInteract();
 		ResourceMesh->SetSimulatePhysics(true);
 		//Super::ResourceMesh->AddForce(Force);
-		InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
-		
-		if (WoodMesh) ResourceMesh->SetStaticMesh(WoodMesh);
+		//InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
 	}
 	else {
-		ResourceMesh->SetSimulatePhysics(false);
-		DisappearAndRelease();
+		ResourceMesh = nullptr;
+		if (WoodClass)
+		{
+			FActorSpawnParameters SpawnParams;
+			GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), GetActorRotation(), SpawnParams);
+		}
 	}
 }
