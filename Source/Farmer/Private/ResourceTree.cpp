@@ -22,13 +22,11 @@ void AResourceTree::OnInteract()
 		ResourceMesh->SetSimulatePhysics(true);
 		//Super::ResourceMesh->AddForce(Force);
 		InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
-
-		//static ConstructorHelpers::FObjectFinder<UStaticMesh> WoodMesh(TEXT("/Script/Engine.StaticMesh'/Game/StarterContent/Shapes/Shape_Torus.Shape_Torus'"));
-		//if(WoodMesh.Object) Super::ResourceMesh->SetStaticMesh(WoodMesh.Object);
+		
 		if (WoodMesh) ResourceMesh->SetStaticMesh(WoodMesh);
-		ResourceMesh->SetSimulatePhysics(false);
 	}
 	else {
+		ResourceMesh->SetSimulatePhysics(false);
 		DisappearAndRelease();
 	}
 }
