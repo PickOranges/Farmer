@@ -28,12 +28,19 @@ void AResourceTree::OnInteract()
 	else{
 		if (WoodClass)
 		{
-			ResourceMesh->SetVisibility(false);
-
 			FActorSpawnParameters SpawnParams;
 			GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), FRotator::ZeroRotator, SpawnParams);
-			DisappearAndRelease();
+		
+			ResourceMesh->SetVisibility(false);
+			ResourceMesh->ReleaseResources();
 		}
+	}
+}
+
+void AResourceTree::OnPlayerOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (!bIsInteractable) {
+		DisappearAndRelease();
 	}
 }
 
