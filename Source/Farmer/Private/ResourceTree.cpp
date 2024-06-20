@@ -26,21 +26,31 @@ void AResourceTree::OnInteract()
 		ResourceMesh->SetSimulatePhysics(true);
 	}
 	else{
-		if (WoodClass)
-		{
-			FActorSpawnParameters SpawnParams;
-			GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), FRotator::ZeroRotator, SpawnParams);
-		
-			ResourceMesh->SetVisibility(false);
-			ResourceMesh->ReleaseResources();
-		}
+		ResourceMesh->SetSimulatePhysics(false);
+		//if (WoodClass)
+		//{
+		//	FActorSpawnParameters SpawnParams;
+		//	GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), FRotator::ZeroRotator, SpawnParams);
+		//
+		//	ResourceMesh->SetVisibility(false);
+		//	
+		//}
 	}
 }
 
 void AResourceTree::OnPlayerOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	Super::OnPlayerOverlapBegin(OverlappedComp, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
+
 	if (!bIsInteractable) {
-		DisappearAndRelease();
+		//DisappearAndRelease();
+		if (WoodClass)
+		{
+			FActorSpawnParameters SpawnParams;
+			GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), FRotator::ZeroRotator, SpawnParams);
+			ResourceMesh->SetVisibility(false);
+		}
+		WoodClass = nullptr;
 	}
 }
 
