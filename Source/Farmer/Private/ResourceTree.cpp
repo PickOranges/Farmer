@@ -32,6 +32,7 @@ void AResourceTree::OnInteract()
 
 			FActorSpawnParameters SpawnParams;
 			GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), GetActorRotation(), SpawnParams);
+			DisappearAndRelease();
 		}
 	}
 }
