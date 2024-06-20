@@ -25,18 +25,14 @@ void AResourceTree::OnInteract()
 		Super::OnInteract();
 		ResourceMesh->SetSimulatePhysics(true);
 	}
-}
-
-void AResourceTree::OnPlayerOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-	if (Wood) return;
-	if (!bIsInteractable) {
+	else{
 		if (WoodClass)
 		{
 			ResourceMesh->SetVisibility(false);
 
 			FActorSpawnParameters SpawnParams;
-			Wood=GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), GetActorRotation(), SpawnParams);
+			GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation(), GetActorRotation(), SpawnParams);
 		}
 	}
 }
+
