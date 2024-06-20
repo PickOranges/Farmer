@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "ResourceBase.h"
+#include "Components/StaticMeshComponent.h"
 #include "ResourceTree.generated.h"
 
 /**
@@ -20,4 +21,7 @@ public:
 
 	AResourceTree();
 	void OnInteract();
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceTree")
+	//UStaticMesh* WoodMesh;
 };
