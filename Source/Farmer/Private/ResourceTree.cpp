@@ -34,7 +34,8 @@ void AResourceTree::OnTreeFallComplete()
 	if (WoodClass)
 	{
 		FActorSpawnParameters SpawnParams;
-		GetWorld()->SpawnActor<AActor>(WoodClass, GetActorLocation()-FVector(50,50,15), FRotator::ZeroRotator, SpawnParams);
+		FVector Location = GetActorLocation();
+		GetWorld()->SpawnActor<AActor>(WoodClass, FVector(Location.X, Location.Y, 0.0f), FRotator::ZeroRotator, SpawnParams);
 	}		
 	
 	DisappearAndRelease();
