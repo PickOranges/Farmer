@@ -25,6 +25,7 @@ void AInteractable::BeginPlay()
 	if (!WidgetClass) return;
 	InteractionWidget = CreateWidget<UUserWidget>(GetWorld(),WidgetClass);
 	InteractionWidget->AddToViewport();
+	//InteractionWidget->SetPositionInViewport(FVector2D(300,300));
 	InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
 }	
 
