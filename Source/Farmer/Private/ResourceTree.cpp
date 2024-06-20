@@ -17,4 +17,5 @@ void AResourceTree::OnInteract()
 
 	Super::ResourceMesh->SetSimulatePhysics(true);
 	Super::ResourceMesh->AddForce(Force);
+	DisappearAndRelease();
 }

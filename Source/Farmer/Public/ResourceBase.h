@@ -17,7 +17,7 @@ class FARMER_API AResourceBase : public AInteractable
 	GENERATED_BODY()
 public:
 	AResourceBase();
-	void OnInteract() override;
+	//void OnInteract() override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resource")
 	UStaticMeshComponent* ResourceMesh;
