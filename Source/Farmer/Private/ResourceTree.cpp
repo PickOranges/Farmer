@@ -20,18 +20,16 @@ AResourceTree::AResourceTree()
 
 void AResourceTree::OnInteract()
 {
-	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,Super::violet,"[ResourceTree] Tree is chopped down.");
 	if (bIsInteractable) {
 		Super::OnInteract();
 		ResourceMesh->SetSimulatePhysics(true);
 		GetWorld()->GetTimerManager().SetTimer(TreeFallTimerHandle, this, &AResourceTree::OnTreeFallComplete, 4.0f, false);
 	}
+	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,Super::violet,"[ResourceTree] Tree is chopped down.");
 }
 
 void AResourceTree::OnTreeFallComplete()
-{
-	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,TEXT("Tree has fallen completely."));
-	
+{	
 	if (WoodClass)
 	{
 		FActorSpawnParameters SpawnParams;
@@ -39,4 +37,5 @@ void AResourceTree::OnTreeFallComplete()
 	}		
 	
 	DisappearAndRelease();
+	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,TEXT("Tree has fallen completely."));
 }
