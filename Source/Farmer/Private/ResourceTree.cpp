@@ -14,9 +14,9 @@ AResourceTree::AResourceTree()
 void AResourceTree::OnInteract()
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,Super::violet,"[ResourceTree] Tree is chopped down.");
-
+	Super::OnInteract();
 	Super::ResourceMesh->SetSimulatePhysics(true);
-	Super::ResourceMesh->AddForce(Force);
+	//Super::ResourceMesh->AddForce(Force);
 	InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
 	//DisappearAndRelease();
 }
