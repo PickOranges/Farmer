@@ -39,6 +39,10 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_WoodClass_MetaData[];
 #endif
 		static const UECodeGen_Private::FClassPropertyParams NewProp_WoodClass;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Wood_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_Wood;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -77,9 +81,17 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 	};
 #endif
 	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AResourceTree_Statics::NewProp_WoodClass = { "WoodClass", nullptr, (EPropertyFlags)0x0014000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AResourceTree, WoodClass), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceTree_Statics::NewProp_WoodClass_MetaData), Z_Construct_UClass_AResourceTree_Statics::NewProp_WoodClass_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AResourceTree_Statics::NewProp_Wood_MetaData[] = {
+		{ "Category", "ResourceTree/Wood" },
+		{ "ModuleRelativePath", "Public/ResourceTree.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AResourceTree_Statics::NewProp_Wood = { "Wood", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AResourceTree, Wood), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceTree_Statics::NewProp_Wood_MetaData), Z_Construct_UClass_AResourceTree_Statics::NewProp_Wood_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AResourceTree_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AResourceTree_Statics::NewProp_Force,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AResourceTree_Statics::NewProp_WoodClass,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AResourceTree_Statics::NewProp_Wood,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AResourceTree_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AResourceTree>::IsAbstract,
@@ -119,9 +131,9 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AResourceTree, AResourceTree::StaticClass, TEXT("AResourceTree"), &Z_Registration_Info_UClass_AResourceTree, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceTree), 2336160354U) },
+		{ Z_Construct_UClass_AResourceTree, AResourceTree::StaticClass, TEXT("AResourceTree"), &Z_Registration_Info_UClass_AResourceTree, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceTree), 241811232U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_2736007107(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_3988109093(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

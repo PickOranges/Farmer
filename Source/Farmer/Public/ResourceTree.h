@@ -22,8 +22,13 @@ public:
 	AResourceTree();
 	void OnInteract();
 
+	void OnPlayerOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
+
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceTree")
 	//UStaticMesh* WoodMesh;
 	UPROPERTY(EditAnywhere, Category = "ResourceTree/Wood")
 	TSubclassOf<AActor> WoodClass;
+
+	UPROPERTY(EditAnywhere, Category = "ResourceTree/Wood")
+	AActor* Wood;
 };
