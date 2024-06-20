@@ -13,7 +13,7 @@ AResourceTree::AResourceTree()
 
 void AResourceTree::OnInteract()
 {
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,Super::violet,"[ResourceTree] Tree is chopped down.");
+	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,Super::violet,"[ResourceTree] Tree is chopped down.");
 
 	Super::ResourceMesh->SetSimulatePhysics(true);
 	Super::ResourceMesh->AddForce(Force);

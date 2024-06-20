@@ -19,7 +19,7 @@ AResourceBase::AResourceBase()
 void AResourceBase::OnInteract()
 {
 	AInteractable::OnInteract();
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[ResourceBase] OnInteraction()");
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[ResourceBase] OnInteraction()");
 }
 
 void AResourceBase::DisappearAndRelease()
