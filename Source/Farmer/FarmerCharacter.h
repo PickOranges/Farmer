@@ -155,6 +155,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation")
 	UAnimMontage* ChoppingTreeMontage;
 
+	UFUNCTION()
+	void OnMontageEnded(UAnimMontage* Montage, AResourceTree* Tree);
+
 protected:
 	UFUNCTION()
 	void CreateSaveGameInstance() noexcept;

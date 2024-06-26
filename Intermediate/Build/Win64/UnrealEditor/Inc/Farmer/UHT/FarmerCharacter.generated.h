@@ -10,7 +10,9 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
+class AResourceTree;
 class ASoil;
+class UAnimMontage;
 class UPrimitiveComponent;
 struct FHitResult;
 #ifdef FARMER_FarmerCharacter_generated_h
@@ -30,6 +32,7 @@ struct FHitResult;
 	DECLARE_FUNCTION(execAutoSave); \
 	DECLARE_FUNCTION(execLoadGameIfExist); \
 	DECLARE_FUNCTION(execCreateSaveGameInstance); \
+	DECLARE_FUNCTION(execOnMontageEnded); \
 	DECLARE_FUNCTION(execOnBeginOverlapCB);
 
 

@@ -219,6 +219,9 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			if (Tree) {
 				PlayChoppingAnim();
 			}
+
+			// TODO: use either Anim Notify or Anim Instance method.
+			
 		}
 	}
 }
@@ -289,7 +292,6 @@ void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 		UGameplayStatics::SaveGameToSlot(MySaveGameInstance, TEXT("PlayerSaveSlot"), 0);
 	}
 }
-
 
 
 
@@ -519,3 +521,10 @@ void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
 }
 
 
+
+void AFarmerCharacter::OnMontageEnded(UAnimMontage* Montage, AResourceTree* Tree)
+{
+	if (Montage && Tree) {
+		Tree->OnInteract();
+	}
+}
