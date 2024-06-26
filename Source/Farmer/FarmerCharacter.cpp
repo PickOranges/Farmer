@@ -490,7 +490,7 @@ void AFarmerCharacter::LoadGame() noexcept
 
 void AFarmerCharacter::PlayChoppingAnim()
 {
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"This is chopping tree animation.");
+	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"This is chopping tree animation.");
 	if (ChoppingTreeMontage)
 	{
 		UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
