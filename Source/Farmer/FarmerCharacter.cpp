@@ -16,6 +16,7 @@
 #include "EngineUtils.h"
 #include "ResourceBase.h"
 
+#include "ResourceTree.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 FColor pink{ 255,182,193 };
@@ -214,6 +215,10 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 		AResourceBase* CurrentResource = Cast<AResourceBase>(Result.GetActor());
 		if (CurrentResource) {
 			CurrentResource->OnInteract();
+			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
+			if (Tree) {
+				PlayChoppingAnim();
+			}
 		}
 	}
 }
@@ -480,6 +485,19 @@ void AFarmerCharacter::LoadGame() noexcept
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] CurrentPlant: %d"), CurrentActor->CurrentPlant));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, FString::Printf(TEXT("[LoadGame] bIsPlanted: %d"), CurrentActor->bIsPlanted));
 		GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, "------------");
+	}
+}
+
+void AFarmerCharacter::PlayChoppingAnim()
+{
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"This is chopping tree animation.");
+	if (ChoppingTreeMontage)
+	{
+		UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+		if (AnimInstance)
+		{
+			AnimInstance->Montage_Play(ChoppingTreeMontage);
+		}
 	}
 }
 

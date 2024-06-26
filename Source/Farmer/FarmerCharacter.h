@@ -152,6 +152,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UMySaveGame* MySaveGameInstance;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation")
+	UAnimMontage* ChoppingTreeMontage;
+
 protected:
 	UFUNCTION()
 	void CreateSaveGameInstance() noexcept;
@@ -164,6 +167,9 @@ protected:
 	void SaveGame() noexcept;
 	UFUNCTION()
 	void LoadGame() noexcept;
+
+	UFUNCTION()
+	void PlayChoppingAnim();
 
 protected:
 	UFUNCTION()

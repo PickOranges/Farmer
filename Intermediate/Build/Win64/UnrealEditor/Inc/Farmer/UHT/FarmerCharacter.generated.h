@@ -24,6 +24,7 @@ struct FHitResult;
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execTriggerRemovePlant); \
+	DECLARE_FUNCTION(execPlayChoppingAnim); \
 	DECLARE_FUNCTION(execLoadGame); \
 	DECLARE_FUNCTION(execSaveGame); \
 	DECLARE_FUNCTION(execAutoSave); \

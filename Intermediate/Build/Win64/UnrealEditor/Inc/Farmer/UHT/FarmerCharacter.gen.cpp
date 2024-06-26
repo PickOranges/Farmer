@@ -14,6 +14,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
+	ENGINE_API UClass* Z_Construct_UClass_UAnimMontage_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
@@ -37,6 +38,13 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		P_FINISH;
 		P_NATIVE_BEGIN;
 		P_THIS->TriggerRemovePlant(Z_Param_currentSoil);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AFarmerCharacter::execPlayChoppingAnim)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->PlayChoppingAnim();
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(AFarmerCharacter::execLoadGame)
@@ -97,6 +105,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 			{ "LoadGame", &AFarmerCharacter::execLoadGame },
 			{ "LoadGameIfExist", &AFarmerCharacter::execLoadGameIfExist },
 			{ "OnBeginOverlapCB", &AFarmerCharacter::execOnBeginOverlapCB },
+			{ "PlayChoppingAnim", &AFarmerCharacter::execPlayChoppingAnim },
 			{ "SaveGame", &AFarmerCharacter::execSaveGame },
 			{ "TriggerRemovePlant", &AFarmerCharacter::execTriggerRemovePlant },
 		};
@@ -285,6 +294,28 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "FarmerCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFarmerCharacter, nullptr, "PlayChoppingAnim", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_AFarmerCharacter_SaveGame_Statics
 	{
 #if WITH_METADATA
@@ -431,6 +462,10 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_MySaveGameInstance_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_MySaveGameInstance;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ChoppingTreeMontage_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_ChoppingTreeMontage;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
@@ -447,6 +482,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		{ &Z_Construct_UFunction_AFarmerCharacter_LoadGame, "LoadGame" }, // 3131354145
 		{ &Z_Construct_UFunction_AFarmerCharacter_LoadGameIfExist, "LoadGameIfExist" }, // 453795596
 		{ &Z_Construct_UFunction_AFarmerCharacter_OnBeginOverlapCB, "OnBeginOverlapCB" }, // 2517457471
+		{ &Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim, "PlayChoppingAnim" }, // 3257359485
 		{ &Z_Construct_UFunction_AFarmerCharacter_SaveGame, "SaveGame" }, // 399187742
 		{ &Z_Construct_UFunction_AFarmerCharacter_TriggerRemovePlant, "TriggerRemovePlant" }, // 2246806244
 	};
@@ -672,6 +708,13 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_MySaveGameInstance = { "MySaveGameInstance", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, MySaveGameInstance), Z_Construct_UClass_UMySaveGame_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_MySaveGameInstance_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_MySaveGameInstance_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_ChoppingTreeMontage_MetaData[] = {
+		{ "Category", "Animation" },
+		{ "ModuleRelativePath", "FarmerCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_ChoppingTreeMontage = { "ChoppingTreeMontage", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, ChoppingTreeMontage), Z_Construct_UClass_UAnimMontage_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_ChoppingTreeMontage_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_ChoppingTreeMontage_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFarmerCharacter_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_CameraBoom,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_FollowCamera,
@@ -694,6 +737,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_BoundingBox,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SaveGameInstance,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_MySaveGameInstance,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_ChoppingTreeMontage,
 	};
 		const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AFarmerCharacter_Statics::InterfaceParams[] = {
 			{ Z_Construct_UClass_UInterfaceActivate_NoRegister, (int32)VTABLE_OFFSET(AFarmerCharacter, IInterfaceActivate), false },  // 511138240
@@ -738,9 +782,9 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 2597515204U) },
+		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 1216396184U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_1605062498(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_2230896813(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
