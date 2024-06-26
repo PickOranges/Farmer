@@ -23,7 +23,7 @@ void AResourceTree::OnInteract()
 	if (bIsInteractable) {
 		Super::OnInteract();
 		ResourceMesh->SetSimulatePhysics(true);
-		ResourceMesh->AddForce(1000.0f*GetActorForwardVector());
+		//ResourceMesh->AddForce(1000.0f*GetActorForwardVector());
 		GetWorld()->GetTimerManager().SetTimer(TreeFallTimerHandle, this, &AResourceTree::OnTreeFallComplete, 4.0f, false);
 	}
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,Super::violet,"[ResourceTree] Tree is chopped down.");
