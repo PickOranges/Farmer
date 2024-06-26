@@ -22,7 +22,7 @@ void AResourceTree::OnInteract()
 {
 	if (bIsInteractable) {
 		Super::OnInteract();
-		ResourceMesh->SetSimulatePhysics(true);
+		//ResourceMesh->SetSimulatePhysics(true);
 		//ResourceMesh->AddForce(1000.0f*GetActorForwardVector());
 		GetWorld()->GetTimerManager().SetTimer(TreeFallTimerHandle, this, &AResourceTree::OnTreeFallComplete, 4.0f, false);
 	}
