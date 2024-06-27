@@ -12,7 +12,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
 class AResourceTree;
 class ASoil;
-class UAnimMontage;
 class UPrimitiveComponent;
 struct FHitResult;
 #ifdef FARMER_FarmerCharacter_generated_h
@@ -26,13 +25,14 @@ struct FHitResult;
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execTriggerRemovePlant); \
+	DECLARE_FUNCTION(execDisableResourceDamage); \
+	DECLARE_FUNCTION(execEnableResourceDamage); \
 	DECLARE_FUNCTION(execPlayChoppingAnim); \
 	DECLARE_FUNCTION(execLoadGame); \
 	DECLARE_FUNCTION(execSaveGame); \
 	DECLARE_FUNCTION(execAutoSave); \
 	DECLARE_FUNCTION(execLoadGameIfExist); \
 	DECLARE_FUNCTION(execCreateSaveGameInstance); \
-	DECLARE_FUNCTION(execOnMontageEnded); \
 	DECLARE_FUNCTION(execOnBeginOverlapCB);
 
 

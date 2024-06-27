@@ -30,4 +30,22 @@ public:
 
 	UFUNCTION()
 	void OnTreeFallComplete();
+
+
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceTree")
+	bool bCanDamage{false};
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceTree")
+	int32 health{ 3 };
+
+	UFUNCTION()
+	void EnableToolDamge();
+
+	UFUNCTION()
+	void DisableToolDamge();
+
+	UFUNCTION()
+	void TakeDamage();
 };

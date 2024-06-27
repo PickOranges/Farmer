@@ -19,6 +19,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_16_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execTakeDamage); \
+	DECLARE_FUNCTION(execDisableToolDamge); \
+	DECLARE_FUNCTION(execEnableToolDamge); \
 	DECLARE_FUNCTION(execOnTreeFallComplete);
 
 

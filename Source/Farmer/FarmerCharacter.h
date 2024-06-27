@@ -155,9 +155,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation")
 	UAnimMontage* ChoppingTreeMontage;
 
-	UFUNCTION()
-	void OnMontageEnded(UAnimMontage* Montage, AResourceTree* Tree);
-
 protected:
 	UFUNCTION()
 	void CreateSaveGameInstance() noexcept;
@@ -172,8 +169,13 @@ protected:
 	void LoadGame() noexcept;
 
 	UFUNCTION()
-	void PlayChoppingAnim();
+	void PlayChoppingAnim(AResourceTree* Tree);
 
+	UFUNCTION()
+	void EnableResourceDamage();
+
+	UFUNCTION()
+	void DisableResourceDamage();
 protected:
 	UFUNCTION()
 	void TriggerRemovePlant(ASoil* currentSoil);

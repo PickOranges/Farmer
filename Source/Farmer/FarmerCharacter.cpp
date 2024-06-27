@@ -217,7 +217,7 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			CurrentResource->OnInteract();
 			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
 			if (Tree) {
-				PlayChoppingAnim();
+				PlayChoppingAnim(Tree);
 			}
 
 			// TODO: use either Anim Notify or Anim Instance method.
@@ -490,7 +490,7 @@ void AFarmerCharacter::LoadGame() noexcept
 	}
 }
 
-void AFarmerCharacter::PlayChoppingAnim()
+void AFarmerCharacter::PlayChoppingAnim(AResourceTree* Tree)
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"This is chopping tree animation.");
 	if (ChoppingTreeMontage)
@@ -501,6 +501,16 @@ void AFarmerCharacter::PlayChoppingAnim()
 			AnimInstance->Montage_Play(ChoppingTreeMontage);
 		}
 	}
+}
+
+void AFarmerCharacter::EnableResourceDamage()
+{
+
+}
+
+void AFarmerCharacter::DisableResourceDamage()
+{
+
 }
 
 
@@ -520,11 +530,3 @@ void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
 	AutoSave(currentSoil->CurrentPlant);
 }
 
-
-
-void AFarmerCharacter::OnMontageEnded(UAnimMontage* Montage, AResourceTree* Tree)
-{
-	if (Montage && Tree) {
-		Tree->OnInteract();
-	}
-}

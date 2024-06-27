@@ -22,7 +22,7 @@ void AResourceTree::OnInteract()
 {
 	if (bIsInteractable) {
 		Super::OnInteract();
-		ResourceMesh->SetSimulatePhysics(true);
+		//ResourceMesh->SetSimulatePhysics(true);
 		//ResourceMesh->AddForce(1000.0f*GetActorForwardVector());
 		GetWorld()->GetTimerManager().SetTimer(TreeFallTimerHandle, this, &AResourceTree::OnTreeFallComplete, 4.0f, false);
 	}
@@ -41,3 +41,24 @@ void AResourceTree::OnTreeFallComplete()
 	DisappearAndRelease();
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,blue,TEXT("Tree has fallen completely."));
 }
+
+void AResourceTree::EnableToolDamge()
+{
+	bCanDamage = true;
+}
+
+void AResourceTree::DisableToolDamge()
+{
+	bCanDamage = false;
+}
+
+void AResourceTree::TakeDamage()
+{
+	if (health > 0) --health;
+	else {
+		DisableToolDamge();
+		ResourceMesh->SetSimulatePhysics(true);
+	}
+}
+
+
