@@ -133,10 +133,11 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AResourceTree_TakeDamage_Statics::Function_MetaDataParams[] = {
+		{ "Category", "ResourceTree" },
 		{ "ModuleRelativePath", "Public/ResourceTree.h" },
 	};
 #endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AResourceTree_TakeDamage_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AResourceTree, nullptr, "TakeDamage", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AResourceTree_TakeDamage_Statics::Function_MetaDataParams), Z_Construct_UFunction_AResourceTree_TakeDamage_Statics::Function_MetaDataParams) };
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AResourceTree_TakeDamage_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AResourceTree, nullptr, "TakeDamage", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AResourceTree_TakeDamage_Statics::Function_MetaDataParams), Z_Construct_UFunction_AResourceTree_TakeDamage_Statics::Function_MetaDataParams) };
 	UFunction* Z_Construct_UFunction_AResourceTree_TakeDamage()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -192,7 +193,7 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 		{ &Z_Construct_UFunction_AResourceTree_DisableToolDamge, "DisableToolDamge" }, // 2372598174
 		{ &Z_Construct_UFunction_AResourceTree_EnableToolDamge, "EnableToolDamge" }, // 1017106260
 		{ &Z_Construct_UFunction_AResourceTree_OnTreeFallComplete, "OnTreeFallComplete" }, // 3543099484
-		{ &Z_Construct_UFunction_AResourceTree_TakeDamage, "TakeDamage" }, // 632961050
+		{ &Z_Construct_UFunction_AResourceTree_TakeDamage, "TakeDamage" }, // 727142431
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceTree_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -288,9 +289,9 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AResourceTree, AResourceTree::StaticClass, TEXT("AResourceTree"), &Z_Registration_Info_UClass_AResourceTree, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceTree), 3925818618U) },
+		{ Z_Construct_UClass_AResourceTree, AResourceTree::StaticClass, TEXT("AResourceTree"), &Z_Registration_Info_UClass_AResourceTree, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceTree), 1397288548U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_2807710582(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_969749889(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

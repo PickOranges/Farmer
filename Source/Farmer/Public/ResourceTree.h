@@ -20,7 +20,8 @@ public:
 	FVector Force{};
 
 	AResourceTree();
-	void OnInteract();
+
+	void OnInteract() override;
 
 	UPROPERTY(EditAnywhere, Category = "ResourceTree/Wood")
 	TSubclassOf<AActor> WoodClass;
@@ -46,6 +47,6 @@ public:
 	UFUNCTION()
 	void DisableToolDamge();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "ResourceTree")
 	void TakeDamage();
 };

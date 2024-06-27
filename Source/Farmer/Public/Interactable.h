@@ -38,6 +38,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
 	UBoxComponent* CollisionBox;
 
+	UFUNCTION(BlueprintCallable, Category = "Interactable")
 	virtual void OnInteract();
 
 	UFUNCTION(Category = "Interactable")

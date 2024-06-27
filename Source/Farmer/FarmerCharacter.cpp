@@ -214,11 +214,15 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 		}
 		AResourceBase* CurrentResource = Cast<AResourceBase>(Result.GetActor());
 		if (CurrentResource) {
-			CurrentResource->OnInteract();
+			// Tree Resource Interaction
 			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
 			if (Tree) {
 				PlayChoppingAnim();
+				//Tree->OnInteract();
 			}
+
+			// Non-Tree Resources Interaction
+			//CurrentResource->OnInteract();
 		}
 	}
 }
