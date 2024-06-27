@@ -491,20 +491,6 @@ void AFarmerCharacter::LoadGame() noexcept
 	}
 }
 
-void AFarmerCharacter::PlayChoppingAnim()
-{
-	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"This is chopping tree animation.");
-	if (ChoppingTreeMontage)
-	{
-		UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
-		if (AnimInstance)
-		{
-			AnimInstance->Montage_Play(ChoppingTreeMontage);
-		}
-	}
-}
-
-
 
 
 void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
@@ -521,3 +507,19 @@ void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
 	AutoSave(currentSoil->CurrentPlant);
 }
 
+
+
+
+
+void AFarmerCharacter::PlayChoppingAnim()
+{
+	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"This is chopping tree animation.");
+	if (ChoppingTreeMontage)
+	{
+		UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+		if (AnimInstance)
+		{
+			AnimInstance->Montage_Play(ChoppingTreeMontage);
+		}
+	}
+}
