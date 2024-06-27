@@ -56,7 +56,7 @@ void AResourceTree::DisableToolDamge()
 
 void AResourceTree::TakeDamage()
 {
-	if (health > 0 && bCanDamage) --health;
+	if (health > 0) --health;
 }
 
 
