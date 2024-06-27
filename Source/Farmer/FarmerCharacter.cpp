@@ -197,34 +197,6 @@ void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 	}
 }
 
-void AFarmerCharacter::PressE(const FInputActionValue& Value)
-{
-	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Keyboard input: Q.");
-	bool isHit;
-	FHitResult Result;
-	RayCast(isHit, Result);
-	if (isHit) {
-		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
-		if (currentSoil && SeedsAmount[Seeds]>0) {
-			if(!currentSoil->bIsPlanted){
-				currentSoil->PlantSeed();
-				--SeedsAmount[Seeds];
-			}
-			return;
-		}
-		AResourceBase* CurrentResource = Cast<AResourceBase>(Result.GetActor());
-		if (CurrentResource) {
-			// Case I: Resource is Tree
-			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
-			if (Tree) {
-				PlayChoppingAnim();
-			}
-
-			// Case II: Other Resources.
-			//CurrentResource->OnInteract();
-		}
-	}
-}
 
 void AFarmerCharacter::OnWheelUp(const FInputActionValue& Value)
 {
@@ -519,6 +491,38 @@ void AFarmerCharacter::PlayChoppingAnim()
 		if (AnimInstance)
 		{
 			AnimInstance->Montage_Play(ChoppingTreeMontage);
+		}
+	}
+}
+
+
+
+
+void AFarmerCharacter::PressE(const FInputActionValue& Value)
+{
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Keyboard input: Q.");
+	bool isHit;
+	FHitResult Result;
+	RayCast(isHit, Result);
+	if (isHit) {
+		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
+		if (currentSoil && SeedsAmount[Seeds] > 0) {
+			if (!currentSoil->bIsPlanted) {
+				currentSoil->PlantSeed();
+				--SeedsAmount[Seeds];
+			}
+			return;
+		}
+		AResourceBase* CurrentResource = Cast<AResourceBase>(Result.GetActor());
+		if (CurrentResource) {
+			// Case I: Resource is Tree
+			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
+			if (Tree) {
+				PlayChoppingAnim();
+			}
+
+			// Case II: Other Resources.
+			//CurrentResource->OnInteract();
 		}
 	}
 }
