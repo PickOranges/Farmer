@@ -169,7 +169,7 @@ protected:
 	void LoadGame() noexcept;
 
 	UFUNCTION()
-	void PlayChoppingAnim();
+	void PlayChoppingAnim(AResourceTree* Tree);
 
 protected:
 	UFUNCTION()

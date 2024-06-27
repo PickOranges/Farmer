@@ -217,8 +217,11 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			// Tree Resource Interaction
 			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
 			if (Tree) {
-				PlayChoppingAnim();
-				//Tree->OnInteract();
+				PlayChoppingAnim(Tree);
+				{
+					if (Tree->health == 0) Tree->OnInteract();
+					GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"[FarnerCharacter] Tree Interaction is done.");
+				}
 			}
 
 			// Non-Tree Resources Interaction
@@ -511,7 +514,7 @@ void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
 
 
 
-void AFarmerCharacter::PlayChoppingAnim()
+void AFarmerCharacter::PlayChoppingAnim(AResourceTree* Tree)
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"This is chopping tree animation.");
 	if (ChoppingTreeMontage)
@@ -520,6 +523,7 @@ void AFarmerCharacter::PlayChoppingAnim()
 		if (AnimInstance)
 		{
 			AnimInstance->Montage_Play(ChoppingTreeMontage);
+			Tree->TakeDamage();  // ???
 		}
 	}
 }
