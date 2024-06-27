@@ -219,9 +219,17 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			if (Tree) {
 				PlayChoppingAnim(Tree);
 				{
+					while (!Tree->bCanDamage) { 
+						GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, "[FarnerCharacter] Cannot interact yet.");
+					}
+					while (Tree->bCanDamage) {
+						GEngine->AddOnScreenDebugMessage(-1, INFINITY, violet, "[FarnerCharacter] During interaction...");
+						Tree->TakeDamage();
+					}
 					if (Tree->health == 0) Tree->OnInteract();
 					GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"[FarnerCharacter] Tree Interaction is done.");
 				}
+				
 			}
 
 			// Non-Tree Resources Interaction
