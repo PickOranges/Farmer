@@ -227,7 +227,7 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 						Tree->TakeDamage();
 					}
 					if (Tree->health == 0) Tree->OnInteract();
-					GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"[FarnerCharacter] Tree Interaction is done.");
+					//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"[FarnerCharacter] Tree Interaction is done.");
 				}
 				
 			}
