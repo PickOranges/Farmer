@@ -214,14 +214,12 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 		}
 		AResourceBase* CurrentResource = Cast<AResourceBase>(Result.GetActor());
 		if (CurrentResource) {
-			// Tree Resource Interaction
+			CurrentResource->OnInteract();
 			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
 			if (Tree) {
 				PlayChoppingAnim(Tree);
 			}
 
-			// Non-Tree Resources Interaction
-			//CurrentResource->OnInteract();
 		}
 	}
 }
@@ -519,7 +517,6 @@ void AFarmerCharacter::PlayChoppingAnim(AResourceTree* Tree)
 		if (AnimInstance)
 		{
 			AnimInstance->Montage_Play(ChoppingTreeMontage);
-			Tree->TakeDamage();  // ???
 		}
 	}
 }
