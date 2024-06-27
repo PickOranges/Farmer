@@ -520,9 +520,9 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			if (Tree) {
 				PlayChoppingAnim();
 			}
-
+			
 			// Case II: Other Resources.
-			//CurrentResource->OnInteract();
+			else CurrentResource->OnInteract();
 		}
 	}
 }
