@@ -59,7 +59,8 @@ void AResourceTree::TakeDamage()
 	if (health > 0) --health;
 	else {
 		DisableToolDamge();
-		ResourceMesh->SetSimulatePhysics(true);
+		//ResourceMesh->SetSimulatePhysics(true);
+		OnInteract();
 	}
 }
 
