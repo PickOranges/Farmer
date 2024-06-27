@@ -221,7 +221,7 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			}
 
 			// Case II: Other Resources.
-			CurrentResource->OnInteract();
+			//CurrentResource->OnInteract();
 		}
 	}
 }
