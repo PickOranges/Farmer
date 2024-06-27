@@ -10,7 +10,6 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
-class AResourceTree;
 class ASoil;
 class UPrimitiveComponent;
 struct FHitResult;

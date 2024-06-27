@@ -214,11 +214,10 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 		}
 		AResourceBase* CurrentResource = Cast<AResourceBase>(Result.GetActor());
 		if (CurrentResource) {
-
 			// Case I: Resource is Tree
 			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
 			if (Tree) {
-				PlayChoppingAnim(Tree);
+				PlayChoppingAnim();
 			}
 
 			// Case II: Other Resources.
@@ -511,7 +510,7 @@ void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
 
 
 
-void AFarmerCharacter::PlayChoppingAnim(AResourceTree* Tree)
+void AFarmerCharacter::PlayChoppingAnim()
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"This is chopping tree animation.");
 	if (ChoppingTreeMontage)
