@@ -39,7 +39,7 @@ public:
 	bool bCanDamage{false};
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceTree")
-	int32 health{ 6 };
+	int32 health{ 3 };
 
 	UFUNCTION()
 	void EnableToolDamge();
