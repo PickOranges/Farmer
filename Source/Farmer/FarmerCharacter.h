@@ -169,13 +169,8 @@ protected:
 	void LoadGame() noexcept;
 
 	UFUNCTION()
-	void PlayChoppingAnim(AResourceTree* Tree);
+	void PlayChoppingAnim();
 
-	UFUNCTION()
-	void EnableResourceDamage();
-
-	UFUNCTION()
-	void DisableResourceDamage();
 protected:
 	UFUNCTION()
 	void TriggerRemovePlant(ASoil* currentSoil);

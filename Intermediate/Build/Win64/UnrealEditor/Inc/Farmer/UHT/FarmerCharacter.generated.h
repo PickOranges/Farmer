@@ -10,7 +10,6 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
-class AResourceTree;
 class ASoil;
 class UPrimitiveComponent;
 struct FHitResult;
@@ -25,8 +24,6 @@ struct FHitResult;
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execTriggerRemovePlant); \
-	DECLARE_FUNCTION(execDisableResourceDamage); \
-	DECLARE_FUNCTION(execEnableResourceDamage); \
 	DECLARE_FUNCTION(execPlayChoppingAnim); \
 	DECLARE_FUNCTION(execLoadGame); \
 	DECLARE_FUNCTION(execSaveGame); \

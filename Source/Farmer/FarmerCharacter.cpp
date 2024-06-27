@@ -217,11 +217,8 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			CurrentResource->OnInteract();
 			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
 			if (Tree) {
-				PlayChoppingAnim(Tree);
+				PlayChoppingAnim();
 			}
-
-			// TODO: use either Anim Notify or Anim Instance method.
-			
 		}
 	}
 }
@@ -490,7 +487,7 @@ void AFarmerCharacter::LoadGame() noexcept
 	}
 }
 
-void AFarmerCharacter::PlayChoppingAnim(AResourceTree* Tree)
+void AFarmerCharacter::PlayChoppingAnim()
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"This is chopping tree animation.");
 	if (ChoppingTreeMontage)
@@ -501,16 +498,6 @@ void AFarmerCharacter::PlayChoppingAnim(AResourceTree* Tree)
 			AnimInstance->Montage_Play(ChoppingTreeMontage);
 		}
 	}
-}
-
-void AFarmerCharacter::EnableResourceDamage()
-{
-
-}
-
-void AFarmerCharacter::DisableResourceDamage()
-{
-
 }
 
 
