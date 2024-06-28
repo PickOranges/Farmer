@@ -217,10 +217,14 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			// Case I: Resource is Tree
 			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
 			if (Tree) {
-				PlayChoppingAnim();
+				//PlayChoppingAnim();
+				while (Tree->health > 0) {
+					PlayChoppingAnim();
+					Tree->TakeDamage();
+				}
 			}
 
-			// Case II: Other Resources.
+			// Case II: Tree and Other Resources.
 			CurrentResource->OnInteract();
 		}
 	}
