@@ -500,11 +500,13 @@ void AFarmerCharacter::PlayChoppingAnim()
 
 void AFarmerCharacter::PressE(const FInputActionValue& Value)
 {
-	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Keyboard input: Q.");
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, pink, "Keyboard input: E.");
 	bool isHit;
 	FHitResult Result;
 	RayCast(isHit, Result);
 	if (isHit) {
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "Hit.");
+
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil && SeedsAmount[Seeds] > 0) {
 			if (!currentSoil->bIsPlanted) {
@@ -516,16 +518,17 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 		AResourceBase* CurrentResource = Cast<AResourceBase>(Result.GetActor());
 		if (CurrentResource) {
 			// Case I: Resource is Tree
-			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
+			//AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
 			//if (Tree) {
 			//	PlayChoppingAnim();
 			//}
-			if (Tree) {
-				while (Tree->health > 0) {
-					PlayChoppingAnim();
-					Tree->TakeDamage();
-				}
-			}
+			//if (Tree) {
+			//	while (Tree->health > 0) {
+			//		PlayChoppingAnim();
+			//		Tree->TakeDamage();
+			//		GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"Chopping Tree Animation played.");
+			//	}
+			//}
 			
 			// Case II: Other Resources.
 			CurrentResource->OnInteract();

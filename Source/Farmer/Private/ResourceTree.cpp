@@ -21,7 +21,6 @@ AResourceTree::AResourceTree()
 void AResourceTree::OnInteract()
 {
 	if (bIsInteractable) {
-		Super::OnInteract();
 		//ResourceMesh->SetSimulatePhysics(true);
 		//ResourceMesh->AddForce(1000.0f*GetActorForwardVector());
 
