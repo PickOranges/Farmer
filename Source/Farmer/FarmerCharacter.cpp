@@ -98,6 +98,7 @@ void AFarmerCharacter::BeginPlay()
 	}
 
 
+	// Load existing game or create a new saving instance.
 	LoadGameIfExist();
 	if (!MySaveGameInstance) {
 		//GEngine->AddOnScreenDebugMessage(-1,INFINITY,lemon,"[BeginPlay] MySaveGameInstance is empty, thus create a new one.");
