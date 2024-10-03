@@ -31,4 +31,11 @@ public:
 	bool Initialize() override;
 
 	void NativeConstruct() override;
+
+	UFUNCTION()
+	void UpdateHealthyValue();
+
+private:
+	UPROPERTY()
+	float HealthyValue = 100;
 };

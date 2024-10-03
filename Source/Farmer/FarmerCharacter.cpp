@@ -96,6 +96,9 @@ void AFarmerCharacter::BeginPlay()
 		SeedsInventory->AddToViewport();
 		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "Successfully added SeedsInventory to Viewport!");
 	}
+	
+	// TEST HealthyBar
+	UpdateHealthyValue();
 
 
 	// Load existing game or create a new saving instance.
@@ -276,6 +279,7 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 		}
 	}
 }
+
 
 
 
@@ -522,4 +526,11 @@ void AFarmerCharacter::PlayChoppingAnim()
 			AnimInstance->Montage_Play(ChoppingTreeMontage);
 		}
 	}
+}
+
+
+
+void AFarmerCharacter::UpdateHealthyValue()
+{
+	SeedsInventory->UpdateHealthyValue();
 }
