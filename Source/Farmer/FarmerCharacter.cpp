@@ -283,7 +283,6 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 
 
 
-
 void AFarmerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 {
 	Super::EndPlay(Reason);
