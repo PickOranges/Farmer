@@ -127,7 +127,7 @@ public:
 	UPROPERTY()
 	UClass* SeedsInventoryClass;
 
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UCropSeedsUserWidget* SeedsInventory;
 
 
