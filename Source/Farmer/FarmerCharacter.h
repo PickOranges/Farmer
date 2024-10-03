@@ -143,6 +143,7 @@ public:
 	UFUNCTION()
 	void OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
+	UFUNCTION(BlueprintNativeEvent)
 	void UpdateHealthyValue();
 
 public:
@@ -177,6 +178,6 @@ protected:
 	void TriggerRemovePlant(ASoil* currentSoil);
 
 	UPROPERTY(BlueprintReadWrite)
-	float healthy = 100.f;
+	float HealthyVal = 100.f;
 };
 

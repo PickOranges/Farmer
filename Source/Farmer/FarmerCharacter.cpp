@@ -530,7 +530,8 @@ void AFarmerCharacter::PlayChoppingAnim()
 
 
 
-void AFarmerCharacter::UpdateHealthyValue()
+void AFarmerCharacter::UpdateHealthyValue_Implementation()
 {
 	SeedsInventory->UpdateHealthyValue();
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange, FString::FromInt(HealthyVal));  // This is the way you print a int value.
 }
