@@ -15,6 +15,13 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 	UMG_API UClass* Z_Construct_UClass_UUserWidget();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
+	DEFINE_FUNCTION(UCropSeedsUserWidget::execUpdateHealthyValue)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->UpdateHealthyValue_Implementation();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(UCropSeedsUserWidget::execInitialize)
 	{
 		P_FINISH;
@@ -37,6 +44,11 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 		P_THIS->SelectButton(Z_Param_idx);
 		P_NATIVE_END;
 	}
+	static FName NAME_UCropSeedsUserWidget_UpdateHealthyValue = FName(TEXT("UpdateHealthyValue"));
+	void UCropSeedsUserWidget::UpdateHealthyValue()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_UCropSeedsUserWidget_UpdateHealthyValue),NULL);
+	}
 	void UCropSeedsUserWidget::StaticRegisterNativesUCropSeedsUserWidget()
 	{
 		UClass* Class = UCropSeedsUserWidget::StaticClass();
@@ -44,6 +56,7 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 			{ "GetButtonCount", &UCropSeedsUserWidget::execGetButtonCount },
 			{ "Initialize", &UCropSeedsUserWidget::execInitialize },
 			{ "SelectButton", &UCropSeedsUserWidget::execSelectButton },
+			{ "UpdateHealthyValue", &UCropSeedsUserWidget::execUpdateHealthyValue },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -160,6 +173,28 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_UCropSeedsUserWidget_UpdateHealthyValue_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UCropSeedsUserWidget_UpdateHealthyValue_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/CropSeedsUserWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UCropSeedsUserWidget_UpdateHealthyValue_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UCropSeedsUserWidget, nullptr, "UpdateHealthyValue", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UCropSeedsUserWidget_UpdateHealthyValue_Statics::Function_MetaDataParams), Z_Construct_UFunction_UCropSeedsUserWidget_UpdateHealthyValue_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_UCropSeedsUserWidget_UpdateHealthyValue()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UCropSeedsUserWidget_UpdateHealthyValue_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UCropSeedsUserWidget);
 	UClass* Z_Construct_UClass_UCropSeedsUserWidget_NoRegister()
 	{
@@ -177,6 +212,10 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Buttons_MetaData[];
 #endif
 		static const UECodeGen_Private::FArrayPropertyParams NewProp_Buttons;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_HealthyValue_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_HealthyValue;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -190,6 +229,7 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 		{ &Z_Construct_UFunction_UCropSeedsUserWidget_GetButtonCount, "GetButtonCount" }, // 1565260244
 		{ &Z_Construct_UFunction_UCropSeedsUserWidget_Initialize, "Initialize" }, // 2857724135
 		{ &Z_Construct_UFunction_UCropSeedsUserWidget_SelectButton, "SelectButton" }, // 1804931224
+		{ &Z_Construct_UFunction_UCropSeedsUserWidget_UpdateHealthyValue, "UpdateHealthyValue" }, // 1557959646
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UCropSeedsUserWidget_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -211,9 +251,17 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 	};
 #endif
 	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_Buttons = { "Buttons", nullptr, (EPropertyFlags)0x001000800000000d, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCropSeedsUserWidget, Buttons), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_Buttons_MetaData), Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_Buttons_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_HealthyValue_MetaData[] = {
+		{ "Category", "CropSeedsUserWidget" },
+		{ "ModuleRelativePath", "Public/CropSeedsUserWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_HealthyValue = { "HealthyValue", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCropSeedsUserWidget, HealthyValue), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_HealthyValue_MetaData), Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_HealthyValue_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UCropSeedsUserWidget_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_Buttons_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_Buttons,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_HealthyValue,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UCropSeedsUserWidget_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UCropSeedsUserWidget>::IsAbstract,
@@ -254,9 +302,9 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UCropSeedsUserWidget, UCropSeedsUserWidget::StaticClass, TEXT("UCropSeedsUserWidget"), &Z_Registration_Info_UClass_UCropSeedsUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCropSeedsUserWidget), 424736834U) },
+		{ Z_Construct_UClass_UCropSeedsUserWidget, UCropSeedsUserWidget::StaticClass, TEXT("UCropSeedsUserWidget"), &Z_Registration_Info_UClass_UCropSeedsUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCropSeedsUserWidget), 2596097245U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_994547651(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_1630051168(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

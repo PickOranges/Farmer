@@ -22,6 +22,7 @@ struct FHitResult;
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void UpdateHealthyValue_Implementation(); \
  \
 	DECLARE_FUNCTION(execTriggerRemovePlant); \
 	DECLARE_FUNCTION(execPlayChoppingAnim); \
@@ -30,10 +31,12 @@ struct FHitResult;
 	DECLARE_FUNCTION(execAutoSave); \
 	DECLARE_FUNCTION(execLoadGameIfExist); \
 	DECLARE_FUNCTION(execCreateSaveGameInstance); \
+	DECLARE_FUNCTION(execUpdateHealthyValue); \
 	DECLARE_FUNCTION(execOnBeginOverlapCB);
 
 
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_ACCESSORS
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_CALLBACK_WRAPPERS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAFarmerCharacter(); \
@@ -65,6 +68,7 @@ public: \
 	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS \
 	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
 	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_ACCESSORS \
+	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_CALLBACK_WRAPPERS \
 	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_INCLASS_NO_PURE_DECLS \
 	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_33_ENHANCED_CONSTRUCTORS \
 private: \

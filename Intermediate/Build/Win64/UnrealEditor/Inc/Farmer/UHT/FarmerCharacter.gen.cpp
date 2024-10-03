@@ -83,6 +83,13 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		P_THIS->CreateSaveGameInstance();
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(AFarmerCharacter::execUpdateHealthyValue)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->UpdateHealthyValue_Implementation();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(AFarmerCharacter::execOnBeginOverlapCB)
 	{
 		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComponent);
@@ -96,6 +103,11 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		P_THIS->OnBeginOverlapCB(Z_Param_OverlappedComponent,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult);
 		P_NATIVE_END;
 	}
+	static FName NAME_AFarmerCharacter_UpdateHealthyValue = FName(TEXT("UpdateHealthyValue"));
+	void AFarmerCharacter::UpdateHealthyValue()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_AFarmerCharacter_UpdateHealthyValue),NULL);
+	}
 	void AFarmerCharacter::StaticRegisterNativesAFarmerCharacter()
 	{
 		UClass* Class = AFarmerCharacter::StaticClass();
@@ -108,6 +120,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 			{ "PlayChoppingAnim", &AFarmerCharacter::execPlayChoppingAnim },
 			{ "SaveGame", &AFarmerCharacter::execSaveGame },
 			{ "TriggerRemovePlant", &AFarmerCharacter::execTriggerRemovePlant },
+			{ "UpdateHealthyValue", &AFarmerCharacter::execUpdateHealthyValue },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -372,6 +385,28 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AFarmerCharacter_UpdateHealthyValue_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFarmerCharacter_UpdateHealthyValue_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "FarmerCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFarmerCharacter_UpdateHealthyValue_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFarmerCharacter, nullptr, "UpdateHealthyValue", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_UpdateHealthyValue_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFarmerCharacter_UpdateHealthyValue_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_AFarmerCharacter_UpdateHealthyValue()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFarmerCharacter_UpdateHealthyValue_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(AFarmerCharacter);
 	UClass* Z_Construct_UClass_AFarmerCharacter_NoRegister()
 	{
@@ -485,6 +520,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		{ &Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim, "PlayChoppingAnim" }, // 3257359485
 		{ &Z_Construct_UFunction_AFarmerCharacter_SaveGame, "SaveGame" }, // 399187742
 		{ &Z_Construct_UFunction_AFarmerCharacter_TriggerRemovePlant, "TriggerRemovePlant" }, // 2246806244
+		{ &Z_Construct_UFunction_AFarmerCharacter_UpdateHealthyValue, "UpdateHealthyValue" }, // 264033271
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -659,11 +695,12 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsInventoryClass = { "SeedsInventoryClass", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, SeedsInventoryClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsInventoryClass_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsInventoryClass_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsInventory_MetaData[] = {
+		{ "Category", "FarmerCharacter" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "FarmerCharacter.h" },
 	};
 #endif
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsInventory = { "SeedsInventory", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, SeedsInventory), Z_Construct_UClass_UCropSeedsUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsInventory_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsInventory_MetaData) };
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsInventory = { "SeedsInventory", nullptr, (EPropertyFlags)0x001000000008000c, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, SeedsInventory), Z_Construct_UClass_UCropSeedsUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsInventory_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsInventory_MetaData) };
 	const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsAmount_Inner = { "SeedsAmount", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsAmount_MetaData[] = {
@@ -782,9 +819,9 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 1216396184U) },
+		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 1697443844U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_2230896813(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_3009418279(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

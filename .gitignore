@@ -374,3 +374,6 @@ FodyWeavers.xsd
 /Content/MSPresets
 /Content/ThirdPerson/Maps/ThirdPersonMap_sharedassets
 /Content/ThirdPerson/Maps
+/Saved/Autosaves/PackageRestoreData.json
+/Saved/Config/CrashReportClient
+/Intermediate/Build/Win64/FarmerEditor/Development/FarmerEditor.uhtmanifest
