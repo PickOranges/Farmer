@@ -176,8 +176,5 @@ protected:
 protected:
 	UFUNCTION()
 	void TriggerRemovePlant(ASoil* currentSoil);
-
-	UPROPERTY(BlueprintReadWrite)
-	float HealthyVal = 100.f;
 };
 

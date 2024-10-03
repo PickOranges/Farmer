@@ -34,4 +34,7 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent)
 	void UpdateHealthyValue();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float HealthyValue = 100.f;
 };

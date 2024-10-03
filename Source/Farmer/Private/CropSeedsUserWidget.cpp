@@ -58,4 +58,5 @@ void UCropSeedsUserWidget::NativeConstruct()
 void UCropSeedsUserWidget::UpdateHealthyValue_Implementation()
 {
 	GEngine->AddOnScreenDebugMessage(-1,INFINITY, FColor::Orange, FString("UpdateHealthyValue()"));
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, FString::FromInt(HealthyValue));  // This is the way you print a int value.
 }
