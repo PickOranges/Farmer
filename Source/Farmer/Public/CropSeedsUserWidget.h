@@ -32,10 +32,6 @@ public:
 
 	void NativeConstruct() override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintNativeEvent)
 	void UpdateHealthyValue();
-
-private:
-	UPROPERTY()
-	float HealthyValue = 100;
 };

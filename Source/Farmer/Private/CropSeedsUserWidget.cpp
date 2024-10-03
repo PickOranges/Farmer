@@ -55,7 +55,7 @@ void UCropSeedsUserWidget::NativeConstruct()
 	}
 }
 
-void UCropSeedsUserWidget::UpdateHealthyValue()
+void UCropSeedsUserWidget::UpdateHealthyValue_Implementation()
 {
 	GEngine->AddOnScreenDebugMessage(-1,INFINITY, FColor::Orange, FString("UpdateHealthyValue()"));
 }
