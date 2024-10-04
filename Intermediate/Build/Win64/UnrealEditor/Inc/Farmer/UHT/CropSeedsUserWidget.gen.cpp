@@ -216,6 +216,10 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_HealthyValue_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_HealthyValue;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_StaminaPercent_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_StaminaPercent;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -258,10 +262,18 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_HealthyValue = { "HealthyValue", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCropSeedsUserWidget, HealthyValue), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_HealthyValue_MetaData), Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_HealthyValue_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_StaminaPercent_MetaData[] = {
+		{ "Category", "CropSeedsUserWidget" },
+		{ "ModuleRelativePath", "Public/CropSeedsUserWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_StaminaPercent = { "StaminaPercent", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCropSeedsUserWidget, StaminaPercent), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_StaminaPercent_MetaData), Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_StaminaPercent_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UCropSeedsUserWidget_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_Buttons_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_Buttons,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_HealthyValue,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCropSeedsUserWidget_Statics::NewProp_StaminaPercent,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UCropSeedsUserWidget_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UCropSeedsUserWidget>::IsAbstract,
@@ -302,9 +314,9 @@ void EmptyLinkFunctionForGeneratedCodeCropSeedsUserWidget() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UCropSeedsUserWidget, UCropSeedsUserWidget::StaticClass, TEXT("UCropSeedsUserWidget"), &Z_Registration_Info_UClass_UCropSeedsUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCropSeedsUserWidget), 2596097245U) },
+		{ Z_Construct_UClass_UCropSeedsUserWidget, UCropSeedsUserWidget::StaticClass, TEXT("UCropSeedsUserWidget"), &Z_Registration_Info_UClass_UCropSeedsUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCropSeedsUserWidget), 3638828306U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_1630051168(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_2705814296(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropSeedsUserWidget_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -37,4 +37,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float HealthyValue = 100.f;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	float StaminaPercent = 1.f;
 };
