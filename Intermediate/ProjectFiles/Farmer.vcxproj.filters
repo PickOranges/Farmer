@@ -184,4 +184,10 @@
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyDamageActor.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MyDamageActor.cpp" />
+  </ItemGroup>
 </Project>
