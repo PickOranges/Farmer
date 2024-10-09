@@ -44,6 +44,7 @@ void AInteractable::OnPlayerOverlapBegin(UPrimitiveComponent* OverlappedComp, AA
 void AInteractable::OnPlayerOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
-	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[Interactable] OnPlayerOverlapEnd()");
+	InteractionWidget->RemoveFromParent();
+	InteractionWidget->Destruct();
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[Interactable] OnPlayerOverlkapEnd()");
 }
-
