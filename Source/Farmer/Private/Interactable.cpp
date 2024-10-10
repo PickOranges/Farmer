@@ -48,3 +48,4 @@ void AInteractable::OnPlayerOverlapEnd(UPrimitiveComponent* OverlappedComp, AAct
 	InteractionWidget->Destruct();
 	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[Interactable] OnPlayerOverlkapEnd()");
 }
+up
