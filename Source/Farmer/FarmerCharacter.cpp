@@ -545,12 +545,12 @@ void AFarmerCharacter::UpdateHealthyValue_Implementation()
 
 FNameTextPair AFarmerCharacter::ViewRaycast_Implementation()
 {
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange, "FNameTextPair AFarmerCharacter::ViewRaycast_Implementation()");
+	GEngine->AddOnScreenDebugMessage(-1,5.f,FColor::Orange, "AFarmerCharacter::ViewRaycast_Implementation()");
 	return FNameTextPair();
 }
 
 void AFarmerCharacter::Interaction_Implementation()
 {
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "FNameTextPair AFarmerCharacter::Interaction_Implementation()");
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, "AFarmerCharacter::Interaction_Implementation()");
 
 }
