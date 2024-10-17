@@ -12,6 +12,9 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
 #include "MySaveGame.h"
+
+#include "IItemCppInterface.h"
+
 #include "FarmerCharacter.generated.h"
 
 class USpringArmComponent;
@@ -28,7 +31,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 
 UCLASS(config=Game)
-class AFarmerCharacter : public ACharacter, public IInterfaceActivate, public IInterfacePlantSeed
+class AFarmerCharacter : public ACharacter, public IInterfaceActivate, public IInterfacePlantSeed, public IItemCppInterface
 {
 	GENERATED_BODY()
 

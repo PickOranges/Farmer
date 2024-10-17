@@ -15,6 +15,8 @@
     <None Include="..\..\.gitignore" />
     <None Include="..\..\.vsconfig" />
     <None Include="..\..\E_Icon.jpg" />
+    <None Include="..\..\Height Map PNG.png" />
+    <None Include="..\..\PhotoR_Backgrounds.png" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -55,6 +57,12 @@
       <Filter>Source\Farmer</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Farmer\FarmerGameMode.h">
+      <Filter>Source\Farmer</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Farmer\IItemCppInterface.cpp">
+      <Filter>Source\Farmer</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Farmer\IItemCppInterface.h">
       <Filter>Source\Farmer</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Farmer\InterfaceActivate.cpp">
@@ -183,11 +191,5 @@
     <ClInclude Include="..\..\Source\Farmer\Public\SBT_FoxInRangeTaskNode.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MyDamageActor.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="MyDamageActor.cpp" />
   </ItemGroup>
 </Project>

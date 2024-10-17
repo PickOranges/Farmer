@@ -37,14 +37,19 @@ void AInteractable::OnInteract()
 
 void AInteractable::OnPlayerOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	InteractionWidget->SetVisibility(ESlateVisibility::Visible);
+	if (InteractionWidget) {
+		InteractionWidget->SetVisibility(ESlateVisibility::Visible);
+	}
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,lemon,"[Interactable] OnPlayerOverlapBegin()");
 }
 
 void AInteractable::OnPlayerOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
-	InteractionWidget->RemoveFromParent();
-	InteractionWidget->Destruct();
-	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[Interactable] OnPlayerOverlkapEnd()");
+	if(InteractionWidget){
+		InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
+		InteractionWidget->RemoveFromParent();
+		InteractionWidget->Destruct();
+		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[Interactable] OnPlayerOverlkapEnd()");
+	}
+	
 }
