@@ -25,6 +25,7 @@ struct FInputActionValue;
 
 
 
+
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 //DECLARE_DELEGATE(MyFeedDelegate);  // Feed the Fox
@@ -179,5 +180,11 @@ protected:
 protected:
 	UFUNCTION()
 	void TriggerRemovePlant(ASoil* currentSoil);
+
+
+public:
+	FNameTextPair ViewRaycast_Implementation();
+
+	void Interaction_Implementation();
 };
 

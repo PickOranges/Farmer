@@ -107,6 +107,12 @@ void AFarmerCharacter::BeginPlay()
 		//GEngine->AddOnScreenDebugMessage(-1,INFINITY,lemon,"[BeginPlay] MySaveGameInstance is empty, thus create a new one.");
 		CreateSaveGameInstance();
 	}
+
+
+
+
+	ViewRaycast_Implementation();
+	Interaction_Implementation();
 }
 
 
@@ -512,8 +518,6 @@ void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
 
 
 
-
-
 void AFarmerCharacter::PlayChoppingAnim()
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"This is chopping tree animation.");
@@ -532,4 +536,21 @@ void AFarmerCharacter::PlayChoppingAnim()
 void AFarmerCharacter::UpdateHealthyValue_Implementation()
 {
 	SeedsInventory->UpdateHealthyValue();
+}
+
+
+
+
+
+
+FNameTextPair AFarmerCharacter::ViewRaycast_Implementation()
+{
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange, "FNameTextPair AFarmerCharacter::ViewRaycast_Implementation()");
+	return FNameTextPair();
+}
+
+void AFarmerCharacter::Interaction_Implementation()
+{
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "FNameTextPair AFarmerCharacter::Interaction_Implementation()");
+
 }
