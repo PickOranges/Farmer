@@ -112,12 +112,12 @@ void AFarmerCharacter::BeginPlay()
 
 }
 
-
+// 24.10.24 useless?
 void AFarmerCharacter::Activate()
 {
 	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"Activate()");
 }
-
+// 24.10.24 useless?
 void AFarmerCharacter::PlantSeed()
 {
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "PlantSeed()");
