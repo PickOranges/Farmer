@@ -13,7 +13,6 @@
 #include "Components/BoxComponent.h"
 #include "MySaveGame.h"
 
-#include "IItemCppInterface.h"
 
 #include "FarmerCharacter.generated.h"
 
@@ -32,7 +31,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 
 UCLASS(config=Game)
-class AFarmerCharacter : public ACharacter, public IInterfaceActivate, public IInterfacePlantSeed, public IItemCppInterface
+class AFarmerCharacter : public ACharacter, public IInterfaceActivate, public IInterfacePlantSeed
 {
 	GENERATED_BODY()
 
@@ -180,11 +179,5 @@ protected:
 protected:
 	UFUNCTION()
 	void TriggerRemovePlant(ASoil* currentSoil);
-
-
-public:
-	FNameTextPair ViewRaycast_Implementation();
-
-	void Interaction_Implementation();
 };
 

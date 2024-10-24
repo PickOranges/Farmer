@@ -59,12 +59,6 @@
     <ClInclude Include="..\..\Source\Farmer\FarmerGameMode.h">
       <Filter>Source\Farmer</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\Farmer\IItemCppInterface.cpp">
-      <Filter>Source\Farmer</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\Farmer\IItemCppInterface.h">
-      <Filter>Source\Farmer</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Source\Farmer\InterfaceActivate.cpp">
       <Filter>Source\Farmer</Filter>
     </ClCompile>
