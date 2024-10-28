@@ -17,6 +17,14 @@ AInteractable::AInteractable()
 	CollisionBox->OnComponentEndOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapEnd);
 }
 
+AInteractable::~AInteractable()
+{
+	if (InteractionWidget) {
+		InteractionWidget->RemoveFromParent();
+		InteractionWidget->Destruct();
+	}
+}
+
 
 void AInteractable::BeginPlay()
 {
@@ -40,16 +48,12 @@ void AInteractable::OnPlayerOverlapBegin(UPrimitiveComponent* OverlappedComp, AA
 	if (InteractionWidget) {
 		InteractionWidget->SetVisibility(ESlateVisibility::Visible);
 	}
-	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,lemon,"[Interactable] OnPlayerOverlapBegin()");
 }
 
 void AInteractable::OnPlayerOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[Interactable] OnPlayerOverlkapEnd()");
 	if(InteractionWidget){
 		InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
-		InteractionWidget->RemoveFromParent();
-		InteractionWidget->Destruct();
-		//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[Interactable] OnPlayerOverlkapEnd()");
-	}
-	
+	}	
 }

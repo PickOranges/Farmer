@@ -45,8 +45,7 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AInteractable); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AInteractable); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AInteractable) \
-	NO_API virtual ~AInteractable();
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AInteractable)
 
 
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_11_PROLOG

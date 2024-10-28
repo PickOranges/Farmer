@@ -347,7 +347,6 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 		return AInteractable::StaticClass();
 	}
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AInteractable);
-	AInteractable::~AInteractable() {}
 	struct Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_Statics
 	{
 		static const FClassRegisterCompiledInInfo ClassInfo[];

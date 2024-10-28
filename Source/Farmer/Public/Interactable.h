@@ -16,6 +16,7 @@ class FARMER_API AInteractable : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AInteractable();
+	~AInteractable();
 
 protected:
 	// Called when the game starts or when spawned
