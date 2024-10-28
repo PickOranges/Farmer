@@ -11,3 +11,10 @@ AResourceNew::AResourceNew()
 	CollisionBox->SetupAttachment(RootComponent);
 }
 
+void AResourceNew::DisappearAndRelease()
+{
+	SetActorHiddenInGame(true);
+	SetActorEnableCollision(false);
+	SetActorTickEnabled(false);
+}
+

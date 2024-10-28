@@ -19,4 +19,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceNew")
 	UStaticMeshComponent* ResourceMesh;
+
+	void DisappearAndRelease();
 };
