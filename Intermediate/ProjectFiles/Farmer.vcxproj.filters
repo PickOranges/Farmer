@@ -119,9 +119,6 @@
     <ClCompile Include="..\..\Source\Farmer\Private\ResourceNew.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Farmer\Private\ResourceStone.cpp">
-      <Filter>Source\Farmer\Private</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\ResourceTree.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
@@ -168,9 +165,6 @@
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceNew.h">
-      <Filter>Source\Farmer\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Farmer\Public\ResourceStone.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceTree.h">

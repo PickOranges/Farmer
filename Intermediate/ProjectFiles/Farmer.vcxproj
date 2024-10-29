@@ -214,11 +214,6 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Farmer\Private\ResourceStone.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
-      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\ResourceTree.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -258,7 +253,6 @@
     <ClInclude Include="..\..\Source\Farmer\Public\Plant.h" />
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceBase.h" />
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceNew.h" />
-    <ClInclude Include="..\..\Source\Farmer\Public\ResourceStone.h" />
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceTree.h" />
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceWood.h" />
     <ClInclude Include="..\..\Source\Farmer\Public\SAICharacter.h" />
