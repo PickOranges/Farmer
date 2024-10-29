@@ -14,5 +14,5 @@ class FARMER_API AResourceStone : public AResourceBase
 {
 	GENERATED_BODY()
 public:
-	void OnInteract() override;
+	//void Interact_Implementation();
 };

@@ -39,8 +39,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
 	UBoxComponent* CollisionBox;
 
-	UFUNCTION(BlueprintCallable, Category = "Interactable")
-	virtual void OnInteract();
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interactable")
+	void Interact();
 
 	UFUNCTION(Category = "Interactable")
 	virtual void OnPlayerOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
@@ -50,7 +50,7 @@ public:
 
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interactable")
-	void  OnActorOverlapBegin(AActor* OverlappedActor, AActor* OtherActor);
+	void OnActorOverlapBegin(AActor* OverlappedActor, AActor* OtherActor);
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interactable")
 	void OnActorOverlapEnd(AActor* OverlappedActor, AActor* OtherActor);

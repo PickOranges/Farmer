@@ -17,10 +17,11 @@ class FARMER_API AResourceBase : public AInteractable
 	GENERATED_BODY()
 public:
 	AResourceBase();
-	//void OnInteract() override;
+
+	void Interact_Implementation();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resource")
 	UStaticMeshComponent* ResourceMesh;
 
-	void DisappearAndRelease();
+	void DisappearAndRelease();  //TODO: replace with advanced version: with interaction with player backpack.
 };

@@ -15,9 +15,6 @@ AInteractable::AInteractable()
 	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
 	//CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapBegin);
 	//CollisionBox->OnComponentEndOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapEnd);
-
-	//OnActorBeginOverlap.AddDynamic(this,&AInteractable::OnPlayerOverlapBegin);
-
 }
 
 AInteractable::~AInteractable()
@@ -40,7 +37,7 @@ void AInteractable::BeginPlay()
 	InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
 }	
 
-void AInteractable::OnInteract()
+void AInteractable::Interact_Implementation()
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY, pink,"[Interactable] OnInteraction()");
 	bIsInteractable = false;

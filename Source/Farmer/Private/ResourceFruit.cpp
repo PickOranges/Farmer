@@ -3,8 +3,8 @@
 
 #include "ResourceFruit.h"
 
-void AResourceFruit::OnInteract()
-{
-	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, "Collect the Fruit.");
-	DisappearAndRelease();
-}
+//void AResourceFruit::OnInteract()
+//{
+//	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, "Collect the Fruit.");
+//	DisappearAndRelease();
+//}

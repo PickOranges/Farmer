@@ -3,9 +3,9 @@
 
 #include "ResourceStone.h"
 
-void AResourceStone::OnInteract()
-{
-	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"Picked up the Stone.");
-	DisappearAndRelease();
-}
-
+//void AResourceStone::OnInteract()
+//{
+//	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"Picked up the Stone.");
+//	DisappearAndRelease();
+//}
+//

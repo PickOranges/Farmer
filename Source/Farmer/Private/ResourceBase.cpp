@@ -16,11 +16,11 @@ AResourceBase::AResourceBase()
 	CollisionBox->SetupAttachment(RootComponent);
 }
 
-//void AResourceBase::OnInteract()
-//{
-//	AInteractable::OnInteract();
-//	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[ResourceBase] OnInteraction()");
-//}
+void AResourceBase::Interact_Implementation()
+{
+	AInteractable::Interact();
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[ResourceBase] OnInteraction()");
+}
 
 void AResourceBase::DisappearAndRelease()
 {

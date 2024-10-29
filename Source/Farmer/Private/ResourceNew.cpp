@@ -11,6 +11,11 @@ AResourceNew::AResourceNew()
 	CollisionBox->SetupAttachment(RootComponent);
 }
 
+void AResourceNew::Interact_Implementation()
+{
+	Super::Interact();
+}
+
 
 //void AResourceNew::DisappearAndRelease_Implementation()
 //{

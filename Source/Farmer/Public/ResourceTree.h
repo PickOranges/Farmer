@@ -21,7 +21,7 @@ public:
 
 	AResourceTree();
 
-	void OnInteract() override;
+	void Interact_Implementation();
 
 	UPROPERTY(EditAnywhere, Category = "ResourceTree/Wood")
 	TSubclassOf<AActor> WoodClass;

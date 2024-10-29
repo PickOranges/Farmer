@@ -15,6 +15,6 @@ class FARMER_API AResourceWood : public AResourceBase
 	GENERATED_BODY()
 
 public:
-	void OnInteract() override;
+	//void OnInteract() override;
 };
 

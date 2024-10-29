@@ -3,7 +3,7 @@
 
 #include "ResourceWood.h"
 
-void AResourceWood::OnInteract()
-{
-	DisappearAndRelease();
-}
+//void AResourceWood::OnInteract()
+//{
+//	//DisappearAndRelease();
+//}

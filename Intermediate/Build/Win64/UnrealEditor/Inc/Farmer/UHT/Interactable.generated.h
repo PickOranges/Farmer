@@ -23,12 +23,13 @@ struct FHitResult;
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void OnActorOverlapEnd_Implementation(AActor* OverlappedActor, AActor* OtherActor); \
 	virtual void OnActorOverlapBegin_Implementation(AActor* OverlappedActor, AActor* OtherActor); \
+	virtual void Interact_Implementation(); \
  \
 	DECLARE_FUNCTION(execOnActorOverlapEnd); \
 	DECLARE_FUNCTION(execOnActorOverlapBegin); \
 	DECLARE_FUNCTION(execOnPlayerOverlapEnd); \
 	DECLARE_FUNCTION(execOnPlayerOverlapBegin); \
-	DECLARE_FUNCTION(execOnInteract);
+	DECLARE_FUNCTION(execInteract);
 
 
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_14_ACCESSORS
