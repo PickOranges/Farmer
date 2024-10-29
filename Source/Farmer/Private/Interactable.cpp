@@ -16,6 +16,8 @@ AInteractable::AInteractable()
 	//CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapBegin);
 	//CollisionBox->OnComponentEndOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapEnd);
 
+	OnActorBeginOverlap.AddDynamic(this, &AInteractable::OnActorOverlapBegin);
+	OnActorBeginOverlap.AddDynamic(this, &AInteractable::OnActorOverlapEnd);
 }
 
 AInteractable::~AInteractable()
@@ -25,6 +27,7 @@ AInteractable::~AInteractable()
 		InteractionWidget->Destruct();
 	}
 }
+
 
 
 void AInteractable::BeginPlay()

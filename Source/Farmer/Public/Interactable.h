@@ -51,9 +51,13 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interactable")
 	void OnActorOverlapBegin(AActor* OverlappedActor, AActor* OtherActor);
+	virtual void OnActorOverlapBegin_Implementation(AActor* OverlappedActor, AActor* OtherActor);
+
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interactable")
 	void OnActorOverlapEnd(AActor* OverlappedActor, AActor* OtherActor);
+	virtual void OnActorOverlapEnd_Implementation(AActor* OverlappedActor, AActor* OtherActor);
+	
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
 	class UUserWidget* InteractionWidget;
