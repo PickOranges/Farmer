@@ -66,7 +66,7 @@ void AInteractable::OnPlayerOverlapEnd(UPrimitiveComponent* OverlappedComp, AAct
 
 void AInteractable::OnActorOverlapBegin_Implementation(AActor* OverlappedActor, AActor* OtherActor)
 {
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, violet, "[Interactable] OnActorOverlapBegin()");
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, "[Interactable] OnActorOverlapBegin()");
 	if (InteractionWidget) {
 		InteractionWidget->SetVisibility(ESlateVisibility::Visible);
 	}
@@ -74,8 +74,8 @@ void AInteractable::OnActorOverlapBegin_Implementation(AActor* OverlappedActor, 
 
 void AInteractable::OnActorOverlapEnd_Implementation(AActor* OverlappedActor, AActor* OtherActor)
 {
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, violet, "[Interactable] OnActorOverlapEnd()");
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, violet, "--------------");
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, "[Interactable] OnActorOverlapEnd()");
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, blue, "--------------");
 	if (InteractionWidget) {
 		InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
 	}
