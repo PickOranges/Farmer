@@ -139,12 +139,6 @@
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClInclude Include="..\..\Source\Farmer\FarmerGameMode.h" />
-    <ClCompile Include="..\..\Source\Farmer\IItemCppInterface.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
-      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\Farmer\IItemCppInterface.h" />
     <ClCompile Include="..\..\Source\Farmer\InterfaceActivate.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -199,11 +193,6 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Farmer\Private\Plant.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
-      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\ResourceBase.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -250,7 +239,6 @@
     <ClInclude Include="..\..\Source\Farmer\Public\InteractionEWidget.h" />
     <ClInclude Include="..\..\Source\Farmer\Public\MySaveGame.h" />
     <ClInclude Include="..\..\Source\Farmer\Public\NPCFoxAnimInstance.h" />
-    <ClInclude Include="..\..\Source\Farmer\Public\Plant.h" />
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceBase.h" />
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceNew.h" />
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceTree.h" />

@@ -31,7 +31,7 @@ private: \
 	static void StaticRegisterNativesAResourceTree(); \
 	friend struct Z_Construct_UClass_AResourceTree_Statics; \
 public: \
-	DECLARE_CLASS(AResourceTree, AResourceBase, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Farmer"), NO_API) \
+	DECLARE_CLASS(AResourceTree, AResourceNew, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Farmer"), NO_API) \
 	DECLARE_SERIALIZER(AResourceTree)
 
 

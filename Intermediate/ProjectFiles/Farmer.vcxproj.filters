@@ -59,12 +59,6 @@
     <ClInclude Include="..\..\Source\Farmer\FarmerGameMode.h">
       <Filter>Source\Farmer</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\Farmer\IItemCppInterface.cpp">
-      <Filter>Source\Farmer</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\Farmer\IItemCppInterface.h">
-      <Filter>Source\Farmer</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Source\Farmer\InterfaceActivate.cpp">
       <Filter>Source\Farmer</Filter>
     </ClCompile>
@@ -110,9 +104,6 @@
     <ClCompile Include="..\..\Source\Farmer\Private\NPCFoxAnimInstance.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Farmer\Private\Plant.cpp">
-      <Filter>Source\Farmer\Private</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\ResourceBase.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
@@ -156,9 +147,6 @@
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\NPCFoxAnimInstance.h">
-      <Filter>Source\Farmer\Public</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Farmer\Public\Plant.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceBase.h">

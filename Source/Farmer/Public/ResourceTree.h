@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ResourceBase.h"
+#include "ResourceNew.h"
 #include "Components/StaticMeshComponent.h"
 #include "ResourceTree.generated.h"
 
@@ -11,7 +11,7 @@
  * 
  */
 UCLASS()
-class FARMER_API AResourceTree : public AResourceBase
+class FARMER_API AResourceTree : public AResourceNew
 {
 	GENERATED_BODY()
 	
