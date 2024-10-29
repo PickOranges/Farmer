@@ -11,10 +11,13 @@ AInteractable::AInteractable()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	// For further finer control of collision of each different component.
 	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
-	CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapBegin);
-	CollisionBox->OnComponentEndOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapEnd);
+	//CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapBegin);
+	//CollisionBox->OnComponentEndOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapEnd);
+
+	//OnActorBeginOverlap.AddDynamic(this,&AInteractable::OnPlayerOverlapBegin);
+
 }
 
 AInteractable::~AInteractable()
@@ -57,4 +60,20 @@ void AInteractable::OnPlayerOverlapEnd(UPrimitiveComponent* OverlappedComp, AAct
 	if(InteractionWidget){
 		InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
 	}	
+}
+
+void AInteractable::OnActorOverlapBegin_Implementation(AActor* OverlappedActor, AActor* OtherActor)
+{
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[Interactable] OnPlayerOverlkapBegin()");
+	if (InteractionWidget) {
+		InteractionWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+}
+
+void AInteractable::OnActorOverlapEnd_Implementation(AActor* OverlappedActor, AActor* OtherActor)
+{
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[Interactable] OnPlayerOverlkapEnd()");
+	if (InteractionWidget) {
+		InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
+	}
 }
