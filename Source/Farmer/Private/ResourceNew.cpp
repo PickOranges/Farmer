@@ -12,10 +12,10 @@ AResourceNew::AResourceNew()
 }
 
 
-void AResourceNew::DisappearAndRelease_Implementation()
-{
-	SetActorHiddenInGame(true);
-	SetActorEnableCollision(false);
-	SetActorTickEnabled(false);
-}
+//void AResourceNew::DisappearAndRelease_Implementation()
+//{
+//	SetActorHiddenInGame(true);
+//	SetActorEnableCollision(false);
+//	SetActorTickEnabled(false);
+//}
 

@@ -20,7 +20,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceNew")
 	UStaticMeshComponent* ResourceMesh;
 
-	UFUNCTION(BlueprintNativeEvent, Category = "ResourceNew")
-	void DisappearAndRelease();
-
+	//UFUNCTION(BlueprintNativeEvent, Category = "ResourceNew")
+	//void DisappearAndRelease();
 };

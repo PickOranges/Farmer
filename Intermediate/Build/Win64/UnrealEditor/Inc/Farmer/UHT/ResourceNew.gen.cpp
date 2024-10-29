@@ -15,48 +15,8 @@ void EmptyLinkFunctionForGeneratedCodeResourceNew() {}
 	FARMER_API UClass* Z_Construct_UClass_AResourceNew_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
-	DEFINE_FUNCTION(AResourceNew::execDisappearAndRelease)
-	{
-		P_FINISH;
-		P_NATIVE_BEGIN;
-		P_THIS->DisappearAndRelease_Implementation();
-		P_NATIVE_END;
-	}
-	static FName NAME_AResourceNew_DisappearAndRelease = FName(TEXT("DisappearAndRelease"));
-	void AResourceNew::DisappearAndRelease()
-	{
-		ProcessEvent(FindFunctionChecked(NAME_AResourceNew_DisappearAndRelease),NULL);
-	}
 	void AResourceNew::StaticRegisterNativesAResourceNew()
 	{
-		UClass* Class = AResourceNew::StaticClass();
-		static const FNameNativePtrPair Funcs[] = {
-			{ "DisappearAndRelease", &AResourceNew::execDisappearAndRelease },
-		};
-		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
-	}
-	struct Z_Construct_UFunction_AResourceNew_DisappearAndRelease_Statics
-	{
-#if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
-#endif
-		static const UECodeGen_Private::FFunctionParams FuncParams;
-	};
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AResourceNew_DisappearAndRelease_Statics::Function_MetaDataParams[] = {
-		{ "Category", "ResourceNew" },
-		{ "ModuleRelativePath", "Public/ResourceNew.h" },
-	};
-#endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AResourceNew_DisappearAndRelease_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AResourceNew, nullptr, "DisappearAndRelease", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AResourceNew_DisappearAndRelease_Statics::Function_MetaDataParams), Z_Construct_UFunction_AResourceNew_DisappearAndRelease_Statics::Function_MetaDataParams) };
-	UFunction* Z_Construct_UFunction_AResourceNew_DisappearAndRelease()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AResourceNew_DisappearAndRelease_Statics::FuncParams);
-		}
-		return ReturnFunction;
 	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(AResourceNew);
 	UClass* Z_Construct_UClass_AResourceNew_NoRegister()
@@ -66,7 +26,6 @@ void EmptyLinkFunctionForGeneratedCodeResourceNew() {}
 	struct Z_Construct_UClass_AResourceNew_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
-		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -83,10 +42,6 @@ void EmptyLinkFunctionForGeneratedCodeResourceNew() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_Farmer,
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceNew_Statics::DependentSingletons) < 16);
-	const FClassFunctionLinkInfo Z_Construct_UClass_AResourceNew_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_AResourceNew_DisappearAndRelease, "DisappearAndRelease" }, // 1416362949
-	};
-	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceNew_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AResourceNew_Statics::Class_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
@@ -117,11 +72,11 @@ void EmptyLinkFunctionForGeneratedCodeResourceNew() {}
 		"Engine",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		FuncInfo,
+		nullptr,
 		Z_Construct_UClass_AResourceNew_Statics::PropPointers,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
-		UE_ARRAY_COUNT(FuncInfo),
+		0,
 		UE_ARRAY_COUNT(Z_Construct_UClass_AResourceNew_Statics::PropPointers),
 		0,
 		0x009000A4u,
@@ -147,9 +102,9 @@ void EmptyLinkFunctionForGeneratedCodeResourceNew() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AResourceNew, AResourceNew::StaticClass, TEXT("AResourceNew"), &Z_Registration_Info_UClass_AResourceNew, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceNew), 4286522329U) },
+		{ Z_Construct_UClass_AResourceNew, AResourceNew::StaticClass, TEXT("AResourceNew"), &Z_Registration_Info_UClass_AResourceNew, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceNew), 2309669204U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_3760786420(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_2200841066(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
