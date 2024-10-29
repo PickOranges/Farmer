@@ -211,6 +211,7 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 	FHitResult Result;
 	RayCast(isHit, Result);
 	if (isHit) {
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue,"Hit this Actor.");
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil && SeedsAmount[Seeds]>0) {
 			if(!currentSoil->bIsPlanted){
@@ -219,11 +220,13 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			}
 			return;
 		}
-		AResourceBase* CurrentResource = Cast<AResourceBase>(Result.GetActor());
+		//AResourceNew* CurrentResource = Cast<AResourceNew>(Result.GetActor());
+		AInteractable* CurrentResource= Cast<AInteractable>(Result.GetActor());
 		if (CurrentResource) {
 			// Case I: Resource is Tree
 			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
 			if (Tree) {
+				GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue, "Hit this tree, you can chop it down now...");
 				PlayChoppingAnim();
 			}
 
@@ -266,6 +269,7 @@ void AFarmerCharacter::OnBeginOverlapCB(UPrimitiveComponent* OverlappedComponent
 	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Begin Overlapping with: %s"), *OtherActor->GetName()));
 	
 	// placed a matured crop on the soil
+	// TODO: Merge Soil into Interactable, and so that we don't need casting at all !!!
 	if (OtherActor) {
 		if (ASoil* temp = Cast<ASoil>(OtherActor)) {
 			FText tx = temp->Text3D->GetText();
