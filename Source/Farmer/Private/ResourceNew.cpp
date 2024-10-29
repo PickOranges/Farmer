@@ -10,17 +10,3 @@ AResourceNew::AResourceNew()
 	RootComponent = ResourceMesh;
 	CollisionBox->SetupAttachment(RootComponent);
 }
-
-void AResourceNew::Interact_Implementation()
-{
-	Super::Interact();
-}
-
-
-//void AResourceNew::DisappearAndRelease_Implementation()
-//{
-//	SetActorHiddenInGame(true);
-//	SetActorEnableCollision(false);
-//	SetActorTickEnabled(false);
-//}
-

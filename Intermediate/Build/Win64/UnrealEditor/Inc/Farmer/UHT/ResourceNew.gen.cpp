@@ -102,9 +102,9 @@ void EmptyLinkFunctionForGeneratedCodeResourceNew() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AResourceNew, AResourceNew::StaticClass, TEXT("AResourceNew"), &Z_Registration_Info_UClass_AResourceNew, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceNew), 1702319206U) },
+		{ Z_Construct_UClass_AResourceNew, AResourceNew::StaticClass, TEXT("AResourceNew"), &Z_Registration_Info_UClass_AResourceNew, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceNew), 3034480240U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_4022648296(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_4072860566(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

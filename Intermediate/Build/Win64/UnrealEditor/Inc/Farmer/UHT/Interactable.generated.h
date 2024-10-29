@@ -21,8 +21,8 @@ struct FHitResult;
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_14_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_14_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	virtual void Interact_Implementation(); \
  \
+	DECLARE_FUNCTION(execDisappearAndRelease); \
 	DECLARE_FUNCTION(execOnActorOverlapEnd); \
 	DECLARE_FUNCTION(execOnActorOverlapBegin); \
 	DECLARE_FUNCTION(execOnPlayerOverlapEnd); \

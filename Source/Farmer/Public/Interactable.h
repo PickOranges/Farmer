@@ -41,6 +41,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interactable")
 	void Interact();
+	virtual void Interact_Implementation();
 
 	UFUNCTION(Category = "Interactable")
 	virtual void OnPlayerOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
@@ -57,6 +58,10 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interactable")
 	void OnActorOverlapEnd(AActor* OverlappedActor, AActor* OtherActor);
 	virtual void OnActorOverlapEnd_Implementation(AActor* OverlappedActor, AActor* OtherActor);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interactable")
+	void DisappearAndRelease();  //TODO: replace with advanced version: with interaction with player backpack.
+	virtual void DisappearAndRelease_Implementation();
 	
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")

@@ -81,3 +81,11 @@ void AInteractable::OnActorOverlapEnd_Implementation(AActor* OverlappedActor, AA
 		InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
 	}
 }
+
+
+void AInteractable::DisappearAndRelease_Implementation()
+{
+	SetActorHiddenInGame(true);
+	SetActorEnableCollision(false);
+	SetActorTickEnabled(false);
+}

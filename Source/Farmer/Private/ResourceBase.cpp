@@ -15,16 +15,3 @@ AResourceBase::AResourceBase()
 	RootComponent = ResourceMesh;
 	CollisionBox->SetupAttachment(RootComponent);
 }
-
-void AResourceBase::Interact_Implementation()
-{
-	AInteractable::Interact();
-	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, lemon, "[ResourceBase] OnInteraction()");
-}
-
-void AResourceBase::DisappearAndRelease()
-{
-	SetActorHiddenInGame(true);
-	SetActorEnableCollision(false);
-	SetActorTickEnabled(false);
-}

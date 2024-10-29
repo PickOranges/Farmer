@@ -17,12 +17,6 @@ class FARMER_API AResourceNew : public AInteractable
 public:
 	AResourceNew();
 
-	void Interact_Implementation();
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceNew")
 	UStaticMeshComponent* ResourceMesh;
-
-	/* TODO: Replace later with an advanced version with interaction with player backpack. */
-	//UFUNCTION(BlueprintNativeEvent, Category = "ResourceNew")
-	//void DisappearAndRelease();
 };

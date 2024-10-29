@@ -14,5 +14,4 @@ class FARMER_API AResourceFruit : public AResourceBase
 {
 	GENERATED_BODY()
 public:
-	//void Interact();
 };
