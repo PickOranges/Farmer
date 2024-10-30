@@ -776,7 +776,13 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsAmount_MetaData[] = {
 		{ "Category", "FarmerCharacter" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// TODO: Move these items into Backpack (item_comp, i.e. dictionary!)\n" },
+#endif
 		{ "ModuleRelativePath", "FarmerCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "TODO: Move these items into Backpack (item_comp, i.e. dictionary!)" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsAmount = { "SeedsAmount", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, SeedsAmount), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsAmount_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_SeedsAmount_MetaData) };
@@ -885,9 +891,9 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 2136280427U) },
+		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 14158829U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_3710234439(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_3009616476(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

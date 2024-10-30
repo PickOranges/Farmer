@@ -132,7 +132,7 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UCropSeedsUserWidget* SeedsInventory;
 
-
+// TODO: Move these items into Backpack (item_comp, i.e. dictionary!)
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	TArray<int32> SeedsAmount{1,2,5};
 
