@@ -13,6 +13,7 @@ class AActor;
 class ASoil;
 class UPrimitiveComponent;
 struct FHitResult;
+struct FInputActionValue;
 #ifdef FARMER_FarmerCharacter_generated_h
 #error "FarmerCharacter.generated.h already included, missing '#pragma once' in FarmerCharacter.h"
 #endif
@@ -32,7 +33,8 @@ struct FHitResult;
 	DECLARE_FUNCTION(execLoadGameIfExist); \
 	DECLARE_FUNCTION(execCreateSaveGameInstance); \
 	DECLARE_FUNCTION(execUpdateHealthyValue); \
-	DECLARE_FUNCTION(execOnBeginOverlapCB);
+	DECLARE_FUNCTION(execOnBeginOverlapCB); \
+	DECLARE_FUNCTION(execPressE);
 
 
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_36_ACCESSORS

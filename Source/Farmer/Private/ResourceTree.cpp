@@ -2,6 +2,7 @@
 
 
 #include "ResourceTree.h"
+#include "../FarmerCharacter.h"
 
 
 AResourceTree::AResourceTree()
@@ -18,7 +19,7 @@ AResourceTree::AResourceTree()
 	}
 }
 
-void AResourceTree::Interact_Implementation()
+void AResourceTree::Interact_Implementation(AFarmerCharacter* player)
 {
 	if (bIsInteractable) {
 		//ResourceMesh->SetSimulatePhysics(true);
@@ -28,8 +29,12 @@ void AResourceTree::Interact_Implementation()
 	    GetWorld()->GetTimerManager().SetTimer(TreeFallTimerHandle, this, &AResourceTree::OnTreeFallComplete, 4.0f, false);
 
 		bIsInteractable = false;
+
+		if (player) {
+			player->PlayChoppingAnim();
+		}
 	}
-	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,Super::violet,"[ResourceTree] Tree is chopped down.");
+	
 }
 
 void AResourceTree::OnTreeFallComplete()

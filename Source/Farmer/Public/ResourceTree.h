@@ -21,7 +21,7 @@ public:
 
 	AResourceTree();
 
-	void Interact_Implementation();
+	void Interact_Implementation(AFarmerCharacter* player);
 
 	UPROPERTY(EditAnywhere, Category = "ResourceTree/Wood")
 	TSubclassOf<AActor> WoodClass;

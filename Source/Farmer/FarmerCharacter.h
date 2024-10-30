@@ -92,7 +92,9 @@ protected:
 	void Look(const FInputActionValue& Value);
 
 	// CB for for pressing E
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "FarmerCharacter")
 	void PressE(const FInputActionValue& Value);
+	virtual void PressE_Implementation(const FInputActionValue& Value);
 	
 	// CB for for pressing Q
 	void PressQ(const FInputActionValue& Value);
@@ -173,8 +175,10 @@ protected:
 	UFUNCTION()
 	void LoadGame() noexcept;
 
-	UFUNCTION()
+public:
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "FarmerCharacter")
 	void PlayChoppingAnim();
+	virtual void PlayChoppingAnim_Implementation();
 
 protected:
 	UFUNCTION()

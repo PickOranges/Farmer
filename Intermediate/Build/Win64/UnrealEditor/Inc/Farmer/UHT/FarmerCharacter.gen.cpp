@@ -7,6 +7,7 @@
 #include "UObject/GeneratedCppIncludes.h"
 #include "Farmer/FarmerCharacter.h"
 #include "../../Source/Runtime/Engine/Classes/Engine/HitResult.h"
+#include "InputActionValue.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 // Cross Module References
@@ -23,6 +24,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 	ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
 	ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
+	ENHANCEDINPUT_API UScriptStruct* Z_Construct_UScriptStruct_FInputActionValue();
 	FARMER_API UClass* Z_Construct_UClass_AFarmerCharacter();
 	FARMER_API UClass* Z_Construct_UClass_AFarmerCharacter_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_ASoil_NoRegister();
@@ -44,7 +46,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	{
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		P_THIS->PlayChoppingAnim();
+		P_THIS->PlayChoppingAnim_Implementation();
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(AFarmerCharacter::execLoadGame)
@@ -103,6 +105,30 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		P_THIS->OnBeginOverlapCB(Z_Param_OverlappedComponent,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult);
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(AFarmerCharacter::execPressE)
+	{
+		P_GET_STRUCT_REF(FInputActionValue,Z_Param_Out_Value);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->PressE_Implementation(Z_Param_Out_Value);
+		P_NATIVE_END;
+	}
+	struct FarmerCharacter_eventPressE_Parms
+	{
+		FInputActionValue Value;
+	};
+	static FName NAME_AFarmerCharacter_PlayChoppingAnim = FName(TEXT("PlayChoppingAnim"));
+	void AFarmerCharacter::PlayChoppingAnim()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_AFarmerCharacter_PlayChoppingAnim),NULL);
+	}
+	static FName NAME_AFarmerCharacter_PressE = FName(TEXT("PressE"));
+	void AFarmerCharacter::PressE(FInputActionValue const& Value)
+	{
+		FarmerCharacter_eventPressE_Parms Parms;
+		Parms.Value=Value;
+		ProcessEvent(FindFunctionChecked(NAME_AFarmerCharacter_PressE),&Parms);
+	}
 	static FName NAME_AFarmerCharacter_UpdateHealthyValue = FName(TEXT("UpdateHealthyValue"));
 	void AFarmerCharacter::UpdateHealthyValue()
 	{
@@ -118,6 +144,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 			{ "LoadGameIfExist", &AFarmerCharacter::execLoadGameIfExist },
 			{ "OnBeginOverlapCB", &AFarmerCharacter::execOnBeginOverlapCB },
 			{ "PlayChoppingAnim", &AFarmerCharacter::execPlayChoppingAnim },
+			{ "PressE", &AFarmerCharacter::execPressE },
 			{ "SaveGame", &AFarmerCharacter::execSaveGame },
 			{ "TriggerRemovePlant", &AFarmerCharacter::execTriggerRemovePlant },
 			{ "UpdateHealthyValue", &AFarmerCharacter::execUpdateHealthyValue },
@@ -316,16 +343,62 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::Function_MetaDataParams[] = {
+		{ "Category", "FarmerCharacter" },
 		{ "ModuleRelativePath", "FarmerCharacter.h" },
 	};
 #endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFarmerCharacter, nullptr, "PlayChoppingAnim", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::Function_MetaDataParams) };
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFarmerCharacter, nullptr, "PlayChoppingAnim", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::Function_MetaDataParams) };
 	UFunction* Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim()
 	{
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AFarmerCharacter_PressE_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Value_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_Value;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::NewProp_Value_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::NewProp_Value = { "Value", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FarmerCharacter_eventPressE_Parms, Value), Z_Construct_UScriptStruct_FInputActionValue, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::NewProp_Value_MetaData), Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::NewProp_Value_MetaData) }; // 1693336646
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::NewProp_Value,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::Function_MetaDataParams[] = {
+		{ "Category", "FarmerCharacter" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// CB for for pressing E\n" },
+#endif
+		{ "ModuleRelativePath", "FarmerCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "CB for for pressing E" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFarmerCharacter, nullptr, "PressE", nullptr, nullptr, Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::PropPointers), sizeof(FarmerCharacter_eventPressE_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C480C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::PropPointers) < 2048);
+	static_assert(sizeof(FarmerCharacter_eventPressE_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_AFarmerCharacter_PressE()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFarmerCharacter_PressE_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -517,7 +590,8 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		{ &Z_Construct_UFunction_AFarmerCharacter_LoadGame, "LoadGame" }, // 3131354145
 		{ &Z_Construct_UFunction_AFarmerCharacter_LoadGameIfExist, "LoadGameIfExist" }, // 453795596
 		{ &Z_Construct_UFunction_AFarmerCharacter_OnBeginOverlapCB, "OnBeginOverlapCB" }, // 2517457471
-		{ &Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim, "PlayChoppingAnim" }, // 3257359485
+		{ &Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim, "PlayChoppingAnim" }, // 4066898111
+		{ &Z_Construct_UFunction_AFarmerCharacter_PressE, "PressE" }, // 2304017935
 		{ &Z_Construct_UFunction_AFarmerCharacter_SaveGame, "SaveGame" }, // 399187742
 		{ &Z_Construct_UFunction_AFarmerCharacter_TriggerRemovePlant, "TriggerRemovePlant" }, // 2246806244
 		{ &Z_Construct_UFunction_AFarmerCharacter_UpdateHealthyValue, "UpdateHealthyValue" }, // 264033271
@@ -819,9 +893,9 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 3627447101U) },
+		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 73379120U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_399842788(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_2836690153(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -204,7 +204,7 @@ void AFarmerCharacter::PressQ(const FInputActionValue& Value)
 	}
 }
 
-void AFarmerCharacter::PressE(const FInputActionValue& Value)
+void AFarmerCharacter::PressE_Implementation(const FInputActionValue& Value)
 {
 	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Keyboard input: Q.");
 	bool isHit;
@@ -220,18 +220,18 @@ void AFarmerCharacter::PressE(const FInputActionValue& Value)
 			}
 			return;
 		}
-		//AResourceNew* CurrentResource = Cast<AResourceNew>(Result.GetActor());
+		
 		AInteractable* CurrentResource= Cast<AInteractable>(Result.GetActor());
 		if (CurrentResource) {
 			// Case I: Resource is Tree
 			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
 			if (Tree) {
 				GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue, "Hit this tree, you can chop it down now...");
-				PlayChoppingAnim();
+				//PlayChoppingAnim();
 			}
 
 			// Case II: Tree and Other Resources.
-			CurrentResource->Interact();
+			CurrentResource->Interact(this);
 		}
 	}
 }
@@ -519,7 +519,7 @@ void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
 
 
 
-void AFarmerCharacter::PlayChoppingAnim()
+void AFarmerCharacter::PlayChoppingAnim_Implementation()
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,pink,"This is chopping tree animation.");
 	if (ChoppingTreeMontage)

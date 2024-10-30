@@ -8,6 +8,8 @@
 #include "Blueprint/UserWidget.h"
 #include "Interactable.generated.h"
 
+class AFarmerCharacter;
+
 UCLASS()
 class FARMER_API AInteractable : public AActor
 {
@@ -40,8 +42,8 @@ public:
 	UBoxComponent* CollisionBox;
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interactable")
-	void Interact();
-	virtual void Interact_Implementation();
+	void Interact(AFarmerCharacter* player);
+	virtual void Interact_Implementation(AFarmerCharacter* player);
 
 	UFUNCTION(Category = "Interactable")
 	virtual void OnPlayerOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);

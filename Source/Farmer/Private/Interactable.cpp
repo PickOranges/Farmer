@@ -41,7 +41,7 @@ void AInteractable::BeginPlay()
 	InteractionWidget->SetVisibility(ESlateVisibility::Hidden);
 }	
 
-void AInteractable::Interact_Implementation()
+void AInteractable::Interact_Implementation(AFarmerCharacter* player)
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY, pink,"[Interactable] OnInteraction()");
 	bIsInteractable = false;

@@ -15,6 +15,7 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
+	FARMER_API UClass* Z_Construct_UClass_AFarmerCharacter_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_AInteractable();
 	FARMER_API UClass* Z_Construct_UClass_AInteractable_NoRegister();
 	UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
@@ -71,11 +72,16 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 	}
 	DEFINE_FUNCTION(AInteractable::execInteract)
 	{
+		P_GET_OBJECT(AFarmerCharacter,Z_Param_player);
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		P_THIS->Interact_Implementation();
+		P_THIS->Interact_Implementation(Z_Param_player);
 		P_NATIVE_END;
 	}
+	struct Interactable_eventInteract_Parms
+	{
+		AFarmerCharacter* player;
+	};
 	struct Interactable_eventOnActorOverlapBegin_Parms
 	{
 		AActor* OverlappedActor;
@@ -92,9 +98,11 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 		ProcessEvent(FindFunctionChecked(NAME_AInteractable_DisappearAndRelease),NULL);
 	}
 	static FName NAME_AInteractable_Interact = FName(TEXT("Interact"));
-	void AInteractable::Interact()
+	void AInteractable::Interact(AFarmerCharacter* player)
 	{
-		ProcessEvent(FindFunctionChecked(NAME_AInteractable_Interact),NULL);
+		Interactable_eventInteract_Parms Parms;
+		Parms.player=player;
+		ProcessEvent(FindFunctionChecked(NAME_AInteractable_Interact),&Parms);
 	}
 	static FName NAME_AInteractable_OnActorOverlapBegin = FName(TEXT("OnActorOverlapBegin"));
 	void AInteractable::OnActorOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
@@ -150,10 +158,16 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 	}
 	struct Z_Construct_UFunction_AInteractable_Interact_Statics
 	{
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_player;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
 #endif
 		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AInteractable_Interact_Statics::NewProp_player = { "player", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Interactable_eventInteract_Parms, player), Z_Construct_UClass_AFarmerCharacter_NoRegister, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AInteractable_Interact_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AInteractable_Interact_Statics::NewProp_player,
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AInteractable_Interact_Statics::Function_MetaDataParams[] = {
@@ -161,7 +175,9 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 		{ "ModuleRelativePath", "Public/Interactable.h" },
 	};
 #endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AInteractable_Interact_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AInteractable, nullptr, "Interact", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AInteractable_Interact_Statics::Function_MetaDataParams), Z_Construct_UFunction_AInteractable_Interact_Statics::Function_MetaDataParams) };
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AInteractable_Interact_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AInteractable, nullptr, "Interact", nullptr, nullptr, Z_Construct_UFunction_AInteractable_Interact_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AInteractable_Interact_Statics::PropPointers), sizeof(Interactable_eventInteract_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AInteractable_Interact_Statics::Function_MetaDataParams), Z_Construct_UFunction_AInteractable_Interact_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AInteractable_Interact_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Interactable_eventInteract_Parms) < MAX_uint16);
 	UFunction* Z_Construct_UFunction_AInteractable_Interact()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -422,7 +438,7 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AInteractable_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_AInteractable_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_AInteractable_DisappearAndRelease, "DisappearAndRelease" }, // 1514932105
-		{ &Z_Construct_UFunction_AInteractable_Interact, "Interact" }, // 1251479818
+		{ &Z_Construct_UFunction_AInteractable_Interact, "Interact" }, // 692473323
 		{ &Z_Construct_UFunction_AInteractable_OnActorOverlapBegin, "OnActorOverlapBegin" }, // 1511526771
 		{ &Z_Construct_UFunction_AInteractable_OnActorOverlapEnd, "OnActorOverlapEnd" }, // 3472798772
 		{ &Z_Construct_UFunction_AInteractable_OnPlayerOverlapBegin, "OnPlayerOverlapBegin" }, // 179600690
@@ -510,9 +526,9 @@ void EmptyLinkFunctionForGeneratedCodeInteractable() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AInteractable, AInteractable::StaticClass, TEXT("AInteractable"), &Z_Registration_Info_UClass_AInteractable, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AInteractable), 2537260698U) },
+		{ Z_Construct_UClass_AInteractable, AInteractable::StaticClass, TEXT("AInteractable"), &Z_Registration_Info_UClass_AInteractable, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AInteractable), 442983784U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_4269599015(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_455983150(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Interactable_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
