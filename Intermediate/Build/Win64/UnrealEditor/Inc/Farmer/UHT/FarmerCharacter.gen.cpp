@@ -29,8 +29,6 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	FARMER_API UClass* Z_Construct_UClass_AFarmerCharacter_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_ASoil_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_UCropSeedsUserWidget_NoRegister();
-	FARMER_API UClass* Z_Construct_UClass_UInterfaceActivate_NoRegister();
-	FARMER_API UClass* Z_Construct_UClass_UInterfacePlantSeed_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_UMySaveGame_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
@@ -575,7 +573,6 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_ChoppingTreeMontage;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-		static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
 	};
@@ -850,11 +847,6 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_MySaveGameInstance,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_ChoppingTreeMontage,
 	};
-		const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AFarmerCharacter_Statics::InterfaceParams[] = {
-			{ Z_Construct_UClass_UInterfaceActivate_NoRegister, (int32)VTABLE_OFFSET(AFarmerCharacter, IInterfaceActivate), false },  // 511138240
-			{ Z_Construct_UClass_UInterfacePlantSeed_NoRegister, (int32)VTABLE_OFFSET(AFarmerCharacter, IInterfacePlantSeed), false },  // 73441456
-		};
-	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::InterfaceParams) < 64);
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AFarmerCharacter_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AFarmerCharacter>::IsAbstract,
 	};
@@ -865,11 +857,11 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		DependentSingletons,
 		FuncInfo,
 		Z_Construct_UClass_AFarmerCharacter_Statics::PropPointers,
-		InterfaceParams,
+		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
 		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::PropPointers),
-		UE_ARRAY_COUNT(InterfaceParams),
+		0,
 		0x008000A4u,
 		METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::Class_MetaDataParams), Z_Construct_UClass_AFarmerCharacter_Statics::Class_MetaDataParams)
 	};
@@ -893,9 +885,9 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 73379120U) },
+		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 2136280427U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_2836690153(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_3710234439(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

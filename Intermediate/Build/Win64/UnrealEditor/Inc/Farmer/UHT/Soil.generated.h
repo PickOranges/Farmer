@@ -31,9 +31,8 @@ private: \
 	static void StaticRegisterNativesASoil(); \
 	friend struct Z_Construct_UClass_ASoil_Statics; \
 public: \
-	DECLARE_CLASS(ASoil, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Farmer"), NO_API) \
-	DECLARE_SERIALIZER(ASoil) \
-	virtual UObject* _getUObject() const override { return const_cast<ASoil*>(this); }
+	DECLARE_CLASS(ASoil, ACropBase, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Farmer"), NO_API) \
+	DECLARE_SERIALIZER(ASoil)
 
 
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_ENHANCED_CONSTRUCTORS \

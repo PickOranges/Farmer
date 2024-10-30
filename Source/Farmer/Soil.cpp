@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Soil.h"
+#include "Interactable.h"
 #include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
 
@@ -72,9 +72,7 @@ void ASoil::BeginPlay()
 	Super::BeginPlay();
 }
 
-void ASoil::Activate()
-{
-}
+
 
 void ASoil::Tick(float DeltaTime)
 {
@@ -90,7 +88,7 @@ void ASoil::Tick(float DeltaTime)
 	}
 }
 
-void ASoil::PlantSeed()
+void ASoil::PlantSeed_Implementation()
 {
 	if (!bIsPlanted) {
 		AFarmerCharacter* myCharacter = Cast<AFarmerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));

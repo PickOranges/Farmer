@@ -65,10 +65,10 @@
     <ClInclude Include="..\..\Source\Farmer\InterfaceActivate.h">
       <Filter>Source\Farmer</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\Farmer\InterfacePlantSeed.cpp">
+    <ClCompile Include="..\..\Source\Farmer\CropBase.cpp">
       <Filter>Source\Farmer</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\Source\Farmer\InterfacePlantSeed.h">
+    <ClInclude Include="..\..\Source\Farmer\CropBase.h">
       <Filter>Source\Farmer</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Farmer\Soil.cpp">

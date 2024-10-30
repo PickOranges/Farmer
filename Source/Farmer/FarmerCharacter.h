@@ -5,8 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
-#include "InterfaceActivate.h"
-#include "InterfacePlantSeed.h"
 #include "Blueprint/UserWidget.h"
 #include "CropSeedsUserWidget.h"
 #include "Components/StaticMeshComponent.h"
@@ -31,7 +29,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 
 UCLASS(config=Game)
-class AFarmerCharacter : public ACharacter, public IInterfaceActivate, public IInterfacePlantSeed
+class AFarmerCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -107,8 +105,7 @@ protected:
 	
 
 	void RayCast(bool& bHit, FHitResult& HitResult);
-	void Activate() override;
-	void PlantSeed() override;
+
 
 protected:
 	// APawn interface

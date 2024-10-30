@@ -5,8 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
-#include "InterfaceActivate.h"
-#include "InterfacePlantSeed.h"
+#include "CropBase.h"
 #include "Text3DComponent.h"
 #include "FarmerCharacter.h"
 #include "Soil.generated.h"
@@ -19,8 +18,9 @@ enum class EPlants : uint8 {
 };
 
 
+
 UCLASS()
-class FARMER_API ASoil : public AActor, public IInterfaceActivate, public IInterfacePlantSeed
+class FARMER_API ASoil : public ACropBase
 {
 	GENERATED_BODY()
 	
@@ -43,9 +43,9 @@ public:
 	class UText3DComponent* Text3D;	
 
 public:
-	// TODO: clear them later
-	void PlantSeed() override;  
-	void Activate() override;
+	
+	void PlantSeed_Implementation();
+	
 
 public:
 	TArray<UStaticMesh*> PotatoMeshes, EggplantMeshes, CarrotMeshes, EarnedMeshes;

@@ -145,12 +145,12 @@
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClInclude Include="..\..\Source\Farmer\InterfaceActivate.h" />
-    <ClCompile Include="..\..\Source\Farmer\InterfacePlantSeed.cpp">
+    <ClCompile Include="..\..\Source\Farmer\CropBase.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <ClInclude Include="..\..\Source\Farmer\InterfacePlantSeed.h" />
+    <ClInclude Include="..\..\Source\Farmer\CropBase.h" />
     <ClCompile Include="..\..\Source\Farmer\Soil.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>

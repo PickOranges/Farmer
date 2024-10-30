@@ -10,13 +10,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeSoil() {}
 // Cross Module References
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
-	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMesh_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
+	FARMER_API UClass* Z_Construct_UClass_ACropBase();
 	FARMER_API UClass* Z_Construct_UClass_ASoil();
 	FARMER_API UClass* Z_Construct_UClass_ASoil_NoRegister();
-	FARMER_API UClass* Z_Construct_UClass_UInterfaceActivate_NoRegister();
-	FARMER_API UClass* Z_Construct_UClass_UInterfacePlantSeed_NoRegister();
 	FARMER_API UEnum* Z_Construct_UEnum_Farmer_EPlants();
 	TEXT3D_API UClass* Z_Construct_UClass_UText3DComponent_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
@@ -253,12 +251,11 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Text3D;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-		static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
 	};
 	UObject* (*const Z_Construct_UClass_ASoil_Statics::DependentSingletons[])() = {
-		(UObject* (*)())Z_Construct_UClass_AActor,
+		(UObject* (*)())Z_Construct_UClass_ACropBase,
 		(UObject* (*)())Z_Construct_UPackage__Script_Farmer,
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ASoil_Statics::DependentSingletons) < 16);
@@ -303,11 +300,6 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASoil_Statics::NewProp_PlantMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASoil_Statics::NewProp_Text3D,
 	};
-		const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_ASoil_Statics::InterfaceParams[] = {
-			{ Z_Construct_UClass_UInterfaceActivate_NoRegister, (int32)VTABLE_OFFSET(ASoil, IInterfaceActivate), false },  // 511138240
-			{ Z_Construct_UClass_UInterfacePlantSeed_NoRegister, (int32)VTABLE_OFFSET(ASoil, IInterfacePlantSeed), false },  // 73441456
-		};
-	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ASoil_Statics::InterfaceParams) < 64);
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ASoil_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ASoil>::IsAbstract,
 	};
@@ -318,11 +310,11 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		DependentSingletons,
 		FuncInfo,
 		Z_Construct_UClass_ASoil_Statics::PropPointers,
-		InterfaceParams,
+		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
 		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_ASoil_Statics::PropPointers),
-		UE_ARRAY_COUNT(InterfaceParams),
+		0,
 		0x009000A4u,
 		METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ASoil_Statics::Class_MetaDataParams), Z_Construct_UClass_ASoil_Statics::Class_MetaDataParams)
 	};
@@ -350,9 +342,9 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		{ EPlants_StaticEnum, TEXT("EPlants"), &Z_Registration_Info_UEnum_EPlants, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3204520817U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ASoil, ASoil::StaticClass, TEXT("ASoil"), &Z_Registration_Info_UClass_ASoil, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASoil), 837889875U) },
+		{ Z_Construct_UClass_ASoil, ASoil::StaticClass, TEXT("ASoil"), &Z_Registration_Info_UClass_ASoil, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASoil), 1823723138U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_2249567516(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_2599909553(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo),
 		nullptr, 0,
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::EnumInfo));
