@@ -103,6 +103,14 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		P_THIS->OnBeginOverlapCB(Z_Param_OverlappedComponent,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult);
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(AFarmerCharacter::execPressQ)
+	{
+		P_GET_STRUCT_REF(FInputActionValue,Z_Param_Out_Value);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->PressQ_Implementation(Z_Param_Out_Value);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(AFarmerCharacter::execPressE)
 	{
 		P_GET_STRUCT_REF(FInputActionValue,Z_Param_Out_Value);
@@ -112,6 +120,10 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		P_NATIVE_END;
 	}
 	struct FarmerCharacter_eventPressE_Parms
+	{
+		FInputActionValue Value;
+	};
+	struct FarmerCharacter_eventPressQ_Parms
 	{
 		FInputActionValue Value;
 	};
@@ -126,6 +138,13 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		FarmerCharacter_eventPressE_Parms Parms;
 		Parms.Value=Value;
 		ProcessEvent(FindFunctionChecked(NAME_AFarmerCharacter_PressE),&Parms);
+	}
+	static FName NAME_AFarmerCharacter_PressQ = FName(TEXT("PressQ"));
+	void AFarmerCharacter::PressQ(FInputActionValue const& Value)
+	{
+		FarmerCharacter_eventPressQ_Parms Parms;
+		Parms.Value=Value;
+		ProcessEvent(FindFunctionChecked(NAME_AFarmerCharacter_PressQ),&Parms);
 	}
 	static FName NAME_AFarmerCharacter_UpdateHealthyValue = FName(TEXT("UpdateHealthyValue"));
 	void AFarmerCharacter::UpdateHealthyValue()
@@ -143,6 +162,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 			{ "OnBeginOverlapCB", &AFarmerCharacter::execOnBeginOverlapCB },
 			{ "PlayChoppingAnim", &AFarmerCharacter::execPlayChoppingAnim },
 			{ "PressE", &AFarmerCharacter::execPressE },
+			{ "PressQ", &AFarmerCharacter::execPressQ },
 			{ "SaveGame", &AFarmerCharacter::execSaveGame },
 			{ "TriggerRemovePlant", &AFarmerCharacter::execTriggerRemovePlant },
 			{ "UpdateHealthyValue", &AFarmerCharacter::execUpdateHealthyValue },
@@ -400,6 +420,51 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Value_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_Value;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::NewProp_Value_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::NewProp_Value = { "Value", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FarmerCharacter_eventPressQ_Parms, Value), Z_Construct_UScriptStruct_FInputActionValue, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::NewProp_Value_MetaData), Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::NewProp_Value_MetaData) }; // 1693336646
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::NewProp_Value,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::Function_MetaDataParams[] = {
+		{ "Category", "FarmerCharacter" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// CB for for pressing Q\n" },
+#endif
+		{ "ModuleRelativePath", "FarmerCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "CB for for pressing Q" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFarmerCharacter, nullptr, "PressQ", nullptr, nullptr, Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::PropPointers), sizeof(FarmerCharacter_eventPressQ_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C480C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::PropPointers) < 2048);
+	static_assert(sizeof(FarmerCharacter_eventPressQ_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_AFarmerCharacter_PressQ()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFarmerCharacter_PressQ_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_AFarmerCharacter_SaveGame_Statics
 	{
 #if WITH_METADATA
@@ -589,6 +654,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		{ &Z_Construct_UFunction_AFarmerCharacter_OnBeginOverlapCB, "OnBeginOverlapCB" }, // 2517457471
 		{ &Z_Construct_UFunction_AFarmerCharacter_PlayChoppingAnim, "PlayChoppingAnim" }, // 4066898111
 		{ &Z_Construct_UFunction_AFarmerCharacter_PressE, "PressE" }, // 2304017935
+		{ &Z_Construct_UFunction_AFarmerCharacter_PressQ, "PressQ" }, // 778721799
 		{ &Z_Construct_UFunction_AFarmerCharacter_SaveGame, "SaveGame" }, // 399187742
 		{ &Z_Construct_UFunction_AFarmerCharacter_TriggerRemovePlant, "TriggerRemovePlant" }, // 2246806244
 		{ &Z_Construct_UFunction_AFarmerCharacter_UpdateHealthyValue, "UpdateHealthyValue" }, // 264033271
@@ -728,7 +794,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 #endif
 	};
 #endif
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_QAction = { "IA_QAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, IA_QAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_QAction_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_QAction_MetaData) };
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_QAction = { "IA_QAction", nullptr, (EPropertyFlags)0x0040000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFarmerCharacter, IA_QAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_QAction_MetaData), Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_QAction_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFarmerCharacter_Statics::NewProp_IA_WheelUp_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -891,9 +957,9 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 359456229U) },
+		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 2812232438U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_1144891550(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_3753169743(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

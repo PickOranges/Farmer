@@ -34,6 +34,7 @@ struct FInputActionValue;
 	DECLARE_FUNCTION(execCreateSaveGameInstance); \
 	DECLARE_FUNCTION(execUpdateHealthyValue); \
 	DECLARE_FUNCTION(execOnBeginOverlapCB); \
+	DECLARE_FUNCTION(execPressQ); \
 	DECLARE_FUNCTION(execPressE);
 
 

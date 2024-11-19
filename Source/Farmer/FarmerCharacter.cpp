@@ -179,7 +179,7 @@ void AFarmerCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
-void AFarmerCharacter::PressQ(const FInputActionValue& Value)
+void AFarmerCharacter::PressQ_Implementation(const FInputActionValue& Value)
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue,"Keyboard input: E.");
 	bool isHit;

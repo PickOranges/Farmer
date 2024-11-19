@@ -67,7 +67,7 @@ class AFarmerCharacter : public ACharacter
 	UInputAction* IA_EAction;
 
 	// Custom Action Q
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* IA_QAction;
 
 	// Custom Action Wheel Axis
@@ -96,7 +96,10 @@ protected:
 	virtual void PressE_Implementation(const FInputActionValue& Value);
 	
 	// CB for for pressing Q
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "FarmerCharacter")
 	void PressQ(const FInputActionValue& Value);
+	virtual void PressQ_Implementation(const FInputActionValue& Value);
+
 
 	// CB for Mouse WheelUp
 	void OnWheelUp(const FInputActionValue& Value);
