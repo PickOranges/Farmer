@@ -212,8 +212,9 @@ void AFarmerCharacter::PressE_Implementation(const FInputActionValue& Value)
 		}
 		
 		AInteractable* CurrentResource= Cast<AInteractable>(Result.GetActor());
+		
 		if (CurrentResource) {
-			// Case I: Resource is Tree
+			// Case I: Resource is Tree // NOTE: This is only for testing and debugging, remove it later!
 			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
 			if (Tree) {
 				GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue, "Hit this tree, you can chop it down now...");
