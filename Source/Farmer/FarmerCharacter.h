@@ -10,7 +10,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
 #include "MySaveGame.h"
-
+#include "Engine/HitResult.h"
 
 #include "FarmerCharacter.generated.h"
 
@@ -180,6 +180,9 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "FarmerCharacter")
 	void PlayChoppingAnim();
 	virtual void PlayChoppingAnim_Implementation();
+
+	UPROPERTY(BlueprintReadWrite, Category = "FarmerCharacter")
+	FHitResult Result;
 
 protected:
 	UFUNCTION()

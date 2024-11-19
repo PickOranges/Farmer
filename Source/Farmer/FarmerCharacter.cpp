@@ -183,7 +183,7 @@ void AFarmerCharacter::PressQ_Implementation(const FInputActionValue& Value)
 {
 	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue,"Keyboard input: E.");
 	bool isHit;
-	FHitResult Result;
+	//FHitResult Result;
 	RayCast(isHit, Result);
 	if (isHit) {
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
@@ -192,13 +192,14 @@ void AFarmerCharacter::PressQ_Implementation(const FInputActionValue& Value)
 			return;
 		}
 	}
+	Result.Reset();
 }
 
 void AFarmerCharacter::PressE_Implementation(const FInputActionValue& Value)
 {
 	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Keyboard input: Q.");
 	bool isHit;
-	FHitResult Result;
+	//FHitResult Result;
 	RayCast(isHit, Result);
 	if (isHit) {
 		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue,"Hit this Actor.");
@@ -225,6 +226,7 @@ void AFarmerCharacter::PressE_Implementation(const FInputActionValue& Value)
 			CurrentResource->Interact(this);
 		}
 	}
+	Result.Reset();
 }
 
 void AFarmerCharacter::OnWheelUp(const FInputActionValue& Value)

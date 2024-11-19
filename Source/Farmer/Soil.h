@@ -19,7 +19,7 @@ enum class EPlants : uint8 {
 
 
 
-UCLASS()
+UCLASS(Blueprintable)
 class FARMER_API ASoil : public ACropBase
 {
 	GENERATED_BODY()
