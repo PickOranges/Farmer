@@ -53,6 +53,7 @@ public:
 	FTimerHandle MeshChangeTimerHandle;
 	float RemainTime{};
 	int32 GrowStage{};
+	UPROPERTY(BlueprintReadOnly, Category = "ASoil")
 	int32 CurrentPlant{ -1 };
 	bool bIsPlanted;
 	bool bIsFruit;

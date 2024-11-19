@@ -250,6 +250,10 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Text3D_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Text3D;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CurrentPlant_MetaData[];
+#endif
+		static const UECodeGen_Private::FIntPropertyParams NewProp_CurrentPlant;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -295,10 +299,18 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ASoil_Statics::NewProp_Text3D = { "Text3D", nullptr, (EPropertyFlags)0x001000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ASoil, Text3D), Z_Construct_UClass_UText3DComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ASoil_Statics::NewProp_Text3D_MetaData), Z_Construct_UClass_ASoil_Statics::NewProp_Text3D_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASoil_Statics::NewProp_CurrentPlant_MetaData[] = {
+		{ "Category", "ASoil" },
+		{ "ModuleRelativePath", "Soil.h" },
+	};
+#endif
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_ASoil_Statics::NewProp_CurrentPlant = { "CurrentPlant", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ASoil, CurrentPlant), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ASoil_Statics::NewProp_CurrentPlant_MetaData), Z_Construct_UClass_ASoil_Statics::NewProp_CurrentPlant_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ASoil_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASoil_Statics::NewProp_SoilMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASoil_Statics::NewProp_PlantMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASoil_Statics::NewProp_Text3D,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASoil_Statics::NewProp_CurrentPlant,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ASoil_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ASoil>::IsAbstract,
@@ -342,9 +354,9 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		{ EPlants_StaticEnum, TEXT("EPlants"), &Z_Registration_Info_UEnum_EPlants, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3204520817U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ASoil, ASoil::StaticClass, TEXT("ASoil"), &Z_Registration_Info_UClass_ASoil, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASoil), 1823723138U) },
+		{ Z_Construct_UClass_ASoil, ASoil::StaticClass, TEXT("ASoil"), &Z_Registration_Info_UClass_ASoil, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASoil), 3791524919U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_2599909553(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_1136073337(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo),
 		nullptr, 0,
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::EnumInfo));
