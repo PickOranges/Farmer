@@ -25,7 +25,7 @@ class FARMER_API ACropBase : public AResourceNew
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	/*UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void PlantSeed();
-	virtual void PlantSeed_Implementation();*/
+	virtual void PlantSeed_Implementation();
 };

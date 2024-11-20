@@ -14,8 +14,47 @@ void EmptyLinkFunctionForGeneratedCodeCropBase() {}
 	FARMER_API UClass* Z_Construct_UClass_AResourceNew();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
+	DEFINE_FUNCTION(ACropBase::execPlantSeed)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->PlantSeed_Implementation();
+		P_NATIVE_END;
+	}
+	static FName NAME_ACropBase_PlantSeed = FName(TEXT("PlantSeed"));
+	void ACropBase::PlantSeed()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_ACropBase_PlantSeed),NULL);
+	}
 	void ACropBase::StaticRegisterNativesACropBase()
 	{
+		UClass* Class = ACropBase::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "PlantSeed", &ACropBase::execPlantSeed },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_ACropBase_PlantSeed_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ACropBase_PlantSeed_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "CropBase.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACropBase_PlantSeed_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ACropBase, nullptr, "PlantSeed", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ACropBase_PlantSeed_Statics::Function_MetaDataParams), Z_Construct_UFunction_ACropBase_PlantSeed_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_ACropBase_PlantSeed()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACropBase_PlantSeed_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(ACropBase);
 	UClass* Z_Construct_UClass_ACropBase_NoRegister()
@@ -25,6 +64,7 @@ void EmptyLinkFunctionForGeneratedCodeCropBase() {}
 	struct Z_Construct_UClass_ACropBase_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -36,6 +76,10 @@ void EmptyLinkFunctionForGeneratedCodeCropBase() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_Farmer,
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ACropBase_Statics::DependentSingletons) < 16);
+	const FClassFunctionLinkInfo Z_Construct_UClass_ACropBase_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_ACropBase_PlantSeed, "PlantSeed" }, // 741903296
+	};
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ACropBase_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACropBase_Statics::Class_MetaDataParams[] = {
 #if !UE_BUILD_SHIPPING
@@ -53,11 +97,11 @@ void EmptyLinkFunctionForGeneratedCodeCropBase() {}
 		"Engine",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		nullptr,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
-		0,
+		UE_ARRAY_COUNT(FuncInfo),
 		0,
 		0,
 		0x009000A4u,
@@ -83,9 +127,9 @@ void EmptyLinkFunctionForGeneratedCodeCropBase() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_CropBase_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ACropBase, ACropBase::StaticClass, TEXT("ACropBase"), &Z_Registration_Info_UClass_ACropBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACropBase), 1638891361U) },
+		{ Z_Construct_UClass_ACropBase, ACropBase::StaticClass, TEXT("ACropBase"), &Z_Registration_Info_UClass_ACropBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACropBase), 1504251255U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_CropBase_h_1042048043(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_CropBase_h_988183545(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_CropBase_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_CropBase_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
