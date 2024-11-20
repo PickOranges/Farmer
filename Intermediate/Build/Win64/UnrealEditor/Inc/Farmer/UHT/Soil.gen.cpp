@@ -254,6 +254,11 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_CurrentPlant_MetaData[];
 #endif
 		static const UECodeGen_Private::FIntPropertyParams NewProp_CurrentPlant;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bIsPlanted_MetaData[];
+#endif
+		static void NewProp_bIsPlanted_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsPlanted;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -308,11 +313,23 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 	};
 #endif
 	const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_ASoil_Statics::NewProp_CurrentPlant = { "CurrentPlant", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ASoil, CurrentPlant), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ASoil_Statics::NewProp_CurrentPlant_MetaData), Z_Construct_UClass_ASoil_Statics::NewProp_CurrentPlant_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ASoil_Statics::NewProp_bIsPlanted_MetaData[] = {
+		{ "Category", "ASoil" },
+		{ "ModuleRelativePath", "Soil.h" },
+	};
+#endif
+	void Z_Construct_UClass_ASoil_Statics::NewProp_bIsPlanted_SetBit(void* Obj)
+	{
+		((ASoil*)Obj)->bIsPlanted = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ASoil_Statics::NewProp_bIsPlanted = { "bIsPlanted", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ASoil), &Z_Construct_UClass_ASoil_Statics::NewProp_bIsPlanted_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ASoil_Statics::NewProp_bIsPlanted_MetaData), Z_Construct_UClass_ASoil_Statics::NewProp_bIsPlanted_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ASoil_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASoil_Statics::NewProp_SoilMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASoil_Statics::NewProp_PlantMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASoil_Statics::NewProp_Text3D,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASoil_Statics::NewProp_CurrentPlant,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ASoil_Statics::NewProp_bIsPlanted,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ASoil_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ASoil>::IsAbstract,
@@ -356,9 +373,9 @@ void EmptyLinkFunctionForGeneratedCodeSoil() {}
 		{ EPlants_StaticEnum, TEXT("EPlants"), &Z_Registration_Info_UEnum_EPlants, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3204520817U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ASoil, ASoil::StaticClass, TEXT("ASoil"), &Z_Registration_Info_UClass_ASoil, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASoil), 4142661231U) },
+		{ Z_Construct_UClass_ASoil, ASoil::StaticClass, TEXT("ASoil"), &Z_Registration_Info_UClass_ASoil, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ASoil), 1295492395U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_2545252812(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_1974917148(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::ClassInfo),
 		nullptr, 0,
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_Statics::EnumInfo));

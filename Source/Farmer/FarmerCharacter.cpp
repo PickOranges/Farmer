@@ -187,7 +187,7 @@ void AFarmerCharacter::PressQ_Implementation(const FInputActionValue& Value)
 	RayCast(isHit, Result);
 	if (isHit) {
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
-		if (currentSoil) {
+		if (currentSoil && currentSoil->bIsPlanted) {
 			TriggerRemovePlant(currentSoil);
 			return;
 		}
@@ -208,6 +208,7 @@ void AFarmerCharacter::PressE_Implementation(const FInputActionValue& Value)
 			if(!currentSoil->bIsPlanted){
 				currentSoil->PlantSeed();
 				--SeedsAmount[Seeds];
+				//currentSoil->bIsPlanted = true;
 			}
 			return;
 		}
@@ -506,6 +507,7 @@ void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
 	if (currentSoil->Text3D->GetText().IsEmpty()) {
 		++SeedsAmount[currentSoil->CurrentPlant];
 		++CropsEarned[currentSoil->CurrentPlant];
+		//currentSoil->bIsPlanted = false;
 	}
 	AutoSave(currentSoil->CurrentPlant);
 }
