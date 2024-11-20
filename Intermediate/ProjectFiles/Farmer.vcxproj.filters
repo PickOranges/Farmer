@@ -38,6 +38,12 @@
     <Filter Include="Source\Farmer">
       <UniqueIdentifier>{1300B432-5226-3290-BD39-014106184B1E}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\Farmer\CropBase.cpp">
+      <Filter>Source\Farmer</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Farmer\CropBase.h">
+      <Filter>Source\Farmer</Filter>
+    </ClInclude>
     <None Include="..\..\Source\Farmer\Farmer.Build.cs">
       <Filter>Source\Farmer</Filter>
     </None>
@@ -59,16 +65,16 @@
     <ClInclude Include="..\..\Source\Farmer\FarmerGameMode.h">
       <Filter>Source\Farmer</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Farmer\IItemCppInterface.cpp">
+      <Filter>Source\Farmer</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Farmer\IItemCppInterface.h">
+      <Filter>Source\Farmer</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Farmer\InterfaceActivate.cpp">
       <Filter>Source\Farmer</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Farmer\InterfaceActivate.h">
-      <Filter>Source\Farmer</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\Farmer\CropBase.cpp">
-      <Filter>Source\Farmer</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\Farmer\CropBase.h">
       <Filter>Source\Farmer</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Farmer\Soil.cpp">
@@ -104,10 +110,19 @@
     <ClCompile Include="..\..\Source\Farmer\Private\NPCFoxAnimInstance.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\Plant.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\ResourceBase.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\ResourceFruit.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\ResourceNew.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\ResourceStone.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\ResourceTree.cpp">
@@ -149,10 +164,19 @@
     <ClInclude Include="..\..\Source\Farmer\Public\NPCFoxAnimInstance.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\Plant.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceBase.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\ResourceFruit.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceNew.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\ResourceStone.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\ResourceTree.h">
