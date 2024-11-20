@@ -206,9 +206,9 @@ void AFarmerCharacter::PressE_Implementation(const FInputActionValue& Value)
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil && SeedsAmount[Seeds]>0) {
 			if(!currentSoil->bIsPlanted){
-				currentSoil->PlantSeed();
-				--SeedsAmount[Seeds];
-				//currentSoil->bIsPlanted = true;
+				//currentSoil->PlantSeed();
+				//--SeedsAmount[Seeds];
+				//currentSoil->bIsPlanted = true;  // ASoil has its own logics to deal with this flag, don't modify it !
 			}
 			return;
 		}
@@ -217,11 +217,11 @@ void AFarmerCharacter::PressE_Implementation(const FInputActionValue& Value)
 		
 		if (CurrentResource) {
 			// Case I: Resource is Tree // NOTE: This is only for testing and debugging, remove it later!
-			AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
-			if (Tree) {
-				GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue, "Hit this tree, you can chop it down now...");
-				//PlayChoppingAnim();
-			}
+			//AResourceTree* Tree = Cast<AResourceTree>(CurrentResource);
+			//if (Tree) {
+			//	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue, "Hit this tree, you can chop it down now...");
+			//	//PlayChoppingAnim();
+			//}
 
 			// Case II: Tree and Other Resources.
 			CurrentResource->Interact(this);

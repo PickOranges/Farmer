@@ -43,7 +43,6 @@ public:
 	class UText3DComponent* Text3D;	
 
 public:
-	
 	void PlantSeed_Implementation();
 	
 
@@ -55,8 +54,12 @@ public:
 	int32 GrowStage{};
 	UPROPERTY(BlueprintReadOnly, Category = "ASoil")
 	int32 CurrentPlant{ -1 };
+
+	UPROPERTY(BlueprintReadWrite, Category = "ASoil")
 	bool bIsPlanted;
 	bool bIsFruit;
+
+public:
 
 	UFUNCTION(BlueprintCallable)
 	void GrowCrop(TArray<UStaticMesh*>& Meshes, FVector Scale, FVector Location);
