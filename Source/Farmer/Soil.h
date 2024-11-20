@@ -43,7 +43,10 @@ public:
 	class UText3DComponent* Text3D;	
 
 public:
-	void PlantSeed_Implementation();
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void PlantSeed();
+	virtual void PlantSeed_Implementation();
+
 	
 
 public:

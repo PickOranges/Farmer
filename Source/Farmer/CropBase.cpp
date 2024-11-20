@@ -5,7 +5,7 @@
 
 // Add default functionality here for any IInterfacePlantSeed functions that are not pure virtual.
 
-void ACropBase::PlantSeed_Implementation()
-{
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "CropBase::PlantSeed_Implementation()");
-}
+//void ACropBase::PlantSeed_Implementation()
+//{
+//	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "CropBase::PlantSeed_Implementation()");
+//}

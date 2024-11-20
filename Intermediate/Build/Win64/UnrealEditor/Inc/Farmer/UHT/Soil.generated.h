@@ -22,10 +22,12 @@ class UStaticMesh;
  \
 	DECLARE_FUNCTION(execOnRemovePlant); \
 	DECLARE_FUNCTION(execChangeMesh); \
-	DECLARE_FUNCTION(execGrowCrop);
+	DECLARE_FUNCTION(execGrowCrop); \
+	DECLARE_FUNCTION(execPlantSeed);
 
 
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_ACCESSORS
+#define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_CALLBACK_WRAPPERS
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesASoil(); \
@@ -56,6 +58,7 @@ public: \
 	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS \
 	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_RPC_WRAPPERS_NO_PURE_DECLS \
 	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_ACCESSORS \
+	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_CALLBACK_WRAPPERS \
 	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_INCLASS_NO_PURE_DECLS \
 	FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Soil_h_25_ENHANCED_CONSTRUCTORS \
 private: \
