@@ -206,7 +206,7 @@ void AFarmerCharacter::PressE_Implementation(const FInputActionValue& Value)
 		ASoil* currentSoil = Cast<ASoil>(Result.GetActor());
 		if (currentSoil && SeedsAmount[Seeds]>0) {
 			if(!currentSoil->bIsPlanted){
-				currentSoil->PlantSeed();
+				//currentSoil->PlantSeed();
 				//--SeedsAmount[Seeds];
 				//currentSoil->bIsPlanted = true;  // ASoil has its own logics to deal with this flag, don't modify it !
 			}
