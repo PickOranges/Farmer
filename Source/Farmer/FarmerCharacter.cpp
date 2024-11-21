@@ -18,6 +18,8 @@
 
 #include "ResourceTree.h"
 
+#include "Item.h"
+
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 FColor pink{ 255,182,193 };
 FColor blue{ 173,216,230 };
@@ -510,6 +512,14 @@ void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
 		//currentSoil->bIsPlanted = false;
 	}
 	AutoSave(currentSoil->CurrentPlant);
+}
+
+void AFarmerCharacter::UseItem(UItem* Item)
+{
+	if (Item) {
+		Item->Use(this);
+		Item->OnUse(this); // This is BP i.e. Subclass version
+	}
 }
 
 

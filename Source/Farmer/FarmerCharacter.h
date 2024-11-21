@@ -187,5 +187,10 @@ public:
 protected:
 	UFUNCTION()
 	void TriggerRemovePlant(ASoil* currentSoil);
+
+//// The following methods are for new C++ UI
+public:
+	UFUNCTION(BlueprintCallable, Category = "FarmerCharacter")
+	void UseItem(class UItem* Item);
 };
 

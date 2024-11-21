@@ -11,6 +11,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
 class ASoil;
+class UItem;
 class UPrimitiveComponent;
 struct FHitResult;
 struct FInputActionValue;
@@ -25,6 +26,7 @@ struct FInputActionValue;
 #define FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_34_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void UpdateHealthyValue_Implementation(); \
  \
+	DECLARE_FUNCTION(execUseItem); \
 	DECLARE_FUNCTION(execTriggerRemovePlant); \
 	DECLARE_FUNCTION(execPlayChoppingAnim); \
 	DECLARE_FUNCTION(execLoadGame); \
