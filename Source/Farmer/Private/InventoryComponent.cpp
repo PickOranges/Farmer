@@ -19,7 +19,9 @@ void UInventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
+	for (auto& Item : DefaultItems) {
+		AddItem(Item);
+	}
 	
 }
 
@@ -30,5 +32,22 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
+}
+
+bool UInventoryComponent::AddItem(UItem* Item)
+{
+	if (!Item) {
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"The Item is Invalid!");
+		return false;
+	}
+
+	Items.Add(Item);
+	OnInventoryUpdated.Broadcast();  // update UI
+	return true;
+}
+
+bool UInventoryComponent::RemoveItem(UItem* Item)
+{
+	return false;
 }
 

@@ -192,5 +192,9 @@ protected:
 public:
 	UFUNCTION(BlueprintCallable, Category = "FarmerCharacter")
 	void UseItem(class UItem* Item);
+
+private:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FarmerCharacter", meta=(AllowPrivateAccess="true"))
+	class UInventoryComponent* InvComp;
 };
 

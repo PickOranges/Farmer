@@ -7,23 +7,27 @@
 #include "UObject/GeneratedCppIncludes.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeFarmer_init() {}
+	FARMER_API UFunction* Z_Construct_UDelegateFunction_Farmer_OnInventoryUpdated__DelegateSignature();
 	static FPackageRegistrationInfo Z_Registration_Info_UPackage__Script_Farmer;
 	FORCENOINLINE UPackage* Z_Construct_UPackage__Script_Farmer()
 	{
 		if (!Z_Registration_Info_UPackage__Script_Farmer.OuterSingleton)
 		{
+			static UObject* (*const SingletonFuncArray[])() = {
+				(UObject* (*)())Z_Construct_UDelegateFunction_Farmer_OnInventoryUpdated__DelegateSignature,
+			};
 			static const UECodeGen_Private::FPackageParams PackageParams = {
 				"/Script/Farmer",
-				nullptr,
-				0,
+				SingletonFuncArray,
+				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0x25F16F15,
-				0xB96E1A02,
+				0xB966C090,
+				0xD31E0866,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_Farmer.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_Farmer.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_Farmer(Z_Construct_UPackage__Script_Farmer, TEXT("/Script/Farmer"), Z_Registration_Info_UPackage__Script_Farmer, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x25F16F15, 0xB96E1A02));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_Farmer(Z_Construct_UPackage__Script_Farmer, TEXT("/Script/Farmer"), Z_Registration_Info_UPackage__Script_Farmer, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xB966C090, 0xD31E0866));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

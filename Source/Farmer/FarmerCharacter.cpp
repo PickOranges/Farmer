@@ -18,7 +18,11 @@
 
 #include "ResourceTree.h"
 
+// C++ Inventory System
 #include "Item.h"
+#include "InventoryComponent.h"
+
+
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 FColor pink{ 255,182,193 };
@@ -74,6 +78,12 @@ AFarmerCharacter::AFarmerCharacter()
 	BoundingBox->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Overlap);
 	BoundingBox->SetGenerateOverlapEvents(true);
 	BoundingBox->OnComponentBeginOverlap.AddDynamic(this, &AFarmerCharacter::OnBeginOverlapCB);
+
+
+
+	// C++ Inventory System
+	InvComp = CreateDefaultSubobject<UInventoryComponent>(TEXT("InvComp"));
+
 }
 
 void AFarmerCharacter::BeginPlay()
