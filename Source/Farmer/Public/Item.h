@@ -16,6 +16,14 @@ class FARMER_API UItem : public UObject
 	
 public:
 	UItem();
+	virtual void BeginDestroy() override;
+
+
+	UPROPERTY(Transient)
+	class UWorld* World;
+
+	virtual class UWorld* GetWorld() const { return World; }
+
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 	FText UseActionText;

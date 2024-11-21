@@ -23,10 +23,6 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
 		
 
 public:
@@ -37,7 +33,7 @@ public:
 	TArray<class UItem*> DefaultItems;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
-	TArray<class UItem*> Items;
+	TArray<class UItem*> Items;	// TODO: replace with TMap & make it data-driven !
 
 	UPROPERTY(EditDefaultsOnly, Category = "InventoryComponent")
 	int32 Capacity{40};

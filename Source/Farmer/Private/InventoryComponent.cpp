@@ -2,15 +2,13 @@
 
 
 #include "InventoryComponent.h"
+#include "Item.h"
+
 
 // Sets default values for this component's properties
 UInventoryComponent::UInventoryComponent()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
-
-	// ...
+  
 }
 
 
@@ -26,28 +24,30 @@ void UInventoryComponent::BeginPlay()
 }
 
 
-// Called every frame
-void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
-}
-
 bool UInventoryComponent::AddItem(UItem* Item)
 {
-	if (!Item) {
+	if (Items.Num()>=Capacity || !Item) {
 		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"The Item is Invalid!");
 		return false;
 	}
 
+	Item->OwningInventory = this;
+	Item->World = GetWorld();
 	Items.Add(Item);
+
 	OnInventoryUpdated.Broadcast();  // update UI
 	return true;
 }
 
+
+
 bool UInventoryComponent::RemoveItem(UItem* Item)
 {
-	return false;
+	if (!Item) return false;
+
+	Items.RemoveSingle(Item);
+	OnInventoryUpdated.Broadcast();
+	
+	return true;
 }
 
