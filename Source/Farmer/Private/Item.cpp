@@ -18,3 +18,8 @@ void UItem::BeginDestroy()
 
 	Super::BeginDestroy();
 }
+
+void UItem::Use(AFarmerCharacter* Character)
+{
+	GEngine->AddOnScreenDebugMessage(-1,10,FColor::Orange,"[UItem] Use(AFarmerCharacter*)");
+}
