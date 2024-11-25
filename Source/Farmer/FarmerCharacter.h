@@ -195,6 +195,6 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FarmerCharacter", meta=(AllowPrivateAccess="true"))
-	class UInventoryComponent* InvComp;
+	class UInventoryComponent* InventoryComponent;
 };
 
