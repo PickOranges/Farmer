@@ -10,8 +10,8 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
+class ACropItemTest;
 class ASoil;
-class UItem;
 class UPrimitiveComponent;
 struct FHitResult;
 struct FInputActionValue;

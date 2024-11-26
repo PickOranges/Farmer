@@ -19,7 +19,8 @@
 #include "ResourceTree.h"
 
 // C++ Inventory System
-#include "Item.h"
+//#include "Item.h"
+#include "CropItemTest.h"
 #include "InventoryComponent.h"
 
 
@@ -524,13 +525,21 @@ void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
 	AutoSave(currentSoil->CurrentPlant);
 }
 
-void AFarmerCharacter::UseItem(UItem* Item)
+void AFarmerCharacter::UseItem(ACropItemTest* Item)
 {
 	if (Item) {
 		Item->Use(this);
 		Item->OnUse(this); // This is BP i.e. Subclass version
 	}
 }
+
+//void AFarmerCharacter::UseItem(UItem* Item)
+//{
+//	if (Item) {
+//		Item->Use(this);
+//		Item->OnUse(this); // This is BP i.e. Subclass version
+//	}
+//}
 
 
 

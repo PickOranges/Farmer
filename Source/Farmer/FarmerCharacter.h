@@ -191,7 +191,9 @@ protected:
 //// The following methods are for new C++ UI
 public:
 	UFUNCTION(BlueprintCallable, Category = "FarmerCharacter")
-	void UseItem(class UItem* Item);
+	//void UseItem(class UItem* Item);
+	void UseItem(class ACropItemTest* Item);
+
 
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FarmerCharacter", meta=(AllowPrivateAccess="true"))
