@@ -6,6 +6,8 @@
 #include "TimerManager.h"
 
 
+
+
 ASoil::ASoil()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -67,10 +69,6 @@ ASoil::ASoil()
 	MeshMap.Emplace(EPlants::Carrot, CarrotMeshes);
 }
 
-void ASoil::BeginPlay()
-{
-	Super::BeginPlay();
-}
 
 
 

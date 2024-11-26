@@ -8,6 +8,7 @@
 #include "CropBase.h"
 #include "Text3DComponent.h"
 #include "FarmerCharacter.h"
+
 #include "Soil.generated.h"
 
 UENUM(BlueprintType)
@@ -28,7 +29,7 @@ public:
 	ASoil();
 
 protected:
-	virtual void BeginPlay() override;
+	
 
 public:	
 	virtual void Tick(float DeltaTime) override;
