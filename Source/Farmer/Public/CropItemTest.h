@@ -53,7 +53,14 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnUse(class AFarmerCharacter* Character);
 
+
+
+
+
 	//////////////////////////////////////////////////////////////////////
+
+
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMeshComponent* SoilMesh;

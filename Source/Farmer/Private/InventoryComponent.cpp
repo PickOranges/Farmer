@@ -2,7 +2,11 @@
 
 
 #include "InventoryComponent.h"
-#include "Item.h"
+//#include "Item.h"
+#include "CropItemTest.h"
+
+
+
 
 
 // Sets default values for this component's properties
@@ -23,8 +27,7 @@ void UInventoryComponent::BeginPlay()
 	
 }
 
-
-bool UInventoryComponent::AddItem(UItem* Item)
+bool UInventoryComponent::AddItem(ACropItemTest* Item)
 {
 	if (Items.Num()>=Capacity || !Item) {
 		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"The Item is Invalid!");
@@ -39,9 +42,7 @@ bool UInventoryComponent::AddItem(UItem* Item)
 	return true;
 }
 
-
-
-bool UInventoryComponent::RemoveItem(UItem* Item)
+bool UInventoryComponent::RemoveItem(ACropItemTest* Item)
 {
 	if (!Item) return false;
 
@@ -50,4 +51,33 @@ bool UInventoryComponent::RemoveItem(UItem* Item)
 	
 	return true;
 }
+
+
+
+//bool UInventoryComponent::AddItem(UItem* Item)
+//{
+//	if (Items.Num()>=Capacity || !Item) {
+//		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"The Item is Invalid!");
+//		return false;
+//	}
+//
+//	Item->OwningInventory = this;
+//	Item->World = GetWorld();
+//	Items.Add(Item);
+//
+//	OnInventoryUpdated.Broadcast();  // update UI
+//	return true;
+//}
+//
+//
+//
+//bool UInventoryComponent::RemoveItem(UItem* Item)
+//{
+//	if (!Item) return false;
+//
+//	Items.RemoveSingle(Item);
+//	OnInventoryUpdated.Broadcast();
+//	
+//	return true;
+//}
 

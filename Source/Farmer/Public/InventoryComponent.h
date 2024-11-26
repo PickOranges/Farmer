@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "InventoryComponent.generated.h"
 
+
 // BP will bind to it to update UI
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInventoryUpdated);
 
@@ -26,14 +27,26 @@ protected:
 		
 
 public:
-	bool AddItem(class UItem* Item);
-	bool RemoveItem(class UItem* Item);
+	//bool AddItem(class UItem* Item);
+	//bool RemoveItem(class UItem* Item);
 
+	bool AddItem(class ACropItemTest* Item);
+	bool RemoveItem(class ACropItemTest* Item);
+
+
+
+	//UPROPERTY(EditDefaultsOnly, Instanced)
+	//TArray<class UItem*> DefaultItems;
 	UPROPERTY(EditDefaultsOnly, Instanced)
-	TArray<class UItem*> DefaultItems;
+	TArray<class ACropItemTest*> DefaultItems;
+
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
+	//TArray<class UItem*> Items;	// TODO: replace with TMap & make it data-driven !
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
-	TArray<class UItem*> Items;	// TODO: replace with TMap & make it data-driven !
+	TArray<class ACropItemTest*> Items;	// TODO: replace with TMap & make it data-driven !
+
 
 	UPROPERTY(EditDefaultsOnly, Category = "InventoryComponent")
 	int32 Capacity{40};
