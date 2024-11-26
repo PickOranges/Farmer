@@ -22,7 +22,7 @@ public:
 	UPROPERTY(Transient)
 	class UWorld* World;
 
-	//virtual class UWorld* GetWorld() const { return World; }
+	virtual class UWorld* GetWorld() const { return World; }
 
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")

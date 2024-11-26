@@ -70,8 +70,6 @@ ASoil::ASoil()
 }
 
 
-
-
 void ASoil::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
