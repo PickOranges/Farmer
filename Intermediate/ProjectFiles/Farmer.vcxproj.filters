@@ -92,6 +92,9 @@
     <Filter Include="Source\Farmer\Private">
       <UniqueIdentifier>{E15ABACE-21E2-3D8A-B6E1-4D81B63964F0}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\Farmer\Private\CropItemTest.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\CropSeedsUserWidget.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
@@ -152,9 +155,15 @@
     <ClCompile Include="..\..\Source\Farmer\Private\SeedItem.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\UItem.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\Farmer\Public">
       <UniqueIdentifier>{BF3F2CD8-54FE-349B-A9E4-CC6221129BE3}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\Farmer\Public\CropItemTest.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\CropSeedsUserWidget.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
@@ -213,6 +222,9 @@
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\SeedItem.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\UItem.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
   </ItemGroup>
