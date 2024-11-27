@@ -37,7 +37,7 @@ public:
 
 	//UPROPERTY(EditDefaultsOnly, Instanced)
 	//TArray<class UItem*> DefaultItems;
-	UPROPERTY(EditDefaultsOnly, Instanced)
+	UPROPERTY(EditDefaultsOnly, Instanced, BlueprintReadWrite)
 	TArray<class ACropItemTest*> DefaultItems;
 
 

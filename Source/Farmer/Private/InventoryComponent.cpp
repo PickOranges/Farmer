@@ -54,6 +54,23 @@ bool UInventoryComponent::RemoveItem(ACropItemTest* Item)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //bool UInventoryComponent::AddItem(UItem* Item)
 //{
 //	if (Items.Num()>=Capacity || !Item) {
