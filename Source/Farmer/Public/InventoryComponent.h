@@ -37,13 +37,19 @@ public:
 
 	//UPROPERTY(EditDefaultsOnly, Instanced)
 	//TArray<class UItem*> DefaultItems;
-	UPROPERTY(EditDefaultsOnly, Instanced, BlueprintReadWrite)
+	// 
+	// 
+	// lalalalalala test
+	UPROPERTY(EditDefaultsOnly, Instanced)
 	TArray<class ACropItemTest*> DefaultItems;
+
 
 
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
 	//TArray<class UItem*> Items;	// TODO: replace with TMap & make it data-driven !
-
+	// 
+	// 
+	// lalalalalalala test
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
 	TArray<class ACropItemTest*> Items;	// TODO: replace with TMap & make it data-driven !
 

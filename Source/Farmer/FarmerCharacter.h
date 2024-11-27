@@ -195,8 +195,12 @@ public:
 	void UseItem(class ACropItemTest* Item);
 
 
-private:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FarmerCharacter", meta=(AllowPrivateAccess="true"))
-	class UInventoryComponent* InventoryComponent;
+//private:
+//	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FarmerCharacter", meta=(AllowPrivateAccess="true"))
+//	class UInventoryComponent* InventoryComponent;
+
+	// lalalalala test
+	UPROPERTY(BlueprintReadWrite,EditAnywhere)
+	class UInventoryComponent* IC;
 };
 

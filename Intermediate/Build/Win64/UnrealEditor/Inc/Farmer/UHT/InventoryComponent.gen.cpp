@@ -104,12 +104,12 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_Inner_MetaData[] = {
 		{ "Category", "InventoryComponent" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "//UPROPERTY(EditDefaultsOnly, Instanced)\n//TArray<class UItem*> DefaultItems;\n" },
+		{ "Comment", "//UPROPERTY(EditDefaultsOnly, Instanced)\n//TArray<class UItem*> DefaultItems;\n// \n// \n// lalalalalala test\n" },
 #endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "UPROPERTY(EditDefaultsOnly, Instanced)\nTArray<class UItem*> DefaultItems;" },
+		{ "ToolTip", "UPROPERTY(EditDefaultsOnly, Instanced)\nTArray<class UItem*> DefaultItems;\n\n\n lalalalalala test" },
 #endif
 	};
 #endif
@@ -118,26 +118,26 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_MetaData[] = {
 		{ "Category", "InventoryComponent" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "//UPROPERTY(EditDefaultsOnly, Instanced)\n//TArray<class UItem*> DefaultItems;\n" },
+		{ "Comment", "//UPROPERTY(EditDefaultsOnly, Instanced)\n//TArray<class UItem*> DefaultItems;\n// \n// \n// lalalalalala test\n" },
 #endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "UPROPERTY(EditDefaultsOnly, Instanced)\nTArray<class UItem*> DefaultItems;" },
+		{ "ToolTip", "UPROPERTY(EditDefaultsOnly, Instanced)\nTArray<class UItem*> DefaultItems;\n\n\n lalalalalala test" },
 #endif
 	};
 #endif
-	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems = { "DefaultItems", nullptr, (EPropertyFlags)0x001000800001000d, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryComponent, DefaultItems), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_MetaData), Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_MetaData) };
+	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems = { "DefaultItems", nullptr, (EPropertyFlags)0x0010008000010009, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryComponent, DefaultItems), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_MetaData), Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_MetaData) };
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Items_Inner = { "Items", nullptr, (EPropertyFlags)0x0000000000020000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_ACropItemTest_NoRegister, METADATA_PARAMS(0, nullptr) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Items_MetaData[] = {
 		{ "Category", "InventoryComponent" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \"InventoryComponent\")\n//TArray<class UItem*> Items;\x09// TODO: replace with TMap & make it data-driven !\n" },
+		{ "Comment", "//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \"InventoryComponent\")\n//TArray<class UItem*> Items;\x09// TODO: replace with TMap & make it data-driven !\n// \n// \n// lalalalalalala test\n" },
 #endif
 		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \"InventoryComponent\")\nTArray<class UItem*> Items;     TODO: replace with TMap & make it data-driven !" },
+		{ "ToolTip", "UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \"InventoryComponent\")\nTArray<class UItem*> Items;     TODO: replace with TMap & make it data-driven !\n\n\n lalalalalalala test" },
 #endif
 	};
 #endif
@@ -208,9 +208,9 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UInventoryComponent, UInventoryComponent::StaticClass, TEXT("UInventoryComponent"), &Z_Registration_Info_UClass_UInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryComponent), 1260759073U) },
+		{ Z_Construct_UClass_UInventoryComponent, UInventoryComponent::StaticClass, TEXT("UInventoryComponent"), &Z_Registration_Info_UClass_UInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryComponent), 2439185465U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_3369814922(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_1023769053(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -21,7 +21,7 @@ void ACropItemTest::BeginDestroy()
 
 void ACropItemTest::Use(AFarmerCharacter* Character)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Orange, "[ACropItemTest] Use(AFarmerCharacter*)");
+	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Blue, "[ACropItemTest] Use(AFarmerCharacter*)");
 }
 
 void ACropItemTest::GrowCrop(FVector Scale, FVector Location)

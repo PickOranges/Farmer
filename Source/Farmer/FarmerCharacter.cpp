@@ -83,7 +83,8 @@ AFarmerCharacter::AFarmerCharacter()
 
 
 	// C++ Inventory System
-	InventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("InvComp"));
+	//InventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("InvComp"));
+	IC = CreateDefaultSubobject<UInventoryComponent>(TEXT("IC"));
 
 }
 
