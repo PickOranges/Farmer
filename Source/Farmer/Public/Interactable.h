@@ -10,7 +10,7 @@
 
 class AFarmerCharacter;
 
-UCLASS()
+UCLASS(Blueprintable)
 class FARMER_API AInteractable : public AActor
 {
 	GENERATED_BODY()
