@@ -17,4 +17,10 @@ class FARMER_API UFakeItem : public UObject
 public:
 	UFakeItem();
 	
+
+
+	UPROPERTY(Transient)
+	class UWorld* World;
+
+	virtual class UWorld* GetWorld() const { return World; }
 };
