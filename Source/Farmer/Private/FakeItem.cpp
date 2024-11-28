@@ -7,3 +7,10 @@ UFakeItem::UFakeItem()
 {
 
 }
+
+//void UFakeItem::BeginDestroy()
+//{
+//	OwningInventory = nullptr;
+//
+//	Super::BeginDestroy();
+//}
