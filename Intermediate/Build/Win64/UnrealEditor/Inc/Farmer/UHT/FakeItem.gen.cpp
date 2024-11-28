@@ -62,7 +62,7 @@ void EmptyLinkFunctionForGeneratedCodeFakeItem() {}
 		0,
 		0,
 		0,
-		0x001000A0u,
+		0x003010A1u,
 		METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UFakeItem_Statics::Class_MetaDataParams), Z_Construct_UClass_UFakeItem_Statics::Class_MetaDataParams)
 	};
 	UClass* Z_Construct_UClass_UFakeItem()
@@ -84,9 +84,9 @@ void EmptyLinkFunctionForGeneratedCodeFakeItem() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UFakeItem, UFakeItem::StaticClass, TEXT("UFakeItem"), &Z_Registration_Info_UClass_UFakeItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UFakeItem), 2329213549U) },
+		{ Z_Construct_UClass_UFakeItem, UFakeItem::StaticClass, TEXT("UFakeItem"), &Z_Registration_Info_UClass_UFakeItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UFakeItem), 2693504155U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_1242117726(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_944001184(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

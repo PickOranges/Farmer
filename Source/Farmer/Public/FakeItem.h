@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS(Blueprintable,BlueprintType)
+UCLASS(Abstract,Blueprintable,BlueprintType,EditInlineNew,DefaultToInstanced)
 class FARMER_API UFakeItem : public UObject
 {
 	GENERATED_BODY()

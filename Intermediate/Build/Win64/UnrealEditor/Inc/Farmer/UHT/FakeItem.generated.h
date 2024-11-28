@@ -24,7 +24,7 @@ private: \
 	static void StaticRegisterNativesUFakeItem(); \
 	friend struct Z_Construct_UClass_UFakeItem_Statics; \
 public: \
-	DECLARE_CLASS(UFakeItem, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/Farmer"), NO_API) \
+	DECLARE_CLASS(UFakeItem, UObject, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/Farmer"), NO_API) \
 	DECLARE_SERIALIZER(UFakeItem)
 
 
@@ -36,7 +36,7 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UFakeItem); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UFakeItem); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UFakeItem) \
+	DEFINE_ABSTRACT_DEFAULT_CONSTRUCTOR_CALL(UFakeItem) \
 	NO_API virtual ~UFakeItem();
 
 
