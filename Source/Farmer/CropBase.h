@@ -18,7 +18,7 @@
  * 
  */
 
-UCLASS(Blueprintable)
+UCLASS()
 class FARMER_API ACropBase : public AResourceNew
 {
 	GENERATED_BODY()

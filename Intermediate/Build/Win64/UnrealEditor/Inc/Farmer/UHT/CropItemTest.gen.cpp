@@ -277,10 +277,12 @@ void EmptyLinkFunctionForGeneratedCodeCropItemTest() {}
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ACropItemTest_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACropItemTest_Statics::Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n * \n */" },
 #endif
 		{ "IncludePath", "CropItemTest.h" },
+		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "Public/CropItemTest.h" },
 	};
 #endif
@@ -437,9 +439,9 @@ void EmptyLinkFunctionForGeneratedCodeCropItemTest() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropItemTest_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ACropItemTest, ACropItemTest::StaticClass, TEXT("ACropItemTest"), &Z_Registration_Info_UClass_ACropItemTest, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACropItemTest), 3123196295U) },
+		{ Z_Construct_UClass_ACropItemTest, ACropItemTest::StaticClass, TEXT("ACropItemTest"), &Z_Registration_Info_UClass_ACropItemTest, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACropItemTest), 1726666633U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropItemTest_h_2007393160(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropItemTest_h_1357607698(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropItemTest_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_CropItemTest_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

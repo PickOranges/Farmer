@@ -30,8 +30,13 @@ public:
 	//bool AddItem(class UItem* Item);
 	//bool RemoveItem(class UItem* Item);
 
-	bool AddItem(class ACropItemTest* Item);
-	bool RemoveItem(class ACropItemTest* Item);
+	//bool AddItem(class ACropItemTest* Item);
+	//bool RemoveItem(class ACropItemTest* Item);
+
+
+
+	bool AddItem(class UFakeItem* Item);
+	bool RemoveItem(class UFakeItem* Item);
 
 
 
@@ -40,8 +45,13 @@ public:
 	// 
 	// 
 	// lalalalalala test
+	//UPROPERTY(EditDefaultsOnly, Instanced)
+	//TArray<class ACropItemTest*> DefaultItems;
+
+
+
 	UPROPERTY(EditDefaultsOnly, Instanced)
-	TArray<class ACropItemTest*> DefaultItems;
+	TArray<class UFakeItem*> DefaultItems;
 
 
 
@@ -50,8 +60,14 @@ public:
 	// 
 	// 
 	// lalalalalalala test
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
+	//TArray<class ACropItemTest*> Items;	// TODO: replace with TMap & make it data-driven !
+
+
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
-	TArray<class ACropItemTest*> Items;	// TODO: replace with TMap & make it data-driven !
+	TArray<class UFakeItem*> Items;	// TODO: replace with TMap & make it data-driven !
+
 
 
 	UPROPERTY(EditDefaultsOnly, Category = "InventoryComponent")

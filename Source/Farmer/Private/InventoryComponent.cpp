@@ -3,7 +3,8 @@
 
 #include "InventoryComponent.h"
 //#include "Item.h"
-#include "CropItemTest.h"
+//#include "CropItemTest.h"
+#include "FakeItem.h"
 
 
 
@@ -27,22 +28,22 @@ void UInventoryComponent::BeginPlay()
 	
 }
 
-bool UInventoryComponent::AddItem(ACropItemTest* Item)
+bool UInventoryComponent::AddItem(UFakeItem* Item)
 {
 	if (Items.Num()>=Capacity || !Item) {
 		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"The Item is Invalid!");
 		return false;
 	}
 
-	Item->OwningInventory = this;
-	Item->World = GetWorld();
+	//Item->OwningInventory = this;
+	//Item->World = GetWorld();
 	Items.Add(Item);
 
 	OnInventoryUpdated.Broadcast();  // update UI
 	return true;
 }
 
-bool UInventoryComponent::RemoveItem(ACropItemTest* Item)
+bool UInventoryComponent::RemoveItem(UFakeItem* Item)
 {
 	if (!Item) return false;
 

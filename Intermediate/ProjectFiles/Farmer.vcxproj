@@ -179,6 +179,11 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\FakeItem.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\FoxAnimNotify.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -281,6 +286,7 @@
     </ClCompile>
     <ClInclude Include="..\..\Source\Farmer\Public\CropItemTest.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\CropSeedsUserWidget.h"/>
+    <ClInclude Include="..\..\Source\Farmer\Public\FakeItem.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\FoxAnimNotify.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\Interactable.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\InteractionEWidget.h"/>

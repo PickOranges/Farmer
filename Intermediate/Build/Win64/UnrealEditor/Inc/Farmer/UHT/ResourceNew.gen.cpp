@@ -44,12 +44,10 @@ void EmptyLinkFunctionForGeneratedCodeResourceNew() {}
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceNew_Statics::DependentSingletons) < 16);
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AResourceNew_Statics::Class_MetaDataParams[] = {
-		{ "BlueprintType", "true" },
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n * \n */" },
 #endif
 		{ "IncludePath", "ResourceNew.h" },
-		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "Public/ResourceNew.h" },
 	};
 #endif
@@ -102,9 +100,9 @@ void EmptyLinkFunctionForGeneratedCodeResourceNew() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AResourceNew, AResourceNew::StaticClass, TEXT("AResourceNew"), &Z_Registration_Info_UClass_AResourceNew, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceNew), 635954009U) },
+		{ Z_Construct_UClass_AResourceNew, AResourceNew::StaticClass, TEXT("AResourceNew"), &Z_Registration_Info_UClass_AResourceNew, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceNew), 996592931U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_3537691054(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_3872846129(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceNew_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

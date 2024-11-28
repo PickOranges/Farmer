@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS(Blueprintable)
+UCLASS()
 class FARMER_API AResourceNew : public AInteractable
 {
 	GENERATED_BODY()

@@ -13,7 +13,7 @@ AInteractable::AInteractable()
 	PrimaryActorTick.bCanEverTick = true;
 	// For further finer control of collision of each different component.
 	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
-	//CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapBegin);
+	CollisionBox->OnComponentBeginOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapBegin);
 	//CollisionBox->OnComponentEndOverlap.AddDynamic(this, &AInteractable::OnPlayerOverlapEnd);
 
 	OnActorBeginOverlap.AddDynamic(this, &AInteractable::OnActorOverlapBegin);

@@ -13,7 +13,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable, BlueprintType)
 class FARMER_API ACropItemTest : public ACropBase
 {
 	GENERATED_BODY()

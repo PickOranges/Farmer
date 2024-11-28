@@ -98,6 +98,9 @@
     <ClCompile Include="..\..\Source\Farmer\Private\CropSeedsUserWidget.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\FakeItem.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\FoxAnimNotify.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
@@ -165,6 +168,9 @@
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\CropSeedsUserWidget.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\FakeItem.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\FoxAnimNotify.h">

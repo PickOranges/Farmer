@@ -21,13 +21,13 @@ void EmptyLinkFunctionForGeneratedCodeFarmer_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0xF31475C7,
-				0x3CBBD497,
+				0x526568A1,
+				0xAF84B013,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_Farmer.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_Farmer.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_Farmer(Z_Construct_UPackage__Script_Farmer, TEXT("/Script/Farmer"), Z_Registration_Info_UPackage__Script_Farmer, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xF31475C7, 0x3CBBD497));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_Farmer(Z_Construct_UPackage__Script_Farmer, TEXT("/Script/Farmer"), Z_Registration_Info_UPackage__Script_Farmer, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x526568A1, 0xAF84B013));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
