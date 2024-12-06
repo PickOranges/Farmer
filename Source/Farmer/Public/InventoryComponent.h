@@ -24,50 +24,18 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-		
-
 public:
-	//bool AddItem(class UItem* Item);
-	//bool RemoveItem(class UItem* Item);
-
-	//bool AddItem(class ACropItemTest* Item);
-	//bool RemoveItem(class ACropItemTest* Item);
-
-
 
 	bool AddItem(class UFakeItem* Item);
 	bool RemoveItem(class UFakeItem* Item);
-
-
-
-	//UPROPERTY(EditDefaultsOnly, Instanced)
-	//TArray<class UItem*> DefaultItems;
-	// 
-	// 
-	// lalalalalala test
-	//UPROPERTY(EditDefaultsOnly, Instanced)
-	//TArray<class ACropItemTest*> DefaultItems;
-
 
 
 	UPROPERTY(EditDefaultsOnly, Instanced)
 	TArray<class UFakeItem*> DefaultItems;
 
 
-
-	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
-	//TArray<class UItem*> Items;	// TODO: replace with TMap & make it data-driven !
-	// 
-	// 
-	// lalalalalalala test
-	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
-	//TArray<class ACropItemTest*> Items;	// TODO: replace with TMap & make it data-driven !
-
-
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
 	TArray<class UFakeItem*> Items;	// TODO: replace with TMap & make it data-driven !
-
 
 
 	UPROPERTY(EditDefaultsOnly, Category = "InventoryComponent")

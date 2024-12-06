@@ -35,8 +35,8 @@ bool UInventoryComponent::AddItem(UFakeItem* Item)
 		return false;
 	}
 
-	//Item->OwningInventory = this;
-	//Item->World = GetWorld();
+	Item->OwningInventory = this;
+	Item->World = GetWorld();
 	Items.Add(Item);
 
 	OnInventoryUpdated.Broadcast();  // update UI
