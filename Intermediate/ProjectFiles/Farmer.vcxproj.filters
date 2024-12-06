@@ -116,6 +116,9 @@
     <ClCompile Include="..\..\Source\Farmer\Private\Item.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\ItemRegistry.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\MySaveGame.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
@@ -161,6 +164,9 @@
     <ClCompile Include="..\..\Source\Farmer\Private\UItem.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\UItemData.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\Farmer\Public">
       <UniqueIdentifier>{BF3F2CD8-54FE-349B-A9E4-CC6221129BE3}</UniqueIdentifier>
     </Filter>
@@ -186,6 +192,9 @@
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\Item.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\ItemRegistry.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\MySaveGame.h">
@@ -231,6 +240,9 @@
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\UItem.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\UItemData.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
   </ItemGroup>

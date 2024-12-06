@@ -8,9 +8,18 @@ UFakeItem::UFakeItem()
 
 }
 
-//void UFakeItem::BeginDestroy()
-//{
-//	OwningInventory = nullptr;
-//
-//	Super::BeginDestroy();
-//}
+
+
+void UFakeItem::Use(AFarmerCharacter* Character)
+{
+	World = nullptr;
+	OwningInventory = nullptr;
+}
+
+
+void UFakeItem::BeginDestroy()
+{
+	OwningInventory = nullptr;
+
+	Super::BeginDestroy();
+}

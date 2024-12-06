@@ -24,7 +24,7 @@ public:
 
 	virtual class UWorld* GetWorld() const { return World; }
 
-
+//////
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 	FText UseActionText;
 
@@ -39,6 +39,7 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item", meta=(MultiLine=true))
 	FText Desc;
+	//////
 
 	UPROPERTY()
 	class UInventoryComponent* OwningInventory;

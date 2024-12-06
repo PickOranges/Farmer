@@ -136,6 +136,9 @@ void EmptyLinkFunctionForGeneratedCodeItem() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UItem_Statics::NewProp_UseActionText_MetaData[] = {
 		{ "Category", "Item" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////\n" },
+#endif
 		{ "ModuleRelativePath", "Public/Item.h" },
 	};
 #endif
@@ -171,6 +174,9 @@ void EmptyLinkFunctionForGeneratedCodeItem() {}
 	const UECodeGen_Private::FTextPropertyParams Z_Construct_UClass_UItem_Statics::NewProp_Desc = { "Desc", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Text, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UItem, Desc), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UItem_Statics::NewProp_Desc_MetaData), Z_Construct_UClass_UItem_Statics::NewProp_Desc_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UItem_Statics::NewProp_OwningInventory_MetaData[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////\n" },
+#endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Item.h" },
 	};
@@ -223,9 +229,9 @@ void EmptyLinkFunctionForGeneratedCodeItem() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Item_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UItem, UItem::StaticClass, TEXT("UItem"), &Z_Registration_Info_UClass_UItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UItem), 1656140230U) },
+		{ Z_Construct_UClass_UItem, UItem::StaticClass, TEXT("UItem"), &Z_Registration_Info_UClass_UItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UItem), 519682305U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Item_h_2600216215(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Item_h_3976443379(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Item_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_Item_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

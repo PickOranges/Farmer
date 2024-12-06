@@ -18,14 +18,18 @@ public:
 	UFakeItem();
 	
 
+	UPROPERTY(Transient)
+	class UWorld* World;
 
-	//UPROPERTY(Transient)
-	//class UWorld* World;
+	virtual class UWorld* GetWorld() const { return World; }
 
-	//virtual class UWorld* GetWorld() const { return World; }
+	virtual void BeginDestroy() override;
+	
+	UPROPERTY()
+	class UInventoryComponent* OwningInventory;
 
-	//UPROPERTY()
-	//class UInventoryComponent* OwningInventory;
+	virtual void Use(class AFarmerCharacter* Character);
 
-	//virtual void BeginDestroy() override;
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnUse(class AFarmerCharacter* Character);
 };
