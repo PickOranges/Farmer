@@ -45,11 +45,16 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_ItemName_MetaData[];
 #endif
-		static const UECodeGen_Private::FTextPropertyParams NewProp_ItemName;
+		static const UECodeGen_Private::FNamePropertyParams NewProp_ItemName;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Desc_MetaData[];
 #endif
 		static const UECodeGen_Private::FTextPropertyParams NewProp_Desc;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bIsStackable_MetaData[];
+#endif
+		static void NewProp_bIsStackable_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsStackable;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -97,7 +102,7 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 		{ "ModuleRelativePath", "Public/UItemData.h" },
 	};
 #endif
-	const UECodeGen_Private::FTextPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName = { "ItemName", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Text, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, ItemName), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName_MetaData) };
+	const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName = { "ItemName", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, ItemName), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUItemData_Statics::NewProp_Desc_MetaData[] = {
 		{ "Category", "Item" },
@@ -106,12 +111,24 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 	};
 #endif
 	const UECodeGen_Private::FTextPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_Desc = { "Desc", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Text, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, Desc), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_Desc_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_Desc_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable_MetaData[] = {
+		{ "Category", "Item" },
+		{ "ModuleRelativePath", "Public/UItemData.h" },
+	};
+#endif
+	void Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable_SetBit(void* Obj)
+	{
+		((UUItemData*)Obj)->bIsStackable = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable = { "bIsStackable", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(UUItemData), &Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UUItemData_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_UseActionText,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_Desc,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UUItemData_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UUItemData>::IsAbstract,
@@ -151,9 +168,9 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UUItemData, UUItemData::StaticClass, TEXT("UUItemData"), &Z_Registration_Info_UClass_UUItemData, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUItemData), 959835410U) },
+		{ Z_Construct_UClass_UUItemData, UUItemData::StaticClass, TEXT("UUItemData"), &Z_Registration_Info_UClass_UUItemData, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUItemData), 1055749162U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_1321754629(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_1762632491(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

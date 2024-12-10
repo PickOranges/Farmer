@@ -22,7 +22,7 @@ void UInventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	for (auto& Item : DefaultItems) {
+	for (auto& [ItemName, Item] : DefaultItems) {
 		AddItem(Item);
 	}
 	
@@ -37,7 +37,8 @@ bool UInventoryComponent::AddItem(UFakeItem* Item)
 
 	Item->OwningInventory = this;
 	Item->World = GetWorld();
-	Items.Add(Item);
+	//Items.Add(Item);
+	Items.Add(Item->ItemName);
 
 	OnInventoryUpdated.Broadcast();  // update UI
 	return true;
@@ -47,10 +48,12 @@ bool UInventoryComponent::RemoveItem(UFakeItem* Item)
 {
 	if (!Item) return false;
 
-	Items.RemoveSingle(Item);
+	//Items.RemoveSingle(Item);
+	UFakeItem* ItemRemoved;
+	bool bIsSucceed = Items.RemoveAndCopyValue(Item->ItemName, ItemRemoved);
 	OnInventoryUpdated.Broadcast();
 	
-	return true;
+	return bIsSucceed;
 }
 
 

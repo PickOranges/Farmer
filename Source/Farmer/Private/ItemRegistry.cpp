@@ -3,9 +3,21 @@
 
 #include "ItemRegistry.h"
 
+
+
 UItemRegistry::UItemRegistry()
 {
 
+}
+
+void UItemRegistry::Initialize()
+{
+
+}
+
+UUItemData* UItemRegistry::GetItemDataByID(FName ItemID) const
+{
+	return nullptr;
 }
 
 void UItemRegistry::RegisterItems()

@@ -10,9 +10,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeItemRegistry() {}
 // Cross Module References
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
-	ENGINE_API UClass* Z_Construct_UClass_UDataAsset_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_UItemRegistry();
 	FARMER_API UClass* Z_Construct_UClass_UItemRegistry_NoRegister();
+	FARMER_API UClass* Z_Construct_UClass_UUItemData_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
 	DEFINE_FUNCTION(UItemRegistry::execRegisterItems)
@@ -64,8 +64,8 @@ void EmptyLinkFunctionForGeneratedCodeItemRegistry() {}
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
-		static const UECodeGen_Private::FIntPropertyParams NewProp_Items_ValueProp;
-		static const UECodeGen_Private::FObjectPropertyParams NewProp_Items_Key_KeyProp;
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_Items_ValueProp;
+		static const UECodeGen_Private::FNamePropertyParams NewProp_Items_Key_KeyProp;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Items_MetaData[];
 #endif
@@ -94,15 +94,16 @@ void EmptyLinkFunctionForGeneratedCodeItemRegistry() {}
 		{ "ModuleRelativePath", "Public/ItemRegistry.h" },
 	};
 #endif
-	const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items_ValueProp = { "Items", nullptr, (EPropertyFlags)0x0000000000020001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, METADATA_PARAMS(0, nullptr) };
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items_Key_KeyProp = { "Items_Key", nullptr, (EPropertyFlags)0x0000000000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UDataAsset_NoRegister, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items_ValueProp = { "Items", nullptr, (EPropertyFlags)0x00000000000a0009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UUItemData_NoRegister, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items_Key_KeyProp = { "Items_Key", nullptr, (EPropertyFlags)0x00000000000a0009, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items_MetaData[] = {
 		{ "Category", "ItemRegistry" },
+		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/ItemRegistry.h" },
 	};
 #endif
-	const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items = { "Items", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UItemRegistry, Items), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items_MetaData), Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items_MetaData) };
+	const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items = { "Items", nullptr, (EPropertyFlags)0x001000800002001d, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UItemRegistry, Items), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items_MetaData), Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UItemRegistry_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items_ValueProp,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UItemRegistry_Statics::NewProp_Items_Key_KeyProp,
@@ -123,7 +124,7 @@ void EmptyLinkFunctionForGeneratedCodeItemRegistry() {}
 		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_UItemRegistry_Statics::PropPointers),
 		0,
-		0x003010A0u,
+		0x00B010A0u,
 		METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UItemRegistry_Statics::Class_MetaDataParams), Z_Construct_UClass_UItemRegistry_Statics::Class_MetaDataParams)
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UItemRegistry_Statics::PropPointers) < 2048);
@@ -146,9 +147,9 @@ void EmptyLinkFunctionForGeneratedCodeItemRegistry() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ItemRegistry_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UItemRegistry, UItemRegistry::StaticClass, TEXT("UItemRegistry"), &Z_Registration_Info_UClass_UItemRegistry, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UItemRegistry), 2162568489U) },
+		{ Z_Construct_UClass_UItemRegistry, UItemRegistry::StaticClass, TEXT("UItemRegistry"), &Z_Registration_Info_UClass_UItemRegistry, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UItemRegistry), 2236468371U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ItemRegistry_h_1368701200(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ItemRegistry_h_3509291618(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ItemRegistry_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ItemRegistry_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

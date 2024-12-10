@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
+#include "UItemData.h"
 #include "ItemRegistry.generated.h"
 
 /**
@@ -18,8 +19,13 @@ public:
 
 	UItemRegistry();
 
+	void Initialize();
+
+	UUItemData* GetItemDataByID(FName ItemID) const;
+
 	UPROPERTY(BlueprintReadOnly,VisibleAnywhere)
-	TMap<UDataAsset*, int32> Items;
+	TMap<FName, UUItemData*> Items;
+
 
 	UFUNCTION(BlueprintCallable)
 	virtual void RegisterItems();

@@ -27,10 +27,13 @@ public:
 	class UTexture2D* Thumbnail;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
-	FText ItemName;
+	FName ItemName;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item", meta = (MultiLine = true))
 	FText Desc;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
+	bool bIsStackable;
 
 
 	virtual void BeginDestroy() override;

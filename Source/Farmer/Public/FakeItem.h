@@ -32,4 +32,8 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnUse(class AFarmerCharacter* Character);
+
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "FakeItem")
+	FName ItemName;
 };

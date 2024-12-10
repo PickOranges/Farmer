@@ -5,7 +5,7 @@
 
 UUItemData::UUItemData()
 {
-	ItemName = FText::FromString("Item");
+	ItemName = FName("Item");
 	UseActionText = FText::FromString("Use");
 }
 
