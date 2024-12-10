@@ -35,7 +35,6 @@ public:
 	TMap<FName, UFakeItem*> DefaultItems;
 
 
-
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
 	//TArray<class UFakeItem*> Items;	// TODO: replace with TMap & make it data-driven !
 
