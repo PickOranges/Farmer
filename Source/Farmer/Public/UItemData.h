@@ -21,10 +21,12 @@ public:
 	FText UseActionText;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
-	class UStaticMesh* PickupMesh;  // TODO: replace with TSoftObjectPtr
+	//class UStaticMesh* PickupMesh;  // TODO: replace with TSoftObjectPtr
+	TSoftObjectPtr<UStaticMesh> PickupMesh;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
-	class UTexture2D* Thumbnail;   // TODO: replace with TSoftObjectPtr
+	//class UTexture2D* Thumbnail;   // TODO: replace with TSoftObjectPtr
+	TSoftObjectPtr<UTexture2D> Thumbnail;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 	FName ItemName;

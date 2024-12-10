@@ -37,11 +37,11 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_PickupMesh_MetaData[];
 #endif
-		static const UECodeGen_Private::FObjectPropertyParams NewProp_PickupMesh;
+		static const UECodeGen_Private::FSoftObjectPropertyParams NewProp_PickupMesh;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Thumbnail_MetaData[];
 #endif
-		static const UECodeGen_Private::FObjectPropertyParams NewProp_Thumbnail;
+		static const UECodeGen_Private::FSoftObjectPropertyParams NewProp_Thumbnail;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_ItemName_MetaData[];
 #endif
@@ -85,33 +85,33 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh_MetaData[] = {
 		{ "Category", "Item" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//class UStaticMesh* PickupMesh;  // TODO: replace with TSoftObjectPtr\n" },
+#endif
 		{ "ModuleRelativePath", "Public/UItemData.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "class UStaticMesh* PickupMesh;   TODO: replace with TSoftObjectPtr" },
+#endif
 	};
 #endif
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh = { "PickupMesh", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, PickupMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh_MetaData) };
+	const UECodeGen_Private::FSoftObjectPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh = { "PickupMesh", nullptr, (EPropertyFlags)0x0014000000010005, UECodeGen_Private::EPropertyGenFlags::SoftObject, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, PickupMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail_MetaData[] = {
 		{ "Category", "Item" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "// TODO: replace with TSoftObjectPtr\n" },
+		{ "Comment", "//class UTexture2D* Thumbnail;   // TODO: replace with TSoftObjectPtr\n" },
 #endif
 		{ "ModuleRelativePath", "Public/UItemData.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "TODO: replace with TSoftObjectPtr" },
+		{ "ToolTip", "class UTexture2D* Thumbnail;    TODO: replace with TSoftObjectPtr" },
 #endif
 	};
 #endif
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail = { "Thumbnail", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, Thumbnail), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail_MetaData) };
+	const UECodeGen_Private::FSoftObjectPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail = { "Thumbnail", nullptr, (EPropertyFlags)0x0014000000010015, UECodeGen_Private::EPropertyGenFlags::SoftObject, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, Thumbnail), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName_MetaData[] = {
 		{ "Category", "Item" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "// TODO: replace with TSoftObjectPtr\n" },
-#endif
 		{ "ModuleRelativePath", "Public/UItemData.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "TODO: replace with TSoftObjectPtr" },
-#endif
 	};
 #endif
 	const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName = { "ItemName", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, ItemName), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName_MetaData) };
@@ -180,9 +180,9 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UUItemData, UUItemData::StaticClass, TEXT("UUItemData"), &Z_Registration_Info_UClass_UUItemData, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUItemData), 307723230U) },
+		{ Z_Construct_UClass_UUItemData, UUItemData::StaticClass, TEXT("UUItemData"), &Z_Registration_Info_UClass_UUItemData, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUItemData), 377060177U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_4066542930(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_1876077284(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
