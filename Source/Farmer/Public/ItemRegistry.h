@@ -19,14 +19,14 @@ public:
 
 	UItemRegistry();
 
-	void Initialize();
+	void Initialize();  // load DataTable in .csv/.json
 
-	UUItemData* GetItemDataByID(FName ItemID) const;
+	UUItemData* GetItemDataByID(FName ItemID) const;  
 
 	UPROPERTY(BlueprintReadOnly,VisibleAnywhere)
 	TMap<FName, UUItemData*> Items;
 
 
 	UFUNCTION(BlueprintCallable)
-	virtual void RegisterItems();
+	virtual void RegisterItems();  // Add data into Items TMap.
 };
