@@ -10,5 +10,10 @@ void UMyGameInstanceSubsystem::LoadAllItems()
 	FPrimaryAssetType ItemType = FPrimaryAssetType("UUItemData");  // TODO: check UE5 Doc: DataAsset-->AssetManagement, to make a secondary asset to primary, you should do two things???
 
 	TArray<FPrimaryAssetId> ItemIds;
-	
+	UAssetManager::Get().GetPrimaryAssetIdList(ItemType, ItemIds);  
+
+	for (const FPrimaryAssetId& ItemId : ItemIds) {
+
+
+	}
 }
