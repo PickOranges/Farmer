@@ -214,6 +214,11 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\MyGameInstanceSubsystem.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\MySaveGame.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -303,6 +308,7 @@
     <ClInclude Include="..\..\Source\Farmer\Public\InventoryComponent.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\Item.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\ItemRegistry.h"/>
+    <ClInclude Include="..\..\Source\Farmer\Public\MyGameInstanceSubsystem.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\MySaveGame.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\NPCFoxAnimInstance.h"/>
     <ClInclude Include="..\..\Source\Farmer\Public\Plant.h"/>

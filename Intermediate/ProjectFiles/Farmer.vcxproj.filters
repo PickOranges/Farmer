@@ -119,6 +119,9 @@
     <ClCompile Include="..\..\Source\Farmer\Private\ItemRegistry.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Farmer\Private\MyGameInstanceSubsystem.cpp">
+      <Filter>Source\Farmer\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Farmer\Private\MySaveGame.cpp">
       <Filter>Source\Farmer\Private</Filter>
     </ClCompile>
@@ -195,6 +198,9 @@
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\ItemRegistry.h">
+      <Filter>Source\Farmer\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Farmer\Public\MyGameInstanceSubsystem.h">
       <Filter>Source\Farmer\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Farmer\Public\MySaveGame.h">
