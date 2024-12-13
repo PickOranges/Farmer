@@ -39,4 +39,6 @@ public:
 
 
 	virtual void BeginDestroy() override;
+
+	inline virtual FPrimaryAssetId GetPrimaryAssetId() const override { return FPrimaryAssetId("AssetItems", GetFName()); }
 };
