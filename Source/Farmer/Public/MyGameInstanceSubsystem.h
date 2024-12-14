@@ -23,4 +23,5 @@ public:
 	void LoadItemAsync();
 };
 
-static TMap<FName, FAssetData> AssetList;
+static TArray<FAssetData> AssetList;
+//static TMap<FName, UUItemData> AssetMap;

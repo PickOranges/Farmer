@@ -15,16 +15,26 @@ void UMyGameInstanceSubsystem::LoadItemAsync()
 	FStreamableManager& Streamable = UAssetManager::GetStreamableManager();
 	FSoftObjectPath ObjectPath(FString("/Game/BP_Resources/ItemData"));
 
+	FAssetData Asset;
+	AssetRegistry.TryGetAssetByObjectPath(ObjectPath, Asset);
+
+	// async loading
 	Streamable.RequestAsyncLoad(ObjectPath,
-		FStreamableDelegate::CreateLambda([&ObjectPath]() 
+		FStreamableDelegate::CreateLambda([&]() 
 			{
 				if (ObjectPath.IsValid()) {
-					
-					FAssetData Asset = ObjectPath.ResolveObject();
-					AssetList.Emplace(Asset.AssetName, Asset);
-
+					Asset = ObjectPath.ResolveObject();
+					AssetList.Add(Asset);
 					// TODO: communication/interaction with UI & FarmerCharacter !
 				}
 			})
 	);
+
+	if (AssetList.IsEmpty()) return;
+
+
+	// TODO2: Reconstruct UUItemData object & use it from InventorySystem !
+
+	Asset.GetClass()->AddToRoot();
+	
 }
