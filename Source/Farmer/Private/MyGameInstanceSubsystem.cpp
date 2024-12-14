@@ -23,19 +23,20 @@ void UMyGameInstanceSubsystem::LoadItemAsync()
 		FStreamableDelegate::CreateLambda([&]() 
 			{
 				if (ObjectPath.IsValid()) {
-					Asset = ObjectPath.ResolveObject();
-					AssetList.Add(Asset);
+					//Asset = ObjectPath.ResolveObject();
+					//AssetList.Add(Asset);
 					// TODO: communication/interaction with UI & FarmerCharacter !
 				}
 			})
 	);
 
-	if (AssetList.IsEmpty()) return;
+	//if (AssetList.IsEmpty()) return;
 
 
 	// TODO2: Reconstruct UUItemData object & use it from InventorySystem !
+	Asset = ObjectPath.TryLoad();  // this is very slow !!! TODO: remove it once make it work, then use async loading!!!
+	if (!Asset.IsValid()) return;
 
 	Asset.GetClass()->AddToRoot(); // Avoid GC
-	
 	GEngine->AddOnScreenDebugMessage(-1,INFINITY, FColor::Orange, Asset.GetPrimaryAssetId().ToString());
 }
