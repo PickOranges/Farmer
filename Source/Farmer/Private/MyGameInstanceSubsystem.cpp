@@ -35,6 +35,7 @@ void UMyGameInstanceSubsystem::LoadItemAsync()
 
 	// TODO2: Reconstruct UUItemData object & use it from InventorySystem !
 
-	Asset.GetClass()->AddToRoot();
+	Asset.GetClass()->AddToRoot(); // Avoid GC
 	
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY, FColor::Orange, Asset.GetPrimaryAssetId().ToString());
 }
