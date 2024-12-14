@@ -13,7 +13,7 @@ void UMyGameInstanceSubsystem::LoadItemAsync(const FPrimaryAssetId& AssetId, TFu
 	TArray<FAssetData> AssetList;
 	
 	FStreamableManager& Streamable = UAssetManager::GetStreamableManager();
-	FSoftObjectPath ObjectPath(FString("/Game/Resources_BP"));
+	FSoftObjectPath ObjectPath(FString("/Game/BP_Resources/ItemData"));
 
 	Streamable.RequestAsyncLoad(ObjectPath,
 		FStreamableDelegate::CreateLambda([&ObjectPath]() 
