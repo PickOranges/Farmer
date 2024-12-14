@@ -11,7 +11,6 @@
 void UMyGameInstanceSubsystem::LoadItemAsync()
 {
 	FAssetRegistryModule& AssetRegistry = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
-	TArray<FAssetData> AssetList;
 	
 	FStreamableManager& Streamable = UAssetManager::GetStreamableManager();
 	FSoftObjectPath ObjectPath(FString("/Game/BP_Resources/ItemData"));
@@ -20,6 +19,10 @@ void UMyGameInstanceSubsystem::LoadItemAsync()
 		FStreamableDelegate::CreateLambda([&ObjectPath]() 
 			{
 				if (ObjectPath.IsValid()) {
+					
+					FAssetData Asset = ObjectPath.ResolveObject();
+					AssetList.Emplace(Asset.AssetName, Asset);
+
 					// TODO: communication/interaction with UI & FarmerCharacter !
 				}
 			})

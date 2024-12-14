@@ -22,3 +22,5 @@ public:
 	//void LoadItemAsync(const FPrimaryAssetId& AssetId, TFunction<void(UUItemData*)> OnLoaded);
 	void LoadItemAsync();
 };
+
+static TMap<FName, FAssetData> AssetList;
