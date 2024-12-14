@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "UItemData.h"
-#include "Engine/StreamableManager.h"
-#include "Engine/AssetManager.h"
 #include "MyGameInstanceSubsystem.generated.h"
+
+
+class UUItemData;
+
 
 /**
  * 
@@ -20,6 +21,4 @@ class FARMER_API UMyGameInstanceSubsystem : public UGameInstanceSubsystem
 public:
 	void LoadItemAsync(const FPrimaryAssetId& AssetId, TFunction<void(UUItemData*)> OnLoaded);
 
-private:
-	FStreamableManager StreamableManager;
 };

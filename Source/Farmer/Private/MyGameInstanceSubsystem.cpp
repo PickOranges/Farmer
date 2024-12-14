@@ -2,16 +2,25 @@
 
 
 #include "MyGameInstanceSubsystem.h"
+#include "UItemData.h"
+#include "Engine/StreamableManager.h"
+#include "Engine/AssetManager.h"
 
 
 void UMyGameInstanceSubsystem::LoadItemAsync(const FPrimaryAssetId& AssetId, TFunction<void(UUItemData*)> OnLoaded)
 {
-	StreamableManager.RequestAsyncLoad(AssetId,
-		FStreamableDelegate::CreateLambda([=]() {
-			UUItemData* ItemData = Cast<UUItemData>(UAssetManager::Get().GetPrimaryAssetObject(AssetId));
-			if (OnLoaded) {
-				OnLoaded(ItemData);
-			}
-		})
+	FAssetRegistryModule& AssetRegistry = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
+	TArray<FAssetData> AssetList;
+	
+	FStreamableManager& Streamable = UAssetManager::GetStreamableManager();
+	FSoftObjectPath ObjectPath(FString("/Game/Resources_BP"));
+
+	Streamable.RequestAsyncLoad(ObjectPath,
+		FStreamableDelegate::CreateLambda([&ObjectPath]() 
+			{
+				if (ObjectPath.IsValid()) {
+					// TODO: communication/interaction with UI & FarmerCharacter !
+				}
+			})
 	);
 }
