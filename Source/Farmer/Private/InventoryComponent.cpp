@@ -3,6 +3,7 @@
 
 #include "InventoryComponent.h"
 //#include "Item.h"
+#include "MyGameInstanceSubsystem.h"
 #include "FakeItem.h"
 
 
@@ -24,6 +25,13 @@ void UInventoryComponent::BeginPlay()
 	for (auto& [ItemName, Item] : DefaultItems) {
 		AddItem(Item);
 	}
+
+
+	// TEST: Subsystem for async loading ItemData & later maybe for construction of FakeItem.
+	UMyGameInstanceSubsystem* mysub = GetWorld()->GetGameInstance()->GetSubsystem<UMyGameInstanceSubsystem>();
+	if (mysub) {
+		mysub->LoadItemAsync();
+	}
 	
 }
 
@@ -40,6 +48,7 @@ bool UInventoryComponent::AddItem(UFakeItem* Item)
 	Items.Add(Item->ItemName);
 
 	OnInventoryUpdated.Broadcast();  // update UI
+
 	return true;
 }
 
