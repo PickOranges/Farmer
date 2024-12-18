@@ -13,7 +13,9 @@ void UMyGameInstanceSubsystem::LoadItemAsync()
 	FAssetRegistryModule& AssetRegistry = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
 	
 	FStreamableManager& Streamable = UAssetManager::GetStreamableManager();
-	FSoftObjectPath ObjectPath(FString("/Game"));
+	FSoftObjectPath ObjectPath(FString("C:/Users/cheng/source/repos/UE5/Farmer/Content/BP_Resources/ItemData/Blouse.uasset"));
+	//FSoftObjectPath ObjectPath(FString("/All/Game/BP_Resources/ItemData"));
+
 
 	FAssetData Asset;
 	AssetRegistry.TryGetAssetByObjectPath(ObjectPath, Asset);
@@ -28,7 +30,7 @@ void UMyGameInstanceSubsystem::LoadItemAsync()
 					// TODO: communication/interaction with UI & FarmerCharacter !
 				//}
 				if (Asset.IsValid()) {
-					//Asset.GetClass()->AddToRoot(); // Avoid GC
+					Asset.GetClass()->AddToRoot(); // Avoid GC
 					FString AssName = Asset.GetAsset()->GetPrimaryAssetId().ToString();
 					GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Green,AssName);
 				}
