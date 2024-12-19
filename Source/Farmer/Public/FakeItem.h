@@ -36,4 +36,10 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "FakeItem")
 	FName ItemName;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item", meta = (MultiLine = true))
+	FText Desc;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
+	FText UseActionText;
 };

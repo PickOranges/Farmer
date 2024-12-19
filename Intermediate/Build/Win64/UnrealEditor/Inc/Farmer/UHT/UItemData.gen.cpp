@@ -31,10 +31,6 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_UseActionText_MetaData[];
-#endif
-		static const UECodeGen_Private::FTextPropertyParams NewProp_UseActionText;
-#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_PickupMesh_MetaData[];
 #endif
 		static const UECodeGen_Private::FSoftObjectPropertyParams NewProp_PickupMesh;
@@ -46,10 +42,6 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_ItemName_MetaData[];
 #endif
 		static const UECodeGen_Private::FNamePropertyParams NewProp_ItemName;
-#if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_Desc_MetaData[];
-#endif
-		static const UECodeGen_Private::FTextPropertyParams NewProp_Desc;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_bIsStackable_MetaData[];
 #endif
@@ -75,13 +67,6 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 		{ "ModuleRelativePath", "Public/UItemData.h" },
 	};
 #endif
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUItemData_Statics::NewProp_UseActionText_MetaData[] = {
-		{ "Category", "Item" },
-		{ "ModuleRelativePath", "Public/UItemData.h" },
-	};
-#endif
-	const UECodeGen_Private::FTextPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_UseActionText = { "UseActionText", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Text, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, UseActionText), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_UseActionText_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_UseActionText_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh_MetaData[] = {
 		{ "Category", "Item" },
@@ -116,14 +101,6 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 #endif
 	const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName = { "ItemName", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, ItemName), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName_MetaData) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUItemData_Statics::NewProp_Desc_MetaData[] = {
-		{ "Category", "Item" },
-		{ "ModuleRelativePath", "Public/UItemData.h" },
-		{ "MultiLine", "TRUE" },
-	};
-#endif
-	const UECodeGen_Private::FTextPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_Desc = { "Desc", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Text, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, Desc), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_Desc_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_Desc_MetaData) };
-#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable_MetaData[] = {
 		{ "Category", "Item" },
 		{ "ModuleRelativePath", "Public/UItemData.h" },
@@ -135,11 +112,9 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable = { "bIsStackable", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(UUItemData), &Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UUItemData_Statics::PropPointers[] = {
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_UseActionText,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_ItemName,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_Desc,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUItemData_Statics::NewProp_bIsStackable,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UUItemData_Statics::StaticCppClassTypeInfo = {
@@ -180,9 +155,9 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UUItemData, UUItemData::StaticClass, TEXT("UUItemData"), &Z_Registration_Info_UClass_UUItemData, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUItemData), 377060177U) },
+		{ Z_Construct_UClass_UUItemData, UUItemData::StaticClass, TEXT("UUItemData"), &Z_Registration_Info_UClass_UUItemData, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUItemData), 4225619321U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_1876077284(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_2124153812(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -6,7 +6,6 @@
 UUItemData::UUItemData()
 {
 	ItemName = FName("Item");
-	UseActionText = FText::FromString("Use");
 }
 
 void UUItemData::BeginDestroy()

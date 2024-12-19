@@ -18,9 +18,6 @@ public:
 	UUItemData();
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
-	FText UseActionText;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 	//class UStaticMesh* PickupMesh;  // TODO: replace with TSoftObjectPtr
 	TSoftObjectPtr<UStaticMesh> PickupMesh;
 
@@ -31,8 +28,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 	FName ItemName;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item", meta = (MultiLine = true))
-	FText Desc;
+
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 	bool bIsStackable;
