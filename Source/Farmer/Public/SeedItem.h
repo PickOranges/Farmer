@@ -3,14 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Item.h"
+//#include "Item.h"
+#include "FakeItem.h"
 #include "SeedItem.generated.h"
 
 /**
  * 
  */
-UCLASS()
-class FARMER_API USeedItem : public UItem
+UCLASS(Blueprintable, BlueprintType, EditInlineNew, DefaultToInstanced)
+class FARMER_API USeedItem : public UFakeItem
 {
 	GENERATED_BODY()
 	

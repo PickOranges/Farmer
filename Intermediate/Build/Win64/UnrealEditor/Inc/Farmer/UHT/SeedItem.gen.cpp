@@ -9,7 +9,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeSeedItem() {}
 // Cross Module References
-	FARMER_API UClass* Z_Construct_UClass_UItem();
+	FARMER_API UClass* Z_Construct_UClass_UFakeItem();
 	FARMER_API UClass* Z_Construct_UClass_USeedItem();
 	FARMER_API UClass* Z_Construct_UClass_USeedItem_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
@@ -32,16 +32,18 @@ void EmptyLinkFunctionForGeneratedCodeSeedItem() {}
 		static const UECodeGen_Private::FClassParams ClassParams;
 	};
 	UObject* (*const Z_Construct_UClass_USeedItem_Statics::DependentSingletons[])() = {
-		(UObject* (*)())Z_Construct_UClass_UItem,
+		(UObject* (*)())Z_Construct_UClass_UFakeItem,
 		(UObject* (*)())Z_Construct_UPackage__Script_Farmer,
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_USeedItem_Statics::DependentSingletons) < 16);
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USeedItem_Statics::Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n * \n */" },
 #endif
 		{ "IncludePath", "SeedItem.h" },
+		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "Public/SeedItem.h" },
 	};
 #endif
@@ -83,9 +85,9 @@ void EmptyLinkFunctionForGeneratedCodeSeedItem() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_SeedItem_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_USeedItem, USeedItem::StaticClass, TEXT("USeedItem"), &Z_Registration_Info_UClass_USeedItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USeedItem), 1806617655U) },
+		{ Z_Construct_UClass_USeedItem, USeedItem::StaticClass, TEXT("USeedItem"), &Z_Registration_Info_UClass_USeedItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USeedItem), 1184357582U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_SeedItem_h_3287447249(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_SeedItem_h_1722179190(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_SeedItem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_SeedItem_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
