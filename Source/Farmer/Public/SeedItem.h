@@ -16,5 +16,5 @@ class FARMER_API USeedItem : public UFakeItem
 	GENERATED_BODY()
 	
 protected:
-	virtual void Use(class AFarmerCharacter* Character) override;
+	virtual void Use(class AFarmerCharacter* Character) override;  // TODO: later: BP class derive from this class or FakeItem class; Then do async loading !!
 };
