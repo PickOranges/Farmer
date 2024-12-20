@@ -48,7 +48,8 @@ bool UInventoryComponent::AddItem(UFakeItem* Item)
 
 	Item->OwningInventory = this;
 	Item->World = GetWorld();
-	Items.Add(Item->ItemName, Item);
+	//Items.Add(Item->ItemName, Item);
+	Items.Add(Item);
 
 	OnInventoryUpdated.Broadcast();  // update UI
 
@@ -62,13 +63,17 @@ bool UInventoryComponent::RemoveItem(UFakeItem* Item)
 	if (!Item) return false;
 
 	//Items.RemoveSingle(Item);
-	UFakeItem* ItemRemoved;
-	bool bIsSucceed = Items.RemoveAndCopyValue(Item->ItemName, ItemRemoved);
+	//UFakeItem* ItemRemoved;
+	//bool bIsSucceed = Items.RemoveAndCopyValue(Item->ItemName, ItemRemoved);
+
+
+	Items.Remove(Item);
 	OnInventoryUpdated.Broadcast();
 	
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[InventoryComponent.cpp] Removed the Item from Items TMap.");
 
-	return bIsSucceed;
+	//return bIsSucceed;
+	return true;
 }
 
 

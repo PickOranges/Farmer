@@ -42,7 +42,9 @@ public:
 	
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
-	TMap<FName, class UFakeItem*> Items;
+	//TMap<FName, class UFakeItem*> Items;
+	TArray<class UFakeItem*> Items;
+
 
 
 	UPROPERTY(EditDefaultsOnly, Category = "InventoryComponent")
