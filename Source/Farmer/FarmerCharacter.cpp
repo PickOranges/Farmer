@@ -20,7 +20,9 @@
 
 // C++ Inventory System
 //#include "Item.h"
-#include "CropItemTest.h"
+
+//#include "CropItemTest.h"
+#include "FakeItem.h"
 #include "InventoryComponent.h"
 
 
@@ -526,7 +528,7 @@ void AFarmerCharacter::TriggerRemovePlant(ASoil* currentSoil) {
 	AutoSave(currentSoil->CurrentPlant);
 }
 
-void AFarmerCharacter::UseItem(ACropItemTest* Item)
+void AFarmerCharacter::UseItem(UFakeItem* Item)
 {
 	if (Item) {
 		Item->Use(this);

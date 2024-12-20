@@ -42,4 +42,17 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 	FText UseActionText;
+
+
+	/// <summary>
+	/// TODO: 
+	/// 1. remove hard reference
+	/// 2. use asset registry system
+	/// 3. async loading from asset manager side
+	/// </summary>
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
+	class UStaticMesh* PickupMesh;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	class UTexture2D* Thumbnail;
 };

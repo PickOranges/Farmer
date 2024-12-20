@@ -25,18 +25,18 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
 	ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
 	ENHANCEDINPUT_API UScriptStruct* Z_Construct_UScriptStruct_FInputActionValue();
-	FARMER_API UClass* Z_Construct_UClass_ACropItemTest_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_AFarmerCharacter();
 	FARMER_API UClass* Z_Construct_UClass_AFarmerCharacter_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_ASoil_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_UCropSeedsUserWidget_NoRegister();
+	FARMER_API UClass* Z_Construct_UClass_UFakeItem_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_UInventoryComponent_NoRegister();
 	FARMER_API UClass* Z_Construct_UClass_UMySaveGame_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
 	DEFINE_FUNCTION(AFarmerCharacter::execUseItem)
 	{
-		P_GET_OBJECT(ACropItemTest,Z_Param_Item);
+		P_GET_OBJECT(UFakeItem,Z_Param_Item);
 		P_FINISH;
 		P_NATIVE_BEGIN;
 		P_THIS->UseItem(Z_Param_Item);
@@ -558,8 +558,11 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 	{
 		struct FarmerCharacter_eventUseItem_Parms
 		{
-			ACropItemTest* Item;
+			UFakeItem* Item;
 		};
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Item_MetaData[];
+#endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Item;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
@@ -567,7 +570,12 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 #endif
 		static const UECodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AFarmerCharacter_UseItem_Statics::NewProp_Item = { "Item", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FarmerCharacter_eventUseItem_Parms, Item), Z_Construct_UClass_ACropItemTest_NoRegister, METADATA_PARAMS(0, nullptr) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFarmerCharacter_UseItem_Statics::NewProp_Item_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AFarmerCharacter_UseItem_Statics::NewProp_Item = { "Item", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FarmerCharacter_eventUseItem_Parms, Item), Z_Construct_UClass_UFakeItem_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFarmerCharacter_UseItem_Statics::NewProp_Item_MetaData), Z_Construct_UFunction_AFarmerCharacter_UseItem_Statics::NewProp_Item_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AFarmerCharacter_UseItem_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFarmerCharacter_UseItem_Statics::NewProp_Item,
 	};
@@ -718,7 +726,7 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		{ &Z_Construct_UFunction_AFarmerCharacter_SaveGame, "SaveGame" }, // 399187742
 		{ &Z_Construct_UFunction_AFarmerCharacter_TriggerRemovePlant, "TriggerRemovePlant" }, // 2246806244
 		{ &Z_Construct_UFunction_AFarmerCharacter_UpdateHealthyValue, "UpdateHealthyValue" }, // 264033271
-		{ &Z_Construct_UFunction_AFarmerCharacter_UseItem, "UseItem" }, // 3798029407
+		{ &Z_Construct_UFunction_AFarmerCharacter_UseItem, "UseItem" }, // 1891982824
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AFarmerCharacter_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -1041,9 +1049,9 @@ void EmptyLinkFunctionForGeneratedCodeFarmerCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 1769004563U) },
+		{ Z_Construct_UClass_AFarmerCharacter, AFarmerCharacter::StaticClass, TEXT("AFarmerCharacter"), &Z_Registration_Info_UClass_AFarmerCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFarmerCharacter), 2047621308U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_3316291129(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_1741909925(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_FarmerCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -14,6 +14,7 @@ void UFakeItem::Use(AFarmerCharacter* Character)
 {
 	World = nullptr;
 	OwningInventory = nullptr;
+	
 }
 
 

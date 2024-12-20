@@ -19,6 +19,7 @@ class UCameraComponent;
 class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
+class UFakeItem;
 
 
 
@@ -192,7 +193,7 @@ protected:
 public:
 	UFUNCTION(BlueprintCallable, Category = "FarmerCharacter")
 	//void UseItem(class UItem* Item);
-	void UseItem(class ACropItemTest* Item);
+	void UseItem(class UFakeItem* Item);
 
 
 //private:
