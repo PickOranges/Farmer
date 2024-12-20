@@ -22,7 +22,7 @@ void UInventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	for (auto& [ItemName, Item] : DefaultItems) {
+	for (auto& Item : DefaultItems) {
 		AddItem(Item);
 	}
 
@@ -37,14 +37,17 @@ void UInventoryComponent::BeginPlay()
 
 bool UInventoryComponent::AddItem(UFakeItem* Item)
 {
-	if (Items.Num()>=Capacity || !Item) {
-		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"The Item is Invalid!");
+	if (!Item) {
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,"[InventoryComponent.cpp] The Item is Invalid!");
+		return false;
+	}
+	if (Items.Num() >= Capacity) {
+		GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[InventoryComponent.cpp] No more space for this Item!");
 		return false;
 	}
 
 	Item->OwningInventory = this;
 	Item->World = GetWorld();
-	//Items.Add(Item);
 	Items.Add(Item->ItemName, Item);
 
 	OnInventoryUpdated.Broadcast();  // update UI
