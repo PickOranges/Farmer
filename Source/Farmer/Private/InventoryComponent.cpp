@@ -2,7 +2,6 @@
 
 
 #include "InventoryComponent.h"
-//#include "Item.h"
 #include "MyGameInstanceSubsystem.h"
 #include "FakeItem.h"
 
@@ -48,12 +47,13 @@ bool UInventoryComponent::AddItem(UFakeItem* Item)
 
 	Item->OwningInventory = this;
 	Item->World = GetWorld();
-	//Items.Add(Item->ItemName, Item);
+	ItemDict.Add(Item->ItemName, Item);
 	Items.Add(Item);
 
 	OnInventoryUpdated.Broadcast();  // update UI
 
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[InventoryComponent.cpp] Added Item from DefaulltItems TArray.");
+	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,FString::Printf(TEXT("%d"), ItemDict.Num()));
 
 	return true;
 }

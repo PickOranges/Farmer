@@ -75,6 +75,12 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Items_MetaData[];
 #endif
 		static const UECodeGen_Private::FArrayPropertyParams NewProp_Items;
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_ItemDict_ValueProp;
+		static const UECodeGen_Private::FNamePropertyParams NewProp_ItemDict_Key_KeyProp;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ItemDict_MetaData[];
+#endif
+		static const UECodeGen_Private::FMapPropertyParams NewProp_ItemDict;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Capacity_MetaData[];
 #endif
@@ -143,6 +149,16 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 	};
 #endif
 	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Items = { "Items", nullptr, (EPropertyFlags)0x001000800002001d, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryComponent, Items), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Items_MetaData), Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Items_MetaData) };
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict_ValueProp = { "ItemDict", nullptr, (EPropertyFlags)0x00000000000a0009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UFakeItem_NoRegister, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict_Key_KeyProp = { "ItemDict_Key", nullptr, (EPropertyFlags)0x00000000000a0009, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict_MetaData[] = {
+		{ "Category", "InventoryComponent" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
+	};
+#endif
+	const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict = { "ItemDict", nullptr, (EPropertyFlags)0x001000800002001d, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryComponent, ItemDict), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict_MetaData), Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Capacity_MetaData[] = {
 		{ "Category", "InventoryComponent" },
@@ -162,6 +178,9 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Items_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Items,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict_ValueProp,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict_Key_KeyProp,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Capacity,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryComponent_Statics::NewProp_OnInventoryUpdated,
 	};
@@ -203,9 +222,9 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UInventoryComponent, UInventoryComponent::StaticClass, TEXT("UInventoryComponent"), &Z_Registration_Info_UClass_UInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryComponent), 1291280584U) },
+		{ Z_Construct_UClass_UInventoryComponent, UInventoryComponent::StaticClass, TEXT("UInventoryComponent"), &Z_Registration_Info_UClass_UInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryComponent), 899721432U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_1882646474(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_1219591646(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

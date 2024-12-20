@@ -47,6 +47,12 @@ public:
 
 
 
+
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
+	TMap<FName, class UFakeItem*> ItemDict;
+
+
 	UPROPERTY(EditDefaultsOnly, Category = "InventoryComponent")
 	int32 Capacity{40};
 
