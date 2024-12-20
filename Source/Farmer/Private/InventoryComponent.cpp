@@ -27,11 +27,11 @@ void UInventoryComponent::BeginPlay()
 	}
 
 
-	// TEST: Subsystem for async loading ItemData & later maybe for construction of FakeItem.
-	UMyGameInstanceSubsystem* mysub = GetWorld()->GetGameInstance()->GetSubsystem<UMyGameInstanceSubsystem>();
-	if (mysub) {
-		mysub->LoadItemAsync();
-	}
+	//// TEST: Subsystem for async loading ItemData & later maybe for construction of FakeItem.
+	//UMyGameInstanceSubsystem* mysub = GetWorld()->GetGameInstance()->GetSubsystem<UMyGameInstanceSubsystem>();
+	//if (mysub) {
+	//	mysub->LoadItemAsync();
+	//}
 	
 }
 
@@ -52,6 +52,8 @@ bool UInventoryComponent::AddItem(UFakeItem* Item)
 
 	OnInventoryUpdated.Broadcast();  // update UI
 
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[InventoryComponent.cpp] Added Item from DefaulltItems TArray.");
+
 	return true;
 }
 
@@ -64,6 +66,8 @@ bool UInventoryComponent::RemoveItem(UFakeItem* Item)
 	bool bIsSucceed = Items.RemoveAndCopyValue(Item->ItemName, ItemRemoved);
 	OnInventoryUpdated.Broadcast();
 	
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[InventoryComponent.cpp] Removed the Item from Items TMap.");
+
 	return bIsSucceed;
 }
 
