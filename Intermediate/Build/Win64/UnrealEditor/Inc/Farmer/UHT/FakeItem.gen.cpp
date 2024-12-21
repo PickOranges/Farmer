@@ -98,11 +98,11 @@ void EmptyLinkFunctionForGeneratedCodeFakeItem() {}
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_PickupMesh_MetaData[];
 #endif
-		static const UECodeGen_Private::FObjectPropertyParams NewProp_PickupMesh;
+		static const UECodeGen_Private::FSoftObjectPropertyParams NewProp_PickupMesh;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Thumbnail_MetaData[];
 #endif
-		static const UECodeGen_Private::FObjectPropertyParams NewProp_Thumbnail;
+		static const UECodeGen_Private::FSoftObjectPropertyParams NewProp_Thumbnail;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -174,14 +174,20 @@ void EmptyLinkFunctionForGeneratedCodeFakeItem() {}
 #endif
 	};
 #endif
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh = { "PickupMesh", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UFakeItem, PickupMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh_MetaData), Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh_MetaData) };
+	const UECodeGen_Private::FSoftObjectPropertyParams Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh = { "PickupMesh", nullptr, (EPropertyFlags)0x0014000000010005, UECodeGen_Private::EPropertyGenFlags::SoftObject, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UFakeItem, PickupMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh_MetaData), Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UFakeItem_Statics::NewProp_Thumbnail_MetaData[] = {
 		{ "Category", "Item" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// weak ptr !\n" },
+#endif
 		{ "ModuleRelativePath", "Public/FakeItem.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "weak ptr !" },
+#endif
 	};
 #endif
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UFakeItem_Statics::NewProp_Thumbnail = { "Thumbnail", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UFakeItem, Thumbnail), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UFakeItem_Statics::NewProp_Thumbnail_MetaData), Z_Construct_UClass_UFakeItem_Statics::NewProp_Thumbnail_MetaData) };
+	const UECodeGen_Private::FSoftObjectPropertyParams Z_Construct_UClass_UFakeItem_Statics::NewProp_Thumbnail = { "Thumbnail", nullptr, (EPropertyFlags)0x0014000000010015, UECodeGen_Private::EPropertyGenFlags::SoftObject, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UFakeItem, Thumbnail), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UFakeItem_Statics::NewProp_Thumbnail_MetaData), Z_Construct_UClass_UFakeItem_Statics::NewProp_Thumbnail_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UFakeItem_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UFakeItem_Statics::NewProp_World,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UFakeItem_Statics::NewProp_OwningInventory,
@@ -229,9 +235,9 @@ void EmptyLinkFunctionForGeneratedCodeFakeItem() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UFakeItem, UFakeItem::StaticClass, TEXT("UFakeItem"), &Z_Registration_Info_UClass_UFakeItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UFakeItem), 156730320U) },
+		{ Z_Construct_UClass_UFakeItem, UFakeItem::StaticClass, TEXT("UFakeItem"), &Z_Registration_Info_UClass_UFakeItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UFakeItem), 2819307955U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_3387802011(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_4216963242(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

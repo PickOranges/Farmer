@@ -51,8 +51,8 @@ public:
 	/// 3. async loading from asset manager side
 	/// </summary>
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
-	class UStaticMesh* PickupMesh;
+	TSoftObjectPtr<UStaticMesh> PickupMesh;  // weak ptr !
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
-	class UTexture2D* Thumbnail;
+	TSoftObjectPtr<UTexture2D> Thumbnail;
 };
