@@ -164,17 +164,18 @@ void EmptyLinkFunctionForGeneratedCodeFakeItem() {}
 	const UECodeGen_Private::FTextPropertyParams Z_Construct_UClass_UFakeItem_Statics::NewProp_UseActionText = { "UseActionText", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Text, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UFakeItem, UseActionText), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UFakeItem_Statics::NewProp_UseActionText_MetaData), Z_Construct_UClass_UFakeItem_Statics::NewProp_UseActionText_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh_MetaData[] = {
+		{ "AssetBundles", "UUItemData" },
 		{ "Category", "Item" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/// <summary>\n/// TODO: \n/// 1. remove hard reference\n/// 2. use asset registry system\n/// 3. async loading from asset manager side\n/// </summary>\n" },
+		{ "Comment", "/// <summary>\n/// TODO: \n/// 2. use asset registry system\n/// 3. async loading from asset manager side\n/// </summary>\n" },
 #endif
 		{ "ModuleRelativePath", "Public/FakeItem.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "<summary>\nTODO:\n1. remove hard reference\n2. use asset registry system\n3. async loading from asset manager side\n</summary>" },
+		{ "ToolTip", "<summary>\nTODO:\n2. use asset registry system\n3. async loading from asset manager side\n</summary>" },
 #endif
 	};
 #endif
-	const UECodeGen_Private::FSoftObjectPropertyParams Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh = { "PickupMesh", nullptr, (EPropertyFlags)0x0014000000010005, UECodeGen_Private::EPropertyGenFlags::SoftObject, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UFakeItem, PickupMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh_MetaData), Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh_MetaData) };
+	const UECodeGen_Private::FSoftObjectPropertyParams Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh = { "PickupMesh", nullptr, (EPropertyFlags)0x0014010000010005, UECodeGen_Private::EPropertyGenFlags::SoftObject, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UFakeItem, PickupMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh_MetaData), Z_Construct_UClass_UFakeItem_Statics::NewProp_PickupMesh_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UFakeItem_Statics::NewProp_Thumbnail_MetaData[] = {
 		{ "Category", "Item" },
@@ -235,9 +236,9 @@ void EmptyLinkFunctionForGeneratedCodeFakeItem() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UFakeItem, UFakeItem::StaticClass, TEXT("UFakeItem"), &Z_Registration_Info_UClass_UFakeItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UFakeItem), 2819307955U) },
+		{ Z_Construct_UClass_UFakeItem, UFakeItem::StaticClass, TEXT("UFakeItem"), &Z_Registration_Info_UClass_UFakeItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UFakeItem), 3506023211U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_4216963242(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_3954348051(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_FakeItem_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

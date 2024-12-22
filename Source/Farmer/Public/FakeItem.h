@@ -46,11 +46,10 @@ public:
 
 	/// <summary>
 	/// TODO: 
-	/// 1. remove hard reference
 	/// 2. use asset registry system
 	/// 3. async loading from asset manager side
 	/// </summary>
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item", AssetRegistrySearchable, meta = (AssetBundles="UUItemData"))
 	TSoftObjectPtr<UStaticMesh> PickupMesh;  // weak ptr !
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
