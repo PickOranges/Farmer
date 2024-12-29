@@ -68,7 +68,7 @@ void UMyGameInstanceSubsystem::LoadItemViaAR()
 	// Load assets
 	for (const FAssetData& Asset : FoundAssets)
 	{
-		UObject* LoadedObject = Asset.GetAsset(); 
+		UObject* LoadedObject = Asset.GetAsset();  // TODO: make it async-loading!!!
 		if (LoadedObject)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, LoadedObject->GetName());
