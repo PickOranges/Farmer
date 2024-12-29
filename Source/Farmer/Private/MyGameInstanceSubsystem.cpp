@@ -50,21 +50,19 @@ void UMyGameInstanceSubsystem::LoadItemViaAR()
 	IAssetRegistry& AssetRegistry = AssetRegistryModule.Get();
 
 
-	//FSoftObjectPath ObjectPath(FString("C:/Users/cheng/source/repos/UE5/Farmer/Content/BP_Resources/ItemData"));
 	FName PathName("/Game/BP_Resources/ItemData");
 	TArray<FAssetData> FoundAssets;
-	AssetRegistry.GetAssetsByPath(PathName, FoundAssets);
+	if(!AssetRegistry.GetAssetsByPath(PathName, FoundAssets))
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Red,"[MyGameInstanceSubsystem] No Assets found!");
 
 	// Scan unloaded assets
 	for (const FAssetData& Asset : FoundAssets)
 	{
-		UE_LOG(LogTemp, Log, TEXT("Found Asset: %s"), *Asset.AssetName.ToString());
 		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue, Asset.AssetName.ToString());
-
 	}
 
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Finished scanning...");
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, FString::Printf(TEXT("The #assets is: %d"), FoundAssets.Num()));
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "[MyGameInstanceSubsystem] Finished scanning and waiting for loading in the future...");
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, FString::Printf(TEXT("The scanned #assets is: %d"), FoundAssets.Num()));
 
 
 	// Load assets
@@ -73,19 +71,9 @@ void UMyGameInstanceSubsystem::LoadItemViaAR()
 		UObject* LoadedObject = Asset.GetAsset(); 
 		if (LoadedObject)
 		{
-			UE_LOG(LogTemp, Log, TEXT("Loaded Asset: %s"), *LoadedObject->GetName());
-			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, LoadedObject->GetName());
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, LoadedObject->GetName());
 		}
 	}
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Finished loading!!!");
-
-}
-
-
-
-
-void UMyGameInstanceSubsystem::LoadItemAM()
-{
-	FStreamableManager& Streamable = UAssetManager::GetStreamableManager();
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Yellow, "[MyGameInstanceSubsystem] Finished loading successfully!");
 
 }

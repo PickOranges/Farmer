@@ -20,5 +20,5 @@ class FARMER_API UMyGameInstanceSubsystem : public UGameInstanceSubsystem
 	
 public:
 	void LoadItemViaAR();
-	void LoadItemAM();
+	//void LoadItemViaAM();
 };
