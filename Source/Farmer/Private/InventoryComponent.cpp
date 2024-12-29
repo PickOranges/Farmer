@@ -12,7 +12,7 @@
 // Sets default values for this component's properties
 UInventoryComponent::UInventoryComponent()
 {
-  
+
 }
 
 
@@ -21,17 +21,18 @@ void UInventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	for (auto& Item : DefaultItems) {
-		AddItem(Item);
+	//// TEST: Subsystem for async loading ItemData & later maybe for construction of FakeItem.
+	UMyGameInstanceSubsystem* mysub = GetWorld()->GetGameInstance()->GetSubsystem<UMyGameInstanceSubsystem>();
+	if (mysub) {
+		mysub->LoadItemViaAR();
 	}
 
 
-	//// TEST: Subsystem for async loading ItemData & later maybe for construction of FakeItem.
-	//UMyGameInstanceSubsystem* mysub = GetWorld()->GetGameInstance()->GetSubsystem<UMyGameInstanceSubsystem>();
-	//if (mysub) {
-	//	mysub->LoadItemAsync();
-	//}
-	
+
+
+	for (auto& Item : DefaultItems) {
+		AddItem(Item);
+	}
 }
 
 bool UInventoryComponent::AddItem(UFakeItem* Item)

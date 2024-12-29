@@ -5,6 +5,7 @@
 #include "UItemData.h"
 #include "Engine/StreamableManager.h"
 #include "Engine/AssetManager.h"
+#include "AssetRegistry/AssetRegistryModule.h"
 
 
 //void UMyGameInstanceSubsystem::LoadItemAsync(const FPrimaryAssetId& AssetId, TFunction<void(UUItemData*)> OnLoaded)
@@ -43,10 +44,40 @@
 //
 //}
 
-void UMyGameInstanceSubsystem::LoadItemAsync()
+void UMyGameInstanceSubsystem::LoadItemViaAR()
+{
+	FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
+	IAssetRegistry& AssetRegistry = AssetRegistryModule.Get();
+
+
+	//FSoftObjectPath ObjectPath(FString("C:/Users/cheng/source/repos/UE5/Farmer/Content/BP_Resources/ItemData"));
+	FName PathName("C:/Users/cheng/source/repos/UE5/Farmer/Content/BP_Resources/ItemData");
+	TArray<FAssetData> FoundAssets;
+	AssetRegistry.GetAssetsByPath(PathName, FoundAssets);
+
+	// Scan unloaded assets
+	for (const FAssetData& Asset : FoundAssets)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Found Asset: %s"), *Asset.AssetName.ToString());
+
+	}
+
+	// Load assets
+	for (const FAssetData& Asset : FoundAssets)
+	{
+		UObject* LoadedObject = Asset.GetAsset(); 
+		if (LoadedObject)
+		{
+			UE_LOG(LogTemp, Error, TEXT("Loaded Asset: %s"), *LoadedObject->GetName());
+		}
+	}
+}
+
+
+
+
+void UMyGameInstanceSubsystem::LoadItemAM()
 {
 	FStreamableManager& Streamable = UAssetManager::GetStreamableManager();
-
-
 
 }

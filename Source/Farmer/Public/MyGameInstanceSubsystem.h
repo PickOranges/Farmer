@@ -19,5 +19,6 @@ class FARMER_API UMyGameInstanceSubsystem : public UGameInstanceSubsystem
 	GENERATED_BODY()
 	
 public:
-	void LoadItemAsync();
+	void LoadItemViaAR();
+	void LoadItemAM();
 };
