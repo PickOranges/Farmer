@@ -18,10 +18,10 @@ public:
 	UUItemData();
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item"/*, meta=(AssetBundles="ItemMesh")*/)
-	TSoftObjectPtr<class UStaticMesh> PickupMesh;
+	TSoftObjectPtr<UStaticMesh> PickupMesh;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item"/*, meta=(AssetBundles="ItemTex")*/)
-	TSoftObjectPtr<class UTexture2D> Thumbnail;
+	TSoftObjectPtr<UTexture2D> Thumbnail;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 	FName ItemName;
@@ -34,7 +34,7 @@ public:
 
 	virtual void BeginDestroy() override;
 
-	inline virtual FPrimaryAssetId GetPrimaryAssetId() const override { return FPrimaryAssetId("Cloth", GetFName()); }
+	inline virtual FPrimaryAssetId GetPrimaryAssetId() const override { return FPrimaryAssetId("ClothItem", GetFName()); }
 };
 
 //class UStaticMesh* PickupMesh;  // TODO: replace with TSoftObjectPtr
