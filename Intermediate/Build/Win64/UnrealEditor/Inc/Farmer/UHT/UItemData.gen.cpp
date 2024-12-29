@@ -69,17 +69,27 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 #endif
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh_MetaData[] = {
-		{ "AssetBundles", "ItemMesh" },
 		{ "Category", "Item" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/*, meta=(AssetBundles=\"ItemMesh\")*/" },
+#endif
 		{ "ModuleRelativePath", "Public/UItemData.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", ", meta=(AssetBundles=\"ItemMesh\")" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FSoftObjectPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh = { "PickupMesh", nullptr, (EPropertyFlags)0x0014000000010005, UECodeGen_Private::EPropertyGenFlags::SoftObject, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, PickupMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_PickupMesh_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail_MetaData[] = {
-		{ "AssetBundles", "ItemTex" },
 		{ "Category", "Item" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/*, meta=(AssetBundles=\"ItemTex\")*/" },
+#endif
 		{ "ModuleRelativePath", "Public/UItemData.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", ", meta=(AssetBundles=\"ItemTex\")" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FSoftObjectPropertyParams Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail = { "Thumbnail", nullptr, (EPropertyFlags)0x0014000000010015, UECodeGen_Private::EPropertyGenFlags::SoftObject, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUItemData, Thumbnail), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail_MetaData), Z_Construct_UClass_UUItemData_Statics::NewProp_Thumbnail_MetaData) };
@@ -145,9 +155,9 @@ void EmptyLinkFunctionForGeneratedCodeUItemData() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UUItemData, UUItemData::StaticClass, TEXT("UUItemData"), &Z_Registration_Info_UClass_UUItemData, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUItemData), 184116513U) },
+		{ Z_Construct_UClass_UUItemData, UUItemData::StaticClass, TEXT("UUItemData"), &Z_Registration_Info_UClass_UUItemData, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUItemData), 1755544984U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_3966254060(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_2276904762(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_UItemData_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
