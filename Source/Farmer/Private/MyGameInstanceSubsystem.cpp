@@ -58,9 +58,14 @@ void UMyGameInstanceSubsystem::LoadItemViaAR()
 	// Scan unloaded assets
 	for (const FAssetData& Asset : FoundAssets)
 	{
-		UE_LOG(LogTemp, Error, TEXT("Found Asset: %s"), *Asset.AssetName.ToString());
+		UE_LOG(LogTemp, Log, TEXT("Found Asset: %s"), *Asset.AssetName.ToString());
+		GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Blue, Asset.AssetName.ToString());
 
 	}
+
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Finished scanning...");
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, FString::Printf(TEXT("The #assets is: %d"), FoundAssets.Num()));
+
 
 	// Load assets
 	for (const FAssetData& Asset : FoundAssets)
@@ -68,9 +73,12 @@ void UMyGameInstanceSubsystem::LoadItemViaAR()
 		UObject* LoadedObject = Asset.GetAsset(); 
 		if (LoadedObject)
 		{
-			UE_LOG(LogTemp, Error, TEXT("Loaded Asset: %s"), *LoadedObject->GetName());
+			UE_LOG(LogTemp, Log, TEXT("Loaded Asset: %s"), *LoadedObject->GetName());
+			GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, LoadedObject->GetName());
 		}
 	}
+	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Blue, "Finished loading!!!");
+
 }
 
 
