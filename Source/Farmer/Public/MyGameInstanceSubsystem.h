@@ -19,9 +19,5 @@ class FARMER_API UMyGameInstanceSubsystem : public UGameInstanceSubsystem
 	GENERATED_BODY()
 	
 public:
-	//void LoadItemAsync(const FPrimaryAssetId& AssetId, TFunction<void(UUItemData*)> OnLoaded);
 	void LoadItemAsync();
 };
-
-static TArray<FAssetData> AssetList;
-//static TMap<FName, UUItemData> AssetMap;

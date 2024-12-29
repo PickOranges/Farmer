@@ -17,13 +17,11 @@ class FARMER_API UUItemData : public UPrimaryDataAsset
 public:
 	UUItemData();
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
-	//class UStaticMesh* PickupMesh;  // TODO: replace with TSoftObjectPtr
-	TSoftObjectPtr<UStaticMesh> PickupMesh;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item", meta=(AssetBundles="ItemMesh"))
+	TSoftObjectPtr<class UStaticMesh> PickupMesh;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
-	//class UTexture2D* Thumbnail;   // TODO: replace with TSoftObjectPtr
-	TSoftObjectPtr<UTexture2D> Thumbnail;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item", meta=(AssetBundles="ItemTex"))
+	TSoftObjectPtr<class UTexture2D> Thumbnail;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 	FName ItemName;
@@ -38,3 +36,5 @@ public:
 
 	inline virtual FPrimaryAssetId GetPrimaryAssetId() const override { return FPrimaryAssetId("UUItemData", GetFName()); }
 };
+
+//class UStaticMesh* PickupMesh;  // TODO: replace with TSoftObjectPtr
