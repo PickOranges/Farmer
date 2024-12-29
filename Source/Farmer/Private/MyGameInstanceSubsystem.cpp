@@ -51,7 +51,7 @@ void UMyGameInstanceSubsystem::LoadItemViaAR()
 
 
 	//FSoftObjectPath ObjectPath(FString("C:/Users/cheng/source/repos/UE5/Farmer/Content/BP_Resources/ItemData"));
-	FName PathName("Game/BP_Resources/ItemData");
+	FName PathName("/Game/BP_Resources/ItemData");
 	TArray<FAssetData> FoundAssets;
 	AssetRegistry.GetAssetsByPath(PathName, FoundAssets);
 
