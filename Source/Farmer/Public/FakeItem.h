@@ -49,7 +49,9 @@ public:
 	/// 2. use asset registry system
 	/// 3. async loading from asset manager side
 	/// </summary>
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item", AssetRegistrySearchable, meta = (AssetBundles="UUItemData"))
+	/// 
+	/// Something wrong here??? I don't think this is correct code, it works though???
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item", AssetRegistrySearchable, meta = (AssetBundles="UUItemData"))  // ??? Do u need these???
 	TSoftObjectPtr<UStaticMesh> PickupMesh;  // weak ptr !
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")

@@ -31,7 +31,6 @@ public:
 
 
 	UPROPERTY(EditDefaultsOnly, Instanced)
-	//TArray<class UFakeItem*> DefaultItems;
 	TArray<class UFakeItem*> DefaultItems;
 
 

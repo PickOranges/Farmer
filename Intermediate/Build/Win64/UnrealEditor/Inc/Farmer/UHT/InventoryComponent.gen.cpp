@@ -109,28 +109,16 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_Inner_MetaData[] = {
 		{ "Category", "InventoryComponent" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "//TArray<class UFakeItem*> DefaultItems;\n" },
-#endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "TArray<class UFakeItem*> DefaultItems;" },
-#endif
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_Inner = { "DefaultItems", nullptr, (EPropertyFlags)0x0002000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UFakeItem_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_Inner_MetaData), Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_Inner_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_MetaData[] = {
 		{ "Category", "InventoryComponent" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "//TArray<class UFakeItem*> DefaultItems;\n" },
-#endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "TArray<class UFakeItem*> DefaultItems;" },
-#endif
 	};
 #endif
 	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems = { "DefaultItems", nullptr, (EPropertyFlags)0x0010008000010009, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryComponent, DefaultItems), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_MetaData), Z_Construct_UClass_UInventoryComponent_Statics::NewProp_DefaultItems_MetaData) };
@@ -222,9 +210,9 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UInventoryComponent, UInventoryComponent::StaticClass, TEXT("UInventoryComponent"), &Z_Registration_Info_UClass_UInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryComponent), 899721432U) },
+		{ Z_Construct_UClass_UInventoryComponent, UInventoryComponent::StaticClass, TEXT("UInventoryComponent"), &Z_Registration_Info_UClass_UInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryComponent), 4264639125U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_1219591646(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_2254270908(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
