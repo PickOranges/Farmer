@@ -27,9 +27,6 @@ void UInventoryComponent::BeginPlay()
 		mysub->LoadItemViaAR();
 	}
 
-
-
-
 	for (auto& Item : DefaultItems) {
 		AddItem(Item);
 	}
