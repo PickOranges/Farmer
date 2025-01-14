@@ -8,43 +8,7 @@
 #include "AssetRegistry/AssetRegistryModule.h"
 
 
-//void UMyGameInstanceSubsystem::LoadItemAsync(const FPrimaryAssetId& AssetId, TFunction<void(UUItemData*)> OnLoaded)
-//void UMyGameInstanceSubsystem::LoadItemAsync()
-//{
-//	FAssetRegistryModule& AssetRegistry = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
-//	
-//	FStreamableManager& Streamable = UAssetManager::GetStreamableManager();
-//	FSoftObjectPath ObjectPath(FString("C:/Users/cheng/source/repos/UE5/Farmer/Content/BP_Resources/ItemData/Blouse.uasset"));
-//	//FSoftObjectPath ObjectPath(FString("/All/Game/BP_Resources/ItemData"));
-//
-//
-//	FAssetData Asset;
-//	AssetRegistry.TryGetAssetByObjectPath(ObjectPath, Asset);
-//
-//	// async loading
-//	Streamable.RequestAsyncLoad(ObjectPath,
-//		FStreamableDelegate::CreateLambda([&]() 
-//			{
-//				//if (ObjectPath.IsValid()) {
-//					//Asset = ObjectPath.ResolveObject();
-//					//AssetList.Add(Asset);
-//					// TODO: communication/interaction with UI & FarmerCharacter !
-//				//}
-//				if (Asset.IsValid()) {
-//					Asset.GetClass()->AddToRoot(); // Avoid GC
-//					FString AssName = Asset.GetAsset()->GetPrimaryAssetId().ToString();
-//					GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Green,AssName);
-//				}
-//				
-//			})
-//	);
-//
-//
-//	//Asset = ObjectPath.TryLoad();  // this is very slow !!! TODO: remove it once make it work, then use async loading!!!
-//
-//}
-
-void UMyGameInstanceSubsystem::LoadItemViaAR()
+void UMyGameInstanceSubsystem::LoadItemViaAR() // Are those assets really needed in the game? I don't see they are useful in current game???
 {
 	FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>("AssetRegistry");
 	IAssetRegistry& AssetRegistry = AssetRegistryModule.Get();
