@@ -49,4 +49,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "ResourceTree")
 	void TakeDamage();
+
+
+	UFUNCTION(BlueprintNativeEvent, Category = "ResourceTree")
+	void BPInteraction();
 };
