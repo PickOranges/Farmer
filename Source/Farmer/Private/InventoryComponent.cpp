@@ -53,8 +53,8 @@ bool UInventoryComponent::AddItem(UFakeItem* Item)
 
 	OnInventoryUpdated.Broadcast();  // update UI
 
-	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[InventoryComponent.cpp] Added Item from DefaulltItems TArray.");
-	GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,FString::Printf(TEXT("%d"), ItemDict.Num()));
+	//GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[InventoryComponent.cpp] Added Item from DefaulltItems TArray.");
+	//GEngine->AddOnScreenDebugMessage(-1,INFINITY,FColor::Orange,FString::Printf(TEXT("The default Item TMap size is: %d"), ItemDict.Num()));
 
 	return true;
 }
@@ -69,6 +69,7 @@ bool UInventoryComponent::RemoveItem(UFakeItem* Item)
 
 
 	Items.Remove(Item);
+	ItemDict.Remove(Item->ItemName);
 	OnInventoryUpdated.Broadcast();
 	
 	GEngine->AddOnScreenDebugMessage(-1, INFINITY, FColor::Orange, "[InventoryComponent.cpp] Removed the Item from Items TMap.");

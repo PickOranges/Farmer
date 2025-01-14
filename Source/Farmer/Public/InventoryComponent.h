@@ -33,21 +33,10 @@ public:
 	UPROPERTY(EditDefaultsOnly, Instanced)
 	TArray<class UFakeItem*> DefaultItems;
 
-
-	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
-	//TArray<class UFakeItem*> Items;	// TODO: replace with TMap & make it data-driven !
-
-
-	
-	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
-	//TMap<FName, class UFakeItem*> Items;
 	TArray<class UFakeItem*> Items;
 
-
-
-
-
+	// ??? Don't know why do we need this, but remove it will somehow cause crash.
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InventoryComponent")
 	TMap<FName, class UFakeItem*> ItemDict;
 

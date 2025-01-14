@@ -126,14 +126,8 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Items_MetaData[] = {
 		{ "Category", "InventoryComponent" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \"InventoryComponent\")\n//TArray<class UFakeItem*> Items;\x09// TODO: replace with TMap & make it data-driven !\n//TMap<FName, class UFakeItem*> Items;\n" },
-#endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = \"InventoryComponent\")\nTArray<class UFakeItem*> Items;         TODO: replace with TMap & make it data-driven !\nTMap<FName, class UFakeItem*> Items;" },
-#endif
 	};
 #endif
 	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Items = { "Items", nullptr, (EPropertyFlags)0x001000800002001d, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryComponent, Items), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Items_MetaData), Z_Construct_UClass_UInventoryComponent_Statics::NewProp_Items_MetaData) };
@@ -142,8 +136,14 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict_MetaData[] = {
 		{ "Category", "InventoryComponent" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// ??? Don't know why do we need this, but remove it will somehow cause crash.\n" },
+#endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/InventoryComponent.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "??? Don't know why do we need this, but remove it will somehow cause crash." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict = { "ItemDict", nullptr, (EPropertyFlags)0x001000800002001d, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryComponent, ItemDict), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict_MetaData), Z_Construct_UClass_UInventoryComponent_Statics::NewProp_ItemDict_MetaData) };
@@ -210,9 +210,9 @@ void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInven
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UInventoryComponent, UInventoryComponent::StaticClass, TEXT("UInventoryComponent"), &Z_Registration_Info_UClass_UInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryComponent), 4264639125U) },
+		{ Z_Construct_UClass_UInventoryComponent, UInventoryComponent::StaticClass, TEXT("UInventoryComponent"), &Z_Registration_Info_UClass_UInventoryComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryComponent), 539871391U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_2254270908(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_1900096538(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_InventoryComponent_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
