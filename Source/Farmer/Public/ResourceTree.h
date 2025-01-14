@@ -26,10 +26,10 @@ public:
 	UPROPERTY(EditAnywhere, Category = "ResourceTree/Wood")
 	TSubclassOf<AActor> WoodClass;
 
-	UPROPERTY(EditAnywhere, Category = "ResourceTree/Wood")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ResourceTree/Wood")
 	FTimerHandle TreeFallTimerHandle;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void OnTreeFallComplete();
 
 
@@ -49,4 +49,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "ResourceTree")
 	void TakeDamage();
+
+	UFUNCTION(BlueprintNativeEvent, Category = "ResourceTree")
+	void BPInteraction();
 };

@@ -22,11 +22,14 @@ AResourceTree::AResourceTree()
 void AResourceTree::Interact_Implementation(AFarmerCharacter* player)
 {
 	if (bIsInteractable && player) {
-		player->PlayChoppingAnim();
 
-		ResourceMesh->SetSimulatePhysics(true);
-		GetWorld()->GetTimerManager().SetTimer(TreeFallTimerHandle, this, &AResourceTree::OnTreeFallComplete, 4.0f, false);
-		bIsInteractable = false;
+		BPInteraction();	
+		// TODO: Move this code into BP subclass.
+		//player->PlayChoppingAnim();
+
+		//ResourceMesh->SetSimulatePhysic);
+		//GetWorld()->GetTimerManager().SetTimer(TreeFallTFallimerHandle, this, &AResourceTree::OnTreeFallComplete, 4.0f, false);
+		//bIsInteractable = false;
 	}
 	
 }
@@ -58,6 +61,11 @@ void AResourceTree::TakeDamage()
 {
 	if (health > 0) --health;
 }
+
+void AResourceTree::BPInteraction_Implementation()
+{
+}
+
 
 
 

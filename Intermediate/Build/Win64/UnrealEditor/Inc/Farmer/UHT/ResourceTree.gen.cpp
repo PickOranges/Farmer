@@ -19,6 +19,13 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 	FARMER_API UClass* Z_Construct_UClass_AResourceTree_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_Farmer();
 // End Cross Module References
+	DEFINE_FUNCTION(AResourceTree::execBPInteraction)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->BPInteraction_Implementation();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(AResourceTree::execTakeDamage)
 	{
 		P_FINISH;
@@ -47,16 +54,45 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 		P_THIS->OnTreeFallComplete();
 		P_NATIVE_END;
 	}
+	static FName NAME_AResourceTree_BPInteraction = FName(TEXT("BPInteraction"));
+	void AResourceTree::BPInteraction()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_AResourceTree_BPInteraction),NULL);
+	}
 	void AResourceTree::StaticRegisterNativesAResourceTree()
 	{
 		UClass* Class = AResourceTree::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "BPInteraction", &AResourceTree::execBPInteraction },
 			{ "DisableToolDamge", &AResourceTree::execDisableToolDamge },
 			{ "EnableToolDamge", &AResourceTree::execEnableToolDamge },
 			{ "OnTreeFallComplete", &AResourceTree::execOnTreeFallComplete },
 			{ "TakeDamage", &AResourceTree::execTakeDamage },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_AResourceTree_BPInteraction_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AResourceTree_BPInteraction_Statics::Function_MetaDataParams[] = {
+		{ "Category", "ResourceTree" },
+		{ "ModuleRelativePath", "Public/ResourceTree.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AResourceTree_BPInteraction_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AResourceTree, nullptr, "BPInteraction", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AResourceTree_BPInteraction_Statics::Function_MetaDataParams), Z_Construct_UFunction_AResourceTree_BPInteraction_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_AResourceTree_BPInteraction()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AResourceTree_BPInteraction_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_AResourceTree_DisableToolDamge_Statics
 	{
@@ -114,7 +150,7 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 		{ "ModuleRelativePath", "Public/ResourceTree.h" },
 	};
 #endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AResourceTree_OnTreeFallComplete_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AResourceTree, nullptr, "OnTreeFallComplete", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AResourceTree_OnTreeFallComplete_Statics::Function_MetaDataParams), Z_Construct_UFunction_AResourceTree_OnTreeFallComplete_Statics::Function_MetaDataParams) };
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AResourceTree_OnTreeFallComplete_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AResourceTree, nullptr, "OnTreeFallComplete", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AResourceTree_OnTreeFallComplete_Statics::Function_MetaDataParams), Z_Construct_UFunction_AResourceTree_OnTreeFallComplete_Statics::Function_MetaDataParams) };
 	UFunction* Z_Construct_UFunction_AResourceTree_OnTreeFallComplete()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -190,9 +226,10 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceTree_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_AResourceTree_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_AResourceTree_BPInteraction, "BPInteraction" }, // 251381357
 		{ &Z_Construct_UFunction_AResourceTree_DisableToolDamge, "DisableToolDamge" }, // 2372598174
 		{ &Z_Construct_UFunction_AResourceTree_EnableToolDamge, "EnableToolDamge" }, // 1017106260
-		{ &Z_Construct_UFunction_AResourceTree_OnTreeFallComplete, "OnTreeFallComplete" }, // 3543099484
+		{ &Z_Construct_UFunction_AResourceTree_OnTreeFallComplete, "OnTreeFallComplete" }, // 959294097
 		{ &Z_Construct_UFunction_AResourceTree_TakeDamage, "TakeDamage" }, // 727142431
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceTree_Statics::FuncInfo) < 2048);
@@ -225,7 +262,7 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 		{ "ModuleRelativePath", "Public/ResourceTree.h" },
 	};
 #endif
-	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AResourceTree_Statics::NewProp_TreeFallTimerHandle = { "TreeFallTimerHandle", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AResourceTree, TreeFallTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceTree_Statics::NewProp_TreeFallTimerHandle_MetaData), Z_Construct_UClass_AResourceTree_Statics::NewProp_TreeFallTimerHandle_MetaData) }; // 3999327403
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AResourceTree_Statics::NewProp_TreeFallTimerHandle = { "TreeFallTimerHandle", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AResourceTree, TreeFallTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AResourceTree_Statics::NewProp_TreeFallTimerHandle_MetaData), Z_Construct_UClass_AResourceTree_Statics::NewProp_TreeFallTimerHandle_MetaData) }; // 3999327403
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AResourceTree_Statics::NewProp_bCanDamage_MetaData[] = {
 		{ "Category", "ResourceTree" },
@@ -289,9 +326,9 @@ void EmptyLinkFunctionForGeneratedCodeResourceTree() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AResourceTree, AResourceTree::StaticClass, TEXT("AResourceTree"), &Z_Registration_Info_UClass_AResourceTree, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceTree), 2733391276U) },
+		{ Z_Construct_UClass_AResourceTree, AResourceTree::StaticClass, TEXT("AResourceTree"), &Z_Registration_Info_UClass_AResourceTree, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AResourceTree), 1467825320U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_228048191(TEXT("/Script/Farmer"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_3270158880(TEXT("/Script/Farmer"),
 		Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_cheng_source_repos_UE5_Farmer_Source_Farmer_Public_ResourceTree_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
